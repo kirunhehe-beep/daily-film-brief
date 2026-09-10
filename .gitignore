@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Local handoff and recovery material; the deployable site is app/.
+app.before-v4-baseline/
+daily-film-brief-pages-v4-reader-tools.zip
+output/
+prompts/
+source-materials/

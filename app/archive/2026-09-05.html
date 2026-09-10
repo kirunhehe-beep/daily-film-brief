@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="theme-color" content="#5A5AD6">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="影视简报">
+<title>每日影视简报 · 2026-09-05</title>
+<style>
+
+  :root{
+    --bg:#F6F7FC;
+    --card:#FFFFFF;
+    --ink:#151824;
+    --ink-2:#59607A;
+    --ink-3:#8A90A6;
+    --ink-4:#A7ADC0;
+    --accent:#5A5AD6;
+    --accent-2:#7C6BF0;
+    --accent-soft:rgba(90,90,214,.10);
+    --accent-hair:rgba(90,90,214,.22);
+    --ok:#0F8A5F;
+    --ok-soft:rgba(15,138,95,.10);
+    --ok-hair:rgba(15,138,95,.24);
+    --warn:#B26A00;
+    --warn-soft:rgba(178,106,0,.10);
+    --warn-hair:rgba(178,106,0,.24);
+    --hair:rgba(21,24,36,.09);
+    --hair-2:rgba(21,24,36,.05);
+    --r:14px;
+    --maxw:520px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:.1px;
+    background:
+      radial-gradient(130% 62% at 50% -12%, rgba(124,107,240,.13) 0%, rgba(124,107,240,0) 62%),
+      linear-gradient(180deg,#F8F9FD 0%, #F3F5FB 46%, #EDF0F8 100%);
+    background-attachment:fixed;min-height:100vh}
+  a{color:var(--accent);text-decoration:none}
+  img{display:block}
+  .app{max-width:var(--maxw);margin:0 auto;min-height:100vh;padding-bottom:72px;
+    opacity:0;animation:fade .45s ease forwards}
+  @keyframes fade{to{opacity:1}}
+  @media print{.app{opacity:1 !important;animation:none !important}}
+
+  /* ============ 顶部栏：半透明 + 市场导航 ============ */
+  .topbar{position:sticky;top:0;z-index:80;
+    padding:calc(env(safe-area-inset-top) + 10px) 0 0;
+    background:rgba(246,247,252,.74);
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:.5px solid var(--hair-2)}
+  .tb-top{display:flex;align-items:baseline;justify-content:space-between;padding:0 16px 8px}
+  .tb-brand{font-size:15.5px;font-weight:700;letter-spacing:-.2px}
+  .tb-brand span{color:var(--accent)}
+  .tb-date{font-size:12px;color:var(--ink-3);font-weight:500;font-variant-numeric:tabular-nums}
+  .mnav{display:flex;gap:7px;overflow-x:auto;padding:0 16px 10px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mnav::-webkit-scrollbar{display:none}
+  .mnav a{flex:none;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:500;
+    color:var(--ink-2);background:rgba(255,255,255,.72);border:.5px solid var(--hair);
+    white-space:nowrap;transition:background .18s,color .18s,border-color .18s}
+  .mnav a.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  /* ============ 系统状态（只报状态，不做内容判断） ============ */
+    .status{padding:14px 16px 8px}
+  .st-line{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .st-date{font-size:21px;font-weight:700;letter-spacing:-.4px}
+  .st-dot{color:var(--ink-4);font-weight:600}
+  .st-upd,.st-new{font-size:12.5px;color:var(--ink-3);font-weight:600;font-variant-numeric:tabular-nums}
+  .st-new em{font-style:normal;color:var(--accent);font-weight:700}
+  .st-sub2{margin-top:5px;font-size:11.5px;color:var(--ink-4);font-weight:500;letter-spacing:.2px}
+
+  /* ============ 市场区 ============ */
+  .market{padding:0 16px;margin-top:26px;scroll-margin-top:96px}
+  .mk-head{display:flex;align-items:center;gap:8px;padding:0 2px 9px}
+  .mk-head .bar{width:3px;height:13px;border-radius:2px;background:var(--accent);flex:none}
+  .mk-head h2{font-size:13.5px;font-weight:700;letter-spacing:.2px}
+  .mk-head .en{font-size:10.5px;color:var(--ink-4);font-weight:600;letter-spacing:.5px}
+  .mk-head .n{margin-left:auto;font-size:11.5px;color:var(--ink-3);font-weight:600;
+    background:rgba(255,255,255,.7);border:.5px solid var(--hair);padding:1px 8px;border-radius:999px;
+    font-variant-numeric:tabular-nums}
+  .feed{background:rgba(255,255,255,.5);border:.5px solid var(--hair-2);
+    border-radius:var(--r);overflow:hidden}
+  .feed > .row-media:first-child{margin-top:9px}
+  .feed > .row-media:last-child{margin-bottom:9px}
+  .mk-empty{padding:16px 13px;font-size:12.5px;color:var(--ink-3);text-align:center;line-height:1.6;
+    background:rgba(255,255,255,.5);border:.5px dashed var(--hair);border-radius:var(--r)}
+
+  /* ============ 普通条目：紧凑信息行（无白卡，只有发丝线） ============ */
+  .row{border-bottom:.5px solid var(--hair-2)}
+  .row:last-child{border-bottom:none}
+  .row > summary{list-style:none;cursor:pointer;padding:11px 13px;position:relative;display:block}
+  .row > summary::-webkit-details-marker{display:none}
+  .r-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-right:18px}
+  .r-time{font-size:11px;color:var(--ink-4);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.2px}
+  .r-kind{font-size:10.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);
+    padding:2px 6px;border-radius:5px;letter-spacing:.2px}
+  .r-new{font-size:10px;font-weight:800;letter-spacing:.5px;color:var(--ok);
+    background:var(--ok-soft);border:.5px solid var(--ok-hair);padding:2px 6px;border-radius:5px;
+    font-variant-numeric:tabular-nums}
+  .r-cred{margin-left:auto;flex:none;font-size:10px;font-weight:600;padding:2px 6px;border-radius:5px;
+    letter-spacing:.2px}
+  .r-cred.ok{color:var(--ok);background:var(--ok-soft)}
+  .r-cred.pending{color:var(--warn);background:var(--warn-soft)}
+  .chev{position:absolute;right:11px;top:14px;width:15px;height:15px;color:var(--ink-4);
+    transition:transform .22s ease}
+  details[open] > summary .chev{transform:rotate(180deg)}
+  .r-title{font-size:15.5px;font-weight:650;letter-spacing:-.2px;margin-top:5px;line-height:1.35}
+  .r-lead{font-size:12.8px;color:var(--ink-2);margin-top:3px;line-height:1.5}
+  .r-src{margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:11px;
+    color:var(--ink-3);font-weight:500}
+  .r-src .dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex:none;opacity:.75}
+  .r-src.pending .dot{background:var(--warn)}
+
+  /* ============ 物料条目：白卡 + 缩略海报（层级高于普通条目） ============ */
+  .row-media{margin:9px 13px;border-bottom:none;border-radius:12px;
+    background:var(--card);border:.5px solid var(--hair);
+    box-shadow:0 1px 2px rgba(21,24,36,.04),0 8px 22px rgba(21,24,36,.06);overflow:hidden}
+  .row-media > summary{padding:11px 12px}
+  .row-media .chev{right:10px}
+  .r-media-body{display:flex;gap:11px;margin-top:9px}
+  .r-thumb{width:62px;height:88px;object-fit:cover;border-radius:8px;flex:none;
+    background:var(--bg);border:.5px solid var(--hair)}
+  .r-media-txt{min-width:0;flex:1}
+  .r-media-txt .r-title{margin-top:0}
+  .r-mat{margin-top:8px;display:inline-flex;align-items:center;gap:4px;font-size:11px;
+    font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:6px}
+
+  /* ============ 详情区 ============ */
+  .r-det{padding:0 13px 13px}
+  .row-media .r-det{padding:0 12px 12px}
+  .r-det .d-desc{font-size:13.2px;line-height:1.62;color:var(--ink);
+    padding:9px 0 0;border-top:.5px solid var(--hair-2);margin-top:9px}
+  .r-det > *:first-child{border-top:none;margin-top:0;padding-top:0}
+
+  /* 播放器：B 站分端（默认安全态：隐藏 iframe / 显示跳转入口） */
+  .v-wrap{margin-top:10px;border-radius:10px;overflow:hidden;background:#000}
+  .v-wrap video{width:100%;display:block;background:#000;max-height:54vw}
+  .v-wrap .bili-embed{display:none;width:100%;aspect-ratio:16/9;border:0;background:#000}
+  .bili-jump{display:flex;align-items:center;gap:10px;padding:13px 13px;text-decoration:none;
+    background:linear-gradient(135deg,#5A5AD6,#7C6BF0);color:#fff}
+  .bili-jump .bj-ico{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);
+    display:flex;align-items:center;justify-content:center;font-size:10px;flex:none}
+  .bili-jump .bj-t{font-size:13px;font-weight:650;display:block}
+  .bili-jump .bj-s{font-size:10.5px;opacity:.82;display:block;margin-top:1px}
+  .v-src{margin-top:7px;font-size:10.8px;color:var(--ink-3);line-height:1.55}
+  .v-src a{color:var(--accent)}
+  .v-fallback{padding:14px;font-size:12.5px;color:#fff;text-align:center;background:#3A3F4D}
+  .v-fallback a{color:#9DA6FF}
+  @media (min-width:821px){
+    .v-wrap .bili-embed{display:block}
+    .bili-jump{display:none}
+    .v-wrap video{max-height:none}
+  }
+
+  .synopsis{margin-top:11px;background:rgba(90,90,214,.055);border-radius:10px;padding:10px 11px}
+  .synopsis .syn-k{display:block;font-size:10.5px;font-weight:700;color:var(--accent);
+    letter-spacing:.4px;margin-bottom:4px}
+  .synopsis p{font-size:12.6px;line-height:1.62;color:var(--ink-2)}
+  .credits{margin-top:10px}
+  .credits .cr-row{display:flex;gap:9px;padding:5px 0;border-top:.5px solid var(--hair-2);font-size:12.4px}
+  .credits .cr-row:first-child{border-top:none}
+  .credits .cr-k{flex:none;width:52px;color:var(--ink-4);font-size:11px;font-weight:600;padding-top:1px}
+  .credits .cr-v{color:var(--ink-2);line-height:1.55;min-width:0}
+  .credits .cr-v b{color:var(--ink);font-weight:600}
+  .vpanel{margin-top:11px;background:rgba(15,138,95,.05);border:.5px solid var(--ok-hair);
+    border-radius:10px;padding:10px 11px}
+  .vpanel.pending{background:var(--warn-soft);border-color:var(--warn-hair)}
+  .vpanel .vp-h{font-size:10.5px;font-weight:700;color:var(--ok);letter-spacing:.4px;margin-bottom:5px}
+  .vpanel.pending .vp-h{color:var(--warn)}
+  .vpanel .vp-row{font-size:12.2px;color:var(--ink-2);display:flex;gap:5px;align-items:baseline}
+  .vpanel .vp-row .vpdot{color:var(--ok);font-weight:700}
+  .vpanel .vp-note{font-size:11.6px;color:var(--ink-3);margin-top:5px;line-height:1.55}
+  .vpanel .vp-cred{font-size:11.6px;color:var(--ink-2);margin-top:5px;font-weight:600}
+  .vpanel .src{display:inline-block;margin-top:7px;font-size:11.6px;font-weight:600}
+
+  /* 信源块 */
+  .srcbox{margin-top:11px;border-top:.5px solid var(--hair-2);padding-top:9px}
+  .srcbox .sb-h{font-size:10.5px;font-weight:700;color:var(--ink-4);letter-spacing:.4px;margin-bottom:6px}
+  .srcbox .sb-list{display:flex;flex-direction:column;gap:5px}
+  .srcbox .sb-i{display:flex;align-items:center;gap:7px;font-size:11.8px;color:var(--accent);
+    background:rgba(90,90,214,.055);border-radius:8px;padding:7px 9px;min-width:0}
+  .srcbox .sb-i.sb-main{background:var(--accent-soft)}
+  .srcbox .sb-b{flex:none;font-size:9.5px;font-weight:700;color:var(--ink-3);
+    background:rgba(255,255,255,.85);border:.5px solid var(--hair);
+    padding:1.5px 5px;border-radius:4px;letter-spacing:.2px}
+  .srcbox .sb-a{margin-left:auto;flex:none;opacity:.6;font-size:11px}
+
+  /* ============ 我的关注（视觉占位，无数据/无交互） ============ */
+  .watch-ph{margin:26px 16px 0;border:.5px dashed var(--hair);border-radius:var(--r);
+    background:rgba(255,255,255,.4);padding:12px 13px;display:flex;align-items:center;gap:9px}
+  .watch-ph .wp-ic{width:22px;height:22px;border-radius:7px;background:rgba(90,90,214,.09);
+    display:flex;align-items:center;justify-content:center;flex:none;color:var(--accent)}
+  .watch-ph .wp-t{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+  .watch-ph .wp-tag{margin-left:auto;font-size:10px;color:var(--ink-4);font-weight:600;
+    border:.5px solid var(--hair);padding:1.5px 6px;border-radius:999px;flex:none}
+
+  /* ============ 历史归档入口 ============ */
+  .arch-link{margin:24px 16px 0;padding:13px;border-radius:var(--r);
+    background:rgba(255,255,255,.62);border:.5px solid var(--hair);
+    display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none}
+  .arch-link .al-t{font-size:13px;font-weight:650}
+  .arch-link .al-s{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+  .arch-link .al-go{margin-left:auto;color:var(--accent);font-size:18px;flex:none}
+
+  .foot{padding:22px 16px 0;font-size:11px;color:var(--ink-4);line-height:1.7;text-align:center}
+
+</style>
+<style>.cont-lbl{display:inline-block;margin:7px 0 2px;font-size:10.5px;font-weight:700;color:var(--warn);background:var(--warn-soft);border:.5px solid var(--warn-hair);padding:2px 8px;border-radius:999px;letter-spacing:.2px}
+  .topbar .back{display:inline-block;margin:0 0 5px 16px;color:var(--accent);font-weight:600;font-size:13px;text-decoration:none}</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="back" href="../archive.html" aria-label="返回历史归档" style="display:inline-flex;align-items:center;min-height:36px;margin:0 16px 2px;color:var(--paper);font:800 11px/1 var(--mono);letter-spacing:.05em">← 历史归档</a>
+    
+    <div class="tb-top">
+      <div class="tb-brand">影视<span>简报</span></div>
+      <div class="tb-date">2026-09-05 · 周六</div>
+    </div>
+    <nav class="mnav" id="mnav">
+<a href="#m-cn">中国内地</a><a href="#m-hmt">中国港澳台</a><a href="#m-intl">海外</a><a href="#m-obs">行业观察</a>
+    </nav>
+  </header>
+    <section class="status" aria-label="系统状态">
+    <div class="st-line">
+      <span class="st-date">2026 年 9 月 5 日</span>
+      <span class="st-dot">·</span>
+      <span class="st-upd">已更新至 18:05</span>
+      <span class="st-dot">·</span>
+      <span class="st-new">今日新增 <em>17</em> 条</span>
+    </div>
+    <div class="st-sub2">覆盖正常 · 4 个板块</div>
+  </section>
+<section id="m-cn" class="market" aria-label="中国内地">
+<div class="mk-head"><span class="bar"></span><h2>中国内地</h2><span class="en">MAINLAND</span><span class="n">9</span></div>
+<div class="feed"><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">09:00</span><span class="r-kind">上映</span><span class="r-new">NEW · 09:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/ran_ba_ba.jpg" alt="《燃烧吧！爸爸》"><div class="r-media-txt"><div class="r-title">《燃烧吧！爸爸》</div><div class="r-lead">徐峥监制、文淇倪虹洁主演的家庭轻喜剧今日全国公映，此前入围上影节金爵奖主竞赛。</div><div class="r-src"><span class="dot"></span>媒体 · 腾讯新闻 / 北京旅游网</div><div class="cont-lbl">延续 · 9/2 曾报·定档</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">《燃烧吧！爸爸》今日（9 月 5 日）全国公映。影片由刘潇阳执导，徐峥、曾剑监制，文淇、倪虹洁、喻恩泰主演，以喜剧外壳包裹现实亲情，讲述普通三口之家在父亲离世后彼此直面隔阂与和解的治愈故事，此前入围第 28 届上海国际电影节金爵奖主竞赛单元。</p><div class="v-wrap">
+  <video controls preload="metadata" playsinline x5-playsinline webkit-playsinline
+    poster="https://p0.pipi.cn/mediaplus/friday_image_fe/e42958bf8455c29fd1c8be0724f19473491b5.jpg?imageMogr2/thumbnail/720x/quality/80"
+    onerror="window.__vFail&&window.__vFail(this)"
+    data-bili-bvid="BV1XZtx6iE6D" data-bili-url="https://www.bilibili.com/video/BV1XZtx6iE6D"
+    src="https://vod.pipi.cn/fec9203cvodtransbj1251246104/d843b7695001834818515397781/v.f42905.mp4"></video>
+  </div>
+<div class="v-src">官方预告 1:51 · 片源 猫眼（官方无水印版，支持页内直接播放 / 投屏） · 猫眼想看 <b>13,502</b> · <a href="https://www.maoyan.com/films/1552177" target="_blank">猫眼词条</a></div><div class="synopsis"><span class="syn-k">剧情简介</span><p>顾立言（文淇 饰）与母亲吴开蒂（倪虹洁 饰）面临至亲离别，在父亲顾卫星（喻恩泰 饰）久病离世后，这对性格迥异的母女在啼笑皆非的事件中彼此了解，更懂得那个处处为二人着想的父亲。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 刘潇阳；监制 徐峥、曾剑；领衔主演 文淇、倪虹洁、喻恩泰</span></div><div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">徐峥监制，入围第 28 届上海国际电影节金爵奖主竞赛单元</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 腾讯新闻 9/3 九月片单、北京旅游网 9 月片单、搜狐 9 月必看片单一致确认 9/5 公映</div><div class="vp-note">公映日期（9/5）、主创与金爵奖入围信息多源印证。</div><div class="vp-cred">可信度：高</div><a class="src" href="https://news.qq.com/rain/a/20260903A0BAKC00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36903929/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">09:00</span><span class="r-kind">上映</span><span class="r-new">NEW · 09:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/hong_shan_dian.jpg" alt="《红闪电》"><div class="r-media-txt"><div class="r-title">《红闪电》</div><div class="r-lead">黄曦彦、张熙然主演的人与马双向救赎故事今日上映，曾入围北京国际电影节。</div><div class="r-src"><span class="dot"></span>媒体 · 腾讯新闻</div><div class="cont-lbl">延续 · 9/4 曾报·定档</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">黄曦彦、张熙然主演的人与马双向救赎故事《红闪电》今日（9 月 5 日）上映，主演亲身上阵实拍 1.2 米级场地障碍赛，影片已入围北京国际电影节并担任大学生电影节开幕片。</p><div class="synopsis"><span class="syn-k">剧情简介</span><p>11 岁少女达达因家庭变故情绪消沉而休学，被母亲送到表哥经营的马场暂住，在那里结识因比赛事故自我放逐的冠军骑手向飞，以及他的最佳搭档赛马「红闪电」，由此展开一段双向救赎。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">主演 黄曦彦、张熙然；导演 霍亮</span></div><div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">入围北京国际电影节，并担任大学生电影节开幕片</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 数位视野（9/3）确认 9/5 上映、主演实拍 1.2 米级障碍赛、入围北影节及大影节开幕片</div><div class="vp-note">定档（9/5）、主演与入围信息由单一媒体来源报道。猫眼暂无预告片，仅配海报。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260903A075EI00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/37171813/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">12:30</span><span class="r-kind">定档</span><span class="r-new">NEW · 12:30</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/lao_jiang_hu.jpg" alt="《老江湖》"><div class="r-media-txt"><div class="r-title">《老江湖》</div><div class="r-lead">于谦、梁家辉双戏骨对决的犯罪喜剧定档 9 月 25 日中秋档，老警察与金融大佬博弈。</div><div class="r-src"><span class="dot"></span>媒体 · 兰州晚报 / 腾讯新闻</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">于谦、梁家辉双戏骨对决的犯罪喜剧《老江湖》定档 9 月 25 日中秋档，讲述老警察与金融大佬因一桩失窃案展开博弈，悬念迭起。</p><div class="v-wrap">
+  <video controls preload="metadata" playsinline x5-playsinline webkit-playsinline
+    poster="https://p0.pipi.cn/mediaplus/friday_image_fe/e429589a3d6e326b1b77e1661559ae3ef4f64.jpeg?imageMogr2/thumbnail/720x/quality/80"
+    onerror="window.__vFail&&window.__vFail(this)"
+    data-bili-bvid="BV1Qnhc6iEVR" data-bili-url="https://www.bilibili.com/video/BV1Qnhc6iEVR"
+    src="https://vod.pipi.cn/fec9203cvodtransbj1251246104/5e73c59f5001834817724446820/v.f42905.mp4"></video>
+  </div>
+<div class="v-src">官方预告 0:57 · 片源 猫眼（官方无水印版，支持页内直接播放 / 投屏） · 猫眼想看 <b>51,824</b> · <a href="https://www.maoyan.com/films/1461184" target="_blank">猫眼词条</a></div><div class="synopsis"><span class="syn-k">剧情简介</span><p>老警察与金融大佬因一桩失窃案展开博弈，于谦、梁家辉双戏骨同台，犯罪喜剧类型新片，悬念迭起。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">主演 于谦、梁家辉</span></div><div class="cr-row"><span class="cr-k">档期</span><span class="cr-v">定档 2026 年 9 月 25 日中秋档</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 兰州晚报 9/1 盘点、腾讯新闻 9/3 九月片单一致确认中秋档定档</div><div class="vp-note">定档日期（9/25）、主演阵容与中秋档定位多源印证。</div><div class="vp-cred">可信度：高</div><a class="src" href="https://lzwb.lzbs.com.cn/pad/content/202609/01/content_210605211.html" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/35840408/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">12:30</span><span class="r-kind">定档</span><span class="r-new">NEW · 12:30</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/wo_xiang_liu_zai_ni_shen_bian.jpg" alt="《我想留在你身边》"><div class="r-media-txt"><div class="r-title">《我想留在你身边》</div><div class="r-lead">毕雯珺、何蓝逗主演爱情片定档 9 月 12 日，主打「平行时空时间逆行」设定。</div><div class="r-src"><span class="dot"></span>媒体 · 腾讯新闻</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">毕雯珺、何蓝逗主演的爱情片《我想留在你身边》定档 9 月 12 日，主打「平行时空时间逆行」设定，主角在倒流的时间中竭力守护爱情。</p><div class="v-wrap">
+  <video controls preload="metadata" playsinline x5-playsinline webkit-playsinline
+    poster="https://p0.pipi.cn/mediaplus/friday_image_fe/e42958bf77e77ec735fcf4d073a872474a2ac.jpg?imageMogr2/thumbnail/720x/quality/80"
+    onerror="window.__vFail&&window.__vFail(this)"
+    data-bili-bvid="BV1Ycjw6MEhK" data-bili-url="https://www.bilibili.com/video/BV1Ycjw6MEhK"
+    src="https://vod.pipi.cn/fec9203cvodtransbj1251246104/320a5ffb5001834816737610172/v.f42905.mp4"></video>
+  </div>
+<div class="v-src">官方预告 1:07 · 片源 猫眼（官方无水印版，支持页内直接播放 / 投屏） · 猫眼想看 <b>42,840</b> · <a href="https://www.maoyan.com/films/1413650" target="_blank">猫眼词条</a></div><div class="synopsis"><span class="syn-k">剧情简介</span><p>主角在倒流的时间中竭力守护爱情，以新颖的「平行时空时间逆行」设定，为爱情题材带来新看点。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">主演 毕雯珺、何蓝逗</span></div><div class="cr-row"><span class="cr-k">档期</span><span class="cr-v">定档 2026 年 9 月 12 日</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 腾讯新闻 9/3 九月片单确认 9/12 上映与主演阵容</div><div class="vp-note">定档（9/12）与主演信息由单一媒体来源报道。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://news.qq.com/rain/a/20260903A0BAKC00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/35390242/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">12:26</span><span class="r-kind">市场</span><span class="r-new">NEW · 12:26</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/gongfu_nvzu.jpg" alt="《功夫女足》"><div class="r-media-txt"><div class="r-title">《功夫女足》</div><div class="r-lead">周星驰执导的《功夫女足》以 23.15 亿元登顶 2026 暑期档票房冠军，全片 1200+ 组特效。</div><div class="r-src"><span class="dot"></span>媒体 · 晶报 / 中国艺术报</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">周星驰执导的《功夫女足》以 23.15 亿元登顶 2026 暑期档票房冠军，全片超 1200 组特效镜头、自研 AI 系统缩短后期周期 50%，被评价为深圳文化创造力的光影表达。</p><div class="synopsis"><span class="syn-k">剧情简介</span><p>深圳出品、深产深拍的体育喜剧，周星驰无厘头风格，将喜剧与运动题材相融合，兼顾搞笑、热血与温情，被视为深圳从「被拍摄的城市」变为「创造故事的城市」的影像表达。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 周星驰</span></div><div class="cr-row"><span class="cr-k">战绩</span><span class="cr-v">2026 暑期档票房冠军，23.15 亿元</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 晶报（9/4）确认 23.15 亿登顶暑期档、1200+ 组特效、自研 AI 缩短后期 50%</div><div class="vp-row ok"><span class="vpdot">✓</span> 中国艺术报（9/4）2026 暑期档观察将其列为档期票房第一</div><div class="vp-note">23.15 亿冠军数据由多家媒体独立确认。</div><div class="vp-cred">可信度：高</div><a class="src" href="https://www.163.com/dy/article/L60GOK90055616Z7.html" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36452545/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">19:30</span><span class="r-kind">开播</span><span class="r-new">NEW · 19:30</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/chong_an_liu_zu.jpg" alt="《重案六组：消失的警号》"><div class="r-media-txt"><div class="r-title">《重案六组：消失的警号》</div><div class="r-lead">《重案六组》前传 9 月 4 日北京、江苏卫视黄金档开播，张一山、郭晓东参演。</div><div class="r-src"><span class="dot"></span>媒体 · 网易</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">经典刑侦剧《重案六组》前传《重案六组：消失的警号》9 月 4 日登陆北京卫视、江苏卫视黄金档与爱奇艺，张一山、郭晓东参演，时间锁定 90 年代初的刑侦故事。</p><div class="v-wrap">
+  <iframe class="bili-embed" src="https://player.bilibili.com/player.html?bvid=BV1BiMr6MEYt&p=1&danmaku=0&high_quality=1&autoplay=0" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true" referrerpolicy="no-referrer" data-bili-url="https://www.bilibili.com/video/BV1BiMr6MEYt"></iframe>
+  <a class="bili-jump" href="https://www.bilibili.com/video/BV1BiMr6MEYt" target="_blank" rel="noopener">
+    <span class="bj-ico">&#9654;</span>
+    <span class="bj-t">在 B 站看预告</span>
+    <span class="bj-s">@陈皮预告片儿 · 点击新窗口播放</span>
+  </a>
+</div>
+<div class="v-src">26集刑侦悬疑涉案剧《重案六组消失的警号》首发预告片，爱奇艺 2:3 · 来源 <a href="https://www.bilibili.com/video/BV1BiMr6MEYt" target="_blank">B 站 @陈皮预告片儿</a>（视频存于 B 站）</div><div class="synopsis"><span class="syn-k">剧情简介</span><p>经典刑侦剧《重案六组》的前传，时间锁定上世纪 90 年代初——没有监控、没有 DNA 快速比对，破案全靠刑警的脚底板和脑子。一场雨夜乡村婚礼劫案后，警号遗落案发现场，省厅刑警接手战友未竟的调查。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">张一山 饰 曾克强、郭晓东 饰 老郑、李沐宸 饰 季洁</span></div><div class="cr-row"><span class="cr-k">播出平台</span><span class="cr-v">北京卫视 + 江苏卫视 + 爱奇艺）</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 网易（9/4）确认 9/4 开播、26 集每集 18 分钟、张一山郭晓东主演</div><div class="vp-note">开播时间、集数、主演由单一媒体来源报道。预告片来自 B 站（首发预告）。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://www.163.com/dy/article/L60GOK90055616Z7.html" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/38407616/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">09:30</span><span class="r-kind">首播</span><span class="r-new">NEW · 09:30</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/xing_lai.jpg" alt="《醒来》"><div class="r-media-txt"><div class="r-title">《醒来》</div><div class="r-lead">赵宝刚执导谍战剧《醒来》近期收视登顶央视八套，爱奇艺热度破 8000。</div><div class="r-src"><span class="dot"></span>媒体 · 新闻晨报</div><div class="cont-lbl">延续 · 9/4 曾报·定档</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">赵宝刚执导、欧豪古力娜扎主演的谍战剧《醒来》近期收视登顶央视八套，爱奇艺热度破 8000，改编自海飞同名小说，以 1941 年杭州、上海为背景。</p><div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自海飞同名小说，以 1941 年杭州、上海为背景，讲述照相师陈开来的成长蜕变。原著作者台风天致信主角引发热议。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 赵宝刚；主演 欧豪、古力娜扎</span></div><div class="cr-row"><span class="cr-k">播出</span><span class="cr-v">8/26 起 CCTV-8 首播，9/8 北京卫视、江苏卫视上星</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 新闻晨报（9/4）称其连续多日收视率全国同时段第一、爱奇艺热度破 8000</div><div class="vp-note">CCTV-8 首播于 8/26，本期报道聚焦其近期收视登顶；为同一剧集的新进展。猫眼/B 站均未检索到可用预告，仅配海报。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260904A0DEVG00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36126289/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">18:00</span><span class="r-kind">新物料</span><span class="r-new">NEW · 18:00</span><span class="r-cred ok">已核实 · 2 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/ge_sheng_yuan_he_man_ban_pai.jpg" alt="《歌声缘何慢半拍》"><div class="r-media-txt"><div class="r-title">《歌声缘何慢半拍》</div><div class="r-lead">董性以编导的乡土现实题材片今日释出终极预告，9 月 8 日全国公映；曾获圣塞巴斯蒂安新导演单元评审特别提及。</div><div class="r-src"><span class="dot"></span>官方 · 片方微博 / 豆瓣词条</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">电影《歌声缘何慢半拍》今日（9 月 5 日）释出终极预告，确认 9 月 8 日全国公映。影片由董性以编剧并执导、徐路胜主演，是其长片首作，曾入围第 68 届圣塞巴斯蒂安国际电影节新导演单元并获评审特别提及奖，另获第 14 届 FIRST 青年电影展最佳艺术探索等奖项，豆瓣 6.7 分。</p><div class="v-wrap">
+  <video controls preload="metadata" playsinline x5-playsinline webkit-playsinline
+    poster="https://p0.pipi.cn/mediaplus/friday_image_fe/e429589a3d677e93b619bfd3c5eabff2b7da6.png?imageMogr2/thumbnail/720x/quality/80"
+    onerror="window.__vFail&&window.__vFail(this)"
+    data-bili-bvid="BV19ohG66Ev1" data-bili-url="https://www.bilibili.com/video/BV19ohG66Ev1"
+    src="https://vod.pipi.cn/fec9203cvodtransbj1251246104/440599785001834819174214162/v.f42905.mp4"></video>
+  </div>
+<div class="v-src">官方终极预告 1:32 · 片源 猫眼（官方无水印版，支持页内直接播放 / 投屏） · 猫眼想看 <b>165</b> · <a href="https://www.maoyan.com/films/1336100" target="_blank">猫眼词条</a></div><div class="synopsis"><span class="syn-k">剧情简介</span><p>离家多年的军胜（徐路胜 饰）重返阔别已久的故乡，往日情义涌上心头，却发现自己和家乡之间生出强烈隔膜：流言、隔阂与时代的时差扑面而来。故土变迁、故人离散，这个看似彪悍、实则内心细腻的男人，正努力追赶这半步「时差」。（简介据片方官微终极预告文案整理）</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">编剧 / 导演 董性以；主演 徐路胜</span></div><div class="cr-row"><span class="cr-k">奖项</span><span class="cr-v">第 68 届圣塞巴斯蒂安国际电影节新导演单元评审特别提及；第 14 届 FIRST 青年电影展最佳艺术探索</span></div><div class="cr-row"><span class="cr-k">出品</span><span class="cr-v">北京喜龙文化产业发展有限公司、北京悦和映像文化发展有限公司、北京可能文化传播有限公司；工厂大门影业（上海）等联合出品</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 片方微博（9/5）释出终极预告并确认 9 月 8 日全国公映</div><div class="vp-row ok"><span class="vpdot">✓</span> 豆瓣词条（35123253）显示 2026-09-08 中国大陆上映，107 分钟，评分 6.7</div><div class="vp-note">公映日期由片方官微与豆瓣词条双源印证；猫眼专业版同步收录终极预告与想看数据。</div><div class="vp-cred">可信度：高</div><a class="src" href="https://weibo.com/1663735900/5339728672988603" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/35123253/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a><a class="sb-i" href="https://www.maoyan.com/films/1336100" target="_blank" rel="noopener"><span class="sb-b">页面 · 猫眼</span>猫眼专业版<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">18:00</span><span class="r-kind">撤档</span><span class="r-new">NEW · 18:00</span><span class="r-cred pending">单一来源 · 待确认</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/liang_zhu_hua_die.jpg" alt="《梁祝·化蝶》"><div class="r-media-txt"><div class="r-title">《梁祝·化蝶》</div><div class="r-lead">原定 9 月 25 日中秋档上映的国风动画《梁祝·化蝶》宣布调整档期，新档期尚未公布。</div><div class="r-src"><span class="dot"></span>媒体 · 影视博主微博 / 新浪电影转引</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">动画电影《梁祝·化蝶》发布撤档公告，原定 2026 年 9 月 25 日（中秋档）的上映计划调整，新档期另行公布。该片由许诚毅执导、王蕙玲编剧、江志强监制，越剧演员李云霄为祝英台配音，是今年第一部官宣定档中秋档、也是 9 月首部宣布撤档的影片。片方对撤档原因表述为「经各方审慎决定」，未作进一步说明。</p><div class="v-wrap">
+  <video controls preload="metadata" playsinline x5-playsinline webkit-playsinline
+    poster="https://p0.pipi.cn/mediaplus/friday_image_fe/e42958bf1fa3cbe3279fd18720148bf97b338.png?imageMogr2/thumbnail/720x/quality/80"
+    onerror="window.__vFail&&window.__vFail(this)"
+    data-bili-bvid="BV1ith36rEZf" data-bili-url="https://www.bilibili.com/video/BV1ith36rEZf"
+    src="https://vod.pipi.cn/fec9203cvodtransbj1251246104/dbf263255001834817366617851/v.f42905.mp4"></video>
+  </div>
+<div class="v-src">定档预告 1:12（撤档前物料） · 片源 猫眼（官方无水印版，支持页内直接播放 / 投屏） · 猫眼想看 <b>1,717</b> · <a href="https://www.maoyan.com/films/1500788" target="_blank">猫眼词条</a></div><div class="synopsis"><span class="syn-k">剧情简介</span><p>影片为梁祝故事套上神话设定：梁山伯与祝英台被设定为天庭金童玉女被贬下凡、需渡生生世世情劫的化身；在保留女扮男装、祝父棒打鸳鸯等经典情节的基础上，将化蝶悲剧改写为跨越三生的重逢。（简介据公开报道整理）</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 许诚毅（《捉妖记》）；编剧 王蕙玲；监制 江志强；配音 李云霄（祝英台）、孙翔宇（梁山伯）</span></div><div class="cr-row"><span class="cr-k">档期变动</span><span class="cr-v">原定 2026-09-25 中秋档 → 调整，新档期待公布</span></div><div class="cr-row"><span class="cr-k">出品</span><span class="cr-v">安乐影片、北京大麦娱乐、浙江横店影业、上海华策电影等</span></div></div><div class="vpanel pending"><div class="vp-h">信息验证</div><div class="vp-row "><span class="vpdot">?</span> 影视博主微博（9/5）发布撤档消息，并经新浪电影、新浪影视转引</div><div class="vp-row "><span class="vpdot">?</span> 豆瓣词条（36421885）仍标记为 2026 年上映，未同步更新档期</div><div class="vp-note">未检索到片方原始撤档公告链接；新档期亦未公布。仅凭媒体转引，故降为待确认。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://weibo.com/1592684195/5339713150125256" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36421885/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a><a class="sb-i" href="https://www.maoyan.com/films/1500788" target="_blank" rel="noopener"><span class="sb-b">页面 · 猫眼</span>猫眼专业版<span class="sb-a">&#8599;</span></a></div></div></div></details></div></section><section id="m-hmt" class="market" aria-label="中国港澳台">
+<div class="mk-head"><span class="bar"></span><h2>中国港澳台</h2><span class="en">HK / MACAU / TAIWAN</span><span class="n">1</span></div>
+<div class="feed"><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">14:00</span><span class="r-kind">首播</span><span class="r-new">NEW · 14:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/court_hk.jpg" alt="《COURT!》"><div class="r-media-txt"><div class="r-title">《COURT!》</div><div class="r-lead">VIU TV 原创港剧《COURT!》豆瓣开分 8.6，被称「年度最佳港剧预定」。</div><div class="r-src"><span class="dot"></span>媒体 · 西瓜煮娱</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">VIU TV 原创港剧《COURT!》（豆瓣词条「开庭」）豆瓣开分 8.6、超 1.5 万人评分，以法庭为核心、三独立单元串联同一酒店案件，被称「年度最佳港剧预定」。</p><div class="synopsis"><span class="syn-k">剧情简介</span><p>以法庭为核心、三个独立单元串联同一酒店案件，编剧功底与反转获赞（首案节奏偏慢）。豆瓣超 1.5 万人打分达 8.6。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">出品</span><span class="cr-v">中国香港 VIU TV 原创剧</span></div><div class="cr-row"><span class="cr-k">口碑</span><span class="cr-v">豆瓣 8.6，被称年度最佳港剧预定</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 西瓜煮娱（9/3）报道豆瓣 8.6、1.5 万+ 人评分、年度最佳港剧预定</div><div class="vp-note">豆瓣评分为公开平台数据；剧集片名以豆瓣中文词条「开庭」为准（subtitle COURT!）。未检索到可用预告片，仅配海报。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260903A0BC7K00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/37822829/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details></div></section><section id="m-intl" class="market" aria-label="海外">
+<div class="mk-head"><span class="bar"></span><h2>海外</h2><span class="en">INTERNATIONAL</span><span class="n">3</span></div>
+<div class="feed"><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">15:00</span><span class="r-kind">定档</span><span class="r-new">NEW · 15:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/resident_evil_2026.jpg" alt="《生化危机：爆发夜》"><div class="r-media-txt"><div class="r-title">《生化危机：爆发夜》</div><div class="r-lead">新版《生化危机》由扎克·克雷格执导，北美首映周末预测 5000–6000 万美元，9 月 18 日开画。</div><div class="r-src"><span class="dot"></span>媒体 · 黑色玫瑰（转引）</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">《生化危机》系列重启之作《生化危机：爆发夜》由扎克·克雷格执导，北美首映周末预测 5000–6000 万美元，有望超越前作开画纪录，9 月 18 日开画。</p><div class="v-wrap">
+  <iframe class="bili-embed" src="https://player.bilibili.com/player.html?bvid=BV1HKtr6tEtU&p=1&danmaku=0&high_quality=1&autoplay=0" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true" referrerpolicy="no-referrer" data-bili-url="https://www.bilibili.com/video/BV1HKtr6tEtU"></iframe>
+  <a class="bili-jump" href="https://www.bilibili.com/video/BV1HKtr6tEtU" target="_blank" rel="noopener">
+    <span class="bj-ico">&#9654;</span>
+    <span class="bj-t">在 B 站看预告</span>
+    <span class="bj-s">@鹦鹉螺预告片 · 点击新窗口播放</span>
+  </a>
+</div>
+<div class="v-src">【中字】丧尸雨!《生化危机:爆发夜》首曝片段【4K/宽屏/恐 2:47 · 来源 <a href="https://www.bilibili.com/video/BV1HKtr6tEtU" target="_blank">B 站 @鹦鹉螺预告片</a>（视频存于 B 站）</div><div class="synopsis"><span class="syn-k">剧情简介</span><p>《生化危机》系列重启之作，由扎克·克雷格（《屏住呼吸》导演）执导，北美首映周末预测 5000–6000 万美元，有望超越前作开画纪录；影评人首批放映反应积极，正式评价待 9 月 18 日揭晓。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 扎克·克雷格（Zach Cregger）</span></div><div class="cr-row"><span class="cr-k">档期</span><span class="cr-v">北美定档 2026 年 9 月 18 日</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 黑色玫瑰（9/4）报道北美首映周末预测 5000–6000 万美元、首批放映反应积极</div><div class="vp-note">为引进/海外片，片名以豆瓣中文词条「生化危机：爆发夜」为准。预告片来自 B 站（首曝片段）。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260904A0B9CU00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/37068446/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">13:00</span><span class="r-kind">上映</span><span class="r-new">NEW · 13:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/zhi_lang.jpg" alt="《只狼：永不言败》"><div class="r-media-txt"><div class="r-title">《只狼：永不言败》</div><div class="r-lead">改编自 FromSoftware 游戏的剧场版动画 9 月 4 日于日本上映，IMDb 综合评分 8.5。</div><div class="r-src"><span class="dot"></span>媒体 · 黑色玫瑰（转引）</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">改编自 FromSoftware 游戏的剧场版动画《只狼：永不言败》9 月 4 日于日本上映，由角川与 FromSoftware 联合打造，IMDb 综合评分 8.5、76.7% 影评人打出满分。</p><div class="v-wrap">
+  <iframe class="bili-embed" src="https://player.bilibili.com/player.html?bvid=BV1UJt96TEq5&p=1&danmaku=0&high_quality=1&autoplay=0" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true" referrerpolicy="no-referrer" data-bili-url="https://www.bilibili.com/video/BV1UJt96TEq5"></iframe>
+  <a class="bili-jump" href="https://www.bilibili.com/video/BV1UJt96TEq5" target="_blank" rel="noopener">
+    <span class="bj-ico">&#9654;</span>
+    <span class="bj-t">在 B 站看预告</span>
+    <span class="bj-s">@夏日幻听MCE · 点击新窗口播放</span>
+  </a>
+</div>
+<div class="v-src">【9月/剧场版/先行正片】只狼：不败「苇名薄井之战」先行片段 1:2 · 来源 <a href="https://www.bilibili.com/video/BV1UJt96TEq5" target="_blank">B 站 @夏日幻听MCE</a>（视频存于 B 站）</div><div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自 FromSoftware 经典游戏的剧场版动画，由角川与 FromSoftware 联合打造，聚焦苇名之战，9 月 4 日于日本上映，IMDb 综合评分 8.5、76.7% 影评人打出满分。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">角川 × FromSoftware 联合打造</span></div><div class="cr-row"><span class="cr-k">档期</span><span class="cr-v">2026 年 9 月 4 日 日本上映</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 黑色玫瑰（9/4）报道日本上映、IMDb 8.5、76.7% 影评人满分</div><div class="vp-note">为日本动画电影，片名以豆瓣中文词条「只狼：永不言败」为准。预告片来自 B 站（先行片段）。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260904A0CA0W00" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36415322/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">18:00</span><span class="r-kind">上线</span><span class="r-new">NEW · 18:00</span><span class="r-cred ok">已核实 · 2 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-title">Mayday（Apple TV+ 全球上线）</div><div class="r-lead">瑞安·雷诺兹、肯尼思·布拉纳主演的冷战背景动作喜剧《Mayday》登陆 Apple TV+，本周末全球可看。</div><div class="r-src"><span class="dot"></span>媒体 · NRI Globe / Tom’s Guide</div></summary><div class="r-det"><p class="d-desc">由瑞安·雷诺兹（Ryan Reynolds）与肯尼思·布拉纳（Kenneth Branagh）主演的冷战背景动作喜剧《Mayday》已登陆 Apple TV+ 全球上线。影片由 Jonathan Goldstein 与 John Francis Daley（《游戏之夜》《龙与地下城：侠盗荣耀》）联合执导，片长约 111 分钟、分级 PG-13。</p><div class="v-wrap">
+  <iframe class="bili-embed" src="https://player.bilibili.com/player.html?bvid=BV1PFNh6GELK&p=1&danmaku=0&high_quality=1&autoplay=0" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true" referrerpolicy="no-referrer" data-bili-url="https://www.bilibili.com/video/BV1PFNh6GELK"></iframe>
+  <a class="bili-jump" href="https://www.bilibili.com/video/BV1PFNh6GELK" target="_blank" rel="noopener">
+    <span class="bj-ico">&#9654;</span>
+    <span class="bj-t">在 B 站看预告</span>
+    <span class="bj-s">点击新窗口播放</span>
+  </a>
+</div>
+<div class="v-src">正式预告 2:51 · 来源 <a href="https://www.bilibili.com/video/BV1PFNh6GELK" target="_blank">B 站 @Eli3457</a>（视频存于 B 站）</div><div class="synopsis"><span class="syn-k">剧情简介</span><p>故事设定在 1987 年：一名春风得意的美军海军飞行员在执行绝密冷战任务时被击落，困于苏联荒野；为求生归国，他不得不与一名痴迷美国流行文化的前克格勃特工结成临时同盟，在敌境展开险象环生的逃亡。风格复刻 80 年代碟战动作片。</p></div><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 Jonathan Goldstein、John Francis Daley；主演 瑞安·雷诺兹、肯尼思·布拉纳</span></div><div class="cr-row"><span class="cr-k">平台 / 规格</span><span class="cr-v">Apple TV+ 全球上线；约 111 分钟，PG-13</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> NRI Globe 周末北美新片指南（9/4–9/7）确认《Mayday》Apple TV+ 全球上线</div><div class="vp-row ok"><span class="vpdot">✓</span> Tom's Guide 周末流媒体片单（9/5–9/6）将《Mayday》列为本周头条新片</div><div class="vp-note">两家中英文媒体独立来源互相印证；未检索到豆瓣中文词条，按规则保留英文原名，不自译中文片名。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://nriglobe.com/entertainment/new-movies-weekend-usa-sep-4-2026-by-any-means-onslaught-mayday-nri-guide" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><span class="src no-douban">暂无豆瓣词条</span><a class="sb-i" href="https://nriglobe.com/entertainment/new-movies-weekend-usa-sep-4-2026-by-any-means-onslaught-mayday-nri-guide" target="_blank" rel="noopener"><span class="sb-b">报道 · NRI Globe</span>英文周末片单<span class="sb-a">&#8599;</span></a></div></div></div></details></div></section><section id="m-obs" class="market" aria-label="行业观察">
+<div class="mk-head"><span class="bar"></span><h2>行业观察</h2><span class="en">OBSERVATION</span><span class="n">4</span></div>
+<div class="feed"><details class="row" data-cred="pending"><summary><div class="r-line"><span class="r-time">13:55</span><span class="r-kind">政策</span><span class="r-new">NEW · 13:55</span><span class="r-cred pending">单一来源 · 待确认</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-title">福建（厦门）微短剧审查服务中心启用</div><div class="r-lead">厦门微短剧审查服务中心正式启用，属地化审查提速，配套《微短剧发展管理办法》落地。</div><div class="r-src"><span class="dot"></span>媒体 · 综艺报</div></summary><div class="r-det"><p class="d-desc">据《综艺报》9 月 4 日报道，福建（厦门）微短剧审查服务中心正式启用，作为《微短剧发展管理办法》（9/1 实施、统一苔花标）的配套落地动作，属地化审查将进一步提速微短剧上线节奏。</p><div class="credits"><div class="cr-row"><span class="cr-k">政策背景</span><span class="cr-v">《微短剧发展管理办法》9 月 1 日实施，统一苔花标识</span></div><div class="cr-row"><span class="cr-k">落地区</span><span class="cr-v">福建厦门</span></div></div><div class="vpanel pending"><div class="vp-h">信息验证</div><div class="vp-row "><span class="vpdot">?</span> 综艺报（9/4）报道厦门微短剧审查服务中心启用</div><div class="vp-note">单一行业媒体来源，属政策/行业动态。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://www.toutiao.com/article/7681554485621129738/" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"></div></div></div></details><details class="row" data-cred="pending"><summary><div class="r-line"><span class="r-time">13:55</span><span class="r-kind">技术</span><span class="r-new">NEW · 13:55</span><span class="r-cred pending">单一来源 · 待确认</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-title">AIGC 短片《长征·江河纪》播出</div><div class="r-lead">北京卫视播出全流程 AIGC 长征题材六集短片，AI 影视工业化再添样本。</div><div class="r-src"><span class="dot"></span>媒体 · 综艺报</div></summary><div class="r-det"><p class="d-desc">据《综艺报》9 月 4 日报道，为纪念长征胜利 90 周年，北京广播电视台策划的六集 AIGC 短片《长征·江河纪》（每集约 5 分钟）自 8 月 25 日起登陆北京卫视。该片以于都河、湘江等六条长征重要河流为参照，全流程 AIGC 创作，是 AI 参与主旋律内容生产的又一案例。</p><div class="credits"><div class="cr-row"><span class="cr-k">出品</span><span class="cr-v">北京广播电视台</span></div><div class="cr-row"><span class="cr-k">技术</span><span class="cr-v">全流程 AIGC 创作，六集每集约 5 分钟</span></div></div><div class="vpanel pending"><div class="vp-h">信息验证</div><div class="vp-row "><span class="vpdot">?</span> 综艺报（9/4）报道《长征·江河纪》全流程 AIGC 创作并播出</div><div class="vp-note">单一行业媒体来源，属技术/AI 动态。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://www.toutiao.com/article/7681554485621129738/" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">18:00</span><span class="r-kind">AI</span><span class="r-new">NEW · 18:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-title">百花奖首设 AIGC 推优单元，24 部入围 · 6 部获推优荣誉</div><div class="r-lead">第 38 届百花奖配套活动 AIGC 推优单元荣誉盛典在京举行，系百花奖 64 年来首次设立 AIGC 影像专属征集通道。</div><div class="r-src"><span class="dot"></span>媒体 · 央广网</div></summary><div class="r-det"><p class="d-desc">9 月 5 日，第 38 届大众电影百花奖配套活动「AIGC 推优单元荣誉盛典」在北京举行。这是百花奖创办 64 年来首次设立 AIGC 影像专属征集通道：30 部作品进入终审，其中 24 部获入围荣誉、6 部获「百花 AIGC 推优荣誉」。AI 影像进入主流电影奖评选体系，同步带来融合与精品化的新考题。</p><div class="credits"><div class="cr-row"><span class="cr-k">主办</span><span class="cr-v">第 38 届大众电影百花奖配套活动</span></div><div class="cr-row"><span class="cr-k">规模</span><span class="cr-v">30 部进入终审 · 24 部入围荣誉 · 6 部「百花 AIGC 推优荣誉」</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 央广网（9/5）报道百花奖首次设立 AIGC 推优单元及终审规模</div><div class="vp-note">央广网为权威媒体来源；未检索到百花奖组委会原始公告页，故仅标 1 来源。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://view.inews.qq.com/a/20260905A03WZ100" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://view.inews.qq.com/a/20260905A03WZ100" target="_blank" rel="noopener"><span class="sb-b">报道 · 央广网</span>央广网<span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="ok"><summary><div class="r-line"><span class="r-time">18:00</span><span class="r-kind">出海</span><span class="r-new">NEW · 18:00</span><span class="r-cred ok">已核实 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="../posters/zao_chun_qing_lang.jpg" alt="《早春晴朗》登 Netflix 全球非英语剧集周榜第二"><div class="r-media-txt"><div class="r-title">《早春晴朗》登 Netflix 全球非英语剧集周榜第二</div><div class="r-lead">优酷剧集《早春晴朗》以 240 万次观看位列 Netflix 全球非英语剧集周榜第二，导演、摄影、亲密指导均来自中国台湾。</div><div class="r-src"><span class="dot"></span>媒体 · 中国新闻网</div></div></div><div class="r-mat">查看物料与原始信源</div></summary><div class="r-det"><p class="d-desc">据中国新闻网 9 月 5 日报道，大陆都市情感剧《早春晴朗》8 月 26 日在优酷播出、同步上线 Netflix，开播 3 天站内热度破万，为 2026 年现代偶像剧中最快达成该成绩的作品。Netflix 公布的 8 月 24 日至 30 日全球周榜显示，该剧以 240 万次观看、累计观看时长 2150 万小时，位列全球非英语剧集周榜第二位，并登上包括中国台湾地区在内的多地剧集周榜首位。该剧导演蒋继正、摄影指导简佑陶、亲密指导蔡嘉茵均来自中国台湾，两岸影视工作者的合作模式引发岛内讨论。</p><div class="credits"><div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">主演 井柏然、孙千；导演 蒋继正；摄影指导 简佑陶；亲密指导 蔡嘉茵（三位均来自中国台湾）</span></div><div class="cr-row"><span class="cr-k">播出数据</span><span class="cr-v">优酷站内开播 3 天热度破万；Netflix 全球非英语剧集周榜第二（240 万次观看 / 2150 万小时）</span></div></div><div class="vpanel"><div class="vp-h">信息验证</div><div class="vp-row ok"><span class="vpdot">✓</span> 中国新闻网（9/5）引 Netflix 官方周榜数据报道该剧全球排名与两岸主创构成</div><div class="vp-note">数据来源为 Netflix 官方周榜，经中国新闻网转引；未直接核验 Netflix 榜单原始页面。</div><div class="vp-cred">可信度：中</div><a class="src" href="https://www.toutiao.com/article/7681914721385202228/" target="_blank">查看来源</a></div><div class="srcbox"><div class="sb-h">信源</div><div class="sb-list"><a class="sb-i" href="https://movie.douban.com/subject/36660844/" target="_blank" rel="noopener"><span class="sb-b">词条 · 豆瓣</span>豆瓣词条<span class="sb-a">&#8599;</span></a><a class="sb-i" href="https://www.toutiao.com/article/7681914721385202228/" target="_blank" rel="noopener"><span class="sb-b">报道 · 中国新闻网</span>中国新闻网<span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+</div>
+<script data-player-ctl>
+/* 运行时降级：猫眼直链万一被封/失败，自动回退 B 站（页面生成时已备好 B 站 BV）。
+   无 B 站备选则提示「去 B 站看原片」。无需后端，纯前端兜底。 */
+window.__vFail = function (v) {
+  try {
+    var wrap = v.closest('.v-wrap');
+    if (!wrap) return;
+    var bv = v.getAttribute('data-bili-bvid');
+    var isMobile = window.matchMedia && window.matchMedia('(max-width:820px)').matches;
+    if (bv) {
+      if (isMobile) {
+        /* 手机端：B 站 iframe 内嵌必黑屏，降级为「在 B 站看预告」入口（与静态卡片一致） */
+        var a = document.createElement('a');
+        a.className = 'bili-jump';
+        a.href = 'https://www.bilibili.com/video/' + bv;
+        a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = '<span class="bj-ico">&#9654;</span><span class="bj-t">在 B 站看预告</span>' +
+                      '<span class="bj-s">点击新窗口播放</span>';
+        wrap.innerHTML = ''; wrap.appendChild(a);
+      } else {
+        var f = document.createElement('iframe');
+        f.className = 'bili-embed';
+        f.src = 'https://player.bilibili.com/player.html?bvid=' + bv +
+                '&p=1&danmaku=0&high_quality=1&autoplay=0';
+        f.scrolling = 'no'; f.frameBorder = '0'; f.allowFullscreen = true;
+        wrap.innerHTML = ''; wrap.appendChild(f);
+      }
+    } else {
+      var url = v.getAttribute('data-bili-url') || '';
+      wrap.innerHTML = '<div class="v-fallback">猫眼视频暂不可用' +
+        (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">去 B 站看原片</a>' : '') +
+        '</div>';
+    }
+    wrap.classList.add('v-degraded');
+  } catch (e) {}
+};
+
+/* 收起即停核心：交给原生 details —— 折叠即不可见，浏览器自动停止不可见的
+   iframe / video，无需卸载 src。这段脚本只额外做「展开新卡片时暂停其他视频」。 */
+(function () {
+  function vids(root) { return root.querySelectorAll('.v-wrap video'); }
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS') return;
+    if (d.open) {
+      /* 展开某卡片时，把其他卡片里正在响的原生视频按停，避免多路声音叠一起 */
+      document.querySelectorAll('details').forEach(function (o) {
+        if (o !== d) vids(o).forEach(function (v) { try { v.pause(); } catch (x) {} });
+      });
+    }
+  }, true);
+})();
+</script>
+<script>
+/* 市场导航高亮：纯增强，失效时 chip 仍可点击跳转 */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('#mnav a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) {
+        a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  links.forEach(function (a) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) obs.observe(t);
+  });
+})();
+</script>
+</body>
+</html>

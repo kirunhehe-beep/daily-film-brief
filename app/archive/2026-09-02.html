@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="c3IT5suv9i3TEvB7TCBXSu">
+<head data-page-node-id="DGtbuVEoJPR5PvoFdv67Gv">
+<meta charset="UTF-8" data-page-node-id="w2BYAewSdnH0WcSf01rODm">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="E4llf0TBoWIi71kyjklL3y">
+<meta name="theme-color" content="#F5F5F7" data-page-node-id="JzDksbAoNKU3sFqIrMEgaO">
+<link rel="manifest" href="manifest.json" data-page-node-id="kSFa4GRlN5j3BFcrrtfiK8">
+<link rel="icon" href="icon.svg" type="image/svg+xml" data-page-node-id="r4UCZUwIoHX1zsSOO6YO0e">
+<link rel="apple-touch-icon" href="icon.svg" data-page-node-id="fKpJZsdGQe8BdApFSa1loc">
+<meta name="apple-mobile-web-app-capable" content="yes" data-page-node-id="hmG8Nja4vwwzAlCHMukNjq">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" data-page-node-id="yhGdAaiYlRXbi6ZJDKAciG">
+<meta name="apple-mobile-web-app-title" content="影视简报" data-page-node-id="FVt0bFGYWBnMbvu8HtEMYW">
+<title>每日影视简报 · 2026-09-02</title>
+<style>
+  :root{
+    --bg:#F5F5F7;
+    --card:#FFFFFF;
+    --label:#1D1D1F;
+    --label-2:#6E6E73;
+    --label-3:#8E8E93;
+    --hair:rgba(60,60,67,.12);
+    --hair-soft:rgba(60,60,67,.08);
+    --fill:rgba(118,118,128,.10);
+    --tint:#E11D48;
+    --ok:#1D7A34;
+    --pending:#8E8E93;
+    --blue:#007AFF;
+    --maxw:480px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);color:var(--label);line-height:1.5;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;letter-spacing:.1px}
+  a{color:var(--blue);text-decoration:none}
+  .app{max-width:var(--maxw);margin:0 auto;background:var(--bg);min-height:100vh;
+    padding-bottom:64px;opacity:0;animation:fade .45s ease forwards}
+  @keyframes fade{to{opacity:1}}
+  @media print{.app{opacity:1 !important;animation:none !important}}
+
+  /* 顶部：极简毛玻璃 */
+  .topbar{position:sticky;top:0;z-index:100;
+    padding:calc(env(safe-area-inset-top) + 9px) 18px 9px;
+    background:rgba(245,245,247,.78);backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:.5px solid var(--hair-soft);
+    display:flex;align-items:baseline;justify-content:space-between}
+  .topbar .brand{font-size:15px;font-weight:600;letter-spacing:-.2px}
+  .topbar .brand b{color:var(--tint);font-weight:700}
+  .topbar .nav{display:flex;gap:16px}
+  .topbar .nav a{font-size:12.5px;color:var(--label-3);font-weight:500}
+  .topbar .nav a:active{color:var(--label)}
+  .topbar .back{margin-right:2px;color:var(--tint);font-weight:600;font-size:13px}
+
+  /* 头部 */
+  .masthead{padding:20px 20px 4px}
+  .masthead h1{font-size:30px;font-weight:700;letter-spacing:-.6px;line-height:1.1}
+  .masthead .meta{font-size:13.5px;color:var(--label-2);margin-top:7px;font-weight:400}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:1.4px;color:var(--label-3);
+    text-transform:uppercase;margin:0 0 13px}
+
+  section{padding:0 18px;margin-top:42px}
+  section:first-of-type{margin-top:6px}
+
+  /* ===== 通用：可展开条目 ===== */
+  .item{position:relative}
+  .head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;padding:14px 0;list-style:none}
+  .head::-webkit-details-marker{display:none}
+  .head:active{opacity:.62}
+  .h-main{flex:1;min-width:0}
+  .h-tag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--tint);
+    margin-bottom:8px;letter-spacing:.2px}
+  .h-title{font-weight:600;line-height:1.3;letter-spacing:-.3px}
+  .h-lead{font-size:13.5px;color:var(--label-2);margin-top:4px;line-height:1.5}
+  .h-foot{margin-top:9px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  /* 展开箭头：右下角（卡片变高后，右下比右上更顺手） */
+  .chev{flex:none;width:19px;height:19px;color:var(--label-3);align-self:flex-end;
+    margin-bottom:1px;transition:transform .26s ease-out}
+  .item[open] .chev{transform:rotate(180deg)}
+
+  /* 验证徽章（可点） */
+  .vbtn{display:inline-flex;align-items:center;gap:5px;font-size:12px;line-height:1;
+    cursor:pointer;user-select:none}
+  .vbtn .vdot{width:14px;height:14px;border-radius:50%;display:inline-grid;place-items:center;flex:none}
+  .vbtn .vdot svg{width:9px;height:9px}
+  .v-ok .vdot{background:var(--ok);color:#fff}
+  .v-ok .vt{color:var(--ok);font-weight:600}
+  .v-ok .vs{color:var(--label-3)}
+  .v-pending .vdot{background:transparent;border:1.5px solid var(--pending);color:var(--pending)}
+  .v-pending .vt{color:var(--pending);font-weight:600}
+  .v-pending .vs{color:var(--label-3)}
+
+  /* 延续标签：这部片之前报过别的动作（排重档案命中同片不同动作时出现） */
+  .cont-lbl{display:inline-flex;align-items:center;font-size:11px;line-height:1;
+    color:var(--blue);background:rgba(0,122,255,.10);padding:4px 8px;
+    border-radius:6px;margin-right:8px;font-weight:500}
+
+  /* 历史归档入口 */
+  .arch-link{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:var(--card);border-radius:14px;padding:15px 16px;margin:4px 0 12px;
+    border:1px solid var(--hair-soft);box-shadow:0 1px 2px rgba(0,0,0,.05);
+    color:var(--label);text-decoration:none}
+  .arch-link .al-t{font-size:15px;font-weight:600}
+  .arch-link .al-s{font-size:12px;color:var(--label-3);margin-top:3px}
+  .arch-link .al-a{color:var(--label-3);flex:none}
+
+  /* 详情：grid 0fr→1fr 平滑展开 */
+  .detail-inner{overflow:hidden}
+  .item[open] .detail-inner{animation:expand .26s ease-out both}
+  @keyframes expand{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .d-body{padding:4px 0 16px}
+  /* 一句话影片动态：展开后视觉最上层，字体放大 */
+  .d-desc{font-size:17px;font-weight:550;color:var(--label);line-height:1.5;margin:0;letter-spacing:-.1px}
+
+  /* 剧情简介（d-desc 之后、主创阵容之前） */
+  .synopsis{margin-top:13px;border-left:2.5px solid var(--tint);padding:2px 0 2px 13px}
+  .synopsis .syn-k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.4px;color:var(--tint);
+    text-transform:uppercase;margin-bottom:6px}
+  .synopsis p{font-size:13.5px;color:var(--label-2);line-height:1.66;margin:0}
+
+  /* 主创 / 公司 / 物料 */
+  .credits{margin-top:14px;border-top:.5px solid var(--hair-soft);padding-top:12px}
+  .cr-row{display:flex;gap:10px;font-size:13.5px;line-height:1.58;margin-bottom:10px}
+  .cr-k{flex:none;width:62px;font-size:12px;font-weight:600;color:var(--label-3);padding-top:1px;letter-spacing:.2px}
+  .cr-v{flex:1;color:var(--label)}
+  .cr-v b{font-weight:600}
+  .poster{margin-top:13px}
+  /* 海报前置到卡片头部（默认可见），其余信息点击展开 */
+  .head .poster{margin-top:11px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+  .head .ph-img{max-width:172px;border-radius:13px}
+  .hero .head .ph-img{max-width:206px}
+  .head .poster .src{margin-top:0}
+  .head .ph-card{aspect-ratio:auto;max-width:100%;width:100%;padding:14px 16px;
+     font-size:13.5px;box-shadow:0 2px 10px rgba(0,0,0,.12);justify-content:flex-start}
+  .d-body{padding:0 0 16px}
+  /* 展开后第一层：一句话动态置于海报正下方 */
+  .d-body>.d-desc:first-child{margin-bottom:0}
+  .ph-card{aspect-ratio:2/3;max-width:148px;border-radius:12px;background:
+     linear-gradient(155deg,#2b2b30,#4a4a52);color:#fff;display:flex;align-items:center;justify-content:center;
+     text-align:center;font-size:14.5px;font-weight:600;padding:14px;letter-spacing:.3px;line-height:1.4;
+     box-shadow:0 4px 14px rgba(0,0,0,.18);word-break:break-word}
+  .ph-img{aspect-ratio:2/3;max-width:148px;width:100%;height:auto;border-radius:12px;
+     box-shadow:0 4px 14px rgba(0,0,0,.18);display:block;background:#1d1d1f;object-fit:cover}
+  .ph-note{font-size:11px;color:var(--label-3);margin-top:7px;max-width:200px;line-height:1.5}
+
+  /* 信息验证面板（核心能力） */
+  .vpanel{margin-top:14px;padding:13px 14px;background:var(--fill);border-radius:13px}
+  .vp-h{font-size:11.5px;font-weight:700;letter-spacing:.4px;color:var(--label-2);
+    text-transform:uppercase;margin-bottom:9px}
+  .vp-row{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--label);margin-bottom:5px}
+  .vp-row .vpdot{width:15px;height:15px;border-radius:50%;display:inline-grid;place-items:center;flex:none;font-size:10px}
+  .vp-row.ok .vpdot{background:var(--ok);color:#fff}
+  .vp-row.pending .vpdot{background:transparent;border:1.5px solid var(--pending);color:var(--pending)}
+  .vp-note{font-size:12.5px;color:var(--label-2);line-height:1.5;margin:2px 0 7px}
+  .vp-cred{font-size:12.5px;color:var(--label);font-weight:600;margin-bottom:9px}
+  .src{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:var(--blue);margin-top:6px}
+  .src:after{content:"\2192";margin-left:3px;font-weight:700}
+  .src.muted{color:var(--label-3);font-weight:500}
+  .src.muted:after{content:"";margin:0}
+  .src.no-douban{color:var(--label-3);font-weight:500;cursor:default}
+  .src.no-douban:after{content:"";margin:0}
+
+  /* ===== HERO ===== */
+  .hero{background:var(--card);border-radius:22px;padding:22px 20px 6px;margin-bottom:6px;
+    box-shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px rgba(0,0,0,.06);
+    border:1px solid var(--hair-soft)}
+  .hero .h-title{font-size:27px;font-weight:700;letter-spacing:-.5px;line-height:1.15}
+  .hero .h-lead{font-size:15.5px;color:var(--label-2);margin-top:10px;line-height:1.6}
+  .hero .head{padding:0 0 18px}
+  .hero .detail-inner{border-top:.5px solid var(--hair-soft)}
+  .hero .d-body{padding-top:16px}
+
+
+  /* ===== 区块标题层级 ===== */
+  .sec-title{font-size:24px;font-weight:700;letter-spacing:-.4px;margin-bottom:2px}
+  .sec-title .count{font-size:12.5px;font-weight:500;color:var(--label-3);margin-left:8px;letter-spacing:0}
+  .sub-title{font-size:19px;font-weight:600;letter-spacing:-.2px;margin:28px 0 4px;color:var(--label)}
+  .sub-title .hint{font-size:12px;font-weight:500;color:var(--label-3);margin-left:8px}
+  .sec-minor .sec-title{font-size:19px;font-weight:600;color:var(--label)}
+  .sub-minor{font-size:15px;font-weight:600;color:var(--label-2);margin:22px 0 2px;letter-spacing:0}
+
+  /* ===== 卡片外观统一：国内电影 / 中国港澳台 / 海外电影 / 剧集 =====
+     不再用「卡片 vs 扁平行」两种观感区分；视觉权重改由字号、留白、厂牌标签承担 */
+  .pcard,.olist .item,.dlist .item{background:var(--card);border-radius:16px;padding:4px 16px;
+    margin-bottom:11px;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid var(--hair-soft)}
+  .pcard .head,.olist .item .head,.dlist .item .head{padding:15px 0}
+  .pcard:last-child,.olist .item:last-child,.dlist .item:last-child{margin-bottom:0}
+  .pcard .h-title{font-size:18px}
+
+  /* ===== 海外电影：同一卡片，保留厂牌梯队标签 ===== */
+  .tier-label{font-size:12px;font-weight:600;color:var(--label-3);margin:18px 2px 2px;letter-spacing:.3px}
+  .tier-label:first-of-type{margin-top:6px}
+  .olist .h-title{font-size:17px}
+  .olist .studio-lbl{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--label-3);
+    text-transform:uppercase;margin-bottom:3px}
+  .pending{opacity:.66}
+
+  /* ===== 中国港澳台：地区标签（主题色，与厂牌标签区分） ===== */
+  .region-lbl{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--tint);margin-bottom:3px}
+
+  /* ===== 剧集：同一卡片，字号再降一级 ===== */
+  .dlist .h-title{font-size:16.5px}
+
+  /* ===== 其他观察：最轻 ===== */
+  .ogroup{margin-bottom:20px}
+  .og-head{font-size:12.5px;font-weight:600;color:var(--label-3);margin-bottom:2px;letter-spacing:.2px}
+  .ogroup .item{border-bottom:.5px solid var(--hair-soft)}
+  .ogroup .item:last-child{border-bottom:none}
+  .ogroup .h-title{font-size:15px;color:var(--label)}
+  .ogroup .h-lead{font-size:12.5px}
+
+  .foot{font-size:12px;color:var(--label-3);text-align:center;margin:44px 24px 0;line-height:1.7}
+  .foot b{color:var(--label-2);font-weight:600}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+
+  /* 默认（所有端）显示「在 B 站看预告」入口卡，仅桌面宽屏才内嵌 B 站 iframe；手机端绝不依赖媒体查询命中，不会黑屏。 */
+  
+
+  /* 默认（所有端）显示「在 B 站看预告」入口卡，仅桌面宽屏才内嵌 B 站 iframe；手机端绝不依赖媒体查询命中，不会黑屏。 */
+  
+
+  /* 默认（所有端）显示「在 B 站看预告」入口卡，仅桌面宽屏才内嵌 B 站 iframe；手机端绝不依赖媒体查询命中，不会黑屏。 */
+  @media (min-width:821px){
+    .v-wrap .bili-embed{display:block}
+    .bili-jump{display:none}
+  }
+</style>
+</head>
+<body data-page-node-id="AaJIrGlPi0sw5TgUS9Tvb3">
+<div class="app" data-page-node-id="Y9MdhSVcXezREQ6cyH39cI">
+
+  <!-- 顶部极简导航 -->
+  <header class="topbar" data-page-node-id="a4UMPRCICRjVyUz5HaVznh">
+    <a class="back" href="../archive.html">‹ 返回</a>
+    <div class="brand" data-page-node-id="d3ozObgzjp3PKLygYOQFeA">影视<b data-page-node-id="t4Az6K8zgPn7KEIRuBZoUR">简报</b></div>
+    <nav class="nav" data-page-node-id="H1hqc13uIQgBSes3aQBTqv">
+      <a href="#films" data-page-node-id="NYBHD0CdscMPDDSMxZ6TQ3">电影</a>
+      <a href="#dramas" data-page-node-id="RSsQKOKnWkFYZ5h5mhcYxr">剧集</a>
+      <a href="#others" data-page-node-id="l7yCDPKtSBWXTXl8ZxkCJ1">其他</a>
+    </nav>
+  </header>
+
+  <!-- 头部 -->
+  <div class="masthead" data-page-node-id="ZU0RB3zIf2avBE1gc3Ht51">
+    <h1 data-page-node-id="WENuNPWLeSOMKMHtKzyipi">每日影视简报</h1>
+    <div class="meta" data-page-node-id="k9dGcIOuR3AgyIId0uFjJN">2026 年 9 月 2 日 · 星期三　|　更新于 08:00 · 每日自动生成</div>
+  </div>
+
+  <!-- 今日最值得关注 / HERO -->
+  <section class="highlights" aria-label="今日最值得关注" data-page-node-id="kka7OwDLzHwej5rQ6eCJvG">
+    <div class="kicker" data-page-node-id="fbhsxpcf2vYMDXXAPk4E0C">今日最值得关注</div>
+
+    <details class="item  hero" data-cred="ok" data-page-node-id="hy4hHomZap6KwK7RqCJKxC">
+      <summary class="head" data-page-node-id="9m2ER2ORIvkVI0gC94Ydpl">
+        <div class="h-main" data-page-node-id="6ICbvSywCouG9xhnywYcEk">
+          <span class="h-tag" data-page-node-id="x4p0tMU53VK2zDQu4AtRZA">定档 · 9.5 全国公映</span>
+          <div class="h-title" data-page-node-id="8ajYQhRUPG1WgAapnS5scc">《燃烧吧！爸爸》</div>
+          <div class="h-lead" data-page-node-id="mGeisedJqoJ7buBEx1Yrh9">文淇、倪虹洁领衔，入围金爵奖主竞赛，已开启预售。</div>
+          <div class="poster" data-page-node-id="FEUc57nPT6CLvzvN18QahJ">
+  <img class="ph-img" src="../posters/burning_dad.jpg" alt="燃烧吧！爸爸">
+  <a class="src" href="https://movie.douban.com/subject/36903929/" target="_blank" data-page-node-id="0aolL3g9o8UuFoNCqJCf0z">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="iGo31J1NBqvmJff9WQpeHN">
+            <span class="vbtn v-ok" data-page-node-id="7rSudrpei1Vvd9vJZ0GBX2">
+              <span class="vdot" data-page-node-id="Vm94Zb62ec4iMo4saphqhV"><svg viewBox="0 0 16 16" data-page-node-id="fYlLOt9OSDdjuHzeXYOkmh"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="nfc1rOlXWTcj6u9Ebagla6"/></svg></span>
+              <span class="vt" data-page-node-id="syQ3FqZoaDs1wFG06D7Am6">已核实</span><span class="vs" data-page-node-id="4NT8qpJWHFuLrfNODfbty3">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16" data-page-node-id="vw8trxQRlUWOrG46fskCw3"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="RcvGCE0AH2iYBMNGcUiwdZ"/></svg>
+      </summary>
+      <div class="detail" data-page-node-id="m9znaYVBOynTT48ZNuIlIQ"><div class="detail-inner" data-page-node-id="25jMaZrSfsdFlGJzgMKexe"><div class="d-body" data-page-node-id="Q4g3bR3ZoHTEKWdE9UcjMt">
+<p class="d-desc" data-page-node-id="WkaGo6PizycjpFY1NaJVXc">9 月 5 日 9:00 全国公映（数字 2D / CINITY），预售已于 8 月底开启、限时特惠低至 19.9 元；8 月 31 日发布终极预告与「全家福」终极海报，9 月 1—4 日开启「奔赴新生」四城路演。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>顾立言（文淇 饰）与母亲吴开蒂（倪虹洁 饰）关系微妙，随着父亲顾卫星（喻恩泰 饰）久病离世，母女俩一边应对繁琐未知的丧葬流程，一边发现父亲不为人知的另一面人生，在啼笑皆非又荒诞抓马的事件中彼此了解、和解。</p></div>
+<div class="credits" data-page-node-id="jQFFtWhxAnolkvqxqvJcZW">
+          <div class="cr-row" data-page-node-id="vWPE0uHW0rNSYAg0cOggkz"><span class="cr-k" data-page-node-id="PXdozki7uuEwotGjHINJyb">主创阵容</span><span class="cr-v" data-page-node-id="jrnjCxkolWH1jnhPFIc4Pc"><b data-page-node-id="iIjERMXZ57lk1eW63VR9bE">文淇、倪虹洁</b> 领衔主演；其余阵容陆续披露中</span></div>
+          <div class="cr-row" data-page-node-id="OYGxCyHVFcoA9EXGAP3894"><span class="cr-k" data-page-node-id="W2dKpuVv5p0qzwEMQhN9HB">相关公司</span><span class="cr-v" data-page-node-id="rzghoKCbQi0vwVmNJ5ArW2">麦特影业、上海久事文化、湖北长江电影集团、大白桃影视、壹志行动影业</span></div>
+        </div>
+<div class="vpanel" data-page-node-id="cCGMVvvmCbQEdwmSXhTHqb">
+          <div class="vp-h" data-page-node-id="YWW7xHrM4wDsGrLSqc13VK">信息验证</div>
+          <div class="vp-row ok" data-page-node-id="8siMVhrmzlnYUKslgbrtQ0"><span class="vpdot" data-page-node-id="UElCwtArkd83Xafv3CeGGo">✓</span> 影视娱乐日报</div>
+          <div class="vp-note" data-page-node-id="IgrqEHBxl6WMj7HHGWZ6Zt">1 个独立来源。</div>
+          <div class="vp-cred" data-page-node-id="HXDffcvzLWvyCSxgnHGUYW">可信度：中</div>
+          <a class="src" href="https://new.qq.com/rain/a/20260902A02K8300" target="_blank" data-page-node-id="RTBsEjBgoVph6lxZeE4rIo">查看来源</a>
+        </div></div></div></div>
+    </details>
+  </section>
+
+
+  <!-- 电影 -->
+  <section id="films" aria-label="电影" data-page-node-id="NB1aNmCdn27ajrD63zzMhP">
+    <h2 class="sec-title" data-page-node-id="lb2EJvRQtfrFyCu0Fp4QBA">电影 <span class="count" data-page-node-id="GuRxu5lPrSm3JziE4uxMpO">今日主线</span></h2>
+
+    <h3 class="sub-title" data-page-node-id="Y1a0yIfl25O3fxuHn7Rq7W">国内 <span class="hint" data-page-node-id="7yy1JCXhuScoTHMgljsL3K">最高优先级</span></h3>
+
+    <details class="item  pcard" data-cred="ok" data-page-node-id="VLHtg5LXLtDhI30CtCTkFR">
+      <summary class="head" data-page-node-id="014oFLmrDshCqan1CQCpE2">
+        <div class="h-main" data-page-node-id="gnB22vaf8ehdLxX9jRv3vh">
+          <div class="h-title" data-page-node-id="6JbjsSWiP7IootyIBspHrK">《张伯行》</div>
+          <div class="h-lead" data-page-node-id="SdwOsqQa3rkDUop8uBEzvM">古装电影 · 9 月中旬横店开机</div>
+          <div class="poster" data-page-node-id="ieHZfKGcbmIA7vneIAdKFD">
+          <div class="ph-card" data-page-node-id="ibAOXm2tLgunMWu5YBGArN">《张伯行》</div>
+          <span class="src no-douban">暂无豆瓣词条</span>
+        </div>
+<div class="h-foot" data-page-node-id="Q76Q6u58FoqLpnJ3rjQNsh">
+            <span class="vbtn v-ok" data-page-node-id="rkGRwdyqnlDSjjgPTQ68JF">
+              <span class="vdot" data-page-node-id="GxkpgbBEbQUlYe5GW51Rf7"><svg viewBox="0 0 16 16" data-page-node-id="GJD31mCUmHVJYZBscOHcXF"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="scHbZPVYKlTNQeMrHNaKuo"/></svg></span>
+              <span class="vt" data-page-node-id="qEsAb9jDQJhoKqO7BRClgy">已核实</span><span class="vs" data-page-node-id="eHBwJNRY5B8ODW6bG1vu7T">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16" data-page-node-id="apkD4mn6jEVHsmUUuAExNu"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="gu85tYdc9FsVjAlZiT4k8w"/></svg>
+      </summary>
+      <div class="detail" data-page-node-id="vxXbYQ3pB2tHBCIvSYhPDf"><div class="detail-inner" data-page-node-id="Bu8WK8c6VtJyhTV4h91RBv"><div class="d-body" data-page-node-id="GqK6ydnXaeOl6BEX5jOzGc">
+<p class="d-desc" data-page-node-id="feVLOqQvCfd4fZDgpnybrZ">古装电影，9 月中旬横店开机，河南电影电视制作集团出品，导演高峰。</p>
+
+<div class="credits" data-page-node-id="vJBuMotq4u5XvLtqMXMCHZ">
+          <div class="cr-row" data-page-node-id="MdKcDXpLxyT9TKt6wWY7Lt"><span class="cr-k" data-page-node-id="GnGZRTWBcNJSdDFQ4z5zbq">主创阵容</span><span class="cr-v" data-page-node-id="2HFcbO3TAtyIxuxvmBhc0M">演员阵容暂未披露；导演 <b data-page-node-id="SwLL7eit0Lm0deWlyy6BlZ">高峰</b></span></div>
+          <div class="cr-row" data-page-node-id="UPxocPUUarBC1ycyBerbcL"><span class="cr-k" data-page-node-id="HzDwmSt7jR5D0Vky7nAo1Y">相关公司</span><span class="cr-v" data-page-node-id="Za8r2uhaJXjpNbC3OEukbD">河南电影电视制作集团（出品）</span></div>
+        </div>
+<div class="vpanel" data-page-node-id="j9FGWAeiZo3pbbFVerpDQS">
+          <div class="vp-h" data-page-node-id="FKffKBdJkPsLq3iRiJb9CM">信息验证</div>
+          <div class="vp-row ok" data-page-node-id="iEVHvCEfy4ERLo8uRSMlm5"><span class="vpdot" data-page-node-id="BbcGNEBP7zrR5kxtYFDv78">✓</span> 搜狐组讯</div>
+          <div class="vp-note" data-page-node-id="zmV5rQb4qlS559VQ50DVWv">1 个独立来源。</div>
+          <div class="vp-cred" data-page-node-id="rWQbCpeN0vRyjBhablGDNn">可信度：中</div>
+          <a class="src" href="https://yule.sohu.com/a/1070652469_674735" target="_blank" data-page-node-id="v6ZzHNtAp4T0jN1Y1puyG1">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item  pcard" data-cred="ok" data-page-node-id="kMXjro1N1EySAV2W5FnT0J">
+      <summary class="head" data-page-node-id="7uNn5NMJAdnDrEC2PTR6cp">
+        <div class="h-main" data-page-node-id="8iC4GWcVU7L7DaTubCsFym">
+          <div class="h-title" data-page-node-id="MTHBFjFh8IkbkeNTTtiYph">《天意》</div>
+          <div class="h-lead" data-page-node-id="2EbnIq7y0bK0KiNE2Q41Ym">独立电影 · 9 月初横店开机</div>
+          <div class="poster" data-page-node-id="NLziAOoZjrcTaMG4RI7QRL">
+          <div class="ph-card" data-page-node-id="VHFhFAAcEVajVU9WSLX01Y">《天意》</div>
+          <span class="src no-douban">暂无豆瓣词条</span>
+        </div>
+<div class="h-foot" data-page-node-id="rN1jWivrOdp0OMcMw7LPTV">
+            <span class="vbtn v-ok" data-page-node-id="ZIrbhyyy3uT9PbNzBjOcKl">
+              <span class="vdot" data-page-node-id="mRe5kLAMNbCPcT8OrqfEgU"><svg viewBox="0 0 16 16" data-page-node-id="U2HkeXOA9i2Slrg2cqj0J1"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="W9fBVlxSLkvhx1PpBXa2C3"/></svg></span>
+              <span class="vt" data-page-node-id="ttOWEfY2BNalswLNNdUZ1d">已核实</span><span class="vs" data-page-node-id="JIS7QVVc3ixrz3nYbtXGCB">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16" data-page-node-id="SOmo2yAOPXvxIh56HPbKA8"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="cMUzzxqAJt3sVm9Dd9zZIT"/></svg>
+      </summary>
+      <div class="detail" data-page-node-id="91BMxtUAZxfvZqQqMPXQMj"><div class="detail-inner" data-page-node-id="g2fAVO9ARIiGKuV0FHJQY9"><div class="d-body" data-page-node-id="o8N4zbQAc1Fk7jgdsrHEvx">
+<p class="d-desc" data-page-node-id="YPsA1FLDPowbOSk1Di4JpJ">独立电影，9 月初横店开机，成都寰宇星曜影业，导演罗强。</p>
+
+<div class="credits" data-page-node-id="Nws3fw8yUaLKepGM2lRAjk">
+          <div class="cr-row" data-page-node-id="cGZYwsjaxeKw86zRJo0prM"><span class="cr-k" data-page-node-id="6IrdrExwenQpR71pLW1YYM">主创阵容</span><span class="cr-v" data-page-node-id="VYlK5IUiDUsisSUUzabSsA">演员阵容暂未披露；导演 <b data-page-node-id="XJjpEWhUw1VZs1ATTGTDfU">罗强</b></span></div>
+          <div class="cr-row" data-page-node-id="kjgDwwVDAlULwARUWXACGk"><span class="cr-k" data-page-node-id="ey5pgyWBK1rGJ1bxWYaYR8">相关公司</span><span class="cr-v" data-page-node-id="3EXEGfGdBopBWA8KrClSlx">成都寰宇星曜影业</span></div>
+        </div>
+<div class="vpanel" data-page-node-id="zUllf2FYcO7gRBD86wssxi">
+          <div class="vp-h" data-page-node-id="Xd2Pfi0tlPPcObPGRPV1CX">信息验证</div>
+          <div class="vp-row ok" data-page-node-id="A3u3v9tjmiZbnSDF73dEwM"><span class="vpdot" data-page-node-id="HwIHICakGKRXxCJkDswOyB">✓</span> 搜狐组讯</div>
+          <div class="vp-note" data-page-node-id="prKmVRB0igmCAZr5hCwqji">1 个独立来源。</div>
+          <div class="vp-cred" data-page-node-id="XvI0cMIQhc0qHQMUA5Tdbd">可信度：中</div>
+          <a class="src" href="https://yule.sohu.com/a/1070652469_674735" target="_blank" data-page-node-id="K95pT7woDwvTdwQGnRyhbx">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item  pcard" data-cred="ok" data-page-node-id="ezpLqLeE0GDuAxz60KKxBq">
+      <summary class="head" data-page-node-id="I99tDXfAXiM6vq2VbCq1KZ">
+        <div class="h-main" data-page-node-id="0F0RVcZaqDZUDSoY6oVHLG">
+          <div class="h-title" data-page-node-id="23LGgrsbSAe7frxnA0nj0m">《登月计划》陆川</div>
+          <div class="h-lead" data-page-node-id="Jlp1mLnvtop6ScoJ7XrEdR">立项 · 国家电影局公示，再战科幻</div>
+          <div class="poster" data-page-node-id="bcQiWlXaJdbq5ngF4y6p86">
+          <div class="ph-card" data-page-node-id="CuyAGUndFG3WmB0rInhtig">《登月计划》</div>
+          <span class="src no-douban">暂无豆瓣词条</span>
+        </div>
+<div class="h-foot" data-page-node-id="cLGa0bs8HeQ0JSPzGsMLGw">
+            <span class="vbtn v-ok" data-page-node-id="tuKeG2FsPGi064AxDlGqMw">
+              <span class="vdot" data-page-node-id="c3kxeOt7T61e77QKuUyqmz"><svg viewBox="0 0 16 16" data-page-node-id="xGrVE59UmokCSLIoCAGLQv"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="HeT71x2YgCFOTDHATjmn4j"/></svg></span>
+              <span class="vt" data-page-node-id="7zW9N6VLb0KDnTSiKNR7wF">高可信来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16" data-page-node-id="ziPeoKRa2cjNgg3k7c3Oa6"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="v51lKoK8DIY9MNWTk6gxS6"/></svg>
+      </summary>
+      <div class="detail" data-page-node-id="E0njvgn33X7WoyjWLGmNau"><div class="detail-inner" data-page-node-id="GcgHFR2zF9g46sKU5v7AQN"><div class="d-body" data-page-node-id="mBPOYYdiDTxCjjBo7OzmNu">
+<p class="d-desc" data-page-node-id="gl8uIsUTQHJ5vaz9Odbjvr">国家电影局 7 月下备案立项公示，陆川再战科幻（继《749 局》）。</p>
+
+<div class="credits" data-page-node-id="P3xacP206isalEwq85aB8p">
+          <div class="cr-row" data-page-node-id="5GPC3IETC9kURHBmmk6gKu"><span class="cr-k" data-page-node-id="UnH0jgiXPXxcLRgdZpGqrC">主创阵容</span><span class="cr-v" data-page-node-id="5AISMG0dhAz2wJwd8Albgx">导演 <b data-page-node-id="tQHLtnc4FEuUdAfBCgfOPZ">陆川</b>；编剧 / 主演待公示</span></div>
+          <div class="cr-row" data-page-node-id="IiQGVlsqJIgwDKTF6Tb9Dq"><span class="cr-k" data-page-node-id="CcHSFoK01Ed2CCEV7fUaCH">相关公司</span><span class="cr-v" data-page-node-id="F8HUqehU2A0t8yzYt3DEQL">制作方待定（立项公示阶段）</span></div>
+        </div>
+<div class="vpanel" data-page-node-id="kSHGD9AMH8zcPI0ohGaUie">
+          <div class="vp-h" data-page-node-id="rpQXWYkE10NSVJMEv3xWnx">信息验证</div>
+          <div class="vp-row ok" data-page-node-id="9NriZRE2GUCoHBViGwWBk5"><span class="vpdot" data-page-node-id="3H8Gp4KQ5gAFV6gr5uLA5a">✓</span> 国家电影局公示（官方）</div>
+          <div class="vp-note" data-page-node-id="xXXO7QtlIXBRpt5zhgL3Ey">官方备案立项公示，权威性高。</div>
+          <div class="vp-cred" data-page-node-id="zPu4yc5ITBimQUeo752RcB">可信度：高</div>
+          <span class="src muted" data-page-node-id="T7DsFKBBMiBmN09CeLYWAl">官方公示</span>
+        </div></div></div></div>
+    </details>
+    <details class="item  pcard" data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="h-title">《有一场雪》</div>
+          <div class="h-lead">新物料 · 首支预告发布 · 入围釜山</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/you_yi_chang_xue.jpg" alt="有一场雪">
+          <a class="src" href="https://movie.douban.com/subject/36025672/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">9 月 1 日 15:30 发布首支物料预告，同步入围第 31 届釜山国际电影节「Vision 亚洲展望」竞赛单元；影片已拿到公映许可证，档期待定。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>全片在哈尔滨取景，将真实城市空间转化为 2035 年的「寒城」，讲述一个关于记忆、选择与自我确认的故事。陈晓饰演建筑师许初。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">赵天爱 领衔主演；<b>陈晓</b> 特邀主演（饰 许初）；吴俊霆、白沙、师悦玲 主演；编剧 / 导演 <b>陈剑莹</b>（《海边升起一座悬崖》戛纳短片金棕榈）；耐安 监制、李潇远 制片</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">天浩盛世（出品）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 新浪娱乐</div>
+          <div class="vp-note">1 个独立来源。预告发布与入围信息经官微与导演本人微博确认。</div>
+          <div class="vp-cred">可信度：中</div>
+          <a class="src" href="https://ent.sina.cn/2026-09-02/detail-iniqkkpn3258019.d.html?vt=4" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item  pcard" data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="h-title">《死亡禁区实录》</div>
+          <div class="h-lead">新物料 · 预告发布 · 定档 9.25 中秋</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/death_zone.jpg" alt="死亡禁区实录">
+          <a class="src" href="https://movie.douban.com/subject/37380650/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 2 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">8 月 27 日官宣定档 9 月 25 日中秋档，同步释出「欢迎回家」版预告与定档海报，主打「近十年唯一 3D 恐怖大片」；9 月 2 日多家媒体综述报道。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>废弃诈骗园区化身血色炼狱，为了千万直播赏金、至亲的救命医药费、失踪在园区的家人，一支各怀隐情的搜救队冒死进入 404 死亡禁区。水牢、血牛库、电刑，黑暗中无差别残酷虐杀接连失控，全球直播的镜头下，等待他们的究竟是人是「诡」？</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v"><b>邓家佳</b>、<b>苏小玎</b>、<b>海陆</b> 领衔主演；孙芮、刘迅、叶常清 主演；王星 特邀出演；导演 / 编剧 <b>王晟赫</b>（《鸳鸯楼·惊魂》导演）；监制 王晓晖、王柯</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">爱奇艺影业（北京）、北京大麦娱乐文化、青岛聚欢乐影业</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 新浪娱乐</div><div class="vp-row ok"><span class="vpdot">✓</span> 百度百科词条</div>
+          <div class="vp-note">2 个独立来源，已交叉验证。备案单位：山东良有影业、青岛拾光人影业。</div>
+          <div class="vp-cred">可信度：高</div>
+          <a class="src" href="https://ent.sina.cn/2026-08-27/detail-inipttca0891903.d.html" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item  pcard" data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="h-title">《初次尝到寂寞》</div>
+          <div class="h-lead">新物料 · 山水版预告释出 · 入围釜山主竞赛</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/first_loneliness.jpg" alt="初次尝到寂寞">
+          <a class="src" href="https://movie.douban.com/subject/36652425/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 2 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">9 月 1 日釜山国际电影节公布主竞赛片单，本片为 14 部入围影片中唯一一部华语片，同步释出「山水」版概念海报与预告；10 月 6—15 日釜山世界首映。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>以父亲离世为开端，女儿在哀伤中目睹母亲开启黄昏恋，又发现父亲遗留的「心愿清单」，串联起三代女性在爱情、生死与觉醒三种「寂寞」中的情感密码。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v"><b>周迅</b>（饰 江月）、<b>奚美娟</b>、<b>王圣迪</b>（饰 沐恩）领衔主演；周一围、穆祉丞（饰 小乐）、徐朝英 出演；导演 <b>顾游</b>（顾晓刚，「山水电影」三部曲终章）；摄影指导 泷本干也；海报 黄海团队</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">杭州余杭区文艺基金扶持；元气娱乐（制作）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 新浪娱乐</div><div class="vp-row ok"><span class="vpdot">✓</span> 腾讯新闻 / 现代快报</div>
+          <div class="vp-note">2 个独立来源，已交叉验证。国内档期未定，出品方暂未公布院线发行计划。</div>
+          <div class="vp-cred">可信度：高</div>
+          <a class="src" href="https://ent.sina.cn/2026-09-02/detail-iniqkkpn8066690.d.html" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item  pcard" data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="h-title">《再给我一个暑假》</div>
+          <div class="h-lead">新物料 · 杀青 · 先导预告与海报发布</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/another_summer.jpg" alt="再给我一个暑假">
+          <a class="src" href="https://movie.douban.com/subject/38196282/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 2 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">8 月 31 日官宣杀青并首度公布主创阵容，同步释出「等一夏」版先导预告及海报；延吉、成都取景，档期待定。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>苏小利（白百何 饰）因母亲赵春花（林晓杰 饰）摔伤被迫回到老家照顾，重逢儿时邻居金九刚（文俊辉 饰）。在父亲留下的旧照相馆里，她重新拿起相机，在夏日蝉鸣中与过去告别。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v"><b>白百何</b>、<b>文俊辉</b>、<b>林晓杰</b> 领衔主演；编剧 / 导演 <b>鲍鲸鲸</b>（《失恋33天》《闪光少女》）；总制片人 吕旭</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">成都蘑菇力气影业、宁波启一影视娱乐（出品）；北京元气娱乐（制作）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 搜狐娱乐</div><div class="vp-row ok"><span class="vpdot">✓</span> 封面新闻</div>
+          <div class="vp-note">2 个独立来源，已交叉验证。片方尚未公布具体上映日期。</div>
+          <div class="vp-cred">可信度：高</div>
+          <a class="src" href="https://yule.sohu.com/a/1070146564_120811405" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+
+
+    
+    <h3 class="sub-title">中国港澳台 <span class="hint">香港 / 澳门 / 台湾</span></h3>
+
+    <div class="olist">
+
+    <details class="item " data-cred="pending">
+      <summary class="head">
+        <div class="h-main">
+          <div class="region-lbl">中国香港</div>
+          <div class="h-title">《被杀的那天》</div>
+          <div class="h-lead">新物料 · 国际版预告 · 入围釜山 Vision</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/hk_killed_day.jpg" alt="被杀的那天">
+          <a class="src" href="https://movie.douban.com/subject/36149739/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-pending"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">待确认</span><span class="vs">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">发布国际版预告，入选第 31 届釜山国际电影节 Vision 单元；移民潮背景的家庭悬疑题材，档期未定。</p>
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>三十岁的程序员郑恺文（杨乐文 饰）与妻子阿诗（谈善言 饰）及女儿过着平静生活，却在移民潮下对未来充满焦虑。一天，一名自称是恺文同父异母弟弟的少年乐（苏文涛 饰）突然出现，执着追查父亲十多年前坠楼身亡的真相，令恺文一直压抑的童年记忆再次浮现。多年来他始终怀疑母亲何美君（邵美琪 饰）可能与父亲的死有关，却一直未敢正视。随着乐一步步追查，尘封多年的家庭秘密逐渐被揭开。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">编导 <b>林乐骞</b>；主演 <b>杨乐文</b>、<b>谈善言</b>、<b>邵美琪</b>、苏文涛、艾威、陈紫萱、刘皓岚、陈湛文</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">出品方暂未公开披露（釜山 Vision 单元入围片）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 新浪看点</div>
+          <div class="vp-note">1 个独立来源，未经交叉验证。片名以豆瓣中文词条《被杀的那天》为准。</div>
+          <div class="vp-cred">可信度：中</div>
+          <a class="src" href="https://k.sina.cn/article_7879923529_m1d5ae174903301m08q.html" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item " data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="region-lbl">中国香港</div>
+          <div class="h-title">《明天，会更好》</div>
+          <div class="h-lead">国际发行 · 9.10 多伦多全球首映</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/hk_tomorrow_better.jpg" alt="明天，会更好">
+          <a class="src" href="https://movie.douban.com/subject/35556002/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 2 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">9 月 10 日 21:15 在第 51 届多伦多国际电影节特别展映单元全球首映（片长 135 分钟）；中国香港 Moebius 娱乐已拿下国际发行权；该片同时出现在国家电影局 9 月 1 日公示的同意拍摄名单中。</p>
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>周迅饰演王牌主持人沈佳，事业光鲜却遭遇婚姻破碎、女儿疏离，更被确诊早发性阿尔茨海默症，在记忆流失中重新寻找自我与亲情。多伦多电影节将其形容为「精湛、情感充沛的家庭剧情片」，探讨当认知世界的框架崩塌后还剩下什么。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 <b>陈可辛</b>（中国香港，与周迅继《如果·爱》《你好，之华》后第三度合作）；编剧 <b>张冀</b>；主演 <b>周迅</b>、王骁、田壮壮、林晓杰；文淇 特别出演</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">成都嘉映影业、东申（上海）影业、我们制作有限公司（中国香港）；国际发行 Moebius 娱乐（中国香港）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 新浪娱乐</div><div class="vp-row ok"><span class="vpdot">✓</span> 新黄河 / 国家电影局公示</div>
+          <div class="vp-note">2 个独立来源，已交叉验证（电影节入围 + 电影局立项公示）。备案梗概与首映版剧情表述略有差异，此处以首映版为准。</div>
+          <div class="vp-cred">可信度：高</div>
+          <a class="src" href="https://ent.sina.cn/2026-09-02/detail-iniqmfta7801215.d.html" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item " data-cred="pending">
+      <summary class="head">
+        <div class="h-main">
+          <div class="region-lbl">中国台湾</div>
+          <div class="h-title">《偷偷喜欢你》</div>
+          <div class="h-lead">改档 · 9.12 上映 · 海报预告已发布</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/tw_secret_crush.jpg" alt="偷偷喜欢你">
+          <a class="src" href="https://movie.douban.com/subject/36994226/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-pending"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">待确认</span><span class="vs">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">由原定 8 月 19 日七夕档改档至 9 月 12 日全国上映；此前已发布「炙吻」版海报与「夏日恋恋」版预告。</p>
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>少女苏明仪（程予希 饰）长达十年的暗恋故事。高中时期她一直默默暗恋同校的颜立尧（施柏宇 饰），分班后两人成为同班同学。颜立尧性格不受拘束、随性洒脱，身为风纪股长的苏明仪便借着「记名字」的机会一次次靠近他。另一位少年程砚（林子闳 饰）始终安静守在她身后，将爱慕深埋心底。故事跨越十年，从青涩校园到长大成人。片长 115 分钟。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 <b>邱晧洲</b>（中国台湾）；主演 <b>施柏宇</b>、<b>程予希</b>、林子闳</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">阿荣影业股份有限公司（中国台湾，出品）；华夏电影发行有限责任公司（发行）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 360 娱乐</div>
+          <div class="vp-note">1 个独立来源，未经交叉验证。豆瓣词条副标题《夏日最後的秘密》、年份标注 2025（制作 / 首映年），与内地档期 2026 略有出入。</div>
+          <div class="vp-cred">可信度：中</div>
+          <a class="src" href="https://yule.360.com/detail/5181408" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    </div>
+
+<h3 class="sub-title" data-page-node-id="Hc9zAPwLiCS3SoFERcCQpk">海外 <span class="hint" data-page-node-id="v2RZLpOX0N6IgXFImCQebY">弱于国内 · 按出品方梯队</span></h3>
+
+    <div class="tier-label" data-page-node-id="4H38i4Uhxvd3d3gietIyRu">重点 · 好莱坞六大（潜在引进片）</div>
+    <div class="olist" data-page-node-id="NyZiCH2dUZuuTdo45ztYgq">
+
+      <details class="item " data-cred="ok" data-page-node-id="mA4HvYY7uS76fVEUrMpLLx">
+        <summary class="head" data-page-node-id="lgfn3IoHbQ4gsDe9CD5Kj7">
+          <div class="h-main" data-page-node-id="uIW0Q213zzVYOsMxCLjkFa">
+            <div class="studio-lbl" data-page-node-id="BR0Fhq5YRID3iF2tWk9YQd">华纳</div>
+            <div class="h-title" data-page-node-id="wvgFnis6amAMow7f6UvD5e">《魔法情缘》</div>
+            <div class="h-lead" data-page-node-id="2PoRVrpIBa04BanJwpFKmO">9.11 公映 · Nicole Kidman / Sandra Bullock 回归（原 Practical Magic 2）</div>
+            <div class="poster" data-page-node-id="PQASNDdDgv2IQc3JAOxclN">
+  <img class="ph-img" src="../posters/magic_romance.jpg" alt="魔法情缘">
+  <a class="src" href="https://movie.douban.com/subject/36919251/" target="_blank" data-page-node-id="WGqBGIexCTOt5McQP5RrZj">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="jSWqhd8na0W4xBkAWkG2xS">
+              <span class="vbtn v-ok" data-page-node-id="pIn17QhnmhVISryERnltRj">
+                <span class="vdot" data-page-node-id="v14gxqe9lHoEgNRoaoH6PZ"><svg viewBox="0 0 16 16" data-page-node-id="DloktTCRXnzECigJTbRtnO"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="U3NcJCOlhvGbEylLnrwlfs"/></svg></span>
+                <span class="vt" data-page-node-id="wPoPT2SymAFIIZpmCQ4yXx">已核实</span><span class="vs" data-page-node-id="eUJPvxI2y3cAMUgGA59aIZ">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="K0yAMBZZWvFYhpzZYV7RVA"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="kmg80EiVdsknloxocURvqy"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="rF7iOe04yMDBnmVgyBu4pp"><div class="detail-inner" data-page-node-id="BIsM6JSEJCpH9akZqtQRAF"><div class="d-body" data-page-node-id="FF8mFmDp6BJ5ApzpFAKs99">
+<p class="d-desc" data-page-node-id="bfm6zDYsGUkHL673l6OhUQ">9.11 公映，Nicole Kidman / Sandra Bullock 回归主演。中文名《魔法情缘》（豆瓣 / 百度百科词条，1998《巫法闯情关》续集）。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自爱丽丝·霍夫曼同名小说，聚焦巫师世家后裔莎莉与吉莉安·欧文斯姐妹。这个家族世代受诅咒：任何爱上欧文斯家女人的男人都注定早逝。姐妹俩意外杀死吉莉安的虐待狂男友后，一系列超自然事件接踵而至，她们试图掩盖真相并最终打破家族诅咒。是 1998 年《巫法闯情关》时隔 27 年的续集。</p></div>
+<div class="credits" data-page-node-id="OoCAQIRy4CbRGiBsJInhz3">
+            <div class="cr-row" data-page-node-id="BBqcQuCHu6jxwy7QBmcoAk"><span class="cr-k" data-page-node-id="Gs4zXC8kMjXrr8DtzpKtlb">主创阵容</span><span class="cr-v" data-page-node-id="eSCMXaeofnpDryzoNMMEho">主演 <b data-page-node-id="edD1S8PTbU4BqIwAKUXQbY">桑德拉·布洛克、妮可·基德曼</b> 回归并任制片；导演 <b data-page-node-id="mWd5O25HNthWNGRneAEMqm">苏珊娜·比尔</b>；另有 黛安·韦斯特、斯托卡特·詹宁、乔伊·金、李·佩斯、麦茜·威廉姆斯 等</span></div>
+            <div class="cr-row" data-page-node-id="cq72MDFderrplDQbHExSZU"><span class="cr-k" data-page-node-id="CeS58x3jDYFyVslEndT1BM">相关公司</span><span class="cr-v" data-page-node-id="OWNpCV3hMgSGIhR0Fc2xJQ">华纳兄弟、Alcon Entertainment、DiNovi Pictures、Fortis Films、Blossom Films</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="WHzZbnzlFvLcG0QDtmCgub">
+            <div class="vp-h" data-page-node-id="7m8ckH24b8raA3acblXewb">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="RWY46MKbmgwM9yKe2ZspDe"><span class="vpdot" data-page-node-id="XmUl0Gn2mYvqgvnbZFGnfR">✓</span> E! Online</div>
+            <div class="vp-note" data-page-node-id="cEgYdQVLFWTekqZTsDjzSx">片名以豆瓣 / 百度百科中文词条《魔法情缘》为准，未自行翻译。</div>
+            <div class="vp-cred" data-page-node-id="UVarA6D62eJQiASi8TKkhX">可信度：中</div>
+            <a class="src" href="https://www.eonline.com/photos/37303/upcoming-and-new-movie-releases" target="_blank" data-page-node-id="FHNHw2YeZICMCacG5uYF0e">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="C2aVADWkCj0Whg9EPfGR4i">
+        <summary class="head" data-page-node-id="sBAzA05hFP6UuZWOVbL3Bx">
+          <div class="h-main" data-page-node-id="LTsgo4959gtDAbqZawJskM">
+            <div class="studio-lbl" data-page-node-id="eN59sKgteo5z1SQDgHFr7a">20 世纪 / 迪士尼</div>
+            <div class="h-title" data-page-node-id="xJFDs2S5eaX83stykfxnrC">《The Dog Stars》</div>
+            <div class="h-lead" data-page-node-id="R9ruVDM0cXcEjtTlGTEa9P">8.28 已开画 · Ridley Scott 执导</div>
+            <div class="poster" data-page-node-id="s7HaxnscqCcC8S31nHk5zd">
+            <div class="ph-card" data-page-node-id="aLQyXUemcctuOiErAHlAiu">The Dog Stars</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="VtecCs2GvANi8H8MI0gdzy">
+              <span class="vbtn v-ok" data-page-node-id="vz91grhOHyoI3hdax4uhUf">
+                <span class="vdot" data-page-node-id="kCzOVUYAo7DyFfih17iaqP"><svg viewBox="0 0 16 16" data-page-node-id="i0vlS58hhWvfeglEJympzt"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="8gU3Gfq7OIfTQtFlUwH1l7"/></svg></span>
+                <span class="vt" data-page-node-id="2IZ7IvImZ3sMJoJgifxjcD">已核实</span><span class="vs" data-page-node-id="wfds5PvKriD8H6NuaolPDT">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="EiJM4phTZvA43GQMAa0Wsc"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="xiG6DkjGrdldhiH4hda4of"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="ItcC1Qudk9xTusA9bxkpcJ"><div class="detail-inner" data-page-node-id="QGAt68yNLL6qriW9qY50a1"><div class="d-body" data-page-node-id="bv4Y8oEdBKqC4CVvTh9Iug">
+<p class="d-desc" data-page-node-id="s2QMxLgqfJeZJ7AHCuBHn7">Ridley Scott 执导，Jacob Elordi 主演，8.28 已开画。豆瓣暂无对应中文词条，保留英文原名。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自 Peter Heller 2012 年同名小说。一场致命流感几乎抹去人类文明，飞行员兼机械师 Hig（雅各布·艾洛蒂 饰）与硬核生存主义者 Bangley（乔什·布洛林 饰）及爱犬 Jasper 藏身科罗拉多山顶机场。当 Hig 收到来自地平线外的神秘无线电信号，他决定离开藏身之处，去寻找人类是否尚存一线希望。</p></div>
+<div class="credits" data-page-node-id="JYGahjZLGBg0ZWivLrgfQ5">
+            <div class="cr-row" data-page-node-id="6ONaT9Aez2rOYYp5kyQGYA"><span class="cr-k" data-page-node-id="qMb8N82hCq7eb54RzcNXi6">主创阵容</span><span class="cr-v" data-page-node-id="N4oy9UeJwC9XgNiU0PwzUr">导演 <b data-page-node-id="5g8KrjLA68dGktzlZKBMq6">雷德利·斯科特</b>；主演 <b data-page-node-id="MBW4AhNFdiDo8ECp22Nt2h">雅各布·艾洛蒂、乔什·布洛林、玛格丽特·库里</b></span></div>
+            <div class="cr-row" data-page-node-id="xEryU8Bo4SuMB4SmkyB9hE"><span class="cr-k" data-page-node-id="scSFKRFA4ykq0SbfWF8dGb">相关公司</span><span class="cr-v" data-page-node-id="NLYfsmasW5eJQK5YCZLg6A">20 世纪影业（迪士尼）</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="ZikbFDOBN8yAcED2rABLnH">
+            <div class="vp-h" data-page-node-id="q3yJitDnJNjA1LrDRfNYzx">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="FmVfGXaaRxAbNwtM7ZDG46"><span class="vpdot" data-page-node-id="2LHOZuYN2aiGTrQYgCnfiY">✓</span> Yahoo</div>
+            <div class="vp-note" data-page-node-id="zFlGmAFwLSkjmVgLfMbROQ">1 个独立来源。豆瓣无中文词条，按规则保留英文原名。</div>
+            <div class="vp-cred" data-page-node-id="P409DVo9pDQGTr4wBObXD9">可信度：中</div>
+            <a class="src" href="https://www.yahoo.com/entertainment/movies/articles/coyote-vs-acme-dog-stars-213634360.html" target="_blank" data-page-node-id="0XoGMCcVDbadHyE559tWvX">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="ZIuo9XnjljXuqNX6O0exF3">
+        <summary class="head" data-page-node-id="qxBYv3ulLONz63A6BvKm4k">
+          <div class="h-main" data-page-node-id="Gj2VfjgCfw2ntQNdIhk8da">
+            <div class="studio-lbl" data-page-node-id="FxrCpffd66zDuCuAeDV0fj">索尼 / 哥伦比亚</div>
+            <div class="h-title" data-page-node-id="GnxmBEsdC6aMfc8jEFqMAb">《The Social Reckoning》</div>
+            <div class="h-lead" data-page-node-id="Mb6RpKe4ne1E7yhXfuxmo3">10.9 公映 · Aaron Sorkin 编导</div>
+            <div class="poster" data-page-node-id="8MDECJkh2598Ocmrn9o43Y">
+            <div class="ph-card" data-page-node-id="FeLf978zjjyIlLLt2D7lHT">The Social Reckoning</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="qCfXQKmDrVkyMOcEMSOaid">
+              <span class="vbtn v-ok" data-page-node-id="txctEXy5K6Mu99kcMexRX3">
+                <span class="vdot" data-page-node-id="IgvgNcG2RjGWVG4EwFBTEw"><svg viewBox="0 0 16 16" data-page-node-id="37vjZ4Gc0iJYjTIrGqV7xm"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Ex9Rew2ZvyAPSI3lKCkEjN"/></svg></span>
+                <span class="vt" data-page-node-id="eBF0NrFCRIC01wv5B9y0xS">已核实</span><span class="vs" data-page-node-id="Md0ViYIO1gnlKoP6DoU007">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="xWi1BzBWuxOWKBPojsFtiO"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ttvSEPDVw6RibB4ZaVBEVH"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="DVcELX00EesH6pGDtc6OAe"><div class="detail-inner" data-page-node-id="Bo979JnP6MTfz4X6mO02SL"><div class="d-body" data-page-node-id="QIBgHbYsc8JKzSYgCa69Hc">
+<p class="d-desc" data-page-node-id="Yvg5CkBiK49lypJro5leCC">Aaron Sorkin 编导，《社交网络》姊妹篇，10.9 公映。豆瓣暂无对应中文词条，保留英文原名。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自《华尔街日报》2021 年调查报道《The Facebook Files》，聚焦 Facebook 吹哨人 Frances Haugen（米奇·麦迪森 饰）与 WSJ 记者 Jeff Horwitz（杰瑞米·艾伦·怀特 饰）联手，揭露社交网络内部危害青少年心理健康、放任有害内容的真相，杰瑞米·斯特朗 饰 马克·扎克伯格。是《社交网络》的姊妹篇。</p></div>
+<div class="credits" data-page-node-id="pKumxEUuPfGCr3T8L5QjPI">
+            <div class="cr-row" data-page-node-id="7JiJn0uNPk0LP2RNnedH4H"><span class="cr-k" data-page-node-id="zOs1XFhLdBvDHdVDwee0PD">主创阵容</span><span class="cr-v" data-page-node-id="cbeNvinW79SVDTmnagBxph">编导 <b data-page-node-id="QXnG8dkqDkoGyNfTklvwcb">艾伦·索尔金</b>；主演 <b data-page-node-id="IG7NvTicQQjZUh2TiT5NPz">杰瑞米·斯特朗、米奇·麦迪森、杰瑞米·艾伦·怀特</b></span></div>
+            <div class="cr-row" data-page-node-id="XXDym3OStWBy5zpBG4lQ4B"><span class="cr-k" data-page-node-id="m0kvKe4F7LFGI4laqTmW4n">相关公司</span><span class="cr-v" data-page-node-id="wCnnnuQ2psj05yIKwfXihk">索尼哥伦比亚（Sony Pictures）</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="H7mRIDiypNF8kzdAyWo4WA">
+            <div class="vp-h" data-page-node-id="2pwG0xjzCSHYZhQX8P9s8G">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="RACZkNXTS9D4MsOMUAQPIU"><span class="vpdot" data-page-node-id="399IwhBshGlkyLtpj12TRZ">✓</span> E! Online</div>
+            <div class="vp-note" data-page-node-id="EixUnNDINyo261Pr1Iwlz6">1 个独立来源。豆瓣无中文词条，按规则保留英文原名。</div>
+            <div class="vp-cred" data-page-node-id="VnUEP1w27OIDsiWDqmzquR">可信度：中</div>
+            <a class="src" href="https://www.eonline.com/photos/37303/upcoming-and-new-movie-releases" target="_blank" data-page-node-id="DkJKu7Y1PKP9TX8L1wz1cK">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="jA5qC9nhXQM9EGNvPJDnKU">
+        <summary class="head" data-page-node-id="pCkGtngcIrw9fH7m0k7foU">
+          <div class="h-main" data-page-node-id="3FVVIZTtINQFfSETssutqU">
+            <div class="studio-lbl" data-page-node-id="NxNp8YcPp1Zgip0kVFURRL">环球</div>
+            <div class="h-title" data-page-node-id="6FzfuYTVu32PxxLsBfxf5U">《另一个妈妈》</div>
+            <div class="h-lead" data-page-node-id="dkAgrAoPplNyzwQAT0oWw4">10.9 公映 · Jessica Chastain 一人两角（原 Other Mommy）</div>
+            <div class="poster" data-page-node-id="qGXjERsrHKesBCq13P2fT3">
+  <img class="ph-img" src="../posters/other_mommy.jpg" alt="另一个妈妈">
+  <a class="src" href="https://movie.douban.com/subject/37317907/" target="_blank" data-page-node-id="6zVYJV4caFcL7KyuhwlKiD">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="HGDfGYGBHQmshQmtA9dzYv">
+              <span class="vbtn v-ok" data-page-node-id="9D9z1LIPB5EGJLPYjAX7BM">
+                <span class="vdot" data-page-node-id="ent9tSKHqzAEkqkOMSel0D"><svg viewBox="0 0 16 16" data-page-node-id="w2ne4CsTCfYFoe4ZDXtAY5"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Uu8AbyY5i72405i9B1GYpK"/></svg></span>
+                <span class="vt" data-page-node-id="cvtM8lzSEUridsVzvZjAH2">已核实</span><span class="vs" data-page-node-id="pQzie3QM4BO4PKDtSPAwND">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="n7cuFtyL9jey3D9OM7IHFJ"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="sTgw3BFzUfLRztvqr9Xw7x"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="zaRoh9EfuK21RDv2uyF8kH"><div class="detail-inner" data-page-node-id="rajgQ1J5CEUtV5gf6wyHq4"><div class="d-body" data-page-node-id="tRfHsmboMCr8gad8IX484q">
+<p class="d-desc" data-page-node-id="tOrxjzxj2NOgzO84hVsfh6">Jessica Chastain 一人分饰两角，10.9 公映。中文名《另一个妈妈》（豆瓣 / 百度百科词条，改编自 Josh Malerman 小说）。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>八岁女孩贝拉住在父母婚姻摇摇欲坠的房子里。某天她发现衣柜深处总在深夜探出一个东西——长得和妈妈乌苏拉（杰西卡·查斯坦 饰）一模一样，贝拉叫它「另一个妈妈」，它每天重复问「我可以进到你心里吗？」。当家中怪事频发、家人也开始看见它，贝拉必须在被彻底吞噬前揪出这个伪装者。改编自 Josh Malerman 2024 年同名小说。</p></div>
+<div class="credits" data-page-node-id="2FJA0BzdrmQxYr9DOIyiEh">
+            <div class="cr-row" data-page-node-id="tCmp4qjx7qzBMRVLADgth9"><span class="cr-k" data-page-node-id="NBwhoynQKY4ZNPUkqL78sE">主创阵容</span><span class="cr-v" data-page-node-id="d5c1pfaX8AT69l7us5iIEP">主演 <b data-page-node-id="NtCAapoAgQebs2OjJ4FMHq">杰西卡·查斯坦</b> 一人分饰 Mommy / Other Mommy；导演 <b data-page-node-id="9CdbZXbXI4TtzOA1jS5I1j">罗布·萨维奇</b>；温子仁 监制；杰伊·杜普拉斯、迪辰·拉克曼 等</span></div>
+            <div class="cr-row" data-page-node-id="CHhmstPNI6DTjR7Pv1kjV3"><span class="cr-k" data-page-node-id="d5R3FXqjJufi3VsCJKsT7E">相关公司</span><span class="cr-v" data-page-node-id="sFh9gqXbCVrWC2yh11JOK6">环球影业、Blumhouse Productions、Atomic Monster、Spin a Black Yarn</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="vXhyzJfNsaEKFobJ2iI1uV">
+            <div class="vp-h" data-page-node-id="ZUiSglBV6FyDE2sf6nAvia">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="0dTvrp6FMa6bjeArFTwrLE"><span class="vpdot" data-page-node-id="ykvHGkPJ0ADMDqzCGojRQJ">✓</span> FindThisMovie</div>
+            <div class="vp-note" data-page-node-id="WycjQUm7tLDwAtcPQCGoPG">片名以豆瓣 / 百度百科中文词条《另一个妈妈》为准，未自行翻译。</div>
+            <div class="vp-cred" data-page-node-id="yHetg5SqffkbAHSWd9cT6d">可信度：中</div>
+            <a class="src" href="https://findthismovie.com/box-office-2026-guide-release-dates-cast-and-availability-key-facts-and-questions-to-ask/" target="_blank" data-page-node-id="cIlZoDZNk7kav91GMwF2p4">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+    </div>
+
+    <div class="tier-label" data-page-node-id="HouFRWuwhmJIK14NAtMWcJ">A24 / 流媒体厂牌</div>
+    <div class="olist" data-page-node-id="wHDtz69HeCQpIjo6RdwCvP">
+
+      <details class="item " data-cred="ok" data-page-node-id="4TsP0EUDg2SFJkR9ceooKK">
+        <summary class="head" data-page-node-id="fJpoTlwf7xmOTwEIjTMUxC">
+          <div class="h-main" data-page-node-id="5u4NeAXnEj7fPWfJx1A9Wv">
+            <div class="studio-lbl" data-page-node-id="d9fdzFx0IVNrnk2zaKHmCy">A24</div>
+            <div class="h-title" data-page-node-id="uRKJdSf1r21SdIK6G02BFW">《黄金时段》</div>
+            <div class="h-lead" data-page-node-id="hu1fIGDrTtbguibDWDQA1C">9.25 公映 · Pattinson，威尼斯主竞赛</div>
+            <div class="poster" data-page-node-id="9rhyILCfamgovDDPFEVKJB">
+  <img class="ph-img" src="../posters/primetime.jpg" alt="黄金时段">
+  <a class="src" href="https://movie.douban.com/subject/37087760/" target="_blank" data-page-node-id="72SglQeNIUD8NjZPSpsr0G">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="R9pAu303UQnBMV9q9fbe0A">
+              <span class="vbtn v-ok" data-page-node-id="PRJ9CBJYaCBy9En8tpNgQw">
+                <span class="vdot" data-page-node-id="er1YSLRdnHSjkwF9MsMdWE"><svg viewBox="0 0 16 16" data-page-node-id="8gNOEbsNovPEVBSQ36NGrI"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="sKMFCjpzjXII8HC0ubBTr3"/></svg></span>
+                <span class="vt" data-page-node-id="Hl9xgXlsOC0oBKMajpAzRq">已核实</span><span class="vs" data-page-node-id="u9y8Zt6yDNAsFbqBHV4BRn">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="1RphSW2q1ByQVSuMQIMBKp"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="oJTa0QLzxG6sImtmtGdGtz"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="jC2iHSoNAVim9EwmzPKcLp"><div class="detail-inner" data-page-node-id="RK1zdgXwMTLWzHMQ46HZHQ"><div class="d-body" data-page-node-id="1VloxgARz8ZqoPdlb6GXyE">
+<p class="d-desc" data-page-node-id="kGi1794X5icn81V8H3ZVJ6">Robert Pattinson 主演 / 制片，威尼斯主竞赛，9.25 公映。中文名《黄金时段》（豆瓣词条，A24 出品）。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>聚焦电视主持人 Chris Hansen（罗伯特·帕丁森 饰）与他推出的一档真人秀节目「猎捕恋童癖」——节目安排人员在网上伪装成未成年人，引诱恋童癖进入摄影棚并将其逮捕。</p></div>
+<div class="credits" data-page-node-id="gdF3M3yAkVJVmfhxxIwYEi">
+            <div class="cr-row" data-page-node-id="LovrXWzybOiGkNM1ANJLIN"><span class="cr-k" data-page-node-id="DOUVvXWA0i7rEEqa0BPxhC">主创阵容</span><span class="cr-v" data-page-node-id="HpEdxLn4Z3WzV4PzXssqxh">主演 / 制片 <b data-page-node-id="bDpcVWcwbPNipbNyh8Buwb">罗伯特·帕丁森</b>（饰 Chris Hansen）；导演 <b data-page-node-id="GRTkxbXFBSf0Ed8hvhWHFT">兰斯·奥本海姆</b></span></div>
+            <div class="cr-row" data-page-node-id="Tyd8NpghuIDIFo9qf9SPSe"><span class="cr-k" data-page-node-id="LUje1ZAaAKBUCxyhtUyIlo">相关公司</span><span class="cr-v" data-page-node-id="vUKbjn3WbjU4pQUzOaqxHj">A24、Icki Eneo Arlo、Square Peg、Automatik</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="02uLMVjscacN9w4X6DLdhr">
+            <div class="vp-h" data-page-node-id="EoadmbgXHBmeKuEeRe7LfZ">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="VdaeYpbB6oiwrX6SBorWE9"><span class="vpdot" data-page-node-id="OScODKQARAUNnSx1mBRPKJ">✓</span> MovieWeb</div>
+            <div class="vp-note" data-page-node-id="RcZUQy9l2rXJKW0HqjJISc">1 个独立来源。片名以豆瓣中文词条《黄金时段》为准，未自行翻译。</div>
+            <div class="vp-cred" data-page-node-id="FDSfqgjqu2d7zhUDrgkyrs">可信度：中</div>
+            <a class="src" href="https://movieweb.com/primetime-trailer-robert-pattinson" target="_blank" data-page-node-id="6LySZo8iC2qjGfKjUkxKQ6">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="g6IBQu9xMF04CSXVawjaGB">
+        <summary class="head" data-page-node-id="0Qnd0I6If73htEpPi0iKO0">
+          <div class="h-main" data-page-node-id="HZgWK8V09t92haXW29Z9Ni">
+            <div class="studio-lbl" data-page-node-id="cNKGl5CMdJbACCLwLHqx5h">Netflix</div>
+            <div class="h-title" data-page-node-id="siYYkf1oOlnUf0VazypPec">《大学炸弹客》</div>
+            <div class="h-lead" data-page-node-id="CF9arBbVqZBwU7lQZ4gVQt">9.25 上线 · Jacob Tremblay</div>
+            <div class="poster" data-page-node-id="pocpupF2qxJ9KgjtAlzsPZ">
+  <img class="ph-img" src="../posters/unabomber.jpg" alt="大学炸弹客">
+  <a class="src" href="https://movie.douban.com/subject/38184963/" target="_blank" data-page-node-id="Dh9v50j2PNzvWpO06f23wB">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="XWDu8P9rRcLHSkyQemxuyA">
+              <span class="vbtn v-ok" data-page-node-id="rtca5rlWEHb04Xt6VJsXXO">
+                <span class="vdot" data-page-node-id="CMPgbPjXhGNMzZCU205II3"><svg viewBox="0 0 16 16" data-page-node-id="drZesKYcAXYVGjGKIcAFUC"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="sJkjoXreOVCoLYLv6aDZj7"/></svg></span>
+                <span class="vt" data-page-node-id="l0PxV2y8m8anaQtZOlRTxb">已核实</span><span class="vs" data-page-node-id="WyVyflL1MqLK0DuaBW48d6">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="GqQXKNdYWCYRWohGKyY21Q"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="LZOwH8Jdr8CJdnHLSS54jG"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="aCUzaGWqRrM5T6FDZ9Mhiu"><div class="detail-inner" data-page-node-id="xRP0ZgZtQqfbG4oHWeVsf8"><div class="d-body" data-page-node-id="jxCVTTNmlFIsFyd4H5Dt0C">
+<p class="d-desc" data-page-node-id="HcCmJxCeuNBQJ9q0BOYCZl">Jacob Tremblay 饰泰德·卡钦斯基，9.25 上线。中文名《大学炸弹客》（豆瓣词条，Netflix 出品）。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自真实事件，讲述泰德·卡辛斯基（雅各布·特伦布莱 饰）如何从哈佛神童沦为臭名昭著的「大学炸弹客」。在经历亨利·默里教授（罗素·克劳 饰）有争议的心理实验后，数十年后由 FBI 特工乔安妮·米勒（谢琳·伍德蕾 饰）领导的追捕，揭开了野心与孤立令人不寒而栗的后果。</p></div>
+<div class="credits" data-page-node-id="WYZeFixsYQmxMZ7nskPNYF">
+            <div class="cr-row" data-page-node-id="S8lSiatGmdnEgfdYq0tbfN"><span class="cr-k" data-page-node-id="TAiVo0W1vZc0vuivyYSYXT">主创阵容</span><span class="cr-v" data-page-node-id="yKnxLejzI2d7IDeANpWP3W">主演 <b data-page-node-id="rq2qScG3ka3fNa81WmoAKk">雅各布·特伦布莱、罗素·克劳、谢琳·伍德蕾</b></span></div>
+            <div class="cr-row" data-page-node-id="jrbEwBXZk9jNpJoclTp81s"><span class="cr-k" data-page-node-id="piqJj0jxBMTH2q8JRUHNrd">相关公司</span><span class="cr-v" data-page-node-id="uhj1daAYnZmpjmyppcrCgF">Netflix、2.0 Entertainment、MRC</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="eawl52LUnXEEzoXYsPBqoF">
+            <div class="vp-h" data-page-node-id="opSKy87NQFyKGIRlRaJ9ry">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="D05kgqHORfP14NMm74hGuD"><span class="vpdot" data-page-node-id="5RGpiGZF57eG6WjNfM8lHN">✓</span> E! Online</div>
+            <div class="vp-note" data-page-node-id="Mq4eJKZLKCMb3bmjL7GxHk">1 个独立来源。片名以豆瓣中文词条《大学炸弹客》为准，未自行翻译。</div>
+            <div class="vp-cred" data-page-node-id="83ifNeuhh13ikWOLVpJuFW">可信度：中</div>
+            <a class="src" href="https://www.eonline.com/photos/37303/upcoming-and-new-movie-releases" target="_blank" data-page-node-id="fYuIER18R7t1XmQGuBC4ur">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+    </div>
+
+    <div class="tier-label" data-page-node-id="Lp7uAvWfj5AA8mQTKZ1vwp">其他</div>
+    <div class="olist" data-page-node-id="MfVFBNc7OCB52s7jfiBjPc">
+
+      <details class="item  pending" data-cred="pending" data-page-node-id="dWNnXLZOkxHGBo3oaUhPfY">
+        <summary class="head" data-page-node-id="sjnHpBDqcVn0aEMoCfAPkC">
+          <div class="h-main" data-page-node-id="R7nW9j5vedgssADci8TgST">
+            <div class="studio-lbl" data-page-node-id="CyizjsyskAAuAtu9C7A2l7">T-Series（印度）</div>
+            <div class="h-title" data-page-node-id="qaeVWwFOvoV8ro3vVQLdgP">《Captain India》</div>
+            <div class="h-lead" data-page-node-id="AZG0UMnvwP1yrUSYHGKXLx">9.1 伦敦开机 · Kartik Aaryan</div>
+            <div class="poster" data-page-node-id="MXx8zMt7Ugmvr0o8betQks">
+            <div class="ph-card" data-page-node-id="3wEiYEXHFRjWZHuGymmNXt">Captain India</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="tYAwNYUcLfLCiqDiZZiD6A">
+              <span class="vbtn v-pending" data-page-node-id="E3OY6fCuYvUbnbtGm9W5wi">
+                <span class="vdot" data-page-node-id="kiPpkdrYY5YBLJRxf1LWKO"></span>
+                <span class="vt" data-page-node-id="k2Ft8BJGTJYpJkpQNp5nZM">单一来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="JAX2VXWenSbuLZ655KSenf"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="6VkewOiqJ12IxkcitJJfxG"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="iAGBO4z495K7hPHj36o7Uo"><div class="detail-inner" data-page-node-id="sRX3oVT1PfE8oIAKUrMO3l"><div class="d-body" data-page-node-id="UEQSRRkzELF11C3lQhDRvF">
+<p class="d-desc" data-page-node-id="SLteswdvSZiJ7jarWoywo4">Kartik Aaryan 主演，9.1 伦敦开机，Shimit Amin 执导。豆瓣暂无对应中文词条，保留英文原名。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>灵感源自 2015 年也门撤侨行动「Operation Raahat」。卡提克·亚利安 饰 一名空军飞行员，奉命从战火中的国家领导一场高风险的撤侨救援任务，在动作与情感张力之间，重现印度史上最成功的人道主义救援之一。</p></div>
+<div class="credits" data-page-node-id="FSiMAPCuYF6P1wVe3dyshA">
+            <div class="cr-row" data-page-node-id="fLUdbewdIkSmOEe6tqqPWi"><span class="cr-k" data-page-node-id="ZS6GOo3ADgC2zNWLyiSkzp">主创阵容</span><span class="cr-v" data-page-node-id="Dk7kT6NTIllkXDOjcAadkq">主演 <b data-page-node-id="C5BgsLcZjPWIJL32x3KpCl">卡提克·亚利安</b>；导演 <b data-page-node-id="wu5Q9iVErzwtVjMIVduaf1">希密特·阿米恩</b></span></div>
+            <div class="cr-row" data-page-node-id="A29m0zq8fk6AVfB24Z4jyz"><span class="cr-k" data-page-node-id="TfZ5ovIO0cRlp2T4uXEy44">相关公司</span><span class="cr-v" data-page-node-id="ZDeaPxPWElrnw0m85KX7qf">T-Series / Bhushan Kumar</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="vANYA6iQJ4bnmagYrpFYPE">
+            <div class="vp-h" data-page-node-id="YY74jkEJLBjNLgEMUqS3yN">信息验证</div>
+            <div class="vp-row pending" data-page-node-id="ntiWHYO37dJFU51puQNcy6"><span class="vpdot" data-page-node-id="xaJg4q8GJOi7lbAbZuiWkl">○</span> 单一来源</div>
+            <div class="vp-note" data-page-node-id="8ZEDwWyVUtNbebENGRPH1A">当前信息仅发现 1 个来源，暂未交叉印证。</div>
+            <div class="vp-cred" data-page-node-id="WUvrawG7bE1zgkOAy5K4oq">可信度：待确认</div>
+            <span class="src muted" data-page-node-id="Wswkb9M37bgPos0E0h5sbl">暂无稳定链接</span>
+          </div></div></div></div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 剧集（降级） -->
+  <section id="dramas" class="sec-minor" aria-label="剧集" data-page-node-id="9yhb19Gw5HD8uRA0u40nn7">
+    <h2 class="sec-title" data-page-node-id="AB0Zl9fA7Wkp6OauncrCTl">剧集 <span class="count" data-page-node-id="wClupT6bb8sRxEF01cnPi3">辅助信息</span></h2>
+
+    <h3 class="sub-minor" data-page-node-id="ua3bLcO9PA3GuWH6IiPxxF">国内</h3>
+    <div class="dlist" data-page-node-id="KQExNRbLCHSNr1pcca2t4o">
+
+      <details class="item " data-cred="ok" data-page-node-id="f8IDUnl3ARykLasd2EF5Wj">
+        <summary class="head" data-page-node-id="9BwcGYOLaeTSpGmkZmd9Vf">
+          <div class="h-main" data-page-node-id="dlbqUr3FGCJczdo3zMgB8w">
+            <div class="h-title" data-page-node-id="xFczjJdUCDq6GszSuo0YNb">《交锋》</div>
+            <div class="h-lead" data-page-node-id="0YvywRPjTGljd37aQU31y7">国安题材 · 9.6 CCTV-8 首播</div>
+            <div class="poster" data-page-node-id="IHGr6t3O8sFEbpkVLJv3JY">
+  <img class="ph-img" src="../posters/jiaofeng.jpg" alt="交锋">
+  <a class="src" href="https://movie.douban.com/subject/36314809/" target="_blank" data-page-node-id="umYXHkgWtfpjVDE7QZkv5u">豆瓣词条 / 海报</a>
+</div>
+<div class="h-foot" data-page-node-id="7KvxkU0PWMs4sWnYNU6Z5b">
+              <span class="vbtn v-ok" data-page-node-id="pPkOlbJ9GUQLOptXcZKKyH">
+                <span class="vdot" data-page-node-id="azhY2ei4bsSa9xG2gNl2nA"><svg viewBox="0 0 16 16" data-page-node-id="zy9Gao5CHQjbHDm8CJxnzN"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="EioE1F4ueFwBXDaruFgIkG"/></svg></span>
+                <span class="vt" data-page-node-id="q0sS1CUqZ4l3ie8ADBlMAu">已核实</span><span class="vs" data-page-node-id="npSKFva0ZzohlF9PAjjGJx">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="4XTCt3m5cwetkNfKNLdvj9"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ruz3IA3Z7PPBZninf78McT"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="V2OyQBRo6wSwg5rXPn89BA"><div class="detail-inner" data-page-node-id="7lFDT0pqpObFmNSvMLwf16"><div class="d-body" data-page-node-id="Ej68lfBq16Oyh5cJdRZKlE">
+<p class="d-desc" data-page-node-id="QvUA94ccDhGlpM6Ci3S1YE">国安题材剧，王凯 / 彭昱畅等，9.6 CCTV-8，腾讯视频 / 咪咕首播。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>故事由一宗世纪之交的泄密大案而起，掩藏着境外势力与我方在隐蔽战线上的针锋较量。上世纪九十年代末，闽州市国家安全局一对性格迥异的师徒为共同使命并肩作战，联手挫败种种阴谋，并与敌手在横跨二十年的命运长河里不断纠缠。</p></div>
+<div class="credits" data-page-node-id="yRDmxy4dYCdJNtSnoQWfaj">
+            <div class="cr-row" data-page-node-id="xc3X95HPPsjRRo6yNrAGgY"><span class="cr-k" data-page-node-id="MXpeYrJL0nJDDIVs4M91XJ">主创阵容</span><span class="cr-v" data-page-node-id="ulGEl0HYTCPioieB78lnde">主演 <b data-page-node-id="eHeCStUQdT1GDYXHADaUFN">王凯、周依然、欧豪、彭昱畅、吴越、祖峰</b> 等</span></div>
+            <div class="cr-row" data-page-node-id="f5gCr5qcwgFu4tXXD4icoc"><span class="cr-k" data-page-node-id="hWVZblxNZ9dj5N0BDgRLLO">相关公司</span><span class="cr-v" data-page-node-id="pcktE3BmEwXZrLcCTQ1i1H">中央广播电视总台、国家安全部国安影视中心、中国电视剧制作中心、柠萌影视、腾讯视频</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="8BrVIe7f58U3YqC4DFR5lv">
+            <div class="vp-h" data-page-node-id="JrFDCTGNeodc9pfdsHtre9">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="vxrxOr9HTRZgKVh182dlgz"><span class="vpdot" data-page-node-id="o0ZyDsjqb8fh2AS5GzoJ4k">✓</span> 中国新闻网</div>
+            <div class="vp-note" data-page-node-id="SQslBJYYSF96IxxENc6TDm">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="FkZ9LSFeFcmbcOe4wxzBas">可信度：中</div>
+            <a class="src" href="https://www.toutiao.com/article/7680542393229181459/" target="_blank" data-page-node-id="LDp5uREAxBbqJRQcOmMG0A">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="BBbiB0Do2MC1GqSNe4LKIf">
+        <summary class="head" data-page-node-id="5UVMIzCrCyl01zyCNXNy6H">
+          <div class="h-main" data-page-node-id="M2zTkIX7vkYTOORU2FHmlp">
+            <div class="h-title" data-page-node-id="d1CcDSAK9GwfO53oqitxOB">《生逢其时》</div>
+            <div class="h-lead" data-page-node-id="ckEAX6ziDHtCHgBHCxMaOr">年代家庭 · 9.3 CCTV-1 首播</div>
+            <div class="poster" data-page-node-id="K7vHdKlLHlvJLMUvz8nYOU">
+            <div class="ph-card" data-page-node-id="KBCoZDwYMIlNtSfBZBBJsR">《生逢其时》</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="w1YBJKQbdSGIWLNCi45XmC">
+              <span class="vbtn v-ok" data-page-node-id="G9bCdNhUd41t9dhB2jeIm3">
+                <span class="vdot" data-page-node-id="F83r5Os9XN2592pUAtw1Eh"><svg viewBox="0 0 16 16" data-page-node-id="ykmhUhQsN3Yi2kdT0EExdH"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="THFzcXGMGH8BVY2JerRQR9"/></svg></span>
+                <span class="vt" data-page-node-id="UT09lzZg5D5DMWggAwM3Su">已核实</span><span class="vs" data-page-node-id="uePimofZbgS6ZncABcx1CD">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="dqjGjzY7JLaCGJ5XZEDwEI"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="cQTzdEwEfs5cZLyWdCxRq5"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="4tePd2EumlOGdRK32UY2IT"><div class="detail-inner" data-page-node-id="SxcQrX1hUxofrCAPjTLYiV"><div class="d-body" data-page-node-id="b7nyIA5WOjFzLP4V4xGORJ">
+<p class="d-desc" data-page-node-id="Kbehqz3XX8REbThkWedDuC">年代家庭剧，关晓彤 / 王子奇，9.3 CCTV-1，爱奇艺 / 咪咕首播。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>改编自韩十三小说《近邻》的年代家庭剧。以 90 年代北方厂矿小镇青梧镇为背景，齐、曹两家同日诞下婴儿因医院失误抱错，开启长达三十年的错位人生。关晓彤 饰 白化病女孩齐时，王子奇 饰 曹信，两人在错位人生中青梅竹马、彼此扶持，最终与命运和解——国内首部聚焦白化病群体的年代剧。</p></div>
+<div class="credits" data-page-node-id="XZ1xxwC4l5rH0idcMqQ6GR">
+            <div class="cr-row" data-page-node-id="rCZRKcJsYC1CZa2f4bfJHQ"><span class="cr-k" data-page-node-id="hYmjYQc2kCrdWzv2xtJQG5">主创阵容</span><span class="cr-v" data-page-node-id="oYAYXImyARCwxPVFOXbV9L">主演 <b data-page-node-id="Hk0kZJrD6k8sqrLKMVAUJV">关晓彤、王子奇</b></span></div>
+            <div class="cr-row" data-page-node-id="UtgeyzJd79utF5aAEco5QQ"><span class="cr-k" data-page-node-id="zxcvYtOYY6I2XCFXKRdXKs">相关公司</span><span class="cr-v" data-page-node-id="6oNv1yP2ezDmaOzq1SOyQy">播出 CCTV-1；网络平台 爱奇艺 / 咪咕</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="etXO4aFrcgWRHps6v9sxzl">
+            <div class="vp-h" data-page-node-id="NvA1tGUB6yficoTpCGYzGy">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="SMrERqEPXgugNy9igRTraA"><span class="vpdot" data-page-node-id="o9uZNpc2whQcDQW2jN0GVX">✓</span> 新浪娱乐</div>
+            <div class="vp-note" data-page-node-id="0hqHaaUHQauAOjvLn0MLXG">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="I5GorQw9uNw5i8AiqwpAbh">可信度：中</div>
+            <a class="src" href="https://ent.sina.cn/2026-09-02/detail-iniqkqvk7971849.d.html?vt=4" target="_blank" data-page-node-id="2fuWmWanuhOfEP3WCnzdRj">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item  pending" data-cred="pending" data-page-node-id="7VHlvxUccqyyS4XxEH5s8h">
+        <summary class="head" data-page-node-id="kQBxEqPEMCb12Qk73dWx0t">
+          <div class="h-main" data-page-node-id="KdROGeYFMUZkfMUZqMipHH">
+            <div class="h-title" data-page-node-id="nq56uaGFrWGMCbiEGBUQTJ">《祝姑娘》</div>
+            <div class="h-lead" data-page-node-id="ZHHrzGvIKb7JYeHh3xRivr">陈丽君首部主演 · 9.5 横店开机</div>
+            <div class="poster" data-page-node-id="4faULJDXBgsiNaqMnIAqB6">
+            <div class="ph-card" data-page-node-id="Q07FI0pkHHdiNyfwwyNxzv">《祝姑娘》</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="SGifwOUwZjSnZt1K6BdblG">
+              <span class="vbtn v-pending" data-page-node-id="s5zxdvIJGDrAqN3CkhvB6K">
+                <span class="vdot" data-page-node-id="vB82YjfSRtfCVBbyfXoBPF"></span>
+                <span class="vt" data-page-node-id="D7DXeTRGk89nstgj9kjPTT">单一来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="u08CDRZggHsS5JV6kDjqd9"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="kV0z2s5V5llk7n7C6XSMMf"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="THTCc3BNhRAxRm6CUHAPTv"><div class="detail-inner" data-page-node-id="hIwjUj7Rm8oLTfDa6t0qrp"><div class="d-body" data-page-node-id="aP0e9jEKnfz3nBXEz4wKge">
+<p class="d-desc" data-page-node-id="7AzEnUsKBaaMt6GkWxauPn">陈丽君首部主演剧，9.5 横店开机；同期《河东小镖师》官宣。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>优酷 S+ 级古装权谋大女主剧，改编自晋江小说《祝姑娘今天掉坑了没》。陈丽君 饰 草根祝缨，为求活路女扮男装，从九品小吏一路逆袭至宰辅，全剧无 CP、专注朝堂权谋博弈与女性成长，9 月 5 日横店开机。</p></div>
+<div class="credits" data-page-node-id="n2Us4JPXxWfDX1GW1PCLB4">
+            <div class="cr-row" data-page-node-id="eap9cRF2aZRG5W6W5GoRPc"><span class="cr-k" data-page-node-id="LaD4LHOplEowCDtacLKRw3">主创阵容</span><span class="cr-v" data-page-node-id="oIaggTtKfcCyvKFFNhdOXD">主演 <b data-page-node-id="Cb1WEhJtU3GMR3THq4cRus">陈丽君</b>（首部主演剧）；其余阵容待披露</span></div>
+            <div class="cr-row" data-page-node-id="zXU7d9DXuwLxlTyx4COet3"><span class="cr-k" data-page-node-id="MNdvwTtp4o2urd22USzGoD">相关公司</span><span class="cr-v" data-page-node-id="mRVtFb4vdx02rkJe9NA72Y">出品方未公开披露</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="QzBDV3F80C4WEGIhaS5p5L">
+            <div class="vp-h" data-page-node-id="g9rc79DB2OVOM3MkVH7pWD">信息验证</div>
+            <div class="vp-row pending" data-page-node-id="DBBiqrpR4jBsUQYw13WBEI"><span class="vpdot" data-page-node-id="WpVV6hGkCI5mkHgFTTmANz">○</span> 单一来源</div>
+            <div class="vp-note" data-page-node-id="N3IkrdAM2hcOgKMtgsw8i7">当前信息仅发现 1 个来源（聚合热榜），暂未交叉印证。</div>
+            <div class="vp-cred" data-page-node-id="TLviMIxIxHKILtIATVVXJD">可信度：待确认</div>
+            <a class="src" href="https://new.qq.com/rain/a/20260902A00ILA00" target="_blank" data-page-node-id="71tLzJBO8RpD4Hvi6aUB11">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="OktoEHMUHJtg7pOWApzdyC">
+        <summary class="head" data-page-node-id="o8Cx7H6kjLqFnjgJEmPHen">
+          <div class="h-main" data-page-node-id="vP7r3q5vIrevWP7yF1oDWq">
+            <div class="h-title" data-page-node-id="CUGRPpbJh8TRgXikxtHRyp">《我不是 NPC》</div>
+            <div class="h-lead" data-page-node-id="9GWcv0f4iQnm99AoXfQ7dK">赵露思监制 · 9.16 开播（微短剧）</div>
+            <div class="poster" data-page-node-id="zZwbBu2GIx2Vp4DauVrIpu">
+            <div class="ph-card" data-page-node-id="tyaNdziuaMBmB2nOAEic8H">《我不是 NPC》</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="BonHPQvXbUhTLQrZ42CLMi">
+              <span class="vbtn v-ok" data-page-node-id="3oVRLD12q1paDe7Nuixt3M">
+                <span class="vdot" data-page-node-id="YbN5VNrWSw9uolqAKfz0Gq"><svg viewBox="0 0 16 16" data-page-node-id="QeGZrmxawxpMflLGsUMLwQ"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="JoKzrAYHB165QXRA5JCMRk"/></svg></span>
+                <span class="vt" data-page-node-id="cc8DeiGrsBdoz0qHkKJwtR">已核实</span><span class="vs" data-page-node-id="QuvsCP9qUYWRGxBOYMzQsW">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="QGJRKeGcpV58E27POIjwZr"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Yx8mfpI3AhgPyZBYXvrXFu"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="sLfnaXXoGGGSUEcYlaE9pX"><div class="detail-inner" data-page-node-id="Xo4z6YvPeYRjtUAIAGFaWX"><div class="d-body" data-page-node-id="SI88j86xStUFnerJmK7pws">
+<p class="d-desc" data-page-node-id="52MSIImu3iLibt6XzQljgW">赵露思监制 5 集短剧，9.16 开播（微短剧性质）。</p>
+
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>赵露思首部监制短剧《Sonder·我不是NPC》。古装女性群像单元短剧（5 集），讲述一群古代女子发现自己只是剧本里的 NPC，联手挣脱枷锁、改写命运；赵露思任监制不出演，主打「每个人都是自己人生的主角」。</p></div>
+<div class="credits" data-page-node-id="fuUGfdDybRaDikEBBG9Zr9">
+            <div class="cr-row" data-page-node-id="ruCEi1zFJi2I3eleDJWxWl"><span class="cr-k" data-page-node-id="RUInjm2U3TaPzGcDQrUKPV">主创阵容</span><span class="cr-v" data-page-node-id="7mcTdbtWV65BEtpZgqD5er">监制 <b data-page-node-id="HsR2Uf51qawYIqfHPoqqLo">赵露思</b>；主演阵容待披露</span></div>
+            <div class="cr-row" data-page-node-id="qO7XSmJeXGOpfVWG85Gb26"><span class="cr-k" data-page-node-id="0r1QvLTj1ggcnjmx6C0gas">相关公司</span><span class="cr-v" data-page-node-id="483tVovkuXF2zSMwVycm9K">微短剧，播出平台待公示</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="DdS3OH84k9O76AUPDoGyiN">
+            <div class="vp-h" data-page-node-id="6ucqCV1uQvMV4yyRyQBTRa">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="1lu6GWMratIlfQL1aKRdEW"><span class="vpdot" data-page-node-id="WW6vemuFNVHbUzyecBP3AX">✓</span> 新浪娱乐</div>
+            <div class="vp-note" data-page-node-id="g9Ao4Zk6icOADSKg3rwby2">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="wrhAnGuXtHjSvtaZQv7d7X">可信度：中</div>
+            <a class="src" href="https://ent.sina.cn/2026-08-29/detail-inipzani3439475.d.html" target="_blank" data-page-node-id="n4k1HfdTUFmDmMwbQ6dT80">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+    </div>
+
+        <h3 class="sub-minor">中国港澳台</h3>
+    <div class="dlist">
+
+    <details class="item " data-cred="ok">
+      <summary class="head">
+        <div class="h-main">
+          <div class="region-lbl">中国台湾</div>
+          <div class="h-title">《黑白清道夫》</div>
+          <div class="h-lead">新物料 · 主海报与正式预告 · 9.17 上线</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/tw_fixers.jpg" alt="黑白清道夫">
+          <a class="src" href="https://movie.douban.com/subject/36544568/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-ok"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">已核实</span><span class="vs">· 2 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">Netflix 台剧 9 月 17 日全球上线，共 10 集；9 月 1 日释出主海报与正式预告，宿敌组织「夜月堂」正式浮上台面。</p>
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>落魄中年男人江福生（李铭顺 饰）身背债务、陷入人生低谷，机缘巧合下卷入扎根于百年庙宇「青和宫」的神秘组织「清道夫」——专门处理各方势力难以公之于众的纠纷。他被迫加入，与性格桀骜的政二代薛秋楠（娄峻硕 饰）结成搭档。一句「这个委托人瞒着我们在找夜月堂」，让任务开始变调，清道夫真正要「清」的恐怕远比眼前复杂。</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 <b>洪子烜</b>（《96分钟》）、<b>张亨如</b>（《模仿犯》）；主演 <b>李铭顺</b>、娄峻硕、雷嘉汭、庹宗华、林熙蕾、傅孟柏、张永正</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">Netflix（出品 / 全球播出平台）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> ETtoday 星光云</div><div class="vp-row ok"><span class="vpdot">✓</span> Pixeltwelve</div>
+          <div class="vp-note">2 个独立来源，已交叉验证。集数 10 集为平台公布信息，Netflix 尚未公布单集时长。</div>
+          <div class="vp-cred">可信度：高</div>
+          <a class="src" href="https://www.163.com/dy/article/L5OISUI005528K16.html" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    <details class="item " data-cred="pending">
+      <summary class="head">
+        <div class="h-main">
+          <div class="region-lbl">中国台湾</div>
+          <div class="h-title">《消失的裂痕》</div>
+          <div class="h-lead">定档 · 9.29 上线 · 6 集一次放完</div>
+          <div class="poster">
+          <img class="ph-img" src="../posters/tw_crack.jpg" alt="消失的裂痕">
+          <a class="src" href="https://movie.douban.com/subject/37210479/" target="_blank">豆瓣词条 / 海报</a>
+        </div>
+<div class="h-foot">
+            <span class="vbtn v-pending"><span class="vdot"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="vt">待确认</span><span class="vs">· 1 来源</span>
+            </span>
+          </div>
+        </div>
+        <svg class="chev" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="detail"><div class="detail-inner"><div class="d-body">
+<p class="d-desc">悬疑惊悚台剧定档 9 月 29 日 12:00，Netflix 与 B 站同步上线，6 集一次性放完。</p>
+<div class="synopsis"><span class="syn-k">剧情简介</span><p>一名女子（杨谨华 饰）因儿子失踪整整三年，世界彻底崩塌。她除了面对家庭破碎，精神状态也逼近极限，开始看见「幻觉」。在另一个平行时空中，失踪的儿子以另一种形式存在，而她与丈夫（张孝全 饰）的感情债和家庭关系也大有不同。随着她在多重时空中追寻线索，她能否在裂痕消失前拼凑出当年失踪的真相？</p></div>
+<div class="credits">
+          <div class="cr-row"><span class="cr-k">主创阵容</span><span class="cr-v">导演 <b>张亨如</b>（《模仿犯》）；编剧 <b>杨念纯</b>（《噬罪者》）；主演 <b>张孝全</b>、<b>杨谨华</b>、姚淳耀、陆弈静</span></div>
+          <div class="cr-row"><span class="cr-k">相关公司</span><span class="cr-v">Netflix（播出平台）；B 站（同步播出）</span></div>
+        </div>
+<div class="vpanel">
+          <div class="vp-h">信息验证</div>
+          <div class="vp-row ok"><span class="vpdot">✓</span> 影视快通车</div>
+          <div class="vp-note">1 个独立来源，未经交叉验证。集数 6 集为平台公布信息。</div>
+          <div class="vp-cred">可信度：中</div>
+          <a class="src" href="https://view.inews.qq.com/a/20260901A0818X00" target="_blank">查看来源</a>
+        </div></div></div></div>
+    </details>
+
+    </div>
+
+<h3 class="sub-minor" data-page-node-id="lOEefCx2kMk3YK0bH2NNbQ">海外</h3>
+    <div class="dlist" data-page-node-id="BYlgYRWwynkojw4BDFsOWX">
+
+      <details class="item " data-cred="ok" data-page-node-id="byF8diVWZtmMxpZK97Hef4">
+        <summary class="head" data-page-node-id="FFwVAMdF7kTBvMX9qMvvVM">
+          <div class="h-main" data-page-node-id="prJXQCrZAwv1JuyAckfONG">
+            <div class="h-title" data-page-node-id="YqA0pD2UVTnruG5y7m81xD">《Youth》· HBO</div>
+            <div class="h-lead" data-page-node-id="1IfrZB0A6gd0ntzVvPJP06">Sharon Horgan 喜剧 · 9.20 首播</div>
+            <div class="poster" data-page-node-id="56EJTOqchu9aHxJfLP080u">
+            <div class="ph-card" data-page-node-id="iCVXTNP3IC2FByMlPmhL3F">Youth · HBO</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="gy8fwK5GCmzAqjfCEORmYQ">
+              <span class="vbtn v-ok" data-page-node-id="UU7Y7z022yUhHveD5669LE">
+                <span class="vdot" data-page-node-id="GacCxCFwE7N4JcuMMp3FQG"><svg viewBox="0 0 16 16" data-page-node-id="qOa2OuihmjxB89GdWIWLHh"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="hrVAVc6CBrUmBJf7Wivo03"/></svg></span>
+                <span class="vt" data-page-node-id="AQsN5IfYLBnYNYfHfaazcs">已核实</span><span class="vs" data-page-node-id="38wLFsXTEjRdowhBbHG8fa">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="r7dYtSLvsJYdPTvaLZLaAp"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="VQaJ3uA19nVtNyct1mzXdd"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="RlUh8KfYQWXDyW6XK2Ved7"><div class="detail-inner" data-page-node-id="pq3BRRmBddi5Jbwjf7r6sh"><div class="d-body" data-page-node-id="WkG8YIo7HhTGuZZP5eOY2w">
+<p class="d-desc" data-page-node-id="x8JPb7Va0w0TGVgaiaNvQm">Sharon Horgan 喜剧，9.20 首播（8 集）。</p>
+
+<div class="credits" data-page-node-id="trcWPSRawA86YG9hfgznjj">
+            <div class="cr-row" data-page-node-id="IoRBLOD9dNngCF6BxG3TTi"><span class="cr-k" data-page-node-id="39D6WyAce74YwtGjmBUetx">主创阵容</span><span class="cr-v" data-page-node-id="YZfzBhgoYBCg7Cenww4nCb">主创 / 主演 <b data-page-node-id="AfoxF1uV9TDrdVjLBZIFw7">莎朗·豪根</b></span></div>
+            <div class="cr-row" data-page-node-id="Vpb6mDN6EvbEyNZ45qJRSI"><span class="cr-k" data-page-node-id="68ghWhEytYhei9TdjK0v8O">相关公司</span><span class="cr-v" data-page-node-id="ARC6iyiSfBXCiRPmbkLgsC">HBO</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="9BVguszVE199odWxO3b0gN">
+            <div class="vp-h" data-page-node-id="EGv6p2B7yBq0F7aW6uOuAV">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="XiBInqVxfOKUPhqoeN60Im"><span class="vpdot" data-page-node-id="lcwoYt1ud8Ik8nexUssCd3">✓</span> Vital Thrills</div>
+            <div class="vp-note" data-page-node-id="wDLFJFMv2HOyVZqyCZmAF7">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="yVvia0eJAYJJPS5TNC0FX9">可信度：中</div>
+            <a class="src" href="https://vitalthrills.com/hbo-max-september-2026" target="_blank" data-page-node-id="394GMpC67xcruCvAubsvLk">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="nSolxc7LHtzLv2FaOJY6aQ">
+        <summary class="head" data-page-node-id="6PYwyHaP82ljOPt3uH18Z8">
+          <div class="h-main" data-page-node-id="6zdCSq4UrnCxUu9E9WGJ2x">
+            <div class="h-title" data-page-node-id="gxzrVLwCVGhvSlXnR91NQr">《4 Blocks Zero》· HBO</div>
+            <div class="h-lead" data-page-node-id="3h9W7Qo3EnJoPRaBuGNJ6S">前传剧情剧 · 9.25 首播</div>
+            <div class="poster" data-page-node-id="Ngf3Pr9GL3rnHOrVLa9tE1">
+            <div class="ph-card" data-page-node-id="mZJFu3UJd2mSkhIJauek4F">4 Blocks Zero</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="EoYsXbMt5FxQTVADYKmUMD">
+              <span class="vbtn v-ok" data-page-node-id="GHwAXKgodIdaAfvk5A7gax">
+                <span class="vdot" data-page-node-id="v1AOkRYrm7VVWgVFqoKPFS"><svg viewBox="0 0 16 16" data-page-node-id="Y0Grf4hWJE27bTZDd7BWU4"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="U5mTBcwcbm6GKewGmB1som"/></svg></span>
+                <span class="vt" data-page-node-id="OYwBJ2qonEQZ6nXr7DCoiY">已核实</span><span class="vs" data-page-node-id="kozqKAfikHgdQxBi6zcGK9">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="RH1pDcj3vSujskguxxHta8"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Oi0XWRFGGcxSdzIuu0Z3nI"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="ONuLRj3OAKtADNBBQpOo8V"><div class="detail-inner" data-page-node-id="I6Gx9rVQtqAcQT32XS1YQC"><div class="d-body" data-page-node-id="4DvkOkGvbR6fYVRbpqgzit">
+<p class="d-desc" data-page-node-id="mR3UHZJerXEbQazEtgxmmq">《4 Blocks》前传剧情剧，8 集，9.25 首播。</p>
+
+<div class="credits" data-page-node-id="PpEAqsO0aLugpGrmreMv2d">
+            <div class="cr-row" data-page-node-id="5mtGmrWB9xHYunPSqMIWbE"><span class="cr-k" data-page-node-id="bj8vdUDwczU6xeFMO9DId5">主创阵容</span><span class="cr-v" data-page-node-id="mN9A2dliuPpaVEho8aqJrf">主创团队未详（原剧主创回归待确认）</span></div>
+            <div class="cr-row" data-page-node-id="rRzXxeXNl8yq9krMFgGav6"><span class="cr-k" data-page-node-id="HjD4lhnWp6pQv9rmwXy0Jg">相关公司</span><span class="cr-v" data-page-node-id="tgtp8jXHX7EbnpditkjFfc">HBO</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="sqHZqPzj6TASExEj0Tx9Fm">
+            <div class="vp-h" data-page-node-id="Kekb8EJleoQLW96ihZ6SfS">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="bAEBbIUim6hsvAzE1evx8O"><span class="vpdot" data-page-node-id="e8MOrNvx1Lzgt414sdGtBi">✓</span> Vital Thrills</div>
+            <div class="vp-note" data-page-node-id="Vd2bJF77HIaPHlBZrd11dI">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="PFifFh1zSQBGpLrwCrFLRb">可信度：中</div>
+            <a class="src" href="https://vitalthrills.com/hbo-max-september-2026" target="_blank" data-page-node-id="hfjSu0pPmWtSWsCSnPAdDq">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="wIG2cqzA9vHyfN1x6bnSAg">
+        <summary class="head" data-page-node-id="1QLrIzpMzBaeY4MWifAjzD">
+          <div class="h-main" data-page-node-id="HbRD2nHjRQpPFw6gqMuIcs">
+            <div class="h-title" data-page-node-id="SIzSRW5MbOsmV1qteKBQkG">《East of Eden》· Netflix</div>
+            <div class="h-lead" data-page-node-id="0FHWcgmjV9Fv0vgiDi5Tpw">Zoe Kazan 改编斯坦贝克 · 10.1</div>
+            <div class="poster" data-page-node-id="GD9yfWdbWmXeQgfOBqloQp">
+            <div class="ph-card" data-page-node-id="ILzRtEQDGNNkFX3fHSCXZx">East of Eden</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="6LN3zCuEKXenPVAziyzbLF">
+              <span class="vbtn v-ok" data-page-node-id="u3bnGW4RESrbVwW831pGEJ">
+                <span class="vdot" data-page-node-id="t0t1OZ0upoDigzt0Xv6ETq"><svg viewBox="0 0 16 16" data-page-node-id="fKzRJzA9AigACrfksN5r3j"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="bQ8gyCHiSae5OMOQa8i2dL"/></svg></span>
+                <span class="vt" data-page-node-id="ChJAF0qRFJGn3UgPRVuiBq">已核实</span><span class="vs" data-page-node-id="ypGRG7jmHoCLBmJ8EJWzUb">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="uV8dvnEP7gOZoaLAAFw39Q"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="qcloelkELVs1MVwNu2Yrkp"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="6VGto5UAexAmmYfO1FFUvu"><div class="detail-inner" data-page-node-id="gBvt8BPAbwuGNXnlmIPlJQ"><div class="d-body" data-page-node-id="tBewsbhfNZ77H1qO4GQ4Qv">
+<p class="d-desc" data-page-node-id="3p9CAKEsiqlzJGyA3SVk37">Zoe Kazan 改编斯坦贝克，Florence Pugh 主演，10.1。</p>
+
+<div class="credits" data-page-node-id="ssvkc1jvfsrXIgF1pLZ423">
+            <div class="cr-row" data-page-node-id="Nv4qMsvaqJjONs6U7d316y"><span class="cr-k" data-page-node-id="oboeWFN032EohBRw1Mw5DL">主创阵容</span><span class="cr-v" data-page-node-id="zFx1T5wYM12OANK3c6s7nB">改编 / 主创 <b data-page-node-id="SzD29shb3VYlF4NyqanLA8">佐伊·卡赞</b>；主演 <b data-page-node-id="pYS3edRGHJlm53f84IqN5E">弗洛伦丝·皮尤</b></span></div>
+            <div class="cr-row" data-page-node-id="IafPkNJ7IYtnXVBByek2QD"><span class="cr-k" data-page-node-id="jydDcPMtYN3dyU64o5mOb9">相关公司</span><span class="cr-v" data-page-node-id="bsSlNkZEENdtptyRzTXh13">Netflix</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="Y3kcFz4RV0ezO1tezkvF0S">
+            <div class="vp-h" data-page-node-id="EBJmiFGUxBTA2MuT3gAHkZ">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="1GGJyN4hFFinllePXiKx9a"><span class="vpdot" data-page-node-id="crIvQ9IYpkXdH2gHqkeuiC">✓</span> Yahoo</div>
+            <div class="vp-note" data-page-node-id="FGW6pUKYgys68b8NYzg62Q">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="SfqC1lFVOIztE0mX9DPKQX">可信度：中</div>
+            <a class="src" href="https://www.yahoo.com/entertainment/tv/articles/fall-2026-tv-preview-38-122515627.html" target="_blank" data-page-node-id="NpNTvd8HRmvuDgFqCH1OQL">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+      <details class="item " data-cred="ok" data-page-node-id="XcLizdKElh2caDaSUjCwtI">
+        <summary class="head" data-page-node-id="yKyLduvixoSFdB3oCBsDKo">
+          <div class="h-main" data-page-node-id="t4N0rwYLHeQGrppScTXnsn">
+            <div class="h-title" data-page-node-id="JPLkxZLWFiCjFL2i8LtBXI">《Brothers》· Apple TV</div>
+            <div class="h-lead" data-page-node-id="Bv6nZugjAziRmBpMHxrDMB">McConaughey / Harrelson · 9.23 开播</div>
+            <div class="poster" data-page-node-id="KCyd4uw6sFrw6XXcBvkklt">
+            <div class="ph-card" data-page-node-id="ecyEBXPsysBMidLlKkJwAz">Brothers · Apple</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="KV9ObA4AAyDhRN383eKtLj">
+              <span class="vbtn v-ok" data-page-node-id="4nizCw1M0ehFKxSYNVigG8">
+                <span class="vdot" data-page-node-id="oZG344HKoWrG5LNxKdGwQK"><svg viewBox="0 0 16 16" data-page-node-id="h9Cp21UpXpLyj7omZqL0Ln"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="6jfMSSI3iafJyqcVWQM7Kc"/></svg></span>
+                <span class="vt" data-page-node-id="MplafmlERwEaucApZF2OaR">已核实</span><span class="vs" data-page-node-id="RScijEC5NepJVQszbZPBeX">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="HWxFIlEK36KblCfG8D144a"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ImSYr5C1NlDUlq6XUU2BYy"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="rWedDZd1GBCGqCYDo79Jjn"><div class="detail-inner" data-page-node-id="VZUmari93Wxnk5Xr1AX5U2"><div class="d-body" data-page-node-id="jIiI2R0WlaepSmIdgTE28z">
+<p class="d-desc" data-page-node-id="SBY0obRbAaDogNPhNQpYfi">McConaughey / Harrelson 主演，9.23 开播。</p>
+
+<div class="credits" data-page-node-id="ExOwCiiI85llzGOrrfKlxe">
+            <div class="cr-row" data-page-node-id="Xp4KyMnzffUoG2u3Bht4Yd"><span class="cr-k" data-page-node-id="ZE0xIjwaLcCvFMrUkeuTTN">主创阵容</span><span class="cr-v" data-page-node-id="NHuCyoRxXvb8B6ApcSvFkm">主演 <b data-page-node-id="5C066op5YL4MZxojeR5yuG">马修·麦康纳、伍迪·哈里森</b></span></div>
+            <div class="cr-row" data-page-node-id="6zlFcvd7ffbcysJm3I6hYZ"><span class="cr-k" data-page-node-id="FhmidprYDrpfDBCFIFaSuu">相关公司</span><span class="cr-v" data-page-node-id="GT9lmX1j76ENgbrBw5PDt7">Apple TV+</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="epuEWiYb7uH1HMWZP3fItD">
+            <div class="vp-h" data-page-node-id="mXRfJ9ahmgmjbTqjBokG6w">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="K6oVjuwTgU6cnMvgZzCWNp"><span class="vpdot" data-page-node-id="8l0PR98rqirvoqRCPd7IC6">✓</span> Yahoo</div>
+            <div class="vp-note" data-page-node-id="K27BBfY1vo6GX3hwxcCIDF">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="rGC6yP7nYrN2YJzmGz7ZVC">可信度：中</div>
+            <a class="src" href="https://www.yahoo.com/entertainment/tv/articles/fall-2026-tv-preview-38-122515627.html" target="_blank" data-page-node-id="4A3gxs9cEzvlX1DoK7s165">查看来源</a>
+          </div></div></div></div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 其他观察（最轻） -->
+  <section id="others" class="sec-minor" aria-label="其他观察" data-page-node-id="zzlx6kHIUshPWqcPjBdF1i">
+    <h2 class="sec-title" data-page-node-id="qrwvKj3JK64ZExoFfJlG63">其他观察 <span class="count" data-page-node-id="UVxyQY8sPHOrRtzLpAbFas">行业环境</span></h2>
+
+    <div class="ogroup" data-page-node-id="MHVYoSEfmgwRjmCGJNCeYL">
+      <div class="og-head" data-page-node-id="O26r8io7IwZaJIG8Op9tCo">票房 / 市场</div>
+      <details class="item " data-cred="ok" data-page-node-id="4TH7bikgZewvFpUCghcpNR">
+        <summary class="head" data-page-node-id="3bJfUOmEhNF71YCti3Z5Mx">
+          <div class="h-main" data-page-node-id="rVf14khV7xETNqQCOaOSJe">
+            <div class="h-title" data-page-node-id="I1Jn6wPz4OmjWdyLFH295E">暑期档 124.98 亿收官</div>
+            <div class="h-lead" data-page-node-id="EC94p99CJZKCwwGM3wlB9F">同比 +4.45% · 国产片占比 71.71%</div>
+            <div class="h-foot" data-page-node-id="jjHc4FQ1uOUB8XVwwSCBVk">
+              <span class="vbtn v-ok" data-page-node-id="5guiWdhtAinKlvmG98Xok7">
+                <span class="vdot" data-page-node-id="j5Dsk7bExh3i7Ts88UFzkS"><svg viewBox="0 0 16 16" data-page-node-id="ivKNSEqV6zxartl2lY4ESn"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="Fi3lUtDBV21orSq5hm5zqC"/></svg></span>
+                <span class="vt" data-page-node-id="EL8urg0hSKIGmAx68ZKLJI">已核实</span><span class="vs" data-page-node-id="pOhaJ957YxQyMaCPf8C0qC">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="Xz9Lf1cLe08FbjM7J8uXI0"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="hEwzV9z2sjhnqNgjjYcqUh"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="E5vpUFaRXHzjTTEnaz5XBB"><div class="detail-inner" data-page-node-id="vJfj0eqT3y3ECajgWWIy0S"><div class="d-body" data-page-node-id="gsCh6BSHBaStoVtyTDVytW">
+<p class="d-desc" data-page-node-id="H1OUUeY3pHfFaAPjSBLFqN">同比 +4.45%，观影人次 3.4 亿，《功夫女足》23.15 亿夺冠，国产片占比 71.71%。</p>
+<div class="vpanel" data-page-node-id="FddoDBb9yNnuqMNNFZa39B">
+            <div class="vp-h" data-page-node-id="BbOEZhJ2Ge0btLEn11Jot7">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="KOgJb2XEck6eu3ERIyplbZ"><span class="vpdot" data-page-node-id="WQtHqeF1ehsHR1NVfxZkav">✓</span> 中国新闻网</div>
+            <div class="vp-note" data-page-node-id="0AwQ7ScR8VHlu8GgTntYlS">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="OlFh4FajsBRpC6O3ftN0lF">可信度：中</div>
+            <a class="src" href="https://new.qq.com/rain/a/20260902A02K8300" target="_blank" data-page-node-id="BG59KCkXz0YBuTXpFMuOso">查看来源</a>
+          </div></div></div></div>
+      </details>
+      <details class="item " data-cred="ok" data-page-node-id="YtE5aFvW2N5ScdmepCAtGI">
+        <summary class="head" data-page-node-id="8JU8Ama7Fkn1QabsBmygJH">
+          <div class="h-main" data-page-node-id="TjTieelctHMIE5M9tXM7nM">
+            <div class="h-title" data-page-node-id="HFhH44xw3pPM9WJza0c2Xh">北美暑期档创纪录在望</div>
+            <div class="h-lead" data-page-node-id="1Wsc8Dgghx4cjPSqzjYXM9">距 2013 年纪录仅差 2.8 亿</div>
+            <div class="h-foot" data-page-node-id="vvGjkhBubvByfGXPCzDofk">
+              <span class="vbtn v-ok" data-page-node-id="LGemBdd2e5UjmC9Lsap5oW">
+                <span class="vdot" data-page-node-id="JExhQONEvxZvC3OughXH6n"><svg viewBox="0 0 16 16" data-page-node-id="uyyyBnN41RCqv4jAm8TjPg"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="bhAa2wURnKARTPlbZxrHz2"/></svg></span>
+                <span class="vt" data-page-node-id="ZxdeWShLEqKtsexbaIoAHT">已核实</span><span class="vs" data-page-node-id="O9cQBirccEQGEHV8XrBk9J">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="0TloRXFMAxjAwjkaccmrFD"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="VYeGyV51iIEJjv4zigY2LX"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="0EAEYMBfXec2rynX1budJW"><div class="detail-inner" data-page-node-id="Jc6a5QPkb6GROh9bGguMuD"><div class="d-body" data-page-node-id="dC3QBrQWqKMRXGJZUH2wgo">
+<p class="d-desc" data-page-node-id="aeAE90oZgQ7xrf3iBaXtXS">距 2013 年 47.56 亿纪录仅差 2.8 亿，靠更少 wide release 拉动。</p>
+<div class="vpanel" data-page-node-id="2l9KOP44tqKyVDBsyFWlDu">
+            <div class="vp-h" data-page-node-id="u7xOWtAsCXskFmsTB36m5D">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="RPQ5We8aRKJX0jCEdFCxUX"><span class="vpdot" data-page-node-id="FToD27esyaVgCB3ww4AGMb">✓</span> Yahoo</div>
+            <div class="vp-note" data-page-node-id="Bdho1WCgOcoHYEhZqZyeLk">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="PFtbB7ucT8hDJzkUjTmdTL">可信度：中</div>
+            <a class="src" href="https://www.yahoo.com/entertainment/movies/articles/coyote-vs-acme-dog-stars-213634360.html" target="_blank" data-page-node-id="NCSgIWTJkuy9anjUgueBzr">查看来源</a>
+          </div></div></div></div>
+      </details>
+    </div>
+
+    <div class="ogroup" data-page-node-id="dYHvKrsm2mWm6xZs40crAF">
+      <div class="og-head" data-page-node-id="o2p4m3zkPgiTbnC526xA3W">行业 / 资本 / 公司</div>
+      <details class="item " data-cred="ok" data-page-node-id="HXBgihMIsHqNaByVvWaKqw">
+        <summary class="head" data-page-node-id="fYmZTHEvbCQNYWHvs5BYx1">
+          <div class="h-main" data-page-node-id="EVkEWQLzFeZRVfQZhGw0D9">
+            <div class="h-title" data-page-node-id="jhtOTTm0pt5N6yaRjwvefZ">博纳影业：AI 影视剧仍处早期</div>
+            <div class="h-lead" data-page-node-id="7lucP4p9wn2ODPRKBj4Gct">两连板后发异动公告</div>
+            <div class="h-foot" data-page-node-id="5A1BQptGCxJ72DBz3c5DKd">
+              <span class="vbtn v-ok" data-page-node-id="JSF7DamiTBQOsJBQwim9l1">
+                <span class="vdot" data-page-node-id="CkBu6b7BwBwSVcJZhmH6Hd"><svg viewBox="0 0 16 16" data-page-node-id="T2WkYjLL9f7EVmbGTA2IBv"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="xdpb9Yv38c1HEdXK4YfC3j"/></svg></span>
+                <span class="vt" data-page-node-id="ietlfHajy8udPEBRiiYtdU">已核实</span><span class="vs" data-page-node-id="sYtkxzWZXdHU9VdBEMhCts">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="X2B1hE9avN2tuJBCkfz0RC"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="9r0zsg2AaFTaNdLgZVDXeZ"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="vPVUMqTbFlmtryNFEV55g2"><div class="detail-inner" data-page-node-id="x7p8yrYKbNyCFHHgvhaAP2"><div class="d-body" data-page-node-id="wJEwlYb1LrC9tblxPCwu1x">
+<p class="d-desc" data-page-node-id="r6pB0OYc5MVYFYvGKUwMmP">两连板后发异动公告，称技术路径与商业模式尚需验证。</p>
+<div class="vpanel" data-page-node-id="6ZAasikqzYYR6S95tPIywL">
+            <div class="vp-h" data-page-node-id="OwDkOpyYKz3eKu6EVOBSoQ">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="BvokomFLcQJ4bLccn9Nw4a"><span class="vpdot" data-page-node-id="nvTNFEvXBkcZpFT9A2OB22">✓</span> 每日经济新闻</div>
+            <div class="vp-note" data-page-node-id="0XpkKnAdmIeZK6EyIDUhFY">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="6tIa1BvAip7XLhUzfYr8Ug">可信度：中</div>
+            <a class="src" href="https://new.qq.com/rain/a/20260902A00ILA00" target="_blank" data-page-node-id="C0jb5A8Fe422TcWxXllG9H">查看来源</a>
+          </div></div></div></div>
+      </details>
+      <details class="item  pending" data-cred="pending" data-page-node-id="mqqgx32bdNUngTJzoDiBcI">
+        <summary class="head" data-page-node-id="uP6FAd2OwxsktXDEHmJ302">
+          <div class="h-main" data-page-node-id="GVWEoBQMGcxxFnZs8IOw3v">
+            <div class="h-title" data-page-node-id="9mCQKCtzbBVm5rnzO3BOdA">派拉蒙 1109 亿收购 WBD</div>
+            <div class="h-lead" data-page-node-id="N8X8HmZTF4lDcYzJZRdSEE">卡 12 州诉讼 · 每日烧钱约 700 万</div>
+            <div class="h-foot" data-page-node-id="JzccVEWrHYq84qozBuEIPL">
+              <span class="vbtn v-pending" data-page-node-id="J7UvL9Z1TGxOOvEO9pzMRz">
+                <span class="vdot" data-page-node-id="rD9nphcjFWsQslwQN58NNk"></span>
+                <span class="vt" data-page-node-id="QO60mFNnIloq6SQ7zO7DI7">单一来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="tdDJnsxDNRsWvrkCZi5d7S"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="zbrtgHQPfb5KyTQsI6hzSx"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="BrhbPxZREOpeGXAkzfdBzy"><div class="detail-inner" data-page-node-id="iAdwGBPqcmaeuxZ3oJBCe0"><div class="d-body" data-page-node-id="8OciER2tgMc4AHqkpufj9B">
+<p class="d-desc" data-page-node-id="cU687R7ME62HSG03bYv9b3">仍卡在 12 州诉讼、每日烧钱约 700 万，内容资产流向未定。</p>
+<div class="vpanel" data-page-node-id="djqY8hF4OlMOb05hoiMVMb">
+            <div class="vp-h" data-page-node-id="EmJjsSjRcmK1qAxrNETbAw">信息验证</div>
+            <div class="vp-row pending" data-page-node-id="11sOnAhkh6dl9xr9vlZjAw"><span class="vpdot" data-page-node-id="5nuRAA7AwlTGcaeYIMGCZv">○</span> 单一来源</div>
+            <div class="vp-note" data-page-node-id="NQXGqlYz7iRY86VJNyGA9e">当前信息仅发现 1 个来源，暂未交叉印证。</div>
+            <div class="vp-cred" data-page-node-id="7dAiDVfDOABWNWOT6l0Ut0">可信度：待确认</div>
+            <span class="src muted" data-page-node-id="osGt4XvdaRfA2MHZG22nCO">前期检索</span>
+          </div></div></div></div>
+      </details>
+    </div>
+
+    <div class="ogroup" data-page-node-id="kLPCYipAl2hLRvbCACDFQq">
+      <div class="og-head" data-page-node-id="BUSSLjw4zcEYqG6E9gJzqV">政策 / 技术 / AI</div>
+      <details class="item " data-cred="ok" data-page-node-id="0ZS2mCZocDnXl9QhJBjJJy">
+        <summary class="head" data-page-node-id="N0upbHIbrmZnG847O9BICP">
+          <div class="h-main" data-page-node-id="mj27YTG3qpCGOAUwJ88ien">
+            <div class="h-title" data-page-node-id="RATLuER6jLafKIwDUqqEp3">AI 长剧《后西游记》上星</div>
+            <div class="h-lead" data-page-node-id="SiCChqDtyWUZEouHMMiIhf">湖南卫视 · 东方美学 + 情感内核</div>
+            <div class="poster" data-page-node-id="nGvMzjqtqarLHZo0MID2S4">
+            <div class="ph-card" data-page-node-id="kNXRuniyP21KJmyVFdIASj">《后西游记》</div>
+            <span class="src no-douban">暂无豆瓣词条</span>
+          </div>
+<div class="h-foot" data-page-node-id="KZxzd3h0fwXugjMRb6Z6Qv">
+              <span class="vbtn v-ok" data-page-node-id="Lwh8TUrpmygrVUJTmnrqIB">
+                <span class="vdot" data-page-node-id="8PbJI8oAL7Xo3NW8PjzYB9"><svg viewBox="0 0 16 16" data-page-node-id="lEcTKLdHwTGz6U7BAtrTwy"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ECHROl54W8rOsmYwDmrBix"/></svg></span>
+                <span class="vt" data-page-node-id="SEOLfPfMaGCbPg49SosNoS">已核实</span><span class="vs" data-page-node-id="FxiGg4HK2XWT3b00Ophs7N">· 1 来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="OuvyhCm3W1EbJvAl5wMiLa"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="WydSi2laEvzXtkiWE4t2Ct"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="tiEbR2EyNoSctZ6MRjYTlz"><div class="detail-inner" data-page-node-id="JRpHTG1ClddQOGALrI58Qy"><div class="d-body" data-page-node-id="WOWWYbGdGAw9OSm1QSLBgA">
+<p class="d-desc" data-page-node-id="bEDqHha9brx6pixCGb6XKe">东方美学 + 情感内核，被视为影视新拐点信号。</p>
+
+<div class="credits" data-page-node-id="Tq70H6O7qK1vGDNEWHrvWl">
+            <div class="cr-row" data-page-node-id="6Off18BrIphNtwGH6dsG7N"><span class="cr-k" data-page-node-id="DwK43aiIWDxfUn8F5e8wXe">主创阵容</span><span class="cr-v" data-page-node-id="JlysBIioK9e2FmuyIgFvNr">主创团队未公开披露</span></div>
+            <div class="cr-row" data-page-node-id="0EnS5DcP7zCG8B3Wr9AH3r"><span class="cr-k" data-page-node-id="54OlYXPEQeAyBvTkSAd8eV">相关公司</span><span class="cr-v" data-page-node-id="WXcKtxoD4PG4Z77VFxedPH">出品 / 制作方待公示；上星平台 湖南卫视</span></div>
+          </div>
+<div class="vpanel" data-page-node-id="udT6zMx1CRH1KJEZtaml1r">
+            <div class="vp-h" data-page-node-id="h3O518yfoRcEW2QWY9228q">信息验证</div>
+            <div class="vp-row ok" data-page-node-id="IBeJpIQQEqGYZOGUk0iHUB"><span class="vpdot" data-page-node-id="hh2KoTX1rKXzd9vlhoAGYx">✓</span> 四味毒叔</div>
+            <div class="vp-note" data-page-node-id="LDy0UIQiID0RDgCAR66OA3">1 个独立来源。</div>
+            <div class="vp-cred" data-page-node-id="kHDOkOJn071TEsbvpBOb7A">可信度：中</div>
+            <a class="src" href="https://new.qq.com/rain/a/20260902A00ILA00" target="_blank" data-page-node-id="jISRs8YqeKepn5lYDKREao">查看来源</a>
+          </div></div></div></div>
+      </details>
+      <details class="item  pending" data-cred="pending" data-page-node-id="LffDKpFM9ZSX8Oo1wbNh1Q">
+        <summary class="head" data-page-node-id="KxrhSwMDQ30FmD82Np7MHH">
+          <div class="h-main" data-page-node-id="4GDQ5WvLPyK3BNmOSJNZfL">
+            <div class="h-title" data-page-node-id="tVlaBGxVzSCF7ih9ACw2gI">可灵估值 1228 亿 / Seedance 签 MOU</div>
+            <div class="h-lead" data-page-node-id="BEwDVIIuEv4fAaAUwAqoww">AI 视频从「猎物」变「基建」</div>
+            <div class="h-foot" data-page-node-id="ahRRAL6KD7z7ybo3Lrj2iQ">
+              <span class="vbtn v-pending" data-page-node-id="Rk1S27gxcXUoKHW3jsFUUV">
+                <span class="vdot" data-page-node-id="DiSq5GgaoM2JOcWCaANKjq"></span>
+                <span class="vt" data-page-node-id="KlTTKwegVArlPD8keDCau2">单一来源</span>
+              </span>
+            </div>
+          </div>
+          <svg class="chev" viewBox="0 0 16 16" data-page-node-id="RmMtGoxKBw7fhWgjDSHdRX"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="UuAS1cMkzKNHePsugiEuSI"/></svg>
+          </summary>
+        <div class="detail" data-page-node-id="GMMj1yh9aixL7kph9B6Zuu"><div class="detail-inner" data-page-node-id="Vnrma3nMYdAontOUzEWW0z"><div class="d-body" data-page-node-id="zRhj7KiKogTiIshUOMK5yU">
+<p class="d-desc" data-page-node-id="2rHqS9CTRhuGO2Um8Njyxf">AI 视频从「猎物」变「基建」，正卡在 Seedance 2.5 链路窗口期。</p>
+<div class="vpanel" data-page-node-id="aUyLzXYdvIJCh9yWq9nrGA">
+            <div class="vp-h" data-page-node-id="LkLdzooCuMTwMCI0X7hZcC">信息验证</div>
+            <div class="vp-row pending" data-page-node-id="gXIQqoKxs9O2mPCUurDEAd"><span class="vpdot" data-page-node-id="mHe4IlGSJHQ5NdVotCsvDF">○</span> 单一来源</div>
+            <div class="vp-note" data-page-node-id="AEjW1mjDfvANcnFJMzEdHj">当前信息仅发现 1 个来源，暂未交叉印证。</div>
+            <div class="vp-cred" data-page-node-id="RcrDXB5dCSFt5cOIEOtxHB">可信度：待确认</div>
+            <span class="src muted" data-page-node-id="NUfgYVPiY22JOGXvy0hY36">前期检索</span>
+          </div></div></div></div>
+      </details>
+    </div>
+  </section>
+
+  <div class="foot" data-page-node-id="OPwzWteEbTSTYK7n3NRu2A">
+    本简报由 WorkBuddy 每日 08:00 自动生成，并推送至你的智能体邮箱。<br data-page-node-id="sjwd0dW5pkxVsDkAFgRrLY">
+    <b data-page-node-id="MSk37zv37Euor4O8n9jGj0">点任意条目展开详情</b>，点「✓ 已核实」查看来源验证，点「查看来源」深读原文。<br data-page-node-id="IL4FBBGSrStQ4prcHC9d6c">
+    每条电影 / 剧集均含「主创阵容 · 相关公司 · 物料」；无豆瓣词条者标注"暂无豆瓣词条"并取消跳转；有正式海报者相关公司参考海报信息列出前 5 位；海外演员使用豆瓣/官方中文译名，无译名者保留原文。外片片名以豆瓣中文词条为准，无对应词条则保留英文原名。<br data-page-node-id="6uIOurLrS3g15w6Q5oxhDv">
+    采集范围：中国内地 → <b data-page-node-id="hkmoFoot01">中国港澳台（香港 / 澳门 / 台湾）</b> → 海外；国内外片/剧集与港澳台条目使用同一套卡片外观，仅以地区标签与字号区分权重。<br data-page-node-id="hkmoFoot02">
+    产品逻辑：替你从海量影视信息中筛出最值得关注、且可信的部分。
+  </div>
+
+</div>
+
+
+<script data-player-ctl>
+/* 运行时降级：猫眼直链万一被封/失败，自动回退 B 站（页面生成时已备好 B 站 BV）。
+   无 B 站备选则提示「去 B 站看原片」。无需后端，纯前端兜底。 */
+window.__vFail = function (v) {
+  try {
+    var wrap = v.closest('.v-wrap');
+    if (!wrap) return;
+    var bv = v.getAttribute('data-bili-bvid');
+    if (bv) {
+      var f = document.createElement('iframe');
+      f.src = 'https://player.bilibili.com/player.html?bvid=' + bv +
+              '&p=1&danmaku=0&high_quality=1&autoplay=0';
+      f.scrolling = 'no'; f.frameBorder = '0'; f.allowFullscreen = true;
+      wrap.innerHTML = ''; wrap.appendChild(f);
+    } else {
+      var url = v.getAttribute('data-bili-url') || '';
+      wrap.innerHTML = '<div class="v-fallback">猫眼视频暂不可用' +
+        (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">去 B 站看原片</a>' : '') +
+        '</div>';
+    }
+    wrap.classList.add('v-degraded');
+  } catch (e) {}
+};
+
+/* 收起即停核心：交给原生 details —— 折叠即不可见，浏览器自动停止不可见的
+   iframe / video，无需卸载 src。这段脚本只额外做「展开新卡片时暂停其他视频」。 */
+(function () {
+  function vids(root) { return root.querySelectorAll('.v-wrap video'); }
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS') return;
+    if (d.open) {
+      /* 展开某卡片时，把其他卡片里正在响的原生视频按停，避免多路声音叠一起 */
+      document.querySelectorAll('details').forEach(function (o) {
+        if (o !== d) vids(o).forEach(function (v) { try { v.pause(); } catch (x) {} });
+      });
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

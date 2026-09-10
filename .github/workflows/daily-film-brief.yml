@@ -1,0 +1,40 @@
+name: Daily film brief
+
+on:
+  schedule:
+    # Beijing time: 10:10 and 18:00 (GitHub Actions uses UTC).
+    - cron: "10 2,10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-film-brief-production
+  cancel-in-progress: false
+
+jobs:
+  collect-render-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Collect traceable source items
+        run: python automation/brief_pipeline.py --sources automation/sources.json --output generated/latest.json
+      - name: Render daily page and archive yesterday
+        run: python automation/render_daily.py --input generated/latest.json --site app
+      - name: Persist the generated briefing and archive
+        run: |
+          git config user.name "daily-film-brief-bot"
+          git config user.email "daily-film-brief-bot@users.noreply.github.com"
+          git add app generated
+          git diff --cached --quiet || git commit -m "chore: update daily film brief"
+          git push
+      - name: Deploy to the existing Cloudflare Pages project
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy app --project-name=daily-film-brief

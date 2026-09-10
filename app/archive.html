@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F5F7">
+<title>历史归档 · 每日影视简报</title>
+<style>
+  :root{
+    --bg:#F5F5F7;--card:#FFFFFF;--label:#1D1D1F;--label-2:#6E6E73;--label-3:#8E8E93;
+    --hair-soft:rgba(60,60,67,.08);--tint:#E11D48;--maxw:480px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{overflow-x:hidden}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);color:var(--label);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue,#007AFF);text-decoration:none}
+  .app{max-width:100%;margin:0 auto;background:var(--bg);min-height:100vh;padding-bottom:64px;box-sizing:border-box;overflow-x:hidden}
+  @media(min-width:500px){.app{max-width:480px}}
+  .topbar{position:sticky;top:0;z-index:100;padding:calc(env(safe-area-inset-top) + 9px) 18px 9px;
+    background:rgba(245,245,247,.78);backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--hair-soft);
+    display:flex;align-items:baseline;justify-content:space-between}
+  .topbar .brand{font-size:15px;font-weight:600;letter-spacing:-.2px}
+  .topbar .brand b{color:var(--tint);font-weight:700}
+  .topbar .nav a{font-size:12.5px;color:var(--label-3);font-weight:500;margin-left:16px}
+  .masthead{padding:20px 20px 4px}
+  .masthead h1{font-size:28px;font-weight:700;letter-spacing:-.6px;line-height:1.1}
+  .masthead .meta{font-size:13.5px;color:var(--label-2);margin-top:7px}
+  section{padding:0 18px;margin-top:38px}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:1.4px;color:var(--label-3);text-transform:uppercase;margin:0 0 14px}
+  .empty{background:var(--card);border-radius:16px;border:1px dashed var(--hair-soft);
+    padding:34px 20px;text-align:center;color:var(--label-3);font-size:13.5px;line-height:1.7}
+  .card{background:var(--card);border-radius:16px;border:1px solid var(--hair-soft);
+    box-shadow:0 1px 2px rgba(0,0,0,.05);padding:14px 16px;margin-bottom:11px;
+    display:flex;flex-direction:column;gap:9px;
+    color:var(--label);width:100%;box-sizing:border-box}
+  .card .c-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .card .c-date{font-size:18px;font-weight:700;letter-spacing:-.3px;line-height:1.15}
+  .card .c-week{font-size:11.5px;color:var(--label-3)}
+  .card .c-bot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card .c-count{font-size:12px;color:var(--label-2);white-space:nowrap;line-height:1.5}
+  .card .c-count b{color:var(--tint);font-weight:700;font-size:15px;margin-right:1px}
+  .card .c-go{color:var(--blue,#007AFF);font-size:12.5px;font-weight:500;white-space:nowrap}
+  .foot{padding:26px 22px 44px;color:var(--label-3);font-size:11.5px;line-height:1.7;text-align:center}
+
+  /* 默认（所有端）显示「在 B 站看预告」入口卡，仅桌面宽屏才内嵌 B 站 iframe；手机端绝不依赖媒体查询命中，不会黑屏。 */
+  @media (min-width:821px){
+    .v-wrap .bili-embed{display:block}
+    .bili-jump{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">影视<b>简报</b> · 归档</div>
+    <nav class="nav"><a href="index.html">返回今天</a></nav>
+  </header>
+
+  <div class="masthead">
+    <h1>历史归档</h1>
+    <div class="meta">按日期翻阅往期简报 · 每日 08:00 自动留存一版</div>
+  </div>
+
+  <section aria-label="往期列表">
+    <div class="kicker">全部往期</div>
+    <div id="list"></div>
+  </section>
+
+  <div class="foot">
+    历史版由每日生成的简报 HTML 自动归档而来，仅供追溯当日内容。数据版权归原始信源所有。
+  </div>
+</div>
+
+<script>
+/* ===== 已归档日期清单（按日倒序，最早在最后）=====
+   每天自动化归档后，把新日期 unshift 到数组最前即可。
+   字段：d=日期(YYYY-MM-DD，对应 archive/<d>.html) | w=星期 | n=当日条目数 */
+const ARCH = [
+  {d:"2026-09-10", w:"周四", n:6},
+  {d:"2026-09-09", w:"周三", n:13},
+  {d:"2026-09-08", w:"周二", n:18},
+  {d:"2026-09-07", w:"周一", n:11},
+  {d:"2026-09-06", w:"周日", n:17},
+  {d:"2026-09-05", w:"周六", n:17},
+  {d:"2026-09-04", w:"周五", n:19},
+  {d:"2026-09-03", w:"周四", n:15},
+  {d:"2026-09-02", w:"周三", n:34},
+];
+
+const WD = {0:"周日",1:"周一",2:"周二",3:"周三",4:"周四",5:"周五",6:"周六"};
+const listEl = document.getElementById("list");
+
+function render(){
+  if(!ARCH.length){
+    listEl.innerHTML = '<div class="empty">还没有归档。明天 08:00 首期生成后，这里会自动出现往期入口。</div>';
+    return;
+  }
+  listEl.innerHTML = ARCH.map(function(it){
+    const [y,m,dd] = it.d.split("-");
+    return '<a class="card" href="archive/'+it.d+'.html">'
+      + '<div class="c-top">'
+      +   '<div class="c-date">'+y+'.'+m+'.'+dd+'</div>'
+      +   '<div class="c-week">'+(it.w||'')+'</div>'
+      + '</div>'
+      + '<div class="c-bot">'
+      +   '<div class="c-count"><b>'+it.n+'</b>条动态</div>'
+      +   '<div class="c-go">翻阅 →</div>'
+      + '</div>'
+      + '</a>';
+  }).join('');
+}
+render();
+</script>
+<script data-sw-reg>
+/* 只在「本机确实有旧缓存或装过旧 SW」时，才注册自毁版 Service Worker 去清场。
+   清完之后 caches 为空、registration 为空，这里就再也不会重复注册，不会循环。 */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  var regP = navigator.serviceWorker.getRegistration
+    ? navigator.serviceWorker.getRegistration().catch(function () { return null; })
+    : Promise.resolve(null);
+  var keyP = (window.caches && caches.keys)
+    ? caches.keys().catch(function () { return []; })
+    : Promise.resolve([]);
+  Promise.all([regP, keyP]).then(function (r) {
+    var hasOld = !!r[0] || !!navigator.serviceWorker.controller || (r[1] && r[1].length > 0);
+    if (hasOld) { navigator.serviceWorker.register('sw.js').catch(function () {}); }
+  }).catch(function () {});
+})();
+</script>
+
+<script data-autoupdate>
+/* 旧页面自愈：页面内嵌日期 vs 手机系统日期。页面比今天旧 → 强制重新拉。
+   节流规则：同一个"旧日期"下，每小时最多重试一次（key 里带小时）。
+   —— 这样早上 10:30 打开（那时今天这期还没出）刷一次没变化，11 点后会再刷一次拿到新的，
+      而不是像 v2 那样死等到 11 点才动。凌晨 0-6 点肯定没新内容，不白刷。 */
+(function () {
+  var m = document.title.match(/(\d{4}-\d{2}-\d{2})/);
+  if (!m) return;
+  var pageDate = m[1];
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function check() {
+    if (pageDate >= todayStr()) return;          /* 页面是今天或更新 → 正常，不动 */
+    var d = new Date();
+    if (d.getHours() < 6) return;                /* 凌晨没新内容，别白刷 */
+    var key = '__briefReloadedH_' + pageDate + '_' + d.getHours();  /* 每小时最多一次 */
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch (e) {}
+    var base = location.href.split('#')[0].split('?')[0];
+    location.replace(base + '?v=' + Date.now());
+  }
+  check();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') check();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) check(); });
+  setInterval(check, 5 * 60 * 1000);
+})();
+</script>
+
+
+<script data-player-ctl>
+/* 运行时降级：猫眼直链万一被封/失败，自动回退 B 站（页面生成时已备好 B 站 BV）。
+   无 B 站备选则提示「去 B 站看原片」。无需后端，纯前端兜底。 */
+window.__vFail = function (v) {
+  try {
+    var wrap = v.closest('.v-wrap');
+    if (!wrap) return;
+    var bv = v.getAttribute('data-bili-bvid');
+    if (bv) {
+      var f = document.createElement('iframe');
+      f.src = 'https://player.bilibili.com/player.html?bvid=' + bv +
+              '&p=1&danmaku=0&high_quality=1&autoplay=0';
+      f.scrolling = 'no'; f.frameBorder = '0'; f.allowFullscreen = true;
+      wrap.innerHTML = ''; wrap.appendChild(f);
+    } else {
+      var url = v.getAttribute('data-bili-url') || '';
+      wrap.innerHTML = '<div class="v-fallback">猫眼视频暂不可用' +
+        (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">去 B 站看原片</a>' : '') +
+        '</div>';
+    }
+    wrap.classList.add('v-degraded');
+  } catch (e) {}
+};
+
+/* 收起即停核心：交给原生 details —— 折叠即不可见，浏览器自动停止不可见的
+   iframe / video，无需卸载 src。这段脚本只额外做「展开新卡片时暂停其他视频」。 */
+(function () {
+  function vids(root) { return root.querySelectorAll('.v-wrap video'); }
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS') return;
+    if (d.open) {
+      /* 展开某卡片时，把其他卡片里正在响的原生视频按停，避免多路声音叠一起 */
+      document.querySelectorAll('details').forEach(function (o) {
+        if (o !== d) vids(o).forEach(function (v) { try { v.pause(); } catch (x) {} });
+      });
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>

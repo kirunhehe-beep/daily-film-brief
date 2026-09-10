@@ -1,0 +1,40 @@
+{
+  "policy": {
+    "mode": "zero_human_gate",
+    "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
+    "max_age_hours": 72,
+    "required_markets": ["m-cn", "m-hmt", "m-intl", "m-obs"],
+    "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct configured sources.",
+    "labels": {
+      "official": "官方确认",
+      "multi_source": "多源一致",
+      "single_source": "单源待确认"
+    }
+  },
+  "sources": [
+    {
+      "id": "variety-film",
+      "name": "Variety · Film",
+      "type": "rss",
+      "url": "https://variety.com/v/film/feed/",
+      "source_class": "established_media",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "max_items": 20,
+      "enabled": true
+    },
+    {
+      "id": "official-source-template",
+      "name": "待配置的官方信源",
+      "type": "rss",
+      "url": "https://example.com/official-feed.xml",
+      "source_class": "official",
+      "market": "m-cn",
+      "entry_type": "官方动态",
+      "language": "zh",
+      "max_items": 20,
+      "enabled": false
+    }
+  ]
+}
