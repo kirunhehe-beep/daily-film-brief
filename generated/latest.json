@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-13T15:59:32Z",
+  "policy": {
+    "mode": "zero_human_gate",
+    "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
+    "max_age_hours": 72,
+    "required_markets": [
+      "m-cn",
+      "m-hmt",
+      "m-intl",
+      "m-obs"
+    ],
+    "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct configured sources.",
+    "labels": {
+      "official": "官方确认",
+      "multi_source": "多源一致",
+      "single_source": "单源待确认"
+    }
+  },
+  "items": [
+    {
+      "id": "ea3eac8c04aaf08c",
+      "title": "Ali Asgari Doesn’t Believe in a Bright Future After Iran’s January Massacre – Just ‘A Bit of Light’",
+      "summary": "Iranian director Ali Asgari has no desire to repeat clichés about great expectations for things to come. “In Iran, we don’t have high hopes for the future anymore,” he states. “We’ve been waiting for good news for so many years, and it never came. But I do believe in these small specks of light. For […]",
+      "url": "https://variety.com/2026/film/global/ali-asgari-iran-january-massacre-a-bit-of-light-venice-1236860323",
+      "published": "Sun, 13 Sep 2026 14:59:42 +0000",
+      "published_at": "2026-09-13T14:59:42Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/global/ali-asgari-iran-january-massacre-a-bit-of-light-venice-1236860323",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "8c0331286650031b",
+      "title": "Jeremy Thomas Remembered as a Filmmaker ‘Full of Stories’ and a ‘Rebel With Taste’: ‘The Canon of His Work Is Unmatched’",
+      "summary": "Tributes have begun flowing from across the film world for Jeremy Thomas, the legendary British producer who passed away on Friday at the age of 77. Terry Gilliam, who worked with Thomas on “Tideland” and “The Man Who Killed Don Quixote,” told Variety, “Jeremy Thomas loved making movies. He loved every aspect of the business, […]",
+      "url": "https://variety.com/2026/film/global/jeremy-thomas-tributes-luca-guadagnino-1236859499",
+      "published": "Sun, 13 Sep 2026 14:00:00 +0000",
+      "published_at": "2026-09-13T14:00:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/global/jeremy-thomas-tributes-luca-guadagnino-1236859499",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "931b289803af4141",
+      "title": "TIFF 2026: 20 International Titles to Track, From Feng-I Fiona Roan’s Shuhua Starrer to a Taxidermy Musical and a John Madden Parkinson’s Rom-Com",
+      "summary": "Helen Mirren, Laura Linney, Rhys Ifans, Erin Doherty and James McAvoy star in three of the biggest U.K. titles world premiering at Toronto and making Variety’s 2026 selection of 20 International Titles to Track at this year’s Toronto.Jodie Comer sings (very creditably Variety suggests), in a fourth U.K. package, gothic rom-com “Stuffed” as romance takes […]",
+      "url": "https://variety.com/2026/film/global/tiff-2026-20-international-titles-to-track-1236860336",
+      "published": "Sun, 13 Sep 2026 14:29:44 +0000",
+      "published_at": "2026-09-13T14:29:44Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/global/tiff-2026-20-international-titles-to-track-1236860336",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "ccf001803984f2a6",
+      "title": "Variety and Chanel’s Women in Film Dinner: Ayo Edebiri, Lily-Rose Depp, Michelle Yeoh, Courteney Cox and More Light Up TIFF",
+      "summary": "Variety and Chanel’s annual Women in Film dinner was the place to see and be chic at the Toronto Film Festival on Friday night. The hottest invite of the festival gathered prominent women and nonbinary filmmakers, where the legendary fashion house co-hosted an evening to remember with Variety co-presidents Ramin Setoodeh (also co-editor-in-chief) and Dea […]",
+      "url": "https://variety.com/2026/film/variety-events/variety-chanel-tiff-dinner-ayo-edebiri-lily-rose-depp-fala-chen-patricia-arquette-michelle-yeoh-courteney-cox-1236860124",
+      "published": "Sun, 13 Sep 2026 12:15:00 +0000",
+      "published_at": "2026-09-13T12:15:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/variety-events/variety-chanel-tiff-dinner-ayo-edebiri-lily-rose-depp-fala-chen-patricia-arquette-michelle-yeoh-courteney-cox-1236860124",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "6486cfcd80e9cfbf",
+      "title": "‘Angh’ Cinematographer on How He Captured the Film’s Challenging Nighttime Sequences",
+      "summary": "Cinematographer Adam Pietkiewicz has been dealing with patchy internet over the past few days. He and his crew have been sailing on the Baltic Sea and have finally docked at an undisclosed location in northeastern Poland. In a few weeks, Pietkiewicz will attend the Toronto International Film Festival to accept the Variety TIFF Artisan Award […]",
+      "url": "https://variety.com/2026/artisans/news/angh-cinematography-adam-pietkiewicz-1236846097",
+      "published": "Sun, 13 Sep 2026 15:30:00 +0000",
+      "published_at": "2026-09-13T15:30:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/artisans/news/angh-cinematography-adam-pietkiewicz-1236846097",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "963e29745533f106",
+      "title": "‘Much Ado About Nothing’ Gets Modern War-Zone Update From Lakeem Rose (EXCLUSIVE)",
+      "summary": "British writer-director Lakeem Rose, is developing his feature debut, a contemporary adaptation of William Shakespeare’s “Much Ado About Nothing,” with Canadian producers Plato Fountidakis and Paul Rapovski and Hong Kong-based producer and casting director Mike Leeder. In Rose’s version, the story shifts to a world just after a modern-day war, centering on four returning soldiers […]",
+      "url": "https://variety.com/2026/film/markets-festivals/much-ado-about-nothing-modern-war-zone-update-lakeem-rose-1236856995",
+      "published": "Sun, 13 Sep 2026 13:15:00 +0000",
+      "published_at": "2026-09-13T13:15:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/markets-festivals/much-ado-about-nothing-modern-war-zone-update-lakeem-rose-1236856995",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "de4d35cb99cec4a0",
+      "title": "‘Severance’ Producer Nicholas Weinstock Boards Indian Fantasy-Horror ‘Tongue’ Starring Sayani Gupta (EXCLUSIVE)",
+      "summary": "Nicholas Weinstock, executive producer of the Apple TV+ series “Severance,” has boarded “Tongue,” an Indian fantasy-horror feature written and directed by Krishnarjun Bhattacharya and starring Sayani Gupta. Weinstock produces through his banner Invention Studios alongside Divya D’Souza, with Gupta serving as the film’s Indian producer. The film earned a spot in the South Asian Canadian […]",
+      "url": "https://variety.com/2026/film/markets-festivals/severance-producer-tongue-sayani-gupta-1236860472",
+      "published": "Sun, 13 Sep 2026 15:54:00 +0000",
+      "published_at": "2026-09-13T15:54:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/markets-festivals/severance-producer-tongue-sayani-gupta-1236860472",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "965ee8f132d55c62",
+      "title": "‘The Stunt Driver’ Review: Jay Baruchel Takes a Leap into Tepid Biopic Territory",
+      "summary": "In “The Stunt Driver,” Jay Baruchel reteams with his “Goon” director Michael Dowse and takes on a showy lead part as stunt driver Ken Carter, who’s best remembered for a jump he didn’t make: a proposed mile-long leap over the St. Lawrence River in a rocket-powered car. The five years spent on that ill-fated project […]",
+      "url": "https://variety.com/2026/film/reviews/the-stunt-driver-review-1236860383",
+      "published": "Sun, 13 Sep 2026 12:12:46 +0000",
+      "published_at": "2026-09-13T12:12:46Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/reviews/the-stunt-driver-review-1236860383",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "aee82c4e1994f382",
+      "title": "‘Union Town’ Review: Barbara Kopple’s Labor Rights Documentary Is Both Aptly Angry and Optimistically Community-Minded",
+      "summary": "Across the harrowing financial realities of late capitalism, an indisputable global fact is the injustices faced by countless workers who deliver everything we have come to rely on, from food orders to Amazon purchases. Despite their hard work under unideal, sometimes even unsafe conditions, it’s no secret that delivery staff have been barely compensated with […]",
+      "url": "https://variety.com/2026/film/reviews/union-town-review-1236854414",
+      "published": "Sun, 13 Sep 2026 15:45:25 +0000",
+      "published_at": "2026-09-13T15:45:25Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/reviews/union-town-review-1236854414",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "b73f06d5d4012b54",
+      "title": "‘Your Mother Your Mother Your Mother’ Star Adia On Film Debut Opposite Mahershala Ali, Getting Certified as a Doula: ‘Birth Work Fills My Soul’",
+      "summary": "Twenty-five-year-old newcomer Adia never really imagined becoming a movie star. Growing up, she was focused on becoming a professional dancer before a hip injury derailed that dream. That’s when the high school senior discovered acting. “I decided to take an acting class, just to try it out and see if that would be comparable or […]",
+      "url": "https://variety.com/2026/film/features/your-mother-your-mother-your-mother-adia-mahershala-ali-doula-1236859117",
+      "published": "Sun, 13 Sep 2026 14:00:00 +0000",
+      "published_at": "2026-09-13T14:00:00Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "en",
+      "confidence": "single_source",
+      "sources": [
+        {
+          "id": "variety-film",
+          "name": "Variety · Film",
+          "url": "https://variety.com/2026/film/features/your-mother-your-mother-your-mother-adia-mahershala-ali-doula-1236859117",
+          "class": "established_media"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "items": 10,
+    "failed_sources": 0,
+    "configured_sources": 1,
+    "dropped_stale": 0,
+    "dropped_undated": 0,
+    "market_coverage": {
+      "m-cn": {
+        "items": 0,
+        "successful_sources": 0
+      },
+      "m-hmt": {
+        "items": 0,
+        "successful_sources": 0
+      },
+      "m-intl": {
+        "items": 10,
+        "successful_sources": 1
+      },
+      "m-obs": {
+        "items": 0,
+        "successful_sources": 0
+      }
+    }
+  }
+}
