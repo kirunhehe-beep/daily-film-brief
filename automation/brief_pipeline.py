@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import email.utils
 import hashlib
 import html
 import json
@@ -41,6 +42,25 @@ def canonical_url(value: str) -> str:
 
 def title_key(value: str) -> str:
     return re.sub(r"[^\w\u4e00-\u9fff]+", "", value.lower())[:160]
+
+
+def published_at(value: str) -> dt.datetime | None:
+    """Normalise RSS/Atom dates without inventing a timestamp when absent."""
+    raw = clean_text(value)
+    if not raw:
+        return None
+    try:
+        parsed = email.utils.parsedate_to_datetime(raw)
+    except (TypeError, ValueError, IndexError):
+        parsed = None
+    if parsed is None:
+        try:
+            parsed = dt.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
 
 
 def child_text(entry: ET.Element, names: set[str]) -> str:
@@ -94,10 +114,15 @@ def confidence_for(source: dict) -> str:
 
 def run(config: dict) -> dict:
     policy = config["policy"]
-    generated_at = dt.datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    now = dt.datetime.now(UTC).replace(microsecond=0)
+    generated_at = now.isoformat().replace("+00:00", "Z")
+    max_age = dt.timedelta(hours=float(policy.get("max_age_hours", 72)))
     candidates: list[dict] = []
     errors: list[dict] = []
     seen_links: set[str] = set()
+    dropped_stale = 0
+    dropped_undated = 0
+    successful_sources: set[str] = set()
 
     for source in config.get("sources", []):
         if not source.get("enabled"):
@@ -107,8 +132,17 @@ def run(config: dict) -> dict:
         except Exception as exc:  # A failed source should be observable, not silently omitted.
             errors.append({"source_id": source.get("id"), "message": str(exc)})
             continue
+        successful_sources.add(source["id"])
         for item in items:
             if item["url"] in seen_links:
+                continue
+            timestamp = published_at(item["published"])
+            if timestamp is None:
+                dropped_undated += 1
+                continue
+            # A future date is also suspicious: it cannot truthfully be a current item.
+            if timestamp > now + dt.timedelta(hours=1) or now - timestamp > max_age:
+                dropped_stale += 1
                 continue
             seen_links.add(item["url"])
             summary = item["summary"][:800]
@@ -118,6 +152,7 @@ def run(config: dict) -> dict:
                 "summary": summary,
                 "url": item["url"],
                 "published": item["published"],
+                "published_at": timestamp.isoformat().replace("+00:00", "Z"),
                 "market": source.get("market", "m-obs"),
                 "entry_type": source.get("entry_type", "影视动态"),
                 "language": source.get("language", "und"),
@@ -140,13 +175,30 @@ def run(config: dict) -> dict:
         merged.append(primary)
 
     merged.sort(key=lambda item: (item["market"], item["title"].lower()))
+    market_coverage = {
+        market: {
+            "items": sum(1 for item in merged if item["market"] == market),
+            "successful_sources": sum(
+                1 for source in config.get("sources", [])
+                if source.get("enabled") and source.get("market") == market and source.get("id") in successful_sources
+            ),
+        }
+        for market in policy.get("required_markets", [])
+    }
     return {
         "schema_version": 1,
         "generated_at": generated_at,
         "policy": policy,
         "items": merged,
         "errors": errors,
-        "stats": {"items": len(merged), "failed_sources": len(errors), "configured_sources": len([s for s in config.get("sources", []) if s.get("enabled")])}
+        "stats": {
+            "items": len(merged),
+            "failed_sources": len(errors),
+            "configured_sources": len([s for s in config.get("sources", []) if s.get("enabled")]),
+            "dropped_stale": dropped_stale,
+            "dropped_undated": dropped_undated,
+            "market_coverage": market_coverage,
+        }
     }
 
 

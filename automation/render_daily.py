@@ -8,6 +8,7 @@ import datetime as dt
 import html
 import json
 import re
+import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -34,20 +35,30 @@ def evidence(item: dict, labels: dict) -> tuple[str, str]:
     return ("ok" if level in {"official", "multi_source"} else "pending", labels.get(level, "单源待确认"))
 
 
+def item_time(item: dict) -> str:
+    """Show the source timestamp in Beijing time; never use generation time instead."""
+    raw = item.get("published_at", "")
+    try:
+        timestamp = dt.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        return timestamp.astimezone(ZoneInfo("Asia/Shanghai")).strftime("%m/%d %H:%M")
+    except (ValueError, TypeError):
+        return "——"
+
+
 def render_item(item: dict, labels: dict) -> str:
     cred_class, cred_label = evidence(item, labels)
     source_rows = []
     for source in item.get("sources", []):
         source_rows.append(
             '<a class="sb-i sb-main" href="{url}" target="_blank" rel="noopener">'
-            '<span class="sb-b">{name}</span>{name}<span class="sb-a">&#8599;</span></a>'.format(
+            '<span class="sb-b">{name}</span><span class="sb-name">{name}</span><span class="sb-a">&#8599;</span></a>'.format(
                 url=esc(source.get("url", "")), name=esc(source.get("name", "来源"))
             )
         )
     source_names = " / ".join(source.get("name", "来源") for source in item.get("sources", [])) or "来源待补充"
     return (
         '<details class="row" data-cred="{cred_class}"><summary>'
-        '<div class="r-line"><span class="r-time">——</span><span class="r-kind">{kind}</span>'
+        '<div class="r-line"><span class="r-time">{source_time}</span><span class="r-kind">{kind}</span>'
         '<span class="r-cred {cred_class}">{cred_label} · {source_count} 来源</span>'
         '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
         '<div class="r-title">{title}</div><div class="r-lead">{summary}</div>'
@@ -58,6 +69,7 @@ def render_item(item: dict, labels: dict) -> str:
         cred_class=cred_class,
         cred_label=esc(cred_label),
         source_count=len(item.get("sources", [])),
+        source_time=esc(item_time(item)),
         kind=esc(item.get("entry_type", "影视动态")),
         title=esc(item.get("title", "未命名资讯")),
         summary=esc(item.get("summary") or "原始来源未提供摘要，请展开查看信源。"),
@@ -121,16 +133,18 @@ def main() -> int:
     date_iso, date_cn, weekday = display_date(now)
     title_match = re.search(r"<title>每日影视简报 · (\d{4}-\d{2}-\d{2})</title>", old_html)
     old_date = title_match.group(1) if title_match else date_iso
-    if old_date != date_iso:
-        archive_previous(site, old_html, old_date, int(payload["stats"]["items"]))
-
     grouped = {market: [] for market in MARKETS}
     for item in payload["items"]:
         grouped.get(item.get("market"), grouped["m-obs"]).append(item)
     missing = [market for market in payload["policy"].get("required_markets", []) if not grouped.get(market)]
     if missing:
         names = ", ".join(MARKETS.get(market, market) for market in missing)
-        raise SystemExit("Refusing production render: required markets have no traceable items: " + names)
+        print("Publication skipped: required markets have no traceable items: " + names, file=sys.stderr)
+        return 3
+    # A rejected run must be a true no-op for the deployable site, including the
+    # archive. Do this only after every required market has passed validation.
+    if old_date != date_iso:
+        archive_previous(site, old_html, old_date, int(payload["stats"]["items"]))
     result = old_html
     labels = payload["policy"]["labels"]
     for market, name in MARKETS.items():
