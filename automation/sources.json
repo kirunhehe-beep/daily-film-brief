@@ -3,6 +3,7 @@
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
     "max_age_hours": 72,
+    "render_languages": ["zh"],
     "required_markets": ["m-cn", "m-hmt", "m-intl", "m-obs"],
     "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct configured sources.",
     "labels": {

@@ -122,6 +122,7 @@ def run(config: dict) -> dict:
     seen_links: set[str] = set()
     dropped_stale = 0
     dropped_undated = 0
+    dropped_language = 0
     successful_sources: set[str] = set()
 
     for source in config.get("sources", []):
@@ -174,6 +175,15 @@ def run(config: dict) -> dict:
             primary["sources"] = all_sources
         merged.append(primary)
 
+    allowed_languages = set(policy.get("render_languages", []))
+    if allowed_languages:
+        eligible = []
+        for item in merged:
+            if item["language"] in allowed_languages:
+                eligible.append(item)
+            else:
+                dropped_language += 1
+        merged = eligible
     merged.sort(key=lambda item: (item["market"], item["title"].lower()))
     market_coverage = {
         market: {
@@ -197,6 +207,8 @@ def run(config: dict) -> dict:
             "configured_sources": len([s for s in config.get("sources", []) if s.get("enabled")]),
             "dropped_stale": dropped_stale,
             "dropped_undated": dropped_undated,
+            "dropped_language": dropped_language,
+            "successful_sources": len(successful_sources),
             "market_coverage": market_coverage,
         }
     }
@@ -213,7 +225,9 @@ def main() -> int:
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(payload["stats"], ensure_ascii=False))
-    return 0 if payload["stats"]["items"] else 2
+    # An empty eligible set is valid (for example, only non-Chinese source
+    # entries arrived). A complete source-fetch failure is not.
+    return 0 if payload["stats"]["successful_sources"] else 2
 
 
 if __name__ == "__main__":
