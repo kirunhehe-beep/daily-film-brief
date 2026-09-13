@@ -24,24 +24,8 @@ jobs:
       - name: Collect traceable source items
         run: python automation/brief_pipeline.py --sources automation/sources.json --output generated/latest.json
       - name: Render daily page and archive yesterday
-        id: render
-        shell: bash
-        run: |
-          set +e
-          python automation/render_daily.py --input generated/latest.json --site app
-          status=$?
-          set -e
-          if [ "$status" -eq 0 ]; then
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-          elif [ "$status" -eq 3 ]; then
-            echo "deploy=false" >> "$GITHUB_OUTPUT"
-            echo "### Publication skipped" >> "$GITHUB_STEP_SUMMARY"
-            echo "Required market coverage is incomplete. The existing Pages version was not changed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            exit "$status"
-          fi
+        run: python automation/render_daily.py --input generated/latest.json --site app
       - name: Persist the generated briefing and archive
-        if: steps.render.outputs.deploy == 'true'
         run: |
           git config user.name "daily-film-brief-bot"
           git config user.email "daily-film-brief-bot@users.noreply.github.com"
@@ -49,7 +33,6 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: update daily film brief"
           git push
       - name: Deploy to the existing Cloudflare Pages project
-        if: steps.render.outputs.deploy == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -8,7 +8,6 @@ import datetime as dt
 import html
 import json
 import re
-import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -18,6 +17,13 @@ MARKETS = {
     "m-hmt": "中国港澳台",
     "m-intl": "海外",
     "m-obs": "行业观察",
+}
+
+EMPTY_MARKET_COPY = {
+    "m-cn": ("今日暂无新的中国内地影视动态", "下一次更新会继续检索新增消息。"),
+    "m-hmt": ("本轮暂未发现中国港澳台的新进展", "有新的可收录资讯时会在下一版出现。"),
+    "m-intl": ("海外市场本轮暂无新增消息", "下次自动更新将继续留意。"),
+    "m-obs": ("行业观察暂未有新的收录项", "市场没有新节点时，留白也值得保留。"),
 }
 
 
@@ -43,6 +49,16 @@ def item_time(item: dict) -> str:
         return timestamp.astimezone(ZoneInfo("Asia/Shanghai")).strftime("%m/%d %H:%M")
     except (ValueError, TypeError):
         return "——"
+
+
+def render_empty_market(market: str, name: str) -> str:
+    headline, detail = EMPTY_MARKET_COPY.get(
+        market,
+        (f"{name}本轮暂无新增消息", "下次自动更新将继续留意。"),
+    )
+    return '<div class="mk-empty"><strong>{headline}</strong><span>{detail}</span></div>'.format(
+        headline=esc(headline), detail=esc(detail)
+    )
 
 
 def render_item(item: dict, labels: dict) -> str:
@@ -136,13 +152,8 @@ def main() -> int:
     grouped = {market: [] for market in MARKETS}
     for item in payload["items"]:
         grouped.get(item.get("market"), grouped["m-obs"]).append(item)
-    missing = [market for market in payload["policy"].get("required_markets", []) if not grouped.get(market)]
-    if missing:
-        names = ", ".join(MARKETS.get(market, market) for market in missing)
-        print("Publication skipped: required markets have no traceable items: " + names, file=sys.stderr)
-        return 3
-    # A rejected run must be a true no-op for the deployable site, including the
-    # archive. Do this only after every required market has passed validation.
+    # A market without eligible items is rendered as an explicit empty state;
+    # other markets must keep updating instead of leaving the whole edition stale.
     if old_date != date_iso:
         archive_previous(site, old_html, old_date, int(payload["stats"]["items"]))
     result = old_html
@@ -151,7 +162,7 @@ def main() -> int:
         items = grouped[market]
         feed = "".join(render_item(item, labels) for item in items)
         if not feed:
-            feed = '<div class="mk-empty">本次自动采集未发现可追溯的' + name + '条目。</div>'
+            feed = render_empty_market(market, name)
         result = replace_feed(result, market, feed)
 
     total = len(payload["items"])
