@@ -1,1 +1,106 @@
-@automation/sources.json
+{
+  "policy": {
+    "mode": "zero_human_gate",
+    "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
+    "max_age_hours": 120,
+    "max_items_per_market": {
+      "m-cn": 10,
+      "m-hmt": 6,
+      "m-intl": 6,
+      "m-obs": 4
+    },
+    "render_languages": ["zh"],
+    "excluded_entry_types": ["短剧动态"],
+    "excluded_keywords": ["短剧", "微短剧"],
+    "required_markets": ["m-cn", "m-hmt", "m-intl", "m-obs"],
+    "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct configured sources.",
+    "labels": {
+      "official": "官方确认",
+      "multi_source": "多源一致",
+      "single_source": "单源待确认"
+    }
+  },
+  "sources": [
+    {
+      "id": "variety-film",
+      "name": "Variety · Film",
+      "type": "rss",
+      "url": "https://variety.com/v/film/feed/",
+      "source_class": "established_media",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "content_priority": 0,
+      "language": "en",
+      "max_items": 5,
+      "enabled": true
+    },
+    {
+      "id": "film-world-news",
+      "name": "电影界 · 电影新闻",
+      "type": "rss",
+      "url": "https://app.dianyingjie.com.cn/?app=rss&controller=index&action=feed&catid=1",
+      "source_class": "trade_media",
+      "market": "m-cn",
+      "entry_type": "电影动态",
+      "content_priority": 0,
+      "enrich_media": true,
+      "language": "zh",
+      "max_items": 5,
+      "enabled": true
+    },
+    {
+      "id": "film-world-series",
+      "name": "电影界 · 电视与剧集",
+      "type": "rss",
+      "url": "https://app.dianyingjie.com.cn/?app=rss&controller=index&action=feed&catid=26",
+      "source_class": "trade_media",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "content_priority": 1,
+      "enrich_media": true,
+      "language": "zh",
+      "max_items": 5,
+      "enabled": true
+    },
+    {
+      "id": "film-world-short-form",
+      "name": "电影界 · 短剧",
+      "type": "rss",
+      "url": "https://app.dianyingjie.com.cn/?app=rss&controller=index&action=feed&catid=79",
+      "source_class": "trade_media",
+      "market": "m-cn",
+      "entry_type": "短剧动态",
+      "content_priority": 2,
+      "enrich_media": true,
+      "language": "zh",
+      "max_items": 3,
+      "enabled": false
+    },
+    {
+      "id": "film-world-industry-desk",
+      "name": "电影界 · 影视行业线索",
+      "type": "rss",
+      "url": "https://app.dianyingjie.com.cn/?app=rss&controller=index&action=feed&catid=77",
+      "source_class": "trade_media",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "content_priority": 3,
+      "enrich_media": true,
+      "language": "zh",
+      "max_items": 6,
+      "enabled": true
+    },
+    {
+      "id": "official-source-template",
+      "name": "待配置的官方信源（示例，不参与采集）",
+      "type": "rss",
+      "url": "https://example.com/official-feed.xml",
+      "source_class": "official",
+      "market": "m-cn",
+      "entry_type": "官方动态",
+      "language": "zh",
+      "max_items": 20,
+      "enabled": false
+    }
+  ]
+}

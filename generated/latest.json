@@ -1,1 +1,161 @@
-@generated/latest.json
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-14T13:39:04Z",
+  "policy": {
+    "mode": "zero_human_gate",
+    "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
+    "max_age_hours": 120,
+    "max_items_per_market": {
+      "m-cn": 10,
+      "m-hmt": 6,
+      "m-intl": 6,
+      "m-obs": 4
+    },
+    "render_languages": [
+      "zh"
+    ],
+    "excluded_entry_types": [
+      "短剧动态"
+    ],
+    "excluded_keywords": [
+      "短剧",
+      "微短剧"
+    ],
+    "required_markets": [
+      "m-cn",
+      "m-hmt",
+      "m-intl",
+      "m-obs"
+    ],
+    "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct configured sources.",
+    "labels": {
+      "official": "官方确认",
+      "multi_source": "多源一致",
+      "single_source": "单源待确认"
+    }
+  },
+  "items": [
+    {
+      "id": "a8970128ffe0842f",
+      "title": "电影《独龙族的春天》入围世界民族电影节 导演张一鸣获最佳制片人大奖",
+      "summary": "近日，民族题材影片《独龙族的春天》成功入围2026世界民族电影节，影片导演张一鸣获得最佳制片人成就大奖，向世界银幕讲述独龙族的发展故事。 世界民族电影节每年在美国洛 近日，民族题材影片《独龙族的春天》成功入围2026世界民族电影节，影片导演张一鸣获得最佳制片人成就大奖，向世界银幕讲述独龙族的发展故事。",
+      "url": "https://www.dianyingjie.com.cn/2026/0910/405722.shtml",
+      "published": "Thu, 10 Sep 2026 22:09:05 +0800",
+      "published_at": "2026-09-10T14:09:05Z",
+      "market": "m-cn",
+      "entry_type": "电影动态",
+      "language": "zh",
+      "content_priority": 0,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049346583.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-news",
+          "name": "电影界 · 电影新闻",
+          "url": "https://www.dianyingjie.com.cn/2026/0910/405722.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "076fff81dbe48bea",
+      "title": "惊悚悬疑电影《荒山野店》9月16日爱奇艺、优酷全网首播",
+      "summary": "电影《荒山野店》剧情讲述六月的雨夜，荒山诡雾弥漫。婉秋一行人进山团建，意外撞见山石后鬼影飘忽、面具怪人潜行藏匿，山间阴气森森，诡异至极。",
+      "url": "https://www.dianyingjie.com.cn/2026/0910/405721.shtml",
+      "published": "Thu, 10 Sep 2026 22:09:03 +0800",
+      "published_at": "2026-09-10T14:09:03Z",
+      "market": "m-cn",
+      "entry_type": "电影动态",
+      "language": "zh",
+      "content_priority": 0,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049344726.png",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-news",
+          "name": "电影界 · 电影新闻",
+          "url": "https://www.dianyingjie.com.cn/2026/0910/405721.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "a9f43b45880d6bc8",
+      "title": "优酷《冬城猎凶》定档9月10日，双案横跨十三年万茜王阳共破迷局",
+      "summary": "讲述横跨1999年至2012年，一桩未解的银行抢劫案与一系列儿童拐卖案之间潜伏了13年的隐秘关联，两位刑警在追查中逐渐揭开真相，破解双案迷局，并将嫌疑人绳之以法。 由中央电视台、优酷出品，宁波影视艺术有限责任公司、北京摩天轮文化传媒有限公司联合出品，北京银谷映像影视文化发展有限公司承制。由翁子光任监制及总导演，徐忱导演，娄霄鹏编剧，万茜、王洋（王阳）、余文乐（按姓氏笔画排序）领衔主演...",
+      "url": "https://www.dianyingjie.com.cn/2026/0910/405724.shtml",
+      "published": "Thu, 10 Sep 2026 22:09:09 +0800",
+      "published_at": "2026-09-10T14:09:09Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049350722.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0910/405724.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "7e656dbbcecf1eaa",
+      "title": "《打歌2026・X舞台》首期嘉宾集结，多风格舞台即将燃炸现场",
+      "summary": "真开麦！真直播！由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》将于9月11日上线。 真开麦！真直播！由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》将于9月11日上线。高能直播舞台正式启幕前，首期嘉宾阵容抢先揭晓！王琳凯（小鬼）、李佳薇、姚晓棠、蒋敦豪、吉克隽逸、海来阿木（按照姓氏笔画排序）将携自己的新歌点燃现场，开启音...",
+      "url": "https://www.dianyingjie.com.cn/2026/0910/405723.shtml",
+      "published": "Thu, 10 Sep 2026 22:09:07 +0800",
+      "published_at": "2026-09-10T14:09:07Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049348601.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0910/405723.shtml",
+          "class": "trade_media"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "items": 4,
+    "failed_sources": 0,
+    "configured_sources": 4,
+    "dropped_stale": 10,
+    "dropped_undated": 0,
+    "dropped_language": 5,
+    "dropped_excluded": 2,
+    "dropped_capacity": 0,
+    "successful_sources": 4,
+    "market_coverage": {
+      "m-cn": {
+        "items": 4,
+        "successful_sources": 2
+      },
+      "m-hmt": {
+        "items": 0,
+        "successful_sources": 0
+      },
+      "m-intl": {
+        "items": 0,
+        "successful_sources": 1
+      },
+      "m-obs": {
+        "items": 0,
+        "successful_sources": 1
+      }
+    }
+  }
+}
