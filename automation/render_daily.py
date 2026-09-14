@@ -80,14 +80,57 @@ def render_item(item: dict, labels: dict) -> str:
             )
         )
     source_names = " / ".join(source.get("name", "来源") for source in item.get("sources", [])) or "来源待补充"
+    summary = item.get("summary") or "原始来源未提供摘要，请展开查看信源。"
+    image_url = item.get("image_url", "")
+    video_url = item.get("video_url", "")
+    primary_url = (item.get("sources") or [{}])[0].get("url", item.get("url", ""))
+    if image_url:
+        thumbnail = '<img class="r-thumb" src="{url}" alt="{title}" loading="lazy" referrerpolicy="no-referrer">'.format(
+            url=esc(image_url), title=esc(item.get("title", "影视物料"))
+        )
+    else:
+        thumbnail = '<span class="poster-placeholder" aria-label="暂无来源图片">FILM</span>'
+
+    media_parts = []
+    if video_url:
+        media_parts.append(
+            '<div class="v-wrap"><video controls preload="metadata" playsinline src="{url}"></video></div>'
+            '<div class="v-src">来源页面提供的视频物料</div>'.format(url=esc(video_url))
+        )
+    if image_url:
+        media_parts.append(
+            '<figure class="source-media"><a href="{source}" target="_blank" rel="noopener">'
+            '<img src="{image}" alt="{title}" loading="lazy" referrerpolicy="no-referrer"></a>'
+            '<figcaption>来源图片 · 点击查看原始报道</figcaption></figure>'.format(
+                source=esc(primary_url), image=esc(image_url), title=esc(item.get("title", "影视物料"))
+            )
+        )
+    if not video_url:
+        media_parts.append(
+            '<div class="media-empty"><strong>预告片暂未收录</strong>'
+            '<span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div>'
+        )
+
+    verify_mark = "✓" if cred_class == "ok" else "?"
+    verify_text = (
+        "来源信息已达到当前标注条件，仍建议通过原文核对具体口径。"
+        if cred_class == "ok"
+        else "当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。"
+    )
+    material_label = "含图片 / 视频 / 信源" if video_url else ("含来源图片 / 信源" if image_url else "查看物料与信源")
     return (
-        '<details class="row" data-cred="{cred_class}"><summary>'
+        '<details class="row row-media" data-cred="{cred_class}"><summary>'
         '<div class="r-line"><span class="r-time">{source_time}</span><span class="r-kind">{kind}</span>'
         '<span class="r-cred {cred_class}">{cred_label} · {source_count} 来源</span>'
         '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-        '<div class="r-title">{title}</div><div class="r-lead">{excerpt}</div>'
-        '<div class="r-src"><span class="dot"></span>来源 · {source_names}</div></summary>'
-        '<div class="r-det"><p class="d-desc">{summary}</p><div class="srcbox"><div class="sb-h">信源</div>'
+        '<div class="r-media-body">{thumbnail}<div class="r-media-txt"><div class="r-title">{title}</div>'
+        '<div class="r-lead">{excerpt}</div><div class="r-src"><span class="dot"></span>来源 · {source_names}</div>'
+        '</div></div><div class="r-mat">{material_label}</div></summary>'
+        '<div class="r-det"><p class="d-desc">{summary}</p>{media_parts}'
+        '<div class="vpanel {cred_class}"><div class="vp-h">信息验证</div>'
+        '<div class="vp-row {cred_class}"><span class="vpdot">{verify_mark}</span>{verify_text}</div>'
+        '<div class="vp-note">可信度：{cred_label}。页面不对单一媒体线索作事实背书。</div></div>'
+        '<div class="srcbox"><div class="sb-h">原始信源</div>'
         '<div class="sb-list">{source_rows}</div></div></div></details>'
     ).format(
         cred_class=cred_class,
@@ -96,8 +139,13 @@ def render_item(item: dict, labels: dict) -> str:
         source_time=esc(item_time(item)),
         kind=esc(item.get("entry_type", "影视动态")),
         title=esc(item.get("title", "未命名资讯")),
-        summary=esc(item.get("summary") or "原始来源未提供摘要，请展开查看信源。"),
-        excerpt=esc(excerpt(item.get("summary") or "原始来源未提供摘要，请展开查看信源。")),
+        summary=esc(summary),
+        excerpt=esc(excerpt(summary)),
+        thumbnail=thumbnail,
+        media_parts="".join(media_parts),
+        material_label=esc(material_label),
+        verify_mark=verify_mark,
+        verify_text=esc(verify_text),
         source_names=esc(source_names),
         source_rows="".join(source_rows),
     )
@@ -165,6 +213,41 @@ def fallback_feed(site: Path, market: str) -> str:
     return '<div class="feed-keep"><div class="feed-keep-label">最近已核验 · 本轮暂无新增</div>' + feed + '</div>'
 
 
+def recent_media_feed(site: Path, market: str, exclude_titles: set[str], limit: int = 2) -> str:
+    """Retain a small, clearly labelled shelf of recent playable poster/trailer cards."""
+    cards: list[str] = []
+    seen = set(exclude_titles)
+    for page in sorted((site / "archive").glob("*.html"), reverse=True):
+        try:
+            feed = extract_feed(page.read_text(encoding="utf-8"), market)
+        except OSError:
+            continue
+        for card in re.findall(r'<details class="row row-media".*?</details>', feed, re.S):
+            title_match = re.search(r'<div class="r-title">(.*?)</div>', card, re.S)
+            title = re.sub(r"<[^>]+>", "", title_match.group(1) if title_match else "").strip()
+            title_id = re.sub(r"\W+", "", html.unescape(title)).lower()
+            if not title_id or title_id in seen:
+                continue
+            # Retain only cards that actually contain a poster or playable trailer.
+            if 'class="r-thumb"' not in card and "bili-embed" not in card and "<video " not in card:
+                continue
+            cards.append(card.replace('src="../posters/', 'src="posters/').replace('href="../posters/', 'href="posters/'))
+            seen.add(title_id)
+            if len(cards) >= limit:
+                return '<div class="feed-keep media-shelf"><div class="feed-keep-label">近期物料 · 海报与可播放预告</div>' + "".join(cards) + "</div>"
+    if not cards:
+        return ""
+    return '<div class="feed-keep media-shelf"><div class="feed-keep-label">近期物料 · 海报与可播放预告</div>' + "".join(cards) + "</div>"
+
+
+def item_sort_key(item: dict) -> tuple[int, float]:
+    try:
+        timestamp = dt.datetime.fromisoformat(item.get("published_at", "").replace("Z", "+00:00")).timestamp()
+    except (ValueError, TypeError):
+        timestamp = 0
+    return int(item.get("content_priority", 3)), -timestamp
+
+
 def archive_previous(site: Path, old_html: str, old_date: str, count: int) -> None:
     archive_dir = site / "archive"
     archive_dir.mkdir(exist_ok=True)
@@ -217,10 +300,19 @@ def main() -> int:
     result = old_html
     labels = payload["policy"]["labels"]
     for market, name in MARKETS.items():
-        items = grouped[market]
+        items = sorted(grouped[market], key=item_sort_key)
         feed = "".join(render_item(item, labels) for item in items)
         display_count = len(items)
-        if not feed:
+        if feed:
+            title_ids = {
+                re.sub(r"\W+", "", html.unescape(item.get("title", ""))).lower()
+                for item in items
+            }
+            media_shelf = recent_media_feed(site, market, title_ids)
+            if media_shelf:
+                feed += media_shelf
+                display_count += media_shelf.count("<details")
+        else:
             feed = fallback_feed(site, market)
             if feed:
                 display_count = feed.count("<details")

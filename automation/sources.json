@@ -27,6 +27,7 @@
       "source_class": "established_media",
       "market": "m-intl",
       "entry_type": "影视动态",
+      "content_priority": 0,
       "language": "en",
       "max_items": 5,
       "enabled": true
@@ -39,6 +40,8 @@
       "source_class": "trade_media",
       "market": "m-cn",
       "entry_type": "电影动态",
+      "content_priority": 0,
+      "enrich_media": true,
       "language": "zh",
       "max_items": 5,
       "enabled": true
@@ -51,6 +54,8 @@
       "source_class": "trade_media",
       "market": "m-cn",
       "entry_type": "剧集动态",
+      "content_priority": 1,
+      "enrich_media": true,
       "language": "zh",
       "max_items": 5,
       "enabled": true
@@ -63,6 +68,8 @@
       "source_class": "trade_media",
       "market": "m-cn",
       "entry_type": "短剧动态",
+      "content_priority": 2,
+      "enrich_media": true,
       "language": "zh",
       "max_items": 3,
       "enabled": true
@@ -75,6 +82,8 @@
       "source_class": "trade_media",
       "market": "m-obs",
       "entry_type": "行业动态",
+      "content_priority": 3,
+      "enrich_media": true,
       "language": "zh",
       "max_items": 6,
       "enabled": true

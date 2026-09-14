@@ -82,6 +82,96 @@ def child_text(entry: ET.Element, names: set[str]) -> str:
     return ""
 
 
+def child_raw_text(entry: ET.Element, names: set[str]) -> str:
+    for child in entry.iter():
+        if child is entry:
+            continue
+        if local_name(child.tag) in names and (child.text or "").strip():
+            return child.text or ""
+    return ""
+
+
+def decoded_markup(value: str) -> str:
+    text = value or ""
+    for _ in range(3):
+        decoded = html.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
+
+
+def media_urls(entry: ET.Element, raw_summary: str) -> tuple[str, str]:
+    """Extract only source-provided media; never invent a poster or trailer."""
+    image_url = ""
+    video_url = ""
+    for child in entry.iter():
+        url = (child.attrib.get("url") or "").strip()
+        media_type = (child.attrib.get("type") or "").lower()
+        name = local_name(child.tag)
+        if not url.startswith(("https://", "http://")):
+            continue
+        if not image_url and (name == "thumbnail" or media_type.startswith("image/")):
+            image_url = url
+        if not video_url and media_type.startswith("video/"):
+            video_url = url
+
+    markup = decoded_markup(raw_summary)
+    urls = re.findall(r'(?:src|href|_src)=["\'](https?://[^"\']+)', markup, flags=re.I)
+    for url in urls:
+        clean_url = html.unescape(url)
+        path = urlsplit(clean_url).path.lower()
+        if not image_url and path.endswith((".jpg", ".jpeg", ".png", ".webp")):
+            image_url = clean_url
+        if not video_url and path.endswith((".mp4", ".m3u8", ".webm")):
+            video_url = clean_url
+    return image_url, video_url
+
+
+def page_media(url: str) -> tuple[str, str]:
+    """Read publisher-declared Open Graph media from the original article."""
+    request = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml",
+    })
+    with urllib.request.urlopen(request, timeout=12) as response:
+        body = response.read(1_500_000)
+        charset = response.headers.get_content_charset() or "utf-8"
+    document = body.decode(charset, errors="replace")
+    image_url = ""
+    video_url = ""
+    for tag in re.findall(r"<meta\b[^>]*>", document, flags=re.I):
+        attrs = {
+            key.lower(): html.unescape(value)
+            for key, _, value in re.findall(r"([\w:-]+)\s*=\s*([\"\'])(.*?)\2", tag, flags=re.I | re.S)
+        }
+        field = (attrs.get("property") or attrs.get("name") or "").lower()
+        content = (attrs.get("content") or "").strip()
+        if not content.startswith(("https://", "http://")):
+            continue
+        if not image_url and field in {"og:image", "og:image:url", "twitter:image"}:
+            image_url = content
+        if not video_url and field in {"og:video", "og:video:url", "og:video:secure_url"}:
+            video_url = content
+    if not image_url:
+        for tag in re.findall(r"<img\b[^>]*>", document, flags=re.I):
+            attrs = {
+                key.lower(): html.unescape(value)
+                for key, _, value in re.findall(r"([\w:-]+)\s*=\s*([\"\'])(.*?)\2", tag, flags=re.I | re.S)
+            }
+            candidate = (attrs.get("src") or attrs.get("_src") or "").strip()
+            if not candidate.startswith(("https://", "http://")):
+                continue
+            path = urlsplit(candidate).path.lower()
+            if not path.endswith((".jpg", ".jpeg", ".png", ".webp")):
+                continue
+            if any(token in path for token in ("/skin/", "logo", "weixin", "weixing", "qrcode", "icon")):
+                continue
+            image_url = candidate
+            break
+    return image_url, video_url
+
+
 def child_link(entry: ET.Element) -> str:
     for child in entry.iter():
         name = local_name(child.tag)
@@ -103,10 +193,19 @@ def parse_feed(body: bytes) -> list[dict[str, str]]:
     for entry in entries:
         title = child_text(entry, {"title"})
         link = child_link(entry)
-        summary = child_text(entry, {"description", "summary", "content"})
+        raw_summary = child_raw_text(entry, {"description", "summary", "content"})
+        summary = clean_text(raw_summary)
+        image_url, video_url = media_urls(entry, raw_summary)
         published = child_text(entry, {"pubdate", "published", "updated", "date"})
         if title and link.startswith(("https://", "http://")):
-            result.append({"title": title, "url": canonical_url(link), "summary": summary, "published": published})
+            result.append({
+                "title": title,
+                "url": canonical_url(link),
+                "summary": summary,
+                "published": published,
+                "image_url": image_url,
+                "video_url": video_url,
+            })
     return result
 
 
@@ -156,6 +255,15 @@ def run(config: dict) -> dict:
             if timestamp > now + dt.timedelta(hours=1) or now - timestamp > max_age:
                 dropped_stale += 1
                 continue
+            if source.get("enrich_media") and (not item.get("image_url") or not item.get("video_url")):
+                try:
+                    page_image, page_video = page_media(item["url"])
+                    item["image_url"] = item.get("image_url") or page_image
+                    item["video_url"] = item.get("video_url") or page_video
+                except Exception:
+                    # Media enrichment is optional; the source item remains valid
+                    # and its traceable article link must still be published.
+                    pass
             seen_links.add(item["url"])
             summary = item["summary"][:800]
             candidates.append({
@@ -168,7 +276,10 @@ def run(config: dict) -> dict:
                 "market": source.get("market", "m-obs"),
                 "entry_type": source.get("entry_type", "影视动态"),
                 "language": source.get("language", "und"),
+                "content_priority": int(source.get("content_priority", 3)),
                 "confidence": confidence_for(source),
+                "image_url": item.get("image_url", ""),
+                "video_url": item.get("video_url", ""),
                 "sources": [{"id": source["id"], "name": source["name"], "url": item["url"], "class": source.get("source_class")}]
             })
 
@@ -211,6 +322,11 @@ def run(config: dict) -> dict:
         kept_per_market[market] = kept_per_market.get(market, 0) + 1
         capped.append(item)
     merged = capped
+    merged.sort(key=lambda item: (
+        item.get("market", "m-obs"),
+        int(item.get("content_priority", 3)),
+        -dt.datetime.fromisoformat(item["published_at"].replace("Z", "+00:00")).timestamp(),
+    ))
     market_coverage = {
         market: {
             "items": sum(1 for item in merged if item["market"] == market),
