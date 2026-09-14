@@ -51,6 +51,14 @@ def item_time(item: dict) -> str:
         return "——"
 
 
+def excerpt(value: str, limit: int = 180) -> str:
+    """Keep the closed card skimmable; the complete captured summary is on expand."""
+    compact = re.sub(r"\s+", " ", value or "").strip()
+    if len(compact) <= limit:
+        return compact
+    return compact[:limit].rstrip("，。；、 ") + "…"
+
+
 def render_empty_market(market: str, name: str) -> str:
     headline, detail = EMPTY_MARKET_COPY.get(
         market,
@@ -77,7 +85,7 @@ def render_item(item: dict, labels: dict) -> str:
         '<div class="r-line"><span class="r-time">{source_time}</span><span class="r-kind">{kind}</span>'
         '<span class="r-cred {cred_class}">{cred_label} · {source_count} 来源</span>'
         '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-        '<div class="r-title">{title}</div><div class="r-lead">{summary}</div>'
+        '<div class="r-title">{title}</div><div class="r-lead">{excerpt}</div>'
         '<div class="r-src"><span class="dot"></span>来源 · {source_names}</div></summary>'
         '<div class="r-det"><p class="d-desc">{summary}</p><div class="srcbox"><div class="sb-h">信源</div>'
         '<div class="sb-list">{source_rows}</div></div></div></details>'
@@ -89,6 +97,7 @@ def render_item(item: dict, labels: dict) -> str:
         kind=esc(item.get("entry_type", "影视动态")),
         title=esc(item.get("title", "未命名资讯")),
         summary=esc(item.get("summary") or "原始来源未提供摘要，请展开查看信源。"),
+        excerpt=esc(excerpt(item.get("summary") or "原始来源未提供摘要，请展开查看信源。")),
         source_names=esc(source_names),
         source_rows="".join(source_rows),
     )
@@ -225,7 +234,7 @@ def main() -> int:
     result = replace_group(result, r'(<div class="tb-date">).*?(</div>)', date_iso + " · " + weekday)
     result = replace_group(result, r'(<span class="st-date">).*?(</span>)', date_cn)
     result = replace_group(result, r'(<span class="st-upd">).*?(</span>)', "系统自动更新于 " + now.strftime("%H:%M"))
-    result = replace_group(result, r'(<span class="st-new">今日新增 <em>)\d+(</em> 条</span>)', str(total))
+    result = replace_group(result, r'(<span class="st-new">).*?(</span>)', "本轮收录 <em>" + str(total) + "</em> 条")
     result = replace_group(result, r'(<div class="st-sub2">).*?(</div>)', "自动采集 · " + str(payload["stats"]["configured_sources"]) + " 个信源 · " + str(payload["stats"]["failed_sources"]) + " 个异常")
     index.write_text(result, encoding="utf-8")
     (site / "data").mkdir(exist_ok=True)

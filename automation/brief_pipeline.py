@@ -30,8 +30,18 @@ def local_name(tag: str) -> str:
 
 
 def clean_text(value: str | None) -> str:
-    text = html.unescape(value or "")
+    # Some feeds escape their HTML description more than once. Decode a few
+    # layers before stripping tags so cards never expose literal `<img ...>`.
+    text = value or ""
+    for _ in range(3):
+        decoded = html.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
     text = re.sub(r"<[^>]+>", " ", text)
+    # A few feeds truncate descriptions inside an HTML tag. Drop that dangling
+    # tail rather than printing markup-like text in the card.
+    text = re.sub(r"<[^>]*$", "", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -123,6 +133,7 @@ def run(config: dict) -> dict:
     dropped_stale = 0
     dropped_undated = 0
     dropped_language = 0
+    dropped_capacity = 0
     successful_sources: set[str] = set()
 
     for source in config.get("sources", []):
@@ -184,7 +195,22 @@ def run(config: dict) -> dict:
             else:
                 dropped_language += 1
         merged = eligible
-    merged.sort(key=lambda item: (item["market"], item["title"].lower()))
+    # Keep the newest traceable items first, then apply an explicit per-market
+    # reading budget. Coverage should grow without turning the brief into an
+    # unscannable stream or silently favouring an alphabetically early title.
+    merged.sort(key=lambda item: item["published_at"], reverse=True)
+    limits = policy.get("max_items_per_market", {})
+    kept_per_market: dict[str, int] = {}
+    capped: list[dict] = []
+    for item in merged:
+        market = item.get("market", "m-obs")
+        limit = limits.get(market)
+        if limit is not None and kept_per_market.get(market, 0) >= int(limit):
+            dropped_capacity += 1
+            continue
+        kept_per_market[market] = kept_per_market.get(market, 0) + 1
+        capped.append(item)
+    merged = capped
     market_coverage = {
         market: {
             "items": sum(1 for item in merged if item["market"] == market),
@@ -208,6 +234,7 @@ def run(config: dict) -> dict:
             "dropped_stale": dropped_stale,
             "dropped_undated": dropped_undated,
             "dropped_language": dropped_language,
+            "dropped_capacity": dropped_capacity,
             "successful_sources": len(successful_sources),
             "market_coverage": market_coverage,
         }
