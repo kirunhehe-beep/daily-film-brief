@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T13:52:27Z",
+  "generated_at": "2026-09-15T07:39:46Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
@@ -35,6 +35,52 @@
     }
   },
   "items": [
+    {
+      "id": "dfeccba74af0261f",
+      "title": "经典归来！张国荣《为你钟情》确认引进内地院线",
+      "summary": "时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。 时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:44 +0800",
+      "published_at": "2026-09-15T01:49:44Z",
+      "market": "m-cn",
+      "entry_type": "电影动态",
+      "language": "zh",
+      "content_priority": 0,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436984680.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-news",
+          "name": "电影界 · 电影新闻",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "f27b0983c39559ca",
+      "title": "国产儿童电影《向莲花镇出发》喜获国际荣誉",
+      "summary": "国产儿童电影《向莲花镇出发》频传喜讯。 国产儿童电影《向莲花镇出发》频传喜讯。该片继八月份获得第9届印度雅利安国际儿童电影节“年度十佳影片”后，近日又成功入围第31届德国施林格尔国际儿童电影节主竞赛单元。",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:38 +0800",
+      "published_at": "2026-09-15T01:49:38Z",
+      "market": "m-cn",
+      "entry_type": "电影动态",
+      "language": "zh",
+      "content_priority": 0,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436978556.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-news",
+          "name": "电影界 · 电影新闻",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
     {
       "id": "a8970128ffe0842f",
       "title": "电影《独龙族的春天》入围世界民族电影节 导演张一鸣获最佳制片人大奖",
@@ -82,47 +128,139 @@
       ]
     },
     {
-      "id": "a9f43b45880d6bc8",
-      "title": "优酷《冬城猎凶》定档9月10日，双案横跨十三年万茜王阳共破迷局",
-      "summary": "讲述横跨1999年至2012年，一桩未解的银行抢劫案与一系列儿童拐卖案之间潜伏了13年的隐秘关联，两位刑警在追查中逐渐揭开真相，破解双案迷局，并将嫌疑人绳之以法。 由中央电视台、优酷出品，宁波影视艺术有限责任公司、北京摩天轮文化传媒有限公司联合出品，北京银谷映像影视文化发展有限公司承制。由翁子光任监制及总导演，徐忱导演，娄霄鹏编剧，万茜、王洋（王阳）、余文乐（按姓氏笔画排序）领衔主演...",
-      "url": "https://www.dianyingjie.com.cn/2026/0910/405724.shtml",
-      "published": "Thu, 10 Sep 2026 22:09:09 +0800",
-      "published_at": "2026-09-10T14:09:09Z",
+      "id": "b3fdc91264be2cd3",
+      "title": "《云雀叫天录》今日开播 张一山初入梨园江湖开启热血逐梦之路",
+      "summary": "《云雀叫天录》以梨园少年孟金福（张一山 饰）的个人成长为核心脉络，铺展他从底层学徒到一代宗师的人生蜕变之路。 今日，由湖南卫视、芒果 TV、完美世界影视、湖北朝画出品，北京弘视际影业股份有限公司、卓越出品文化有限公司联合出品，完美基沐工作室承制，李基业担任总制片人，郑大圣指导，王要编剧，谭孝曾担任艺术顾问，张⼀山、杨立新、曹磊、谭卓领衔主演，邢岷山、刘威、杨新鸣、周航（周九良...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
+      "published": "Tue, 15 Sep 2026 09:50:00 +0800",
+      "published_at": "2026-09-15T01:50:00Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
       "content_priority": 1,
       "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049350722.jpeg",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789437000720.jpg",
       "video_url": "",
       "sources": [
         {
           "id": "film-world-series",
           "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0910/405724.shtml",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
           "class": "trade_media"
         }
       ]
     },
     {
-      "id": "7e656dbbcecf1eaa",
-      "title": "《打歌2026・X舞台》首期嘉宾集结，多风格舞台即将燃炸现场",
-      "summary": "真开麦！真直播！由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》将于9月11日上线。 真开麦！真直播！由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》将于9月11日上线。高能直播舞台正式启幕前，首期嘉宾阵容抢先揭晓！王琳凯（小鬼）、李佳薇、姚晓棠、蒋敦豪、吉克隽逸、海来阿木（按照姓氏笔画排序）将携自己的新歌点燃现场，开启音...",
-      "url": "https://www.dianyingjie.com.cn/2026/0910/405723.shtml",
-      "published": "Thu, 10 Sep 2026 22:09:07 +0800",
-      "published_at": "2026-09-10T14:09:07Z",
+      "id": "77aeb52578e5bcfb",
+      "title": "《姐姐当家2》十期收官：当家不是成为“完美大人”，而是学会选择自己的生活",
+      "summary": "由爱奇艺出品的国内首档熟龄女性观察节目《姐姐当家2》迎来收官，作为今夏持续引发关注的爆款话题综艺，节目十期以来不断从真实生活切入，在热议与共鸣中陪伴观众走进五位姐姐的人生。 由爱奇艺出品的国内首档熟龄女性观察节目《姐姐当家2》迎来收官，作为今夏持续引发关注的爆款话题综艺，节目十期以来不断从真实生活切入，在热议与共鸣中陪伴观众走进五位姐姐的人生。十期节目里，五位姐姐在不同命题中...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405807.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:57 +0800",
+      "published_at": "2026-09-15T01:49:57Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
       "content_priority": 1,
       "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049348601.jpeg",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436997842.jpeg",
       "video_url": "",
       "sources": [
         {
           "id": "film-world-series",
           "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0910/405723.shtml",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405807.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "40450a741cbf29a1",
+      "title": "《说唱巅峰对决2026》巅峰盛典夜收官，名人堂五席落定",
+      "summary": "9月12日，由爱奇艺出品、雪碧独家冠名的《说唱巅峰对决2026》巅峰盛典夜正式落下帷幕 9月12日，由爱奇艺出品、雪碧独家冠名的《说唱巅峰对决2026》巅峰盛典夜正式落下帷幕，年度名人堂席位尘埃落定弹壳，Rapeter吴嘉轩，功夫胖KUNGFU-PEN，盛宇D－SHINE，Yamy郭颖。自2017年到2026年，这档承载行业记忆的说唱IP走完十年征途，完整记录中文说唱由地下破土、走向主流视野的进化轨迹。历经整季激烈角逐，一...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405806.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:55 +0800",
+      "published_at": "2026-09-15T01:49:55Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436995838.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405806.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "bade54679bdb1709",
+      "title": "《刺棠》今日开机，故人执刃入局搅动朝堂风云",
+      "summary": "今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机 今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机，并同步官宣了主创主演阵容。该剧改编自晋江文学城小说《刺棠》，原著作者：雾圆，由向小园、任庄柳、郎诺林担任编剧，郭虎执导，齐帅担任总监制，方晏之担任总制片人，卢昱晓、张凌赫领衔主演（按姓氏笔画排序）。 该剧讲述了叶亭宴自地狱归来，向坐在...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:53 +0800",
+      "published_at": "2026-09-15T01:49:53Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436993146.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "2f5c5527f3ca6f11",
+      "title": "就在今晚！《打歌2026・X舞台》首期Live舞台上线",
+      "summary": "由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》首期直播舞台蓄势待发，将于今晚20:40全网上线！ 由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》首期直播舞台蓄势待发，将于今晚20:40全网上线！ 打歌召集人王俊凯，以及首期歌手王琳凯（小鬼）、李佳薇、姚晓棠、蒋敦豪、吉克隽逸、海来阿木（按照姓氏笔画排序）将以多元风格的...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405804.shtml",
+      "published": "Tue, 15 Sep 2026 09:49:50 +0800",
+      "published_at": "2026-09-15T01:49:50Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436990438.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405804.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "45a110fee32172ee",
+      "title": "当耳机里的陪伴，成为奔赴一座城的理由——“猫耳声刻2026”观察",
+      "summary": "一场声音之约，让日常陪伴有了相逢的现场 有些声音，听众已经熟悉了很多年。它们曾出现在通勤途中、深夜的房间里，也陪伴人们度过生活中的某个低谷。如今，这份经由耳机建立的亲近感，有了一个可以抵达的地址：常州。 9月11日至13日，猫耳FM旗下线下演出厂牌猫耳声刻，在常州新龙湖演艺中心带来一场广播剧OST演唱会与两场声演舞台，将分散在不同作品、不同城市里的听众聚到一起。围绕演出展开的主题快闪、见面会...",
+      "url": "https://www.dianyingjie.com.cn/2026/0915/405842.shtml",
+      "published": "Tue, 15 Sep 2026 14:32:00 +0800",
+      "published_at": "2026-09-15T06:32:00Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789453954279.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-industry-desk",
+          "name": "电影界 · 影视行业线索",
+          "url": "https://www.dianyingjie.com.cn/2026/0915/405842.shtml",
           "class": "trade_media"
         }
       ]
@@ -130,10 +268,10 @@
   ],
   "errors": [],
   "stats": {
-    "items": 4,
+    "items": 10,
     "failed_sources": 0,
     "configured_sources": 4,
-    "dropped_stale": 10,
+    "dropped_stale": 4,
     "dropped_undated": 0,
     "dropped_language": 5,
     "dropped_excluded": 2,
@@ -141,7 +279,7 @@
     "successful_sources": 4,
     "market_coverage": {
       "m-cn": {
-        "items": 4,
+        "items": 9,
         "successful_sources": 2
       },
       "m-hmt": {
@@ -153,7 +291,7 @@
         "successful_sources": 1
       },
       "m-obs": {
-        "items": 0,
+        "items": 1,
         "successful_sources": 1
       }
     }
