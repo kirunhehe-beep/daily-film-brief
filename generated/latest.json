@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T07:39:46Z",
+  "generated_at": "2026-09-15T14:31:56Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
@@ -77,52 +77,6 @@
           "id": "film-world-news",
           "name": "电影界 · 电影新闻",
           "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "a8970128ffe0842f",
-      "title": "电影《独龙族的春天》入围世界民族电影节 导演张一鸣获最佳制片人大奖",
-      "summary": "近日，民族题材影片《独龙族的春天》成功入围2026世界民族电影节，影片导演张一鸣获得最佳制片人成就大奖，向世界银幕讲述独龙族的发展故事。 世界民族电影节每年在美国洛 近日，民族题材影片《独龙族的春天》成功入围2026世界民族电影节，影片导演张一鸣获得最佳制片人成就大奖，向世界银幕讲述独龙族的发展故事。",
-      "url": "https://www.dianyingjie.com.cn/2026/0910/405722.shtml",
-      "published": "Thu, 10 Sep 2026 22:09:05 +0800",
-      "published_at": "2026-09-10T14:09:05Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049346583.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0910/405722.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "076fff81dbe48bea",
-      "title": "惊悚悬疑电影《荒山野店》9月16日爱奇艺、优酷全网首播",
-      "summary": "电影《荒山野店》剧情讲述六月的雨夜，荒山诡雾弥漫。婉秋一行人进山团建，意外撞见山石后鬼影飘忽、面具怪人潜行藏匿，山间阴气森森，诡异至极。",
-      "url": "https://www.dianyingjie.com.cn/2026/0910/405721.shtml",
-      "published": "Thu, 10 Sep 2026 22:09:03 +0800",
-      "published_at": "2026-09-10T14:09:03Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0910/1789049344726.png",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0910/405721.shtml",
           "class": "trade_media"
         }
       ]
@@ -268,10 +222,10 @@
   ],
   "errors": [],
   "stats": {
-    "items": 10,
+    "items": 8,
     "failed_sources": 0,
     "configured_sources": 4,
-    "dropped_stale": 4,
+    "dropped_stale": 6,
     "dropped_undated": 0,
     "dropped_language": 5,
     "dropped_excluded": 2,
@@ -279,7 +233,7 @@
     "successful_sources": 4,
     "market_coverage": {
       "m-cn": {
-        "items": 9,
+        "items": 7,
         "successful_sources": 2
       },
       "m-hmt": {
