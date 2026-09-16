@@ -221,6 +221,18 @@ def confidence_for(source: dict) -> str:
     return "official" if source.get("source_class") == "official" else "single_source"
 
 
+def matches_source_filter(source: dict, searchable_text: str) -> bool:
+    """Apply optional per-feed filters before an item enters the evidence set."""
+    text = searchable_text.casefold()
+    included = tuple(str(value).casefold() for value in source.get("include_keywords", []))
+    excluded = tuple(str(value).casefold() for value in source.get("exclude_keywords", []))
+    if included and not any(keyword in text for keyword in included):
+        return False
+    if excluded and any(keyword in text for keyword in excluded):
+        return False
+    return True
+
+
 def run(config: dict) -> dict:
     policy = config["policy"]
     now = dt.datetime.now(UTC).replace(microsecond=0)
@@ -233,6 +245,7 @@ def run(config: dict) -> dict:
     dropped_undated = 0
     dropped_language = 0
     dropped_excluded = 0
+    dropped_source_filter = 0
     dropped_capacity = 0
     excluded_entry_types = set(policy.get("excluded_entry_types", []))
     excluded_keywords = tuple(policy.get("excluded_keywords", []))
@@ -256,6 +269,10 @@ def run(config: dict) -> dict:
                 or any(keyword in searchable_text for keyword in excluded_keywords)
             ):
                 dropped_excluded += 1
+                continue
+            source_filter_text = item["title"] if source.get("filter_scope") == "title" else searchable_text
+            if not matches_source_filter(source, source_filter_text):
+                dropped_source_filter += 1
                 continue
             timestamp = published_at(item["published"])
             if timestamp is None:
@@ -290,7 +307,13 @@ def run(config: dict) -> dict:
                 "confidence": confidence_for(source),
                 "image_url": item.get("image_url", ""),
                 "video_url": item.get("video_url", ""),
-                "sources": [{"id": source["id"], "name": source["name"], "url": item["url"], "class": source.get("source_class")}]
+                "sources": [{
+                    "id": source["id"],
+                    "publisher_id": source.get("publisher_id", source["id"]),
+                    "name": source["name"],
+                    "url": item["url"],
+                    "class": source.get("source_class"),
+                }]
             })
 
     # Conservative multi-source promotion: exact normalized title agreement only.
@@ -301,8 +324,8 @@ def run(config: dict) -> dict:
     for group in by_title.values():
         primary = group[0]
         all_sources = [source for item in group for source in item["sources"]]
-        distinct_sources = {source["id"] for source in all_sources}
-        if len(distinct_sources) >= 2:
+        distinct_publishers = {source.get("publisher_id", source["id"]) for source in all_sources}
+        if len(distinct_publishers) >= 2:
             primary["confidence"] = "multi_source"
             primary["sources"] = all_sources
         merged.append(primary)
@@ -320,6 +343,9 @@ def run(config: dict) -> dict:
     # reading budget. Coverage should grow without turning the brief into an
     # unscannable stream or silently favouring an alphabetically early title.
     merged.sort(key=lambda item: item["published_at"], reverse=True)
+    # Keep an uncapped pool for Xiaohongshu. Otherwise a busy morning can push
+    # every previous-day item out of the web brief's per-market reading limit.
+    xhs_items = list(merged)
     limits = policy.get("max_items_per_market", {})
     kept_per_market: dict[str, int] = {}
     capped: list[dict] = []
@@ -352,15 +378,18 @@ def run(config: dict) -> dict:
         "generated_at": generated_at,
         "policy": policy,
         "items": merged,
+        "xhs_items": xhs_items,
         "errors": errors,
         "stats": {
             "items": len(merged),
+            "xhs_items": len(xhs_items),
             "failed_sources": len(errors),
             "configured_sources": len([s for s in config.get("sources", []) if s.get("enabled")]),
             "dropped_stale": dropped_stale,
             "dropped_undated": dropped_undated,
             "dropped_language": dropped_language,
             "dropped_excluded": dropped_excluded,
+            "dropped_source_filter": dropped_source_filter,
             "dropped_capacity": dropped_capacity,
             "successful_sources": len(successful_sources),
             "market_coverage": market_coverage,
