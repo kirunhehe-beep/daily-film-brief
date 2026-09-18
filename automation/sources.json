@@ -3,6 +3,7 @@
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
     "max_age_hours": 120,
+    "web_item_window": "beijing_calendar_day",
     "max_items_per_market": {
       "m-cn": 10,
       "m-hmt": 6,

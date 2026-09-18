@@ -26,9 +26,6 @@ EMPTY_MARKET_COPY = {
     "m-obs": ("行业观察暂未有新的收录项", "市场没有新节点时，留白也值得保留。"),
 }
 
-EXCLUDED_CONTENT_TERMS = ("短剧", "微短剧")
-
-
 def esc(value: str) -> str:
     return html.escape(value or "", quote=True)
 
@@ -183,82 +180,6 @@ def replace_market_count(document: str, market: str, count_value: int) -> str:
     return result
 
 
-def extract_feed(document: str, market: str) -> str:
-    pattern = re.compile(
-        r'<section id="' + re.escape(market) + r'" class="market"[^>]*>.*?<div class="feed">(.*?)(?:</div>\s*</section>)',
-        re.S,
-    )
-    match = pattern.search(document)
-    return match.group(1) if match else ""
-
-
-def card_is_excluded(card: str) -> bool:
-    """Keep excluded formats out of archive fallback and retained media shelves."""
-    visible_text = html.unescape(re.sub(r"<[^>]+>", " ", card))
-    return any(term in visible_text for term in EXCLUDED_CONTENT_TERMS)
-
-
-def filter_excluded_cards(feed: str) -> str:
-    return re.sub(
-        r'<details\b.*?</details>',
-        lambda match: "" if card_is_excluded(match.group(0)) else match.group(0),
-        feed,
-        flags=re.S,
-    )
-
-
-def recent_chinese_feed(site: Path, market: str) -> str:
-    """Reuse the most recent Chinese, source-linked cards when this round is empty."""
-    archive_dir = site / "archive"
-    for page in sorted(archive_dir.glob("*.html"), reverse=True):
-        try:
-            feed = filter_excluded_cards(extract_feed(page.read_text(encoding="utf-8"), market))
-        except OSError:
-            continue
-        titles = re.findall(r'<div class="r-title">(.*?)</div>', feed, re.S)
-        if not any(re.search(r"[\u4e00-\u9fff]", re.sub(r"<[^>]+>", "", title)) for title in titles):
-            continue
-        # Archive pages are one level deeper than index.html.
-        return feed.replace('src="../posters/', 'src="posters/').replace('href="../posters/', 'href="posters/')
-    return ""
-
-
-def fallback_feed(site: Path, market: str) -> str:
-    feed = recent_chinese_feed(site, market)
-    if not feed:
-        return ""
-    return '<div class="feed-keep"><div class="feed-keep-label">最近已核验 · 本轮暂无新增</div>' + feed + '</div>'
-
-
-def recent_media_feed(site: Path, market: str, exclude_titles: set[str], limit: int = 2) -> str:
-    """Retain a small, clearly labelled shelf of recent playable poster/trailer cards."""
-    cards: list[str] = []
-    seen = set(exclude_titles)
-    for page in sorted((site / "archive").glob("*.html"), reverse=True):
-        try:
-            feed = extract_feed(page.read_text(encoding="utf-8"), market)
-        except OSError:
-            continue
-        for card in re.findall(r'<details class="row row-media".*?</details>', feed, re.S):
-            if card_is_excluded(card):
-                continue
-            title_match = re.search(r'<div class="r-title">(.*?)</div>', card, re.S)
-            title = re.sub(r"<[^>]+>", "", title_match.group(1) if title_match else "").strip()
-            title_id = re.sub(r"\W+", "", html.unescape(title)).lower()
-            if not title_id or title_id in seen:
-                continue
-            # Retain only cards that actually contain a poster or playable trailer.
-            if 'class="r-thumb"' not in card and "bili-embed" not in card and "<video " not in card:
-                continue
-            cards.append(card.replace('src="../posters/', 'src="posters/').replace('href="../posters/', 'href="posters/'))
-            seen.add(title_id)
-            if len(cards) >= limit:
-                return '<div class="feed-keep media-shelf"><div class="feed-keep-label">近期物料 · 海报与可播放预告</div>' + "".join(cards) + "</div>"
-    if not cards:
-        return ""
-    return '<div class="feed-keep media-shelf"><div class="feed-keep-label">近期物料 · 海报与可播放预告</div>' + "".join(cards) + "</div>"
-
-
 def item_sort_key(item: dict) -> tuple[int, float]:
     try:
         timestamp = dt.datetime.fromisoformat(item.get("published_at", "").replace("Z", "+00:00")).timestamp()
@@ -322,21 +243,8 @@ def main() -> int:
         items = sorted(grouped[market], key=item_sort_key)
         feed = "".join(render_item(item, labels) for item in items)
         display_count = len(items)
-        if feed:
-            title_ids = {
-                re.sub(r"\W+", "", html.unescape(item.get("title", ""))).lower()
-                for item in items
-            }
-            media_shelf = recent_media_feed(site, market, title_ids)
-            if media_shelf:
-                feed += media_shelf
-                display_count += media_shelf.count("<details")
-        else:
-            feed = fallback_feed(site, market)
-            if feed:
-                display_count = feed.count("<details")
-            else:
-                feed = render_empty_market(market, name)
+        if not feed:
+            feed = render_empty_market(market, name)
         result = replace_feed(result, market, feed)
         result = replace_market_count(result, market, display_count)
 

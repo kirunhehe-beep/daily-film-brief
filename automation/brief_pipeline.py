@@ -19,9 +19,11 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
+from zoneinfo import ZoneInfo
 
 
 UTC = dt.timezone.utc
+BEIJING = ZoneInfo("Asia/Shanghai")
 USER_AGENT = "DailyFilmBriefBot/1.0 (+https://daily-film-brief.pages.dev/)"
 
 
@@ -244,6 +246,7 @@ def run(config: dict) -> dict:
     dropped_stale = 0
     dropped_undated = 0
     dropped_language = 0
+    dropped_not_today = 0
     dropped_excluded = 0
     dropped_source_filter = 0
     dropped_capacity = 0
@@ -339,13 +342,22 @@ def run(config: dict) -> dict:
             else:
                 dropped_language += 1
         merged = eligible
-    # Keep the newest traceable items first, then apply an explicit per-market
-    # reading budget. Coverage should grow without turning the brief into an
-    # unscannable stream or silently favouring an alphabetically early title.
+    # Keep a wider, uncapped evidence pool for the previous-day Xiaohongshu
+    # package. The web brief itself is a Beijing-calendar-day product and must
+    # never mix yesterday's items into today's page.
     merged.sort(key=lambda item: item["published_at"], reverse=True)
-    # Keep an uncapped pool for Xiaohongshu. Otherwise a busy morning can push
-    # every previous-day item out of the web brief's per-market reading limit.
     xhs_items = list(merged)
+    beijing_today = now.astimezone(BEIJING).date()
+    today_items = []
+    for item in merged:
+        item_date = dt.datetime.fromisoformat(item["published_at"].replace("Z", "+00:00")).astimezone(BEIJING).date()
+        if item_date == beijing_today:
+            today_items.append(item)
+        else:
+            dropped_not_today += 1
+    merged = today_items
+
+    # Apply the reading budget only after the strict same-day filter.
     limits = policy.get("max_items_per_market", {})
     kept_per_market: dict[str, int] = {}
     capped: list[dict] = []
@@ -388,6 +400,7 @@ def run(config: dict) -> dict:
             "dropped_stale": dropped_stale,
             "dropped_undated": dropped_undated,
             "dropped_language": dropped_language,
+            "dropped_not_today": dropped_not_today,
             "dropped_excluded": dropped_excluded,
             "dropped_source_filter": dropped_source_filter,
             "dropped_capacity": dropped_capacity,
