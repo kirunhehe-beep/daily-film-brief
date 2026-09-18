@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-17T14:30:57Z",
+  "generated_at": "2026-09-18T07:21:39Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
     "max_age_hours": 120,
+    "web_item_window": "beijing_calendar_day",
     "max_items_per_market": {
       "m-cn": 10,
       "m-hmt": 6,
@@ -34,225 +35,32 @@
       "single_source": "单源待确认"
     }
   },
-  "items": [
-    {
-      "id": "9f40f5523caf2628",
-      "title": "红色网络公益电影 《被手机偷走的童年》首场演员海选在京圆满落幕",
-      "summary": "2026年9月12日，《星光好少年》百部青少年教育公益系列重点作品—红色网络公益电影《被手机偷走的童年》首场演员海选活动在京圆满收官。 2026年9月12日，《星光好少年》百部青少年教育公益系列重点作品—红色网络公益电影《被手机偷走的童年》首场演员海选活动在京圆满收官。本次海选面向全年龄段文艺爱好者开放，汇聚中老年、青年、少年选手同台演绎，多元年龄层的表演者带来层次丰富、极具现实张...",
-      "url": "https://www.dianyingjie.com.cn/2026/0917/405885.shtml",
-      "published": "Thu, 17 Sep 2026 11:20:08 +0800",
-      "published_at": "2026-09-17T03:20:08Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789615208528.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0917/405885.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "dfeccba74af0261f",
-      "title": "经典归来！张国荣《为你钟情》确认引进内地院线",
-      "summary": "时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。 时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:44 +0800",
-      "published_at": "2026-09-15T01:49:44Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436984680.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "f27b0983c39559ca",
-      "title": "国产儿童电影《向莲花镇出发》喜获国际荣誉",
-      "summary": "国产儿童电影《向莲花镇出发》频传喜讯。 国产儿童电影《向莲花镇出发》频传喜讯。该片继八月份获得第9届印度雅利安国际儿童电影节“年度十佳影片”后，近日又成功入围第31届德国施林格尔国际儿童电影节主竞赛单元。",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:38 +0800",
-      "published_at": "2026-09-15T01:49:38Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436978556.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "9b04bcd54f522be7",
-      "title": "优酷悬疑力作《狩谎》重磅官宣，金像奖班底联手重塑港风刑侦新标杆",
-      "summary": "该剧讲述了顶级心理学家林彦廷（成毅 饰）为查明亲人死亡真相，投身香港警队成为见习督察，作为港岛总区重案组的一员，以自己擅长的心理学知识做谈判武器，探寻案件背后深埋的秘密。 由优酷出品，维港光影（香港）有限公司、虎星文化集团联合出品，优象工作室制作，香港金像奖最佳导演陆剑青执导，池羿成、叶世康编剧，成毅领衔主演，卫诗雅、余文乐、肖顺尧、张颂文、李若彤、欧阳震华、袁咏仪、徐峥、...",
-      "url": "https://www.dianyingjie.com.cn/2026/0917/405889.shtml",
-      "published": "Thu, 17 Sep 2026 11:20:19 +0800",
-      "published_at": "2026-09-17T03:20:19Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789615219386.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0917/405889.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "4a3c76b6489caca3",
-      "title": "优酷《觉醒之重启》官宣黄景瑜！首部年代悬疑科幻剧讲述，AI时代的觉醒寓言",
-      "summary": "由杨磊担任总导演，陆贝珂担任导演，黄景瑜领衔主演，田嘉瑞、包露佳（包上恩）（按姓氏笔画排名）特别出演的年代悬疑科幻剧《觉醒之重启》，已于近日开机。 由杨磊担任总导演，陆贝珂担任导演，黄景瑜领衔主演，田嘉瑞、包露佳（包上恩）（按姓氏笔画排名）特别出演的年代悬疑科幻剧《觉醒之重启》，已于近日开机。故事讲述了80年代西北戈壁，地下蛰伏数百万年的未知物质“混迪”现世，将楚南...",
-      "url": "https://www.dianyingjie.com.cn/2026/0917/405888.shtml",
-      "published": "Thu, 17 Sep 2026 11:20:18 +0800",
-      "published_at": "2026-09-17T03:20:18Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789615218813.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0917/405888.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "f9c2b993e55d3271",
-      "title": "电视剧《人生赢家》开播 贺鹏丁笑莹三度携手再演情侣",
-      "summary": "其中，男主角贺鹏凭借沉稳出色的角色塑造能力获得认可，而他与女主角丁笑莹的第三次合作也展现出了极高的默契度，成为支撑剧集叙事的重要基石。 近日，由嵇道青担任总制作人、侯明杰导演,贺鹏、丁笑莹领衔主演的都市题材电视剧《人生赢家》正式登陆爱奇艺独播。该剧改编自作家连谏的长篇小说《家有遗产》，由贺鹏饰演的前任车神阳关遭人陷害破产，卖房当天父亲坠楼留巨债，赛车赌约惨败成大负翁，突遇小...",
-      "url": "https://www.dianyingjie.com.cn/2026/0917/405886.shtml",
-      "published": "Thu, 17 Sep 2026 11:20:14 +0800",
-      "published_at": "2026-09-17T03:20:14Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789615215228.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0917/405886.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "b3fdc91264be2cd3",
-      "title": "《云雀叫天录》今日开播 张一山初入梨园江湖开启热血逐梦之路",
-      "summary": "《云雀叫天录》以梨园少年孟金福（张一山 饰）的个人成长为核心脉络，铺展他从底层学徒到一代宗师的人生蜕变之路。 今日，由湖南卫视、芒果 TV、完美世界影视、湖北朝画出品，北京弘视际影业股份有限公司、卓越出品文化有限公司联合出品，完美基沐工作室承制，李基业担任总制片人，郑大圣指导，王要编剧，谭孝曾担任艺术顾问，张⼀山、杨立新、曹磊、谭卓领衔主演，邢岷山、刘威、杨新鸣、周航（周九良...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
-      "published": "Tue, 15 Sep 2026 09:50:00 +0800",
-      "published_at": "2026-09-15T01:50:00Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789437000720.jpg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "bade54679bdb1709",
-      "title": "《刺棠》今日开机，故人执刃入局搅动朝堂风云",
-      "summary": "今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机 今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机，并同步官宣了主创主演阵容。该剧改编自晋江文学城小说《刺棠》，原著作者：雾圆，由向小园、任庄柳、郎诺林担任编剧，郭虎执导，齐帅担任总监制，方晏之担任总制片人，卢昱晓、张凌赫领衔主演（按姓氏笔画排序）。 该剧讲述了叶亭宴自地狱归来，向坐在...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:53 +0800",
-      "published_at": "2026-09-15T01:49:53Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436993146.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "bfb114d5b3fc7a39",
-      "title": "《云雀叫天录》定档9月14日 张一山诠释反骨少年戏梦征途",
-      "summary": "《云雀叫天录》围绕主角孟金福（张一山 饰）从底层学徒一路成长为名角的人生蜕变展开，以伶人的成长与抉择，映照了时代浪潮里戏曲行业的传承与变迁，诠释了梨园艺人于世事梨园中坚守初心、追寻艺术理想的不屈信念。 今日，由湖南卫视、芒果TV、完美世界影视、湖北朝画出品，北京弘视际影业股份有限公司、卓越出品文化有限公司联合出品，完美基沐工作室承制，曾映雪担任总监制，李基业担任总制片人，郑大...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405803.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:46 +0800",
-      "published_at": "2026-09-15T01:49:46Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436986463.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405803.shtml",
-          "class": "trade_media"
-        }
-      ]
-    }
-  ],
+  "items": [],
   "xhs_items": [
+    {
+      "id": "e1a7910238430576",
+      "title": "电视剧《柿柿如意》官宣全阵容 任敏张晚意蒋欣领衔共赴温暖家事",
+      "summary": "《柿柿如意》围绕许、梁两户人家几十年的烟火日常展开。70年代，母亲许不是离经叛道为自己换亲追爱，遇人不淑，幸得朴实、善良的工人梁贵生所救，两人喜结连理。 9月17日，电视剧《柿柿如意》正式官宣全阵容。该剧由丽泽影业与完美世界影视联合出品，总制片人徐立、导演安建、总编剧代超，任敏、张晚意、蒋欣（按姓氏笔画排序）领衔主演，王和、包文婧，师铭泽、刘烨，张小婉、张铎、郑合惠子、周澄奥、...",
+      "url": "https://www.dianyingjie.com.cn/2026/0917/405945.shtml",
+      "published": "Thu, 17 Sep 2026 23:25:19 +0800",
+      "published_at": "2026-09-17T15:25:19Z",
+      "market": "m-cn",
+      "entry_type": "剧集动态",
+      "language": "zh",
+      "content_priority": 1,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789658719865.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-series",
+          "publisher_id": "dianyingjie",
+          "name": "电影界 · 电视与剧集",
+          "url": "https://www.dianyingjie.com.cn/2026/0917/405945.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
     {
       "id": "9b04bcd54f522be7",
       "title": "优酷悬疑力作《狩谎》重磅官宣，金像奖班底联手重塑港风刑侦新标杆",
@@ -472,20 +280,21 @@
   ],
   "errors": [],
   "stats": {
-    "items": 9,
-    "xhs_items": 9,
+    "items": 0,
+    "xhs_items": 10,
     "failed_sources": 0,
     "configured_sources": 6,
-    "dropped_stale": 26,
+    "dropped_stale": 25,
     "dropped_undated": 0,
     "dropped_language": 5,
+    "dropped_not_today": 10,
     "dropped_excluded": 4,
     "dropped_source_filter": 29,
     "dropped_capacity": 0,
     "successful_sources": 6,
     "market_coverage": {
       "m-cn": {
-        "items": 9,
+        "items": 0,
         "successful_sources": 3
       },
       "m-hmt": {
