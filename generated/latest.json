@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-19T07:17:31Z",
+  "generated_at": "2026-09-19T13:32:00Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
