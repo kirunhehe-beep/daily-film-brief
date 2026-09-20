@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-19T13:32:00Z",
+  "generated_at": "2026-09-20T07:42:27Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
@@ -35,8 +35,105 @@
       "single_source": "单源待确认"
     }
   },
-  "items": [],
+  "items": [
+    {
+      "id": "65054df2385df252",
+      "title": "《早春晴朗》广播剧破圈，猫耳FM言情IP再引行业关注",
+      "summary": "近日，猫耳FM的都市言情广播剧《早春晴朗》播放量即将突破5000万。随着该剧口碑爆发，行业也开始重新审视猫耳FM在言情IP领域的长期布局。过去，外界对猫耳的印象多停留在头部纯爱IP衍生内容上；但它在言情广播剧上同样能打，而且这并非临时起意。上游，它持续拿下晋江等顶级版权平台的头部作品；下游，这些言情广播剧同名IP的影视化作品横扫各大平台榜单，而用户早已能在猫耳FM抢先收听，沉浸式解锁剧情。换句话说，猫耳FM不只...",
+      "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
+      "published": "Sun, 20 Sep 2026 11:47:00 +0800",
+      "published_at": "2026-09-20T03:47:00Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789876048517.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-industry-desk",
+          "publisher_id": "dianyingjie",
+          "name": "电影界 · 影视行业线索",
+          "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "b8210e15ab81bb9c",
+      "title": "确定了！2026中国农民丰收节第九届乡村电影周9月27日在怀柔启幕",
+      "summary": "金秋送爽，稻谷飘香。2026年是“十五五”规划开局之年，做好“三农”工作事关中国式现代化建设大局。今年中国农民丰收节确立“丰收开新局 实干促振兴”主题，作为丰收节中的重点配套活动，2026中国农民丰收节第九届乡村电影周将于9月27日在北京市怀柔区杨宋镇正式启幕，主体活动时间为9月27日至29日，部分特色活动延展至10月3日。",
+      "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
+      "published": "Sun, 20 Sep 2026 11:21:00 +0800",
+      "published_at": "2026-09-20T03:21:00Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789874462536.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-industry-desk",
+          "publisher_id": "dianyingjie",
+          "name": "电影界 · 影视行业线索",
+          "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
+          "class": "trade_media"
+        }
+      ]
+    }
+  ],
   "xhs_items": [
+    {
+      "id": "65054df2385df252",
+      "title": "《早春晴朗》广播剧破圈，猫耳FM言情IP再引行业关注",
+      "summary": "近日，猫耳FM的都市言情广播剧《早春晴朗》播放量即将突破5000万。随着该剧口碑爆发，行业也开始重新审视猫耳FM在言情IP领域的长期布局。过去，外界对猫耳的印象多停留在头部纯爱IP衍生内容上；但它在言情广播剧上同样能打，而且这并非临时起意。上游，它持续拿下晋江等顶级版权平台的头部作品；下游，这些言情广播剧同名IP的影视化作品横扫各大平台榜单，而用户早已能在猫耳FM抢先收听，沉浸式解锁剧情。换句话说，猫耳FM不只...",
+      "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
+      "published": "Sun, 20 Sep 2026 11:47:00 +0800",
+      "published_at": "2026-09-20T03:47:00Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789876048517.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-industry-desk",
+          "publisher_id": "dianyingjie",
+          "name": "电影界 · 影视行业线索",
+          "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
+    {
+      "id": "b8210e15ab81bb9c",
+      "title": "确定了！2026中国农民丰收节第九届乡村电影周9月27日在怀柔启幕",
+      "summary": "金秋送爽，稻谷飘香。2026年是“十五五”规划开局之年，做好“三农”工作事关中国式现代化建设大局。今年中国农民丰收节确立“丰收开新局 实干促振兴”主题，作为丰收节中的重点配套活动，2026中国农民丰收节第九届乡村电影周将于9月27日在北京市怀柔区杨宋镇正式启幕，主体活动时间为9月27日至29日，部分特色活动延展至10月3日。",
+      "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
+      "published": "Sun, 20 Sep 2026 11:21:00 +0800",
+      "published_at": "2026-09-20T03:21:00Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "confidence": "single_source",
+      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789874462536.jpeg",
+      "video_url": "",
+      "sources": [
+        {
+          "id": "film-world-industry-desk",
+          "publisher_id": "dianyingjie",
+          "name": "电影界 · 影视行业线索",
+          "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
+          "class": "trade_media"
+        }
+      ]
+    },
     {
       "id": "e1a7910238430576",
       "title": "电视剧《柿柿如意》官宣全阵容 任敏张晚意蒋欣领衔共赴温暖家事",
@@ -156,140 +253,20 @@
           "class": "trade_media"
         }
       ]
-    },
-    {
-      "id": "b3fdc91264be2cd3",
-      "title": "《云雀叫天录》今日开播 张一山初入梨园江湖开启热血逐梦之路",
-      "summary": "《云雀叫天录》以梨园少年孟金福（张一山 饰）的个人成长为核心脉络，铺展他从底层学徒到一代宗师的人生蜕变之路。 今日，由湖南卫视、芒果 TV、完美世界影视、湖北朝画出品，北京弘视际影业股份有限公司、卓越出品文化有限公司联合出品，完美基沐工作室承制，李基业担任总制片人，郑大圣指导，王要编剧，谭孝曾担任艺术顾问，张⼀山、杨立新、曹磊、谭卓领衔主演，邢岷山、刘威、杨新鸣、周航（周九良...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
-      "published": "Tue, 15 Sep 2026 09:50:00 +0800",
-      "published_at": "2026-09-15T01:50:00Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789437000720.jpg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405808.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "bade54679bdb1709",
-      "title": "《刺棠》今日开机，故人执刃入局搅动朝堂风云",
-      "summary": "今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机 今日，由柠萌影视及旗下青柠萌、腾讯视频出品的古装剧《刺棠》正式开机，并同步官宣了主创主演阵容。该剧改编自晋江文学城小说《刺棠》，原著作者：雾圆，由向小园、任庄柳、郎诺林担任编剧，郭虎执导，齐帅担任总监制，方晏之担任总制片人，卢昱晓、张凌赫领衔主演（按姓氏笔画排序）。 该剧讲述了叶亭宴自地狱归来，向坐在...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:53 +0800",
-      "published_at": "2026-09-15T01:49:53Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436993146.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405805.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "bfb114d5b3fc7a39",
-      "title": "《云雀叫天录》定档9月14日 张一山诠释反骨少年戏梦征途",
-      "summary": "《云雀叫天录》围绕主角孟金福（张一山 饰）从底层学徒一路成长为名角的人生蜕变展开，以伶人的成长与抉择，映照了时代浪潮里戏曲行业的传承与变迁，诠释了梨园艺人于世事梨园中坚守初心、追寻艺术理想的不屈信念。 今日，由湖南卫视、芒果TV、完美世界影视、湖北朝画出品，北京弘视际影业股份有限公司、卓越出品文化有限公司联合出品，完美基沐工作室承制，曾映雪担任总监制，李基业担任总制片人，郑大...",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405803.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:46 +0800",
-      "published_at": "2026-09-15T01:49:46Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436986463.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405803.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "dfeccba74af0261f",
-      "title": "经典归来！张国荣《为你钟情》确认引进内地院线",
-      "summary": "时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。 时隔四十一载，港风经典终迎内地银幕首秀！近日，1985年经典港式青春爱情电影《为你钟情》 正式官宣引进内地院线，弥补几代影迷多年遗憾，让黄金年代的纯粹浪漫再度与观众相遇。",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:44 +0800",
-      "published_at": "2026-09-15T01:49:44Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436984680.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405802.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "f27b0983c39559ca",
-      "title": "国产儿童电影《向莲花镇出发》喜获国际荣誉",
-      "summary": "国产儿童电影《向莲花镇出发》频传喜讯。 国产儿童电影《向莲花镇出发》频传喜讯。该片继八月份获得第9届印度雅利安国际儿童电影节“年度十佳影片”后，近日又成功入围第31届德国施林格尔国际儿童电影节主竞赛单元。",
-      "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
-      "published": "Tue, 15 Sep 2026 09:49:38 +0800",
-      "published_at": "2026-09-15T01:49:38Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0915/1789436978556.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0915/405801.shtml",
-          "class": "trade_media"
-        }
-      ]
     }
   ],
   "errors": [],
   "stats": {
-    "items": 0,
-    "xhs_items": 10,
+    "items": 2,
+    "xhs_items": 7,
     "failed_sources": 0,
     "configured_sources": 6,
-    "dropped_stale": 25,
+    "dropped_stale": 28,
     "dropped_undated": 0,
     "dropped_language": 5,
-    "dropped_not_today": 10,
-    "dropped_excluded": 4,
-    "dropped_source_filter": 29,
+    "dropped_not_today": 5,
+    "dropped_excluded": 3,
+    "dropped_source_filter": 30,
     "dropped_capacity": 0,
     "successful_sources": 6,
     "market_coverage": {
@@ -306,7 +283,7 @@
         "successful_sources": 2
       },
       "m-obs": {
-        "items": 0,
+        "items": 2,
         "successful_sources": 1
       }
     }
