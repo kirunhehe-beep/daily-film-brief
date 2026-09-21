@@ -228,6 +228,17 @@ def main() -> int:
     old_html = index.read_text(encoding="utf-8")
     now = dt.datetime.now(ZoneInfo("Asia/Shanghai"))
     date_iso, date_cn, weekday = display_date(now)
+    edition_mode = payload.get("edition_mode", "today")
+    try:
+        edition_day = dt.date.fromisoformat(payload.get("edition_date", date_iso))
+    except (TypeError, ValueError):
+        edition_day = now.date()
+    if edition_mode == "latest_available" and edition_day != now.date():
+        status_date = f"今日暂无新增 · 当前为 {edition_day.month} 月 {edition_day.day} 日最新一期"
+        count_copy = "本期收录"
+    else:
+        status_date = date_cn
+        count_copy = "本轮收录"
     title_match = re.search(r"<title>每日影视简报 · (\d{4}-\d{2}-\d{2})</title>", old_html)
     old_date = title_match.group(1) if title_match else date_iso
     grouped = {market: [] for market in MARKETS}
@@ -251,10 +262,10 @@ def main() -> int:
     total = len(payload["items"])
     result = re.sub(r"<title>每日影视简报 · \d{4}-\d{2}-\d{2}</title>", f"<title>每日影视简报 · {date_iso}</title>", result, count=1)
     result = replace_group(result, r'(<div class="tb-date">).*?(</div>)', date_iso + " · " + weekday)
-    result = replace_group(result, r'(<span class="st-date">).*?(</span>)', date_cn)
+    result = replace_group(result, r'(<span class="st-date">).*?(</span>)', status_date)
     result = replace_group(result, r'(<span class="st-upd">).*?(</span>)', "系统自动更新于 " + now.strftime("%H:%M"))
-    result = replace_group(result, r'(<span class="st-new">).*?(</span>)', "本轮收录 <em>" + str(total) + "</em> 条")
-    result = replace_group(result, r'(<div class="st-sub2">).*?(</div>)', "自动采集 · " + str(payload["stats"]["configured_sources"]) + " 个信源 · " + str(payload["stats"]["failed_sources"]) + " 个异常")
+    result = replace_group(result, r'(<span class="st-new">).*?(</span>)', count_copy + " <em>" + str(total) + "</em> 条")
+    result = replace_group(result, r'(<div class="st-sub2">).*?(</div>)', "单日一期 · 自动采集 · " + str(payload["stats"]["configured_sources"]) + " 个信源 · " + str(payload["stats"]["failed_sources"]) + " 个异常")
     index.write_text(result, encoding="utf-8")
     (site / "data").mkdir(exist_ok=True)
     (site / "data" / "latest.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

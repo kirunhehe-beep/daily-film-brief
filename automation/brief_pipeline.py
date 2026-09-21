@@ -343,19 +343,31 @@ def run(config: dict) -> dict:
                 dropped_language += 1
         merged = eligible
     # Keep a wider, uncapped evidence pool for the previous-day Xiaohongshu
-    # package. The web brief itself is a Beijing-calendar-day product and must
-    # never mix yesterday's items into today's page.
+    # package. The web brief is always a single-date edition: prefer today,
+    # otherwise use only the most recent date represented in the evidence pool.
     merged.sort(key=lambda item: item["published_at"], reverse=True)
     xhs_items = list(merged)
     beijing_today = now.astimezone(BEIJING).date()
-    today_items = []
+    dated_items: list[tuple[dict, dt.date]] = []
     for item in merged:
         item_date = dt.datetime.fromisoformat(item["published_at"].replace("Z", "+00:00")).astimezone(BEIJING).date()
-        if item_date == beijing_today:
-            today_items.append(item)
-        else:
+        dated_items.append((item, item_date))
+        if item_date != beijing_today:
             dropped_not_today += 1
-    merged = today_items
+    today_items = [item for item, item_date in dated_items if item_date == beijing_today]
+    if today_items:
+        edition_date = beijing_today
+        edition_mode = "today"
+        merged = today_items
+    elif dated_items:
+        edition_date = max(item_date for _, item_date in dated_items)
+        edition_mode = "latest_available"
+        merged = [item for item, item_date in dated_items if item_date == edition_date]
+    else:
+        edition_date = beijing_today
+        edition_mode = "empty"
+        merged = []
+    dropped_not_edition = len(dated_items) - len(merged)
 
     # Apply the reading budget only after the strict same-day filter.
     limits = policy.get("max_items_per_market", {})
@@ -388,6 +400,8 @@ def run(config: dict) -> dict:
     return {
         "schema_version": 1,
         "generated_at": generated_at,
+        "edition_date": edition_date.isoformat(),
+        "edition_mode": edition_mode,
         "policy": policy,
         "items": merged,
         "xhs_items": xhs_items,
@@ -401,6 +415,7 @@ def run(config: dict) -> dict:
             "dropped_undated": dropped_undated,
             "dropped_language": dropped_language,
             "dropped_not_today": dropped_not_today,
+            "dropped_not_edition": dropped_not_edition,
             "dropped_excluded": dropped_excluded,
             "dropped_source_filter": dropped_source_filter,
             "dropped_capacity": dropped_capacity,
