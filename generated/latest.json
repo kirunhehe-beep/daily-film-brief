@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-20T13:47:28Z",
+  "generated_at": "2026-09-21T07:54:58Z",
   "policy": {
     "mode": "zero_human_gate",
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
@@ -35,224 +35,7 @@
       "single_source": "单源待确认"
     }
   },
-  "items": [
-    {
-      "id": "fd51c03a95ca5a69",
-      "title": "光影为桥，文化铸魂，《平安的女儿》上海路演圆满落幕",
-      "summary": "9月19日晚，国内首部以国家级非物质文化遗产“马仙信俗”为蓝本创作的古装电影《平安的女儿》上海路演圆满结束。 9月19日晚，国内首部以国家级非物质文化遗产“马仙信俗”为蓝本创作的古装电影《平安的女儿》上海路演圆满结束。导演兼编剧林郡，携手演员小七娘饰演者陈可欣、卢鹿鹿等主创团队亲临现场，与在沪闽商代表深入互动，将影片传递的“忠孝、慈爱、安康”精神内核与闽商群体...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405981.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:47 +0800",
-      "published_at": "2026-09-20T12:41:47Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908107776.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405981.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "76a2f23edea4e17e",
-      "title": "雷启飞主演电影《荒山野店》热播 把反派“刘涛”一角演绎到了极致",
-      "summary": "电影《荒山野店》于2026年9月16日在爱奇艺电影频道和优酷电影频道、奇异果TV、酷喵TV同步首发上线后直接登上双平台榜首。 电影《荒山野店》于2026年9月...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405980.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:44 +0800",
-      "published_at": "2026-09-20T12:41:44Z",
-      "market": "m-cn",
-      "entry_type": "电影动态",
-      "language": "zh",
-      "content_priority": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908104400.png",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-news",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电影新闻",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405980.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "090efdcc9f0f20ae",
-      "title": "李现李一桐《我不是大师》定档9月24日，爱奇艺看以骗制骗玄疑局",
-      "summary": "乱世藏虚妄，人心见本真！民国悬疑江湖剧集《我不是大师》（原名《长风起》）正式官宣定档 9 月 24 日，将在爱奇艺播出。 乱世藏虚妄，人心见本真！民国悬疑江湖剧集《我不是大师》（原名《长风起》）正式官宣定档 9 月 24 日，将在爱奇艺播出。以跌宕起伏的叙事描摹民国乱世之下的江湖诡事与人性沉浮。",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405984.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:51 +0800",
-      "published_at": "2026-09-20T12:41:51Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908111169.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405984.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "8f398cc8ebe342c4",
-      "title": "网络故事片《生死尽头》定档9月24日 孤岛厮杀上演人性生存困局",
-      "summary": "由腾讯视频、不响文化联合出品的网络故事片《生死尽头》正式定档，9月24日腾讯视频全网独播。 由腾讯视频、不响文化联合出品的网络故事片《生死尽头》正式定档，9月24日腾讯视频全网独播。该故事片由潘戍午执导，言桄、于娜编剧，王丹妮、边程、刘铁（刘奕铁）、张文昕领衔主演，张宁浩、林连凯（连凯）特别出演，阳博、刘登宇、陈兰兰、李晓强出演（按姓氏笔画排序）。故事片改编自言桄的小说《远岛方舟...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405983.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:50 +0800",
-      "published_at": "2026-09-20T12:41:50Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908110433.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405983.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "4b10056446fa77da",
-      "title": "中国电影120周年，制片人罗珊珊代表《封神》剧组捐献影片珍贵藏品",
-      "summary": "2025年10月20日，“为人民抒怀为时代放歌——新时代中国电影发展成就展暨中国电影诞生120 周年数字影像展”在中国电影博物馆隆重开幕。 2025年10月20日，“为人民抒怀为时代放歌——新时代中国电影发展成就展暨中国电影诞生120 周年数字影像展”在中国电影博物馆隆重开幕。电影《封神第一部》制片人罗珊珊受邀出席开幕式，不仅代表出品方捐赠影片珍贵藏品，更结合自身经历分享内容...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405986.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:54 +0800",
-      "published_at": "2026-09-20T12:41:54Z",
-      "market": "m-cn",
-      "entry_type": "影视人物动态",
-      "language": "zh",
-      "content_priority": 2,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908114957.png",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-people-filtered",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影人影事（影视筛选）",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405986.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "e673701f9e17ed4d",
-      "title": "从《金粉世家》金道之变身《封神三部曲》操盘手！罗珊珊身份换了，对影视的痴念没变",
-      "summary": "二十年前在《金粉世家》里惊艳亮相的四小姐金道之，如今竟是手握30亿大项目的幕后操盘手？ 二十年前在《金粉世家》里惊艳亮相的四小姐金道之，如今竟是手握30亿大项目的幕后操盘手？从被资本挑选的演员逆袭成幕后制片人，这样的人生剧本，堪称妥妥的成功女性范本。",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405978.shtml",
-      "published": "Sun, 20 Sep 2026 20:41:41 +0800",
-      "published_at": "2026-09-20T12:41:41Z",
-      "market": "m-cn",
-      "entry_type": "影视人物动态",
-      "language": "zh",
-      "content_priority": 2,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789908101558.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-people-filtered",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影人影事（影视筛选）",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405978.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "bfaecb6f77c2ffaf",
-      "title": "华为视频的十年演进：一个窗口看遍全网影视，一套AI读懂用户",
-      "summary": "当傍晚的城市亮起万家灯火，刚结束加班的年轻白领在地铁上点开华为视频优酷专区的热播剧《早春晴朗》，原来漫长枯燥的通勤变得充实，一集看完，刚好到站；周末的客厅里，窝在柔软的沙发上，追华为视频爱奇艺专区的综艺《大哥小助理》，笑得停不下来……这些细碎而真实的生活片段，正是华为视频陪伴用户走过十年的生动注脚。 2026年9月20日，华为视频迎来上线十周年。十年间，用户的观影习惯持续变迁：跨平台...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405976.shtml",
-      "published": "Sun, 20 Sep 2026 16:48:00 +0800",
-      "published_at": "2026-09-20T08:48:00Z",
-      "market": "m-obs",
-      "entry_type": "行业动态",
-      "language": "zh",
-      "content_priority": 3,
-      "confidence": "single_source",
-      "image_url": "https://www.guangcz.com/media/carousel/%E5%9B%BE%E7%89%87%201_20260920160734_294.png",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-industry-desk",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影视行业线索",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405976.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "65054df2385df252",
-      "title": "《早春晴朗》广播剧破圈，猫耳FM言情IP再引行业关注",
-      "summary": "近日，猫耳FM的都市言情广播剧《早春晴朗》播放量即将突破5000万。随着该剧口碑爆发，行业也开始重新审视猫耳FM在言情IP领域的长期布局。过去，外界对猫耳的印象多停留在头部纯爱IP衍生内容上；但它在言情广播剧上同样能打，而且这并非临时起意。上游，它持续拿下晋江等顶级版权平台的头部作品；下游，这些言情广播剧同名IP的影视化作品横扫各大平台榜单，而用户早已能在猫耳FM抢先收听，沉浸式解锁剧情。换句话说，猫耳FM不只...",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
-      "published": "Sun, 20 Sep 2026 11:47:00 +0800",
-      "published_at": "2026-09-20T03:47:00Z",
-      "market": "m-obs",
-      "entry_type": "行业动态",
-      "language": "zh",
-      "content_priority": 3,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789876048517.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-industry-desk",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影视行业线索",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405975.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
-      "id": "b8210e15ab81bb9c",
-      "title": "确定了！2026中国农民丰收节第九届乡村电影周9月27日在怀柔启幕",
-      "summary": "金秋送爽，稻谷飘香。2026年是“十五五”规划开局之年，做好“三农”工作事关中国式现代化建设大局。今年中国农民丰收节确立“丰收开新局 实干促振兴”主题，作为丰收节中的重点配套活动，2026中国农民丰收节第九届乡村电影周将于9月27日在北京市怀柔区杨宋镇正式启幕，主体活动时间为9月27日至29日，部分特色活动延展至10月3日。",
-      "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
-      "published": "Sun, 20 Sep 2026 11:21:00 +0800",
-      "published_at": "2026-09-20T03:21:00Z",
-      "market": "m-obs",
-      "entry_type": "行业动态",
-      "language": "zh",
-      "content_priority": 3,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0920/1789874462536.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-industry-desk",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影视行业线索",
-          "url": "https://www.dianyingjie.com.cn/2026/0920/405974.shtml",
-          "class": "trade_media"
-        }
-      ]
-    }
-  ],
+  "items": [],
   "xhs_items": [
     {
       "id": "4b10056446fa77da",
@@ -593,21 +376,21 @@
   ],
   "errors": [],
   "stats": {
-    "items": 9,
+    "items": 0,
     "xhs_items": 14,
     "failed_sources": 0,
     "configured_sources": 6,
     "dropped_stale": 24,
     "dropped_undated": 0,
     "dropped_language": 5,
-    "dropped_not_today": 5,
+    "dropped_not_today": 14,
     "dropped_excluded": 3,
     "dropped_source_filter": 27,
     "dropped_capacity": 0,
     "successful_sources": 6,
     "market_coverage": {
       "m-cn": {
-        "items": 6,
+        "items": 0,
         "successful_sources": 3
       },
       "m-hmt": {
@@ -619,7 +402,7 @@
         "successful_sources": 2
       },
       "m-obs": {
-        "items": 3,
+        "items": 0,
         "successful_sources": 1
       }
     }
