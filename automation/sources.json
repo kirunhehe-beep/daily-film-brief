@@ -134,6 +134,56 @@
       "enabled": true
     },
     {
+      "id": "ltn-entertainment",
+      "name": "自由時報 · 娛樂（影視篩選）",
+      "type": "rss",
+      "url": "https://news.ltn.com.tw/rss/entertainment.xml",
+      "publisher_id": "ltn",
+      "source_class": "established_media",
+      "market": "m-hmt",
+      "entry_type": "港澳台影視動態",
+      "content_priority": 1,
+      "language": "zh",
+      "max_items": 20,
+      "filter_scope": "title",
+      "include_keywords": [
+        "電影", "戲院", "影院", "票房", "導演", "上映", "定檔", "影集",
+        "劇集", "金馬", "金像", "影展", "預告", "海報", "主演", "華語",
+        "國片", "港片", "紀錄片", "動畫", "串流", "影視", "開拍", "殺青",
+        "首播", "上線", "影后", "影帝"
+      ],
+      "exclude_keywords": [
+        "綜藝", "真人秀", "演唱會", "歌手", "專輯", "MV", "緋聞",
+        "離婚", "認愛", "劈腿", "熱戀"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "mirror-entertainment",
+      "name": "鏡週刊 · 娛樂（影視篩選）",
+      "type": "rss",
+      "url": "https://www.mirrormedia.mg/rss/entertainment.xml",
+      "publisher_id": "mirrormedia",
+      "source_class": "established_media",
+      "market": "m-hmt",
+      "entry_type": "港澳台影視動態",
+      "content_priority": 1,
+      "language": "zh",
+      "max_items": 20,
+      "filter_scope": "title",
+      "include_keywords": [
+        "電影", "戲院", "影院", "票房", "導演", "上映", "定檔", "影集",
+        "劇集", "金馬", "金像", "影展", "預告", "海報", "主演", "華語",
+        "國片", "港片", "紀錄片", "動畫", "串流", "影視", "開拍", "殺青",
+        "首播", "上線", "影后", "影帝"
+      ],
+      "exclude_keywords": [
+        "綜藝", "真人秀", "演唱會", "歌手", "專輯", "MV", "緋聞",
+        "離婚", "認愛", "劈腿", "熱戀"
+      ],
+      "enabled": true
+    },
+    {
       "id": "official-source-template",
       "name": "待配置的官方信源（示例，不参与采集）",
       "type": "rss",
