@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-22T14:14:11Z",
+  "generated_at": "2026-09-23T07:42:04Z",
   "edition_date": "2026-09-20",
   "edition_mode": "latest_available",
   "policy": {
@@ -471,43 +471,19 @@
           "class": "trade_media"
         }
       ]
-    },
-    {
-      "id": "e1a7910238430576",
-      "title": "电视剧《柿柿如意》官宣全阵容 任敏张晚意蒋欣领衔共赴温暖家事",
-      "summary": "《柿柿如意》围绕许、梁两户人家几十年的烟火日常展开。70年代，母亲许不是离经叛道为自己换亲追爱，遇人不淑，幸得朴实、善良的工人梁贵生所救，两人喜结连理。 9月17日，电视剧《柿柿如意》正式官宣全阵容。该剧由丽泽影业与完美世界影视联合出品，总制片人徐立、导演安建、总编剧代超，任敏、张晚意、蒋欣（按姓氏笔画排序）领衔主演，王和、包文婧，师铭泽、刘烨，张小婉、张铎、郑合惠子、周澄奥、...",
-      "url": "https://www.dianyingjie.com.cn/2026/0917/405945.shtml",
-      "published": "Thu, 17 Sep 2026 23:25:19 +0800",
-      "published_at": "2026-09-17T15:25:19Z",
-      "market": "m-cn",
-      "entry_type": "剧集动态",
-      "language": "zh",
-      "content_priority": 1,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0917/1789658719865.jpeg",
-      "video_url": "",
-      "sources": [
-        {
-          "id": "film-world-series",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 电视与剧集",
-          "url": "https://www.dianyingjie.com.cn/2026/0917/405945.shtml",
-          "class": "trade_media"
-        }
-      ]
     }
   ],
   "errors": [],
   "stats": {
     "items": 9,
-    "xhs_items": 10,
+    "xhs_items": 9,
     "failed_sources": 0,
     "configured_sources": 6,
-    "dropped_stale": 28,
+    "dropped_stale": 29,
     "dropped_undated": 0,
     "dropped_language": 5,
-    "dropped_not_today": 10,
-    "dropped_not_edition": 1,
+    "dropped_not_today": 9,
+    "dropped_not_edition": 0,
     "dropped_excluded": 3,
     "dropped_source_filter": 27,
     "dropped_capacity": 0,
