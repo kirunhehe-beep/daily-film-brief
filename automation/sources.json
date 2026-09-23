@@ -4,24 +4,139 @@
     "publish_rule": "Publish every traceable eligible item. Never upgrade a claim beyond its evidence class.",
     "max_age_hours": 120,
     "web_item_window": "beijing_calendar_day",
-    "max_items_per_market": {
-      "m-cn": 10,
-      "m-hmt": 6,
-      "m-intl": 6,
-      "m-obs": 4
-    },
+    "max_items_per_market": {},
+    "allow_carry_forward": false,
     "render_languages": ["zh"],
     "excluded_entry_types": ["短剧动态"],
     "excluded_keywords": ["短剧", "微短剧"],
     "required_markets": ["m-cn", "m-hmt", "m-intl", "m-obs"],
-    "dedupe": "Normalized-title and canonical-link matching. A multi-source label requires two distinct publishers.",
+    "dedupe": "Preserve original links and article query IDs. Group duplicate discoveries; reposts do not establish independent confirmation.",
     "labels": {
-      "official": "官方确认",
-      "multi_source": "多源一致",
-      "single_source": "单源待确认"
+      "official": "官方发布",
+      "multi_source": "多处报道",
+      "single_source": "媒体报道",
+      "social_lead": "社媒线索",
+      "industry_commentary": "行业观察"
     }
   },
   "sources": [
+    {
+      "id": "chinanews-culture", "name": "中国新闻网 · 文娱",
+      "type": "rss", "url": "https://www.chinanews.com.cn/rss/culture.xml",
+      "publisher_id": "chinanews", "source_class": "established_media",
+      "market": "m-cn", "infer_market": true, "entry_type": "影视动态", "language": "zh",
+      "enrich_media": true,
+      "include_keywords": ["电影", "影片", "影视", "电视剧", "剧集", "网剧", "票房", "院线", "影展", "导演", "定档", "开机", "杀青"],
+      "enabled": true
+    },
+    {
+      "id": "cna-entertainment", "name": "中央通訊社 · 娛樂",
+      "type": "rss", "url": "https://feeds.feedburner.com/rsscna/stars",
+      "publisher_id": "cna", "source_class": "established_media",
+      "market": "m-hmt", "infer_market": true, "entry_type": "影视动态", "language": "zh",
+      "enrich_media": true,
+      "include_keywords": ["电影", "影片", "影视", "电视剧", "剧集", "影展", "导演", "名導", "演員", "演员", "票房", "影迷", "金馬", "金钟", "金像", "艾美", "奧斯卡", "動畫", "动画", "卡通"],
+      "enabled": true
+    },
+    {
+      "id": "hkfilmblog", "name": "講。鏟。片 · 香港電影博客",
+      "type": "rss", "url": "https://www.hkfilmblog.com/feed",
+      "publisher_id": "hkfilmblog", "source_class": "industry_blog",
+      "market": "m-hmt", "infer_market": true, "entry_type": "电影行业观察", "language": "zh",
+      "enrich_media": true, "enabled": true
+    },
+    {
+      "id": "rthk-hongkong", "name": "香港電台 · 影視相關報道",
+      "type": "rss", "url": "https://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml",
+      "publisher_id": "rthk", "source_class": "established_media",
+      "market": "m-hmt", "entry_type": "影视动态", "language": "zh",
+      "include_keywords": ["电影", "影片", "影视", "电视剧", "剧集", "院线", "票房", "影展", "金像奖"],
+      "enabled": true
+    },
+    {
+      "id": "mtime-news", "name": "时光网 · 影视资讯",
+      "type": "mtime_news", "url": "https://news.mtime.com/",
+      "publisher_id": "mtime", "source_class": "trade_media",
+      "market": "m-obs", "infer_market": true, "entry_type": "影视动态", "language": "zh",
+      "enabled": true
+    },
+    {
+      "id": "bjnews-entertainment", "name": "新京报 · 娱乐",
+      "type": "bjnews_ent", "url": "https://www.bjnews.com.cn/entertainment",
+      "publisher_id": "bjnews", "source_class": "established_media",
+      "market": "m-cn", "infer_market": true, "entry_type": "影视动态", "language": "zh",
+      "include_keywords": ["电影", "影片", "影视", "电视剧", "剧集", "长剧", "网剧", "票房", "影展", "导演", "演员", "开机", "杀青", "定档"],
+      "enabled": true
+    },
+    {
+      "id": "people-culture-film", "name": "人民网 · 影视产业报道",
+      "type": "people_culture", "url": "http://ent.people.com.cn/",
+      "publisher_id": "people", "source_class": "established_media",
+      "market": "m-obs", "entry_type": "行业动态", "language": "zh",
+      "enabled": true
+    },
+    {
+      "id": "weibo-film-search",
+      "name": "微博 · 电影搜索",
+      "type": "weibo_search",
+      "queries": ["电影"],
+      "source_class": "social",
+      "market": "m-obs",
+      "entry_type": "电影动态",
+      "content_priority": 0,
+      "language": "zh",
+      "max_pages": 1,
+      "max_requests_per_run": 1,
+      "page_size": 20,
+      "enabled": false
+    },
+    {
+      "id": "weibo-series-search",
+      "name": "微博 · 剧集搜索",
+      "type": "weibo_search",
+      "queries": ["电视剧"],
+      "source_class": "social",
+      "market": "m-obs",
+      "entry_type": "剧集动态",
+      "content_priority": 1,
+      "language": "zh",
+      "max_pages": 1,
+      "max_requests_per_run": 1,
+      "page_size": 20,
+      "enabled": false
+    },
+    {
+      "id": "weibo-watched-accounts",
+      "name": "微博 · 影视账号动态（待配置 UID）",
+      "type": "weibo_timeline",
+      "uids": [],
+      "source_class": "social",
+      "market": "m-obs",
+      "entry_type": "影视动态",
+      "content_priority": 1,
+      "language": "zh",
+      "max_pages": 1,
+      "max_requests_per_run": 2,
+      "page_size": 20,
+      "enabled": false
+    },
+    {
+      "id": "chinafilm-project-filings",
+      "name": "国家电影局 · 电影备案立项公示",
+      "type": "chinafilm_filing",
+      "url": "https://www.chinafilm.gov.cn/xxgk/gsxx/dybalx/",
+      "publisher_id": "chinafilm-gov",
+      "source_class": "official",
+      "market": "m-cn",
+      "entry_type": "项目备案",
+      "distribution": "cinema_filing",
+      "content_priority": -1,
+      "language": "zh",
+      "max_items": 1,
+      "max_age_hours": 1080,
+      "carry_forward_days": 30,
+      "enabled": true
+    },
     {
       "id": "variety-film",
       "name": "Variety · Film",
@@ -64,7 +179,6 @@
       "enrich_media": true,
       "language": "zh",
       "max_items": 12,
-      "exclude_keywords": ["综艺", "真人秀", "说唱", "打歌", "音综", "舞台", "盛典", "节目"],
       "enabled": true
     },
     {
@@ -126,7 +240,6 @@
       "enrich_media": true,
       "language": "zh",
       "max_items": 20,
-      "filter_scope": "title",
       "include_keywords": [
         "电影", "影片", "院线", "票房", "剧集", "电视剧", "网剧",
         "影视", "银幕", "荧屏", "电影节"

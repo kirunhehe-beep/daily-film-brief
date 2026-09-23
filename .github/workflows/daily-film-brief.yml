@@ -22,8 +22,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Test collection and rendering
+        run: python -m unittest discover -s automation -p 'test_*.py' -v
       - name: Collect traceable source items
-        run: python automation/brief_pipeline.py --sources automation/sources.json --output generated/latest.json
+        run: python automation/brief_pipeline.py --sources automation/sources.json --output generated/latest.json --store generated/collected_items.json
       - name: Render daily page and archive yesterday
         run: python automation/render_daily.py --input generated/latest.json --site app
       - name: Persist the generated briefing and archive
@@ -39,3 +41,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy app --project-name=daily-film-brief
+      - name: Verify the public page and data match this run
+        run: python automation/verify_deployment.py --input generated/latest.json
