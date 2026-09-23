@@ -61,7 +61,7 @@
 
   <div class="masthead">
     <h1>历史归档</h1>
-    <div class="meta">按日期翻阅往期简报 · 每日 08:00 自动留存一版</div>
+    <div class="meta">按日期翻阅往期简报 · 跨日更新时自动保存上一期</div>
   </div>
 
   <section aria-label="往期列表">
@@ -104,7 +104,7 @@ const listEl = document.getElementById("list");
 
 function render(){
   if(!ARCH.length){
-    listEl.innerHTML = '<div class="empty">还没有归档。明天 08:00 首期生成后，这里会自动出现往期入口。</div>';
+    listEl.innerHTML = '<div class="empty">暂时没有往期简报。跨日更新后，这里会出现上一期入口。</div>';
     return;
   }
   listEl.innerHTML = ARCH.map(function(it){
