@@ -28,7 +28,8 @@ def main():
     marker = hashlib.sha256(raw).hexdigest()[:16]
     def read(path):
         request = urllib.request.Request(args.url.rstrip("/") + path + "?verify=" + marker,
-                                         headers={"Cache-Control": "no-cache"})
+                                         headers={"Cache-Control": "no-cache",
+                                                  "User-Agent": "DailyFilmBriefDeploymentCheck/1.0 (+https://daily-film-brief.pages.dev/)"})
         with urllib.request.urlopen(request, timeout=20) as response:
             return response.read().decode("utf-8")
     for attempt in range(6):
@@ -37,7 +38,8 @@ def main():
             print(f'线上核验通过：{expected["edition_date"]}，{len(expected["items"])} 条')
             return 0
         except Exception as exc:
-            print(f"线上核验暂未通过（{type(exc).__name__}），第 {attempt + 1}/6 次")
+            status = f" HTTP {exc.code}" if hasattr(exc, "code") else ""
+            print(f"线上核验暂未通过（{type(exc).__name__}{status}），第 {attempt + 1}/6 次", flush=True)
             if attempt < 5:
                 time.sleep(10)
     return 1
