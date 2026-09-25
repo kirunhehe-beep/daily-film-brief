@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="theme-color" content="#f1eee5">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../film-ticket-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../film-ticket-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../film-ticket-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="影视简报">
+<title>每日影视简报 · 2026-09-24</title>
+<style>
+  :root{
+    --paper:#f1eee5;
+    --deep:#e6e0d4;
+    --ink:#11110f;
+    --ink-2:#3f3d37;
+    --ink-3:#6f6c65;
+    --ink-4:#9a978f;
+    --line:rgba(17,17,15,.2);
+    --red:#e13d2f;
+    --blue:#2548d8;
+    --ok:#17694b;
+    --warn:#b26a00;
+    --hair:rgba(17,17,15,.2);
+    --maxw:560px;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:var(--paper);
+    background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    background-attachment:fixed;
+    min-height:100vh;
+  }
+  a{color:var(--ink);text-decoration:none}
+  img{display:block}
+  .app{max-width:var(--maxw);margin:0 auto;min-height:100vh;padding-bottom:72px;
+    border-left:1px solid var(--line);border-right:1px solid var(--line);
+    position:relative;isolation:isolate;overflow:hidden}
+
+  /* ============ 顶部栏：墨黑硬边 + 米白字 + 等宽小字 ============ */
+  .topbar{position:sticky;top:0;z-index:80;
+    padding:calc(env(safe-area-inset-top) + 10px) 0 0;
+    background:rgba(17,17,15,.94);
+    -webkit-backdrop-filter:saturate(160%) blur(14px);backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid var(--ink);color:var(--paper)}
+  .tb-top{display:flex;align-items:flex-start;justify-content:space-between;
+    padding:0 16px 9px;border-bottom:1px solid rgba(241,238,229,.18)}
+  .tb-brand{font-size:38px;line-height:.85;font-weight:950;letter-spacing:-.06em;color:var(--paper)}
+  .tb-brand span{color:var(--red);font-weight:950}
+  .tb-date{text-align:right;font:700 10px/1.5 var(--mono);color:rgba(241,238,229,.72);letter-spacing:.08em;padding-top:6px;line-height:1.5}
+  .mnav{display:flex;gap:0;overflow-x:auto;padding:0;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mnav::-webkit-scrollbar{display:none}
+  .mnav a{flex:none;padding:12px 14px 11px;font:750 10.5px/1 var(--mono);letter-spacing:.04em;
+    color:rgba(241,238,229,.65);border-bottom:2px solid transparent;white-space:nowrap}
+  .mnav a.on{color:var(--paper);border-bottom-color:var(--red)}
+
+  /* ============ 系统状态（kicker 红标 + 等宽小字） ============ */
+  .status{padding:22px 18px 14px;position:relative}
+  .st-line{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:9px}
+  .st-kicker{display:inline-block;padding:5px 8px 4px;color:var(--paper);background:var(--red);
+    font:800 10.5px/1 var(--mono);letter-spacing:.08em;transform:rotate(-1.5deg);margin-bottom:5px}
+  .st-date{font-size:32px;font-size:clamp(30px,9vw,40px);line-height:1;letter-spacing:-.04em;font-weight:930;flex:1 0 100%}
+  .st-dot{color:var(--ink-4);font-weight:600}
+  .st-upd,.st-new{font:700 11px/1 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+  .st-new em{font-style:normal;color:var(--red);font-weight:800}
+  .st-sub2{margin-top:9px;font:650 10.5px/1.55 var(--mono);color:var(--ink-3);letter-spacing:.06em;
+    padding-top:8px;border-top:1px solid var(--line)}
+  .deck{max-width:92%;margin:11px 0 0;font-size:13.5px;line-height:1.72;font-weight:600;color:var(--ink-3)}
+  .deck b{color:var(--ink);font-weight:800}
+
+  /* ============ 市场区（墨黑 section 头，奇墨偶蓝） ============ */
+  .market{padding:0;margin-top:18px;scroll-margin-top:96px}
+  .market .mk-head{min-height:96px;padding:18px 18px 16px;display:grid;
+    grid-template-columns:54px 1fr auto;align-items:end;gap:9px;
+    background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);
+    border-top:7px solid var(--ink)}
+  .market:nth-of-type(even) .mk-head{background:var(--blue)}
+  .mk-head .bar{display:none}
+  .mk-head h2{font-size:26px;line-height:1;font-weight:930;letter-spacing:-.04em;color:var(--paper)}
+  .mk-head .en{font:700 9.5px/1.55 var(--mono);color:rgba(241,238,229,.7);letter-spacing:.1em}
+  .mk-head .n{font:700 10px/1 var(--mono);color:rgba(241,238,229,.85);
+    border:1px solid rgba(241,238,229,.45);padding:4px 8px;align-self:end}
+  .feed{background:rgba(255,255,255,.5);border-bottom:1px solid var(--ink)}
+  .feed > .row-media{margin:0}
+  .mk-empty{padding:20px 16px;font:650 11px/1.7 var(--mono);color:var(--ink-3);text-align:center;letter-spacing:.04em;
+    background:rgba(255,255,255,.5);border-bottom:1px solid var(--ink)}
+  .mk-empty strong{display:block;font:800 12px/1.5 var(--sans);color:var(--ink-2);letter-spacing:.01em}
+  .mk-empty span{display:block;margin-top:3px;font:600 10px/1.5 var(--mono);color:var(--ink-3)}
+  .feed-keep-label{padding:8px 16px 7px;background:var(--deep);color:var(--paper);font:800 9.5px/1 var(--mono);letter-spacing:.08em}
+
+  /* ============ 普通条目：硬边方角 ============ */
+  .row{border-bottom:1px solid var(--ink)}
+  .row:last-child{border-bottom:1px solid var(--ink)}
+  .row > summary{list-style:none;cursor:pointer;padding:14px 16px 15px;position:relative;display:block}
+  .row > summary::-webkit-details-marker{display:none}
+  .r-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-right:24px}
+  .r-time{font:700 10.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+  .r-kind{font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--paper);background:var(--ink);
+    padding:4px 7px 3px}
+  .r-new{font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--red);
+    background:transparent;border:1px solid var(--red);padding:3px 6px 2px;
+    font-variant-numeric:tabular-nums}
+  .r-cred{margin-left:auto;flex:none;font:700 10px/1 var(--mono);letter-spacing:.04em;
+    padding:4px 7px 3px}
+  .r-cred.ok{color:var(--ok);border:1px solid var(--ok)}
+  .r-cred.pending{color:var(--red);border:1px solid var(--red)}
+  .chev{position:absolute;right:13px;top:15px;width:15px;height:15px;color:var(--ink);
+    transition:transform .22s ease}
+  details[open] > summary .chev{transform:rotate(180deg)}
+  .r-title{font-size:22px;line-height:1.18;letter-spacing:-.035em;font-weight:850;
+    margin-top:8px;color:var(--ink)}
+  .r-lead{font-size:13.2px;color:var(--ink-2);margin-top:5px;line-height:1.55}
+  .r-src{margin-top:8px;display:inline-flex;align-items:center;gap:6px;font:700 10.5px/1.55 var(--mono);
+    color:var(--ink-3);letter-spacing:.04em}
+  .r-src .dot{width:5px;height:5px;background:var(--ink);flex:none}
+  .r-src.pending .dot{background:var(--red)}
+
+  /* ============ 物料条目：硬边白卡（杂志海报） ============ */
+  .row-media{margin:0;border-bottom:1px solid var(--ink);background:rgba(255,255,255,.65)}
+  .row-media > summary{padding:14px 16px 14px}
+  .row-media .chev{right:13px}
+  .r-media-body{display:flex;gap:13px;margin-top:10px;align-items:flex-start}
+  .r-thumb{width:84px;height:126px;aspect-ratio:2/3;object-fit:cover;flex:0 0 auto;
+    border:1px solid var(--ink);background:var(--deep)}
+  .r-media-txt{min-width:0;flex:1}
+  .r-media-txt .r-title{margin-top:0}
+  .r-mat{margin-top:10px;display:inline-flex;align-items:center;gap:5px;
+    font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--paper);background:var(--ink);
+    padding:4px 7px 3px}
+
+  /* ============ 详情区 ============ */
+  .r-det{padding:0 16px 16px}
+  .row-media .r-det{padding:0 16px 14px}
+  .r-det .d-desc{font-size:13.4px;line-height:1.62;color:var(--ink);
+    padding:11px 0 0;border-top:1px solid var(--ink);margin-top:11px}
+  .r-det > *:first-child{border-top:none;margin-top:0;padding-top:0}
+
+  .filing-block{margin-top:12px;border:1px solid var(--ink);background:var(--paper);padding:11px 12px}
+  .filing-block .vp-h{font:800 9.5px/1 var(--mono);color:var(--ink);letter-spacing:.12em;margin-bottom:8px}
+  .filing-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .filing-table{width:100%;min-width:760px;border-collapse:collapse;font-size:11.5px;line-height:1.45}
+  .filing-table th,.filing-table td{padding:7px 8px;text-align:left;vertical-align:top;border:1px solid var(--ink)}
+  .filing-table th{background:var(--ink);color:var(--paper);font:800 9.5px/1.2 var(--mono);letter-spacing:.05em}
+  .filing-table td:first-child{font-weight:800;min-width:96px}
+  .filing-table td:nth-child(3){font-family:var(--mono);white-space:nowrap}
+  .filing-block .vp-note{font-size:10.8px;color:var(--ink-3);margin-top:8px;line-height:1.55;font-family:var(--mono)}
+
+  /* 播放器：B 站分端（默认安全态：隐藏 iframe / 显示跳转入口，墨黑硬边） */
+  .v-wrap{margin-top:11px;border:1px solid var(--ink);background:var(--ink);overflow:hidden}
+  .v-wrap video{width:100%;display:block;background:#000;max-height:54vw}
+  .v-wrap .bili-embed{display:none;width:100%;aspect-ratio:16/9;border:0;background:#000}
+  .bili-jump{display:flex;align-items:center;gap:11px;padding:14px;color:var(--paper);text-decoration:none;
+    background:rgba(241,238,229,.06);min-height:54px}
+  .bili-jump .bj-ico{width:30px;height:30px;background:var(--red);display:flex;align-items:center;
+    justify-content:center;font-size:11px;flex:none;color:var(--paper);font-weight:800;font-family:var(--mono)}
+  .bili-jump .bj-t{font:800 13px/1.2 var(--ink);color:var(--paper);display:block;letter-spacing:-.01em}
+  .bili-jump .bj-s{font:650 10.5px/1.4 var(--mono);color:rgba(241,238,229,.7);display:block;margin-top:3px;letter-spacing:.04em}
+  .v-src{margin-top:7px;font:650 10.8px/1.55 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+  .v-src a{color:var(--ink);text-decoration:underline}
+  .v-fallback{padding:14px;font:650 12.5px/1.55 var(--mono);color:var(--paper);text-align:center;background:var(--ink)}
+  .v-fallback a{color:var(--red);text-decoration:underline}
+  @media (min-width:821px){
+    .v-wrap .bili-embed{display:block}
+    .bili-jump{display:none}
+    .v-wrap video{max-height:none}
+  }
+
+  .synopsis{margin-top:12px;background:var(--paper);border:1px dashed var(--ink);padding:11px 12px}
+  .synopsis .syn-k{display:block;font:800 9.5px/1 var(--mono);color:var(--red);
+    letter-spacing:.12em;margin-bottom:5px}
+  .synopsis p{font-size:12.8px;line-height:1.62;color:var(--ink-2)}
+
+  .credits{margin-top:12px}
+  .credits .cr-row{display:flex;gap:11px;padding:6px 0;border-top:1px solid var(--ink);font-size:12.5px}
+  .credits .cr-row:first-child{border-top:1px solid var(--ink)}
+  .credits .cr-k{flex:none;width:54px;color:var(--ink-3);font:800 9.5px/1 var(--mono);
+    letter-spacing:.08em;padding-top:2px}
+  .credits .cr-v{color:var(--ink-2);line-height:1.55;min-width:0}
+  .credits .cr-v b{color:var(--ink);font-weight:700}
+
+  .vpanel{margin-top:12px;background:var(--paper);border:1px solid var(--ok);padding:11px 12px}
+  .vpanel.pending{border-color:var(--red);background:rgba(225,61,47,.04)}
+  .vpanel .vp-h{font:800 9.5px/1 var(--mono);color:var(--ok);letter-spacing:.12em;margin-bottom:6px}
+  .vpanel.pending .vp-h{color:var(--red)}
+  .vpanel .vp-row{font-size:12.4px;color:var(--ink-2);display:flex;gap:6px;align-items:baseline;
+    line-height:1.55}
+  .vpanel .vp-row .vpdot{color:var(--ok);font-weight:800;font-family:var(--mono)}
+  .vpanel.pending .vp-row .vpdot{color:var(--red)}
+  .vpanel .vp-note{font-size:11.6px;color:var(--ink-3);margin-top:6px;line-height:1.55;
+    font-family:var(--mono);letter-spacing:.02em}
+  .vpanel .src{display:inline-block;margin-top:9px;font:800 10.5px/1 var(--mono);
+    color:var(--paper);background:var(--ink);padding:5px 9px 4px;letter-spacing:.06em}
+
+  .srcbox{margin-top:12px;border-top:1px solid var(--ink);padding-top:10px}
+  .srcbox .sb-h{font:800 9.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.12em;margin-bottom:7px}
+  .srcbox .sb-list{display:flex;flex-direction:column;gap:5px}
+  .srcbox .sb-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--ink);padding:7px 10px;min-width:0}
+  .srcbox .sb-i.sb-main{background:var(--deep)}
+  .srcbox .sb-b{flex:none;font:800 9px/1 var(--mono);color:var(--paper);background:var(--ink);
+    padding:4px 6px 3px;letter-spacing:.06em}
+  .srcbox .sb-a{margin-left:auto;flex:none;color:var(--ink-3);font-size:12px}
+
+  .arch-link{margin:22px 0 0;padding:18px 18px;background:var(--ink);color:var(--paper);
+    border:1px solid var(--ink);display:flex;align-items:center;gap:12px;text-decoration:none}
+  .arch-link .al-t{font-size:18px;font-weight:850;letter-spacing:-.03em}
+  .arch-link .al-s{font:650 10.5px/1.5 var(--mono);color:rgba(241,238,229,.7);margin-top:3px;letter-spacing:.04em}
+  .arch-link .al-go{margin-left:auto;color:var(--red);font-size:22px;flex:none;font-weight:800}
+
+  .foot{padding:24px 18px 0;font:650 10.5px/1.7 var(--mono);color:var(--ink-3);letter-spacing:.04em;
+    text-align:center;border-top:1px solid var(--ink);margin-top:22px}
+
+  /* 延续标签（黑底白字 kicker 风格） */
+  .cont-lbl{display:inline-block;margin:8px 0 3px;font:800 9.5px/1 var(--mono);color:var(--paper);
+    background:var(--ink);padding:4px 7px 3px;letter-spacing:.08em}
+
+  /* 响应式：桌面端加杂志投影 + 米灰底 */
+  @media (min-width:700px){
+    body{padding:28px 0;background:#d8d4ca}
+    .app{box-shadow:0 22px 70px rgba(17,17,15,.2)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation:none!important;transition:none!important}
+  }
+
+
+/* 杂志 kicker（红标，沿用 contest SCREEN） */
+.kicker{display:inline-block;padding:5px 9px 4px;color:var(--paper);background:var(--red);font:800 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;transform:rotate(-2deg);margin:0 0 11px}
+/* 杂志 colophon（深色页脚，沿用 contest SCREEN） */
+.colophon{padding:40px 18px 36px;padding-bottom:calc(36px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));background:var(--ink);color:var(--paper)}
+.colophon .end{font-size:72px;line-height:.78;font-weight:950;letter-spacing:-.08em}
+.colophon h2{margin:22px 0 10px;font-size:28px;line-height:1.06;letter-spacing:-.05em;font-weight:900}
+.colophon p{margin:0;color:rgba(241,238,229,.72);font-size:12px;line-height:1.75}
+.colophon .cmeta{margin-top:26px;padding-top:12px;border-top:1px solid rgba(241,238,229,.35);font:650 10px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;color:rgba(241,238,229,.78)}
+
+  /* ============ 杂志封面 hero（同步 contest SCREEN 的 .cover） ============ */
+  .cover{position:relative;isolation:isolate;min-height:86svh;padding:18px 18px 26px;
+    padding-top:calc(18px + env(safe-area-inset-top,0px));
+    display:grid;grid-template-rows:auto 1fr auto;
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .cover:before{content:"";position:absolute;z-index:-1;width:38%;height:50%;right:-13%;top:22%;
+    background:var(--blue);transform:rotate(7deg)}
+  .cover:after{content:"";position:absolute;z-index:-1;top:0;right:0;bottom:0;left:0;opacity:.15;
+    pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+  .cover .mast{display:flex;align-items:flex-start;justify-content:space-between;
+    border-top:7px solid var(--ink);padding-top:8px}
+  .cover .brand{font-size:clamp(48px,16vw,88px);line-height:.8;font-weight:950;letter-spacing:-.085em}
+  .cover .brand span{color:var(--red)}
+  .cover .edition{text-align:right;font:700 10px/1.45 var(--mono);letter-spacing:.08em;color:var(--ink-2)}
+  .cover .center{align-self:center;padding:28px 0}
+  .cover h1{max-width:80%;margin:16px 0 14px;font-size:clamp(34px,9.5vw,52px);line-height:.98;
+    letter-spacing:-.06em;font-weight:930}
+  .cover .deck{max-width:78%;margin:0;font-size:15px;line-height:1.65;font-weight:650;color:var(--ink-2)}
+  .cover .deck b{color:var(--ink);font-weight:800}
+  .cover-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end;margin-top:8px}
+  .cover-meta{border-top:1px solid var(--ink);padding-top:8px;font:650 11px/1.65 var(--mono);
+    color:var(--ink-2);letter-spacing:.04em}
+  .cover-meta b{color:var(--ink);font-weight:800}
+  .cover .actions{display:grid;gap:8px}
+  .cover .primary,.cover .secondary{display:flex;align-items:center;justify-content:center;
+    min-height:48px;border:1px solid var(--ink);padding:0 14px;font:800 12px/1 var(--mono);
+    letter-spacing:.04em;color:var(--ink);background:transparent}
+  .cover .primary{background:var(--ink);color:var(--paper)}
+  .cover .primary:active{transform:translateY(1px)}
+  @media(min-width:700px){.cover{min-height:760px}}
+
+  /* ============ 阅读进度条（同步 contest SCREEN 的 .bar/.fill） ============ */
+  .rprog{position:absolute;top:0;left:0;right:0;height:3px;background:var(--deep);z-index:90}
+  .rprog-fill{height:100%;width:0;background:var(--red);transition:width .12s linear}
+</style>
+<style>.cont-lbl{display:inline-block;margin:8px 0 3px;font:800 9.5px/1 var(--mono);color:var(--paper);background:var(--ink);padding:4px 7px 3px;letter-spacing:.08em}</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><a href="../archive.html" aria-label="返回历史归档" style="display:inline-flex;align-items:center;min-height:36px;margin:0 16px 2px;color:var(--paper);font:800 11px/1 var(--mono);letter-spacing:.05em">← 历史归档</a>
+  <div class="tb-top">
+    <div class="tb-brand">影视<span>简报</span></div>
+    <div class="tb-date">2026-09-24 · 周四</div>
+  </div>
+  <nav class="mnav" id="mnav">
+<a href="#m-cn">中国内地</a><a href="#m-hmt">中国港澳台</a><a href="#m-intl">海外</a><a href="#m-obs">行业观察</a>
+  </nav>
+</header>
+<section class="status" aria-label="系统状态">
+  <div class="st-line">
+    <span class="st-date">2026 年 9 月 24 日</span>
+    <span class="st-dot">·</span>
+    <span class="st-upd">最近采集 09/24 15:33</span>
+    <span class="st-dot">·</span>
+    <span class="st-new">今日收录 <em>18</em> 条</span>
+  </div>
+  <div class="st-sub2">本轮接通 12/14 个采集入口 · 部分来源采集受限</div>
+</section>
+<section id="m-cn" class="market" aria-label="中国内地">
+<div class="mk-head"><span class="bar"></span><h2>中国内地</h2><span class="en">MAINLAND</span><span class="n">11</span></div>
+<div class="feed"><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:38</span><span class="r-kind">电影·渠道待确认 · 电影动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://upload.dianyingjie.com.cn/2026/0924/1790213882293.jpeg" alt="首部南朝大型历史战争史诗电影《陈武帝》，照亮被淡忘的六朝风云" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">首部南朝大型历史战争史诗电影《陈武帝》，照亮被淡忘的六朝风云</div><div class="r-lead">认为该片不仅填补了南朝历史战争史诗这一题材空白，更以&quot;史实为骨、艺术为翼&quot;的创作方法，为历史题材电影开辟了新的表达空间。</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电影新闻</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">认为该片不仅填补了南朝历史战争史诗这一题材空白，更以&quot;史实为骨、艺术为翼&quot;的创作方法，为历史题材电影开辟了新的表达空间。</p><figure class="source-media"><a href="https://www.dianyingjie.com.cn/2026/0924/406192.shtml" target="_blank" rel="noopener"><img src="https://upload.dianyingjie.com.cn/2026/0924/1790213882293.jpeg" alt="首部南朝大型历史战争史诗电影《陈武帝》，照亮被淡忘的六朝风云" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406192.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电影新闻</span><span class="sb-name">电影界 · 电影新闻</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:38</span><span class="r-kind">电影·渠道待确认 · 电影动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">《平安的女儿》北京路演圆满举行 乡贤助力“闽东之光”温暖传递</div><div class="r-lead">9月21日，电影《平安的女儿》北京路演活动圆满举行。现场观众反响热烈，观影氛围浓厚。导演林郡携领衔主演苏梦迪，主演刘波、张艺心、陈可欣、廖娟、卢鹿鹿、朱安凯、意辰等主创团队悉数亮相，与观众面对面交流，分享影片背后的创作故事。 9月21日，电影《平安的女儿》北京路演活动圆满举行。现场观众反响热烈，观影氛围浓厚。导演林郡携领衔主演苏梦迪，主演刘波、张艺心、陈可欣…</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电影新闻</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">9月21日，电影《平安的女儿》北京路演活动圆满举行。现场观众反响热烈，观影氛围浓厚。导演林郡携领衔主演苏梦迪，主演刘波、张艺心、陈可欣、廖娟、卢鹿鹿、朱安凯、意辰等主创团队悉数亮相，与观众面对面交流，分享影片背后的创作故事。 9月21日，电影《平安的女儿》北京路演活动圆满举行。现场观众反响热烈，观影氛围浓厚。导演林郡携领衔主演苏梦迪，主演刘波、张艺心、陈可欣、廖娟、卢鹿鹿、朱安凯...</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406191.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电影新闻</span><span class="sb-name">电影界 · 电影新闻</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:38</span><span class="r-kind">电影·渠道待确认 · 影视人物动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">歌声悲壮——《战地花飞》直抵人心！</div><div class="r-lead">9月1日音乐作品完成版权登记：一首写战地救护，一首借经典旋律回望烽火岁月 9月1日音乐作品完成版权登记：一首写战地救护，一首借经典旋律回望烽火岁月 随着电影《战地花飞》全片制作完成，影片的音乐也走到台前。9月1日，电影《战地花飞》音乐作品取得中国国家版权局《作品登记证书》。</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 影人影事（影视筛选）</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">9月1日音乐作品完成版权登记：一首写战地救护，一首借经典旋律回望烽火岁月 9月1日音乐作品完成版权登记：一首写战地救护，一首借经典旋律回望烽火岁月 随着电影《战地花飞》全片制作完成，影片的音乐也走到台前。9月1日，电影《战地花飞》音乐作品取得中国国家版权局《作品登记证书》。</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406196.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 影人影事（影视筛选）</span><span class="sb-name">电影界 · 影人影事（影视筛选）</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 12:53</span><span class="r-kind">电影·渠道待确认 · 影视动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://i2.chinanews.com.cn/simg/ypt/2026/260924/021e7cc1-c713-4e05-910d-45f45def626d_zsite.jpg" alt="中国建筑师马岩松以东方理念为“星战”导演卢卡斯打造博物馆" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">中国建筑师马岩松以东方理念为“星战”导演卢卡斯打造博物馆</div><div class="r-lead">中新网北京9月24日电 (记者 应妮)当地时间22日，由好莱坞著名电影人、“《星球大战》之父”乔治·卢卡斯与妻子梅洛迪·霍布森创立的卢卡斯叙事艺术博物馆在美国洛杉矶正式向公众开放。这座建筑面积约2.8万平方米、藏品超过4万件的文化地标，出自中国建筑师马岩松及其团队之手。在接受中新社记者连线采访时，这位生于北京的建筑师坦言，这座建筑物是中西文化交流与合作的产物…</div><div class="r-src"><span class="dot"></span>来源 · 中国新闻网 · 文娱</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">中新网北京9月24日电 (记者 应妮)当地时间22日，由好莱坞著名电影人、“《星球大战》之父”乔治·卢卡斯与妻子梅洛迪·霍布森创立的卢卡斯叙事艺术博物馆在美国洛杉矶正式向公众开放。这座建筑面积约2.8万平方米、藏品超过4万件的文化地标，出自中国建筑师马岩松及其团队之手。在接受中新社记者连线采访时，这位生于北京的建筑师坦言，这座建筑物是中西文化交流与合作的产物。</p><figure class="source-media"><a href="https://www.chinanews.com.cn/cul/2026/09-24/10702885.shtml" target="_blank" rel="noopener"><img src="https://i2.chinanews.com.cn/simg/ypt/2026/260924/021e7cc1-c713-4e05-910d-45f45def626d_zsite.jpg" alt="中国建筑师马岩松以东方理念为“星战”导演卢卡斯打造博物馆" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.chinanews.com.cn/cul/2026/09-24/10702885.shtml" target="_blank" rel="noopener"><span class="sb-b">中国新闻网 · 文娱</span><span class="sb-name">中国新闻网 · 文娱</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 01:35</span><span class="r-kind">电影·渠道待确认 · 影视动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://i2.chinanews.com.cn/simg/ypt/2026/260924/fa153f9d-202b-4eca-a93d-6f1f5e0b32fc_zsite.jpg" alt="第十三届丝绸之路国际电影节闭幕 导演谢飞获终身成就奖" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">第十三届丝绸之路国际电影节闭幕 导演谢飞获终身成就奖</div><div class="r-lead">中新社西安9月23日电 (记者 张一辰 杨英琦 党田野)23日晚，第十三届丝绸之路国际电影节闭幕式暨颁奖典礼在西安举行。颁奖典礼上，“金丝路奖”评委会大奖、最佳影片奖、最佳导演奖等十大奖项揭晓，导演谢飞获本届电影节终身成就奖。</div><div class="r-src"><span class="dot"></span>来源 · 中国新闻网 · 文娱</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">中新社西安9月23日电 (记者 张一辰 杨英琦 党田野)23日晚，第十三届丝绸之路国际电影节闭幕式暨颁奖典礼在西安举行。颁奖典礼上，“金丝路奖”评委会大奖、最佳影片奖、最佳导演奖等十大奖项揭晓，导演谢飞获本届电影节终身成就奖。</p><figure class="source-media"><a href="https://www.chinanews.com.cn/cul/2026/09-24/10702674.shtml" target="_blank" rel="noopener"><img src="https://i2.chinanews.com.cn/simg/ypt/2026/260924/fa153f9d-202b-4eca-a93d-6f1f5e0b32fc_zsite.jpg" alt="第十三届丝绸之路国际电影节闭幕 导演谢飞获终身成就奖" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.chinanews.com.cn/cul/2026/09-24/10702674.shtml" target="_blank" rel="noopener"><span class="sb-b">中国新闻网 · 文娱</span><span class="sb-name">中国新闻网 · 文娱</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:38</span><span class="r-kind">剧集 · 剧集动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">《球状闪电》首发预告，王安宇童瑶演绎浪漫科幻故事</div><div class="r-lead">该剧讲述了陈光（王安宇 饰）在少年时，目睹球状闪电穿墙而入将父母化为灰烬，为了找到父母逝去的真相，他将一生的热爱献给球状闪电。 9月23日，由爱奇艺出品，壹同制作、梦想传媒联合出品，根据刘慈欣同名小说改编而成的剧集《球状闪电》释出首支剧情向预告，该剧将由陈思诚监制，戴墨执导，王安宇、杨立新、周一围、童瑶领衔主演（按姓氏笔画排序），丁勇岱、王阳、冯文娟、冯嘉怡…</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电视与剧集</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">该剧讲述了陈光（王安宇 饰）在少年时，目睹球状闪电穿墙而入将父母化为灰烬，为了找到父母逝去的真相，他将一生的热爱献给球状闪电。 9月23日，由爱奇艺出品，壹同制作、梦想传媒联合出品，根据刘慈欣同名小说改编而成的剧集《球状闪电》释出首支剧情向预告，该剧将由陈思诚监制，戴墨执导，王安宇、杨立新、周一围、童瑶领衔主演（按姓氏笔画排序），丁勇岱、王阳、冯文娟、冯嘉怡、阮巨、杨玏、陈昊、...</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406190.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:37</span><span class="r-kind">剧集 · 剧集动态</span><span class="r-cred pending">媒体报道 · 2 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://upload.dianyingjie.com.cn/2026/0924/1790213879217.jpeg" alt="《交锋》：你以为在逼近真相，也许正走进对手的布局" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《交锋》：你以为在逼近真相，也许正走进对手的布局</div><div class="r-lead">如果你追查的秘密，早已被对手察觉；如果你认定的突破口，恰恰是别人留给你的诱饵——下一步，你还敢往前走吗？ 如果你追查的秘密，早已被对手察觉；如果你认定的突破口，恰恰是别人留给你的诱饵——下一步，你还敢往前走吗？</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电视与剧集 / 电影界 · 电视与剧集</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">如果你追查的秘密，早已被对手察觉；如果你认定的突破口，恰恰是别人留给你的诱饵——下一步，你还敢往前走吗？ 如果你追查的秘密，早已被对手察觉；如果你认定的突破口，恰恰是别人留给你的诱饵——下一步，你还敢往前走吗？</p><figure class="source-media"><a href="https://www.dianyingjie.com.cn/2026/0924/406189.shtml" target="_blank" rel="noopener"><img src="https://upload.dianyingjie.com.cn/2026/0924/1790213879217.jpeg" alt="《交锋》：你以为在逼近真相，也许正走进对手的布局" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406189.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406187.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:37</span><span class="r-kind">剧集 · 剧集动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">还原音乐本真魅力，《打歌2026・X舞台》第二期再掀热议</div><div class="r-lead">9月18日晚，由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》第二期上线。 9月18日晚，由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》第二期上线。乌兰图雅、付辛博、孙旸（早安）、余佳运、张钥沅（卓沅）、黄誉博（按照姓氏笔画排序）携手带来六大精彩舞台，最终余佳运演唱的《爱的意义》凭借真挚演…</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电视与剧集</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">9月18日晚，由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》第二期上线。 9月18日晚，由江苏卫视、腾讯音乐娱乐集团联合出品的全国首档直播打歌综艺《打歌2026・X舞台》第二期上线。乌兰图雅、付辛博、孙旸（早安）、余佳运、张钥沅（卓沅）、黄誉博（按照姓氏笔画排序）携手带来六大精彩舞台，最终余佳运演唱的《爱的意义》凭借真挚演唱和极强的舞台感染力，夺得本期&amp;l...</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406188.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:37</span><span class="r-kind">剧集 · 剧集动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">快手联动热剧《生逢其时》落地西安，以中秋公益守护&quot;月亮孩子&quot;</div><div class="r-lead">9月19日，“老铁帮帮团”落地西安，以“与月亮宝宝共赴中秋月圆之约”为主题，聚焦白化病群体——月亮孩子，依托热播剧《生逢其时》的热度，开展健康科普、心理陪伴与中秋手工团建。 9月19日，“老铁帮帮团”落地西安，以“与月亮宝宝共赴中秋月圆之约”为主题，聚焦白化病群体——月亮孩子，依托热播剧《生逢其时》的热度，开展健康科普、心理陪伴与中秋手工团建。月亮孩...</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电视与剧集</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">9月19日，“老铁帮帮团”落地西安，以“与月亮宝宝共赴中秋月圆之约”为主题，聚焦白化病群体——月亮孩子，依托热播剧《生逢其时》的热度，开展健康科普、心理陪伴与中秋手工团建。 9月19日，“老铁帮帮团”落地西安，以“与月亮宝宝共赴中秋月圆之约”为主题，聚焦白化病群体——月亮孩子，依托热播剧《生逢其时》的热度，开展健康科普、心理陪伴与中秋手工团建。月亮孩...</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/0924/406186.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 13:11</span><span class="r-kind">影视动态 · 影视动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://i2.chinanews.com.cn/simg/cmshd/2026/09/24/f63ab8d367654d6ab426d2ad556cb8f0.jpg" alt="“用AI打破传统影视行业高门槛，让创作者有钱赚、有荣誉”" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">“用AI打破传统影视行业高门槛，让创作者有钱赚、有荣誉”</div><div class="r-lead">中新网9月24日电 9月23日，以“AI向新，砺行致远”为主题的2026爱奇艺iJOY秋季悦享会在上海举办，会上发布2026—2027年度350余部新作片单，推出了全新品牌营销体系，还分享了All in AI赋能影视长片制作的战略、创作者生态建设布局及对影视行业变局的洞察，展现了平台在内容供给、创作生态和商业营销上的持续创新。</div><div class="r-src"><span class="dot"></span>来源 · 中国新闻网 · 文娱</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">中新网9月24日电 9月23日，以“AI向新，砺行致远”为主题的2026爱奇艺iJOY秋季悦享会在上海举办，会上发布2026—2027年度350余部新作片单，推出了全新品牌营销体系，还分享了All in AI赋能影视长片制作的战略、创作者生态建设布局及对影视行业变局的洞察，展现了平台在内容供给、创作生态和商业营销上的持续创新。</p><figure class="source-media"><a href="https://www.chinanews.com.cn/cul/2026/09-24/10702927.shtml" target="_blank" rel="noopener"><img src="https://i2.chinanews.com.cn/simg/cmshd/2026/09/24/f63ab8d367654d6ab426d2ad556cb8f0.jpg" alt="“用AI打破传统影视行业高门槛，让创作者有钱赚、有荣誉”" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.chinanews.com.cn/cul/2026/09-24/10702927.shtml" target="_blank" rel="noopener"><span class="sb-b">中国新闻网 · 文娱</span><span class="sb-name">中国新闻网 · 文娱</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 07:18</span><span class="r-kind">影视动态 · 影视动态</span><span class="r-cred pending">媒体报道 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">介绍中国文化要从“为什么有意思”讲起</div><div class="r-lead">在“文化遗产与文艺创作”平行论坛上，围绕“文化遗产的创造性转化与艺术性重生”这一主题，来自文学、影视、文博、美术、传媒等领域的约260位中外嘉宾展开交流。</div><div class="r-src"><span class="dot"></span>来源 · 中国新闻网 · 文娱</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">在“文化遗产与文艺创作”平行论坛上，围绕“文化遗产的创造性转化与艺术性重生”这一主题，来自文学、影视、文博、美术、传媒等领域的约260位中外嘉宾展开交流。</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.chinanews.com.cn/cul/2026/09-24/10702712.shtml" target="_blank" rel="noopener"><span class="sb-b">中国新闻网 · 文娱</span><span class="sb-name">中国新闻网 · 文娱</span><span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+<section id="m-hmt" class="market" aria-label="中国港澳台">
+<div class="mk-head"><span class="bar"></span><h2>中国港澳台</h2><span class="en">HK / MACAU / TAIWAN</span><span class="n">7</span></div>
+<div class="feed"><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 13:00</span><span class="r-kind">院线电影 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/Avengers4-11.jpg" alt="《復仇者聯盟4終局之戰加碼重映》繼續大肆宣傳" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《復仇者聯盟4終局之戰加碼重映》繼續大肆宣傳</div><div class="r-lead">迪士尼發行的Marvel超級英雄電影《復仇者聯盟4終局之戰加碼重映》於今天正式上映，而迪士尼為此作為年底《復仇 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">迪士尼發行的Marvel超級英雄電影《復仇者聯盟4終局之戰加碼重映》於今天正式上映，而迪士尼為此作為年底《復仇 […]</p><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/113234" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/Avengers4-11.jpg" alt="《復仇者聯盟4終局之戰加碼重映》繼續大肆宣傳" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113234" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 14:30</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/MusicinFIlms2026.jpg" alt="MOViE MOViE音樂主題電影節「Music in Films」下月舉行" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">MOViE MOViE音樂主題電影節「Music in Films」下月舉行</div><div class="r-lead">MOViE MOViE不時也會舉辦不同主題的電影節，當「anifest動画藝術祭2026」將於上周末結束之時， […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">MOViE MOViE不時也會舉辦不同主題的電影節，當「anifest動画藝術祭2026」將於上周末結束之時， […]</p><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/113419" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/MusicinFIlms2026.jpg" alt="MOViE MOViE音樂主題電影節「Music in Films」下月舉行" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113419" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 10:29</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/MCLDown-1.jpg" alt="MCL院線網站故障" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">MCL院線網站故障</div><div class="r-lead">迪士尼發行的《復仇者聯盟5終局之戰》的首輪戲票於今天中午發售，然而就在這個重要時刻，MCL院線網站就出現故障無 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">迪士尼發行的《復仇者聯盟5終局之戰》的首輪戲票於今天中午發售，然而就在這個重要時刻，MCL院線網站就出現故障無 […]</p><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/113422" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/MCLDown-1.jpg" alt="MCL院線網站故障" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113422" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 09:11</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/V-31.jpg" alt="具驗眼功能的三級標誌？" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">具驗眼功能的三級標誌？</div><div class="r-lead">一般而言，倘若一部電影被評為只准年滿十八歲人士入場的三級電影，其電影宣傳品的三級標誌一般會相當顯眼，可是近期卻 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">一般而言，倘若一部電影被評為只准年滿十八歲人士入場的三級電影，其電影宣傳品的三級標誌一般會相當顯眼，可是近期卻 […]</p><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/113412" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/09/V-31.jpg" alt="具驗眼功能的三級標誌？" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113412" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 08:45</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">胡翠兒《媽樣年華》周末推出優先場</div><div class="r-lead">美亞發行、陳心遙監製、胡翠兒執導，周家怡、金燕玲、陳湛文、楊雅文與張迪文主演的《媽樣年華》將於十月二十三日在港 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">美亞發行、陳心遙監製、胡翠兒執導，周家怡、金燕玲、陳湛文、楊雅文與張迪文主演的《媽樣年華》將於十月二十三日在港 […]</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113409" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 08:30</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">金龜題材的港產電影（下）</div><div class="r-lead">中文大學經濟學系副教授兼新亞書院副院長莊太量，於本周二（22日）傍晚出席新亞書院雙周會演講時，涉嫌發表「女人成 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">中文大學經濟學系副教授兼新亞書院副院長莊太量，於本周二（22日）傍晚出席新亞書院雙周會演講時，涉嫌發表「女人成 […]</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113393" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">09/24 07:00</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 来源</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">「國際電影創作營2026」得獎名單公佈</div><div class="r-lead">亞洲電影大獎學院主辦的「國際電影創作營2026」已於九月十八日至二十二日假金沙中國旗下的澳門綜合渡假村舉行，並 […]</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">查看物料与信源</div></summary><div class="r-det"><p class="d-desc">亞洲電影大獎學院主辦的「國際電影創作營2026」已於九月十八日至二十二日假金沙中國旗下的澳門綜合渡假村舉行，並 […]</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/113406" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+<section id="m-intl" class="market" aria-label="海外">
+<div class="mk-head"><span class="bar"></span><h2>海外</h2><span class="en">INTERNATIONAL</span><span class="n">0</span></div>
+<div class="feed"><div class="mk-empty"><strong>暂未收录今天的海外消息</strong><span>当前来源暂未收录新增内容，可查看历史归档。</span></div></div></section>
+<section id="m-obs" class="market" aria-label="行业观察">
+<div class="mk-head"><span class="bar"></span><h2>行业观察</h2><span class="en">OBSERVATION</span><span class="n">0</span></div>
+<div class="feed"><div class="mk-empty"><strong>暂未收录今天的行业观察消息</strong><span>部分来源尚未接通或采集受限，已接通的来源仍会更新。</span></div></div></section>
+<a class="arch-link" href="../archive.html">
+  <div>
+    <div class="al-t">历史归档</div>
+    <div class="al-s">查看往期每日影视简报</div>
+  </div>
+</a>
+</div>
+<script data-player-ctl>
+/* 运行时降级：猫眼直链万一被封/失败，自动回退 B 站（页面生成时已备好 B 站 BV）。
+   无 B 站备选则提示「去 B 站看原片」。无需后端，纯前端兜底。 */
+window.__vFail = function (v) {
+  try {
+    var wrap = v.closest('.v-wrap');
+    if (!wrap) return;
+    var bv = v.getAttribute('data-bili-bvid');
+    var isMobile = window.matchMedia && window.matchMedia('(max-width:820px)').matches;
+    if (bv) {
+      if (isMobile) {
+        /* 手机端：B 站 iframe 内嵌必黑屏，降级为「在 B 站看预告」入口（与静态卡片一致） */
+        var a = document.createElement('a');
+        a.className = 'bili-jump';
+        a.href = 'https://www.bilibili.com/video/' + bv;
+        a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = '<span class="bj-ico">&#9654;</span><span class="bj-t">在 B 站看预告</span>' +
+                      '<span class="bj-s">点击新窗口播放</span>';
+        wrap.innerHTML = ''; wrap.appendChild(a);
+      } else {
+        var f = document.createElement('iframe');
+        f.className = 'bili-embed';
+        f.src = 'https://player.bilibili.com/player.html?bvid=' + bv +
+                '&p=1&danmaku=0&high_quality=1&autoplay=0';
+        f.scrolling = 'no'; f.frameBorder = '0'; f.allowFullscreen = true;
+        wrap.innerHTML = ''; wrap.appendChild(f);
+      }
+    } else {
+      var url = v.getAttribute('data-bili-url') || '';
+      wrap.innerHTML = '<div class="v-fallback">猫眼视频暂不可用' +
+        (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">去 B 站看原片</a>' : '') +
+        '</div>';
+    }
+    wrap.classList.add('v-degraded');
+  } catch (e) {}
+};
+
+/* 收起即停核心：交给原生 details —— 折叠即不可见，浏览器自动停止不可见的
+   iframe / video，无需卸载 src。这段脚本只额外做「展开新卡片时暂停其他视频」。 */
+(function () {
+  function vids(root) { return root.querySelectorAll('.v-wrap video'); }
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS') return;
+    if (d.open) {
+      /* 展开某卡片时，把其他卡片里正在响的原生视频按停，避免多路声音叠一起 */
+      document.querySelectorAll('details').forEach(function (o) {
+        if (o !== d) vids(o).forEach(function (v) { try { v.pause(); } catch (x) {} });
+      });
+    }
+  }, true);
+})();
+</script>
+<script data-autoupdate>
+/* 旧页面自愈：页面内嵌日期 vs 手机系统日期。页面比今天旧 → 强制重新拉。
+   节流规则：同一个"旧日期"下，每小时最多重试一次（key 里带小时）。
+   —— 这样早上 10:30 打开（那时今天这期还没出）刷一次没变化，11 点后会再刷一次拿到新的，
+      而不是像 v2 那样死等到 11 点才动。凌晨 0-6 点肯定没新内容，不白刷。 */
+(function () {
+  var m = document.title.match(/(\d{4}-\d{2}-\d{2})/);
+  if (!m) return;
+  var pageDate = m[1];
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function check() {
+    if (pageDate >= todayStr()) return;          /* 页面是今天或更新 → 正常，不动 */
+    var d = new Date();
+    if (d.getHours() < 6) return;                /* 凌晨没新内容，别白刷 */
+    var key = '__briefReloadedH_' + pageDate + '_' + d.getHours();  /* 每小时最多一次 */
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch (e) {}
+    var base = location.href.split('#')[0].split('?')[0];
+    location.replace(base + '?v=' + Date.now());
+  }
+  check();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') check();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) check(); });
+  setInterval(check, 5 * 60 * 1000);
+})();
+</script>
+<script>
+/* 市场导航高亮：纯增强，失效时 chip 仍可点击跳转 */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('#mnav a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) {
+        a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  links.forEach(function (a) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) obs.observe(t);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var fill = document.getElementById('rprogFill');
+  if(!fill) return;
+  function upd(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var y = d.scrollTop || document.body.scrollTop || 0;
+    var p = max > 0 ? y / max : 0;
+    if(p < 0) p = 0; if(p > 1) p = 1;
+    fill.style.width = (p * 100).toFixed(1) + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd);
+  upd();
+})();
+</script>
+
+<script data-sw-reg>
+/* 只在「本机确实有旧缓存或装过旧 SW」时，才注册自毁版 Service Worker 去清场。
+   清完之后 caches 为空、registration 为空，这里就再也不会重复注册，不会循环。 */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  var regP = navigator.serviceWorker.getRegistration
+    ? navigator.serviceWorker.getRegistration().catch(function () { return null; })
+    : Promise.resolve(null);
+  var keyP = (window.caches && caches.keys)
+    ? caches.keys().catch(function () { return []; })
+    : Promise.resolve([]);
+  Promise.all([regP, keyP]).then(function (r) {
+    var hasOld = !!r[0] || !!navigator.serviceWorker.controller || (r[1] && r[1].length > 0);
+    if (hasOld) { navigator.serviceWorker.register('sw.js').catch(function () {}); }
+  }).catch(function () {});
+})();
+</script>
+
+
+<style data-brief-shell>
+/* 正式版信息密度：完整保留、默认扫读、按需展开。 */
+.brief-overview{margin:0 18px 4px;padding:12px 0 14px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.brief-overview__top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.brief-overview__title{font:900 12px/1 var(--mono);letter-spacing:.08em;color:var(--ink)}
+.brief-overview__total{font:900 11px/1 var(--mono);color:var(--red);white-space:nowrap}
+.brief-overview__copy{margin-top:7px;color:var(--ink-3);font-size:12px;line-height:1.55}
+.brief-overview__chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.brief-overview__chip{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--ink);padding:5px 7px 4px;background:rgba(255,255,255,.42);font:750 10px/1 var(--mono);letter-spacing:.03em;color:var(--ink)}
+.brief-overview__chip b{font-weight:900;color:var(--blue)}
+/* 默认只呈现判断所需的信息；长摘要留在展开层，完整信源从不删除。 */
+.row > summary{padding:12px 16px 13px}
+.r-line{min-height:18px;gap:5px;padding-right:20px}
+.r-new{display:none}
+.r-cred{margin-left:0;order:3}
+.r-title{margin-top:7px;font-size:19px;line-height:1.18}
+.r-lead{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:4px;font-size:12.8px;line-height:1.5}
+.r-src{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;margin-top:7px}
+.r-mat{display:inline-flex;margin-top:8px}
+.row-media > summary{padding:12px 16px 13px}
+.r-media-body{gap:10px;margin-top:8px}
+.r-thumb{width:58px;height:84px;border-color:var(--ink);background:var(--deep)}
+.r-thumb.is-missing{display:none}
+.poster-placeholder{width:58px;height:84px;flex:0 0 auto;display:grid;place-items:end start;padding:7px;background:var(--deep);border:1px solid var(--ink);color:var(--ink);font:900 20px/.8 var(--mono);letter-spacing:-.1em}
+.source-media{margin:11px 0 0;border:1px solid var(--ink);background:var(--deep)}
+.source-media a{display:block;background:var(--ink)}
+.source-media img{display:block;width:100%;max-height:440px;object-fit:contain;background:var(--ink)}
+.source-media figcaption{padding:7px 9px;font:750 10px/1.4 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+.media-empty{margin-top:11px;border:1px dashed var(--ink);padding:10px 11px;display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,.38)}
+.media-empty strong{font:850 11px/1.2 var(--mono);color:var(--ink)}
+.media-empty span{font-size:11.5px;line-height:1.5;color:var(--ink-3)}
+.media-shelf{margin-top:10px;border-top:4px solid var(--ink)}
+.media-shelf > .row{border-right:0}
+.row-media .r-title{font-size:18px}
+.row-media .r-lead{-webkit-line-clamp:3}
+.row-media .r-src{margin-top:6px}
+.r-det{background:rgba(255,255,255,.30);padding-bottom:18px}
+@media (min-width:700px){
+  :root{--maxw:920px}
+  .market .mk-head{grid-template-columns:72px 1fr auto;min-height:84px}
+  .feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .feed > .row{height:100%;border-right:1px solid var(--ink)}
+  .feed > .row:nth-child(even){border-right:0}
+  .feed > .row:last-child:nth-child(odd){grid-column:span 2;border-right:0}
+  .feed > .media-shelf{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .media-shelf > .feed-keep-label{grid-column:1/-1}
+  .media-shelf > .row:nth-child(even){border-left:1px solid var(--ink)}
+}
+</style>
+<script data-brief-shell>
+/* 从页面真实 DOM 计算总览，不依赖 LLM 写死数字，因此每日内容变动也不会失真。 */
+(function () {
+  function ready(fn) { document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+  ready(function () {
+    var status = document.querySelector('.status');
+    if (!status || document.querySelector('.brief-overview')) return;
+    var markets = Array.prototype.slice.call(document.querySelectorAll('.market'));
+    var total = document.querySelectorAll('.market details.row').length;
+    var verified = document.querySelectorAll('.market details[data-cred="ok"]').length;
+    var pending = document.querySelectorAll('.market details[data-cred="pending"]').length;
+    var box = document.createElement('section');
+    box.className = 'brief-overview'; box.setAttribute('aria-label', '本期总览');
+    var chips = markets.map(function (market) {
+      var name = market.getAttribute('aria-label') || '其他';
+      var n = market.querySelectorAll('details.row').length;
+      return '<a class="brief-overview__chip" href="#' + (market.id || '') + '">' + name + ' <b>' + n + '</b></a>';
+    }).join('');
+    box.innerHTML = '<div class="brief-overview__top"><span class="brief-overview__title">FULL EDITION / 全量速览</span><span class="brief-overview__total">' + total + ' 条</span></div>' +
+      '<p class="brief-overview__copy">按地区浏览今天收录的影视消息；展开查看摘要、图片、视频和原文。来源标签供参考，不代表事实核实。</p>' +
+      '<div class="brief-overview__chips">' + chips + '</div>';
+    status.insertAdjacentElement('afterend', box);
+    document.querySelectorAll('.r-thumb').forEach(function (img) {
+      function fallback() {
+        if (img.dataset.fallbackDone) return;
+        img.dataset.fallbackDone = '1'; img.classList.add('is-missing');
+        var ph = document.createElement('span'); ph.className = 'poster-placeholder'; ph.setAttribute('aria-label', '暂无海报'); ph.textContent = 'FILM';
+        img.insertAdjacentElement('afterend', ph);
+      }
+      if (img.complete && !img.naturalWidth) fallback();
+      img.addEventListener('error', fallback, {once:true});
+    });
+  });
+})();
+</script>
+
+<style data-reader-tools>
+/* 阅读工具：只辅助定位和进度，不替用户做「必看」判断。 */
+.reader-tools{margin:0 18px 20px;border:1px solid var(--ink);background:rgba(255,255,255,.46);padding:11px 10px 10px}
+.reader-tools__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.reader-tools__label{font:900 10px/1 var(--mono);letter-spacing:.08em;color:var(--ink)}
+.reader-tools__stat{font:800 10px/1.35 var(--mono);color:var(--ink-3);text-align:right}
+.reader-tools__search{display:flex;align-items:center;gap:7px;margin-top:9px;border:1px solid var(--ink);background:var(--paper);padding:0 9px}
+.reader-tools__search svg{width:14px;height:14px;flex:none}
+.reader-tools__search input{width:100%;min-height:37px;border:0;outline:0;background:transparent;color:var(--ink);font:650 13px/1.2 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
+.reader-tools__search input::placeholder{color:var(--ink-4)}
+.reader-tools__filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.reader-tools__filter{appearance:none;border:1px solid var(--ink);border-radius:0;background:transparent;padding:6px 8px 5px;color:var(--ink);font:800 10px/1 var(--mono);letter-spacing:.03em;cursor:pointer}
+.reader-tools__filter[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.reader-tools__filter.reader-tools__unread[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+.reader-tools__empty{display:none;margin:0 18px 20px;padding:18px;border:1px dashed var(--ink-3);color:var(--ink-3);font:650 12px/1.65 var(--mono);text-align:center}
+.reader-tools__empty.is-visible{display:block}
+.market.is-filter-empty{display:none}
+details.row[hidden]{display:none}
+@media(min-width:700px){.reader-tools{margin-left:18px;margin-right:18px}.reader-tools__filters{flex-wrap:nowrap}.reader-tools__filter{flex:1;text-align:center;white-space:nowrap}}
+</style>
+<script data-reader-tools>
+/* 本机进度只保存在当前设备，不上传阅读行为。 */
+(function () {
+  function ready(fn) { document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+  ready(function () {
+    if (document.querySelector('.reader-tools')) return;
+    var markets = Array.prototype.slice.call(document.querySelectorAll('.market'));
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.market details.row'));
+    if (!rows.length) return;
+    var date = (document.querySelector('.st-date') || {}).textContent || document.title || 'current';
+    var key = 'daily-film-brief:read:' + date.replace(/\s+/g, ' ').trim();
+    var read = {};
+    try { read = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) {}
+    rows.forEach(function (row, index) {
+      row.dataset.readerIndex = String(index);
+      if (read[index]) row.dataset.readerRead = '1';
+      row.addEventListener('toggle', function () {
+        if (!row.open) return;
+        read[index] = 1; row.dataset.readerRead = '1';
+        try { localStorage.setItem(key, JSON.stringify(read)); } catch (e) {}
+        refresh();
+      });
+    });
+    var state = { market: 'all', unread: false, query: '' };
+    var tools = document.createElement('section');
+    tools.className = 'reader-tools'; tools.setAttribute('aria-label', '简报定位工具');
+    tools.innerHTML = '<div class="reader-tools__top"><span class="reader-tools__label">LOCATE / 快速定位</span><span class="reader-tools__stat" aria-live="polite"></span></div>' +
+      '<label class="reader-tools__search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10 10 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input type="search" inputmode="search" autocomplete="off" placeholder="搜片名、人物、公司或事件" aria-label="搜索本期简报"></label>' +
+      '<div class="reader-tools__filters" role="group" aria-label="按板块筛选">' +
+        '<button class="reader-tools__filter" type="button" data-market="all" aria-pressed="true">全部</button>' +
+        '<button class="reader-tools__filter" type="button" data-market="m-cn" aria-pressed="false">内地</button>' +
+        '<button class="reader-tools__filter" type="button" data-market="m-hmt" aria-pressed="false">港澳台</button>' +
+        '<button class="reader-tools__filter" type="button" data-market="m-intl" aria-pressed="false">海外</button>' +
+        '<button class="reader-tools__filter" type="button" data-market="m-obs" aria-pressed="false">行业</button>' +
+        '<button class="reader-tools__filter reader-tools__unread" type="button" data-unread aria-pressed="false">未读</button>' +
+      '</div>';
+    var target = document.querySelector('.brief-overview') || document.querySelector('.status');
+    target.insertAdjacentElement('afterend', tools);
+    var empty = document.createElement('p');
+    empty.className = 'reader-tools__empty'; empty.textContent = '没有匹配的条目。换个关键词或取消筛选试试。';
+    tools.insertAdjacentElement('afterend', empty);
+    var input = tools.querySelector('input');
+    var stat = tools.querySelector('.reader-tools__stat');
+    function norm(s) { return (s || '').toLowerCase().replace(/\s+/g, ''); }
+    function refresh() {
+      var q = norm(state.query), shown = 0, readCount = 0;
+      rows.forEach(function (row) {
+        var inMarket = state.market === 'all' || row.closest('.market').id === state.market;
+        var matches = !q || norm(row.textContent).indexOf(q) > -1;
+        var isRead = row.dataset.readerRead === '1';
+        if (isRead) readCount += 1;
+        var visible = inMarket && matches && (!state.unread || !isRead);
+        row.hidden = !visible;
+        if (visible) shown += 1;
+      });
+      markets.forEach(function (market) {
+        market.classList.toggle('is-filter-empty', !market.querySelector('details.row:not([hidden])'));
+      });
+      stat.textContent = '命中 ' + shown + ' / ' + rows.length + ' · 已读 ' + readCount;
+      empty.classList.toggle('is-visible', shown === 0);
+    }
+    tools.querySelectorAll('[data-market]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        state.market = button.dataset.market;
+        tools.querySelectorAll('[data-market]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
+        refresh();
+      });
+    });
+    var unread = tools.querySelector('[data-unread]');
+    unread.addEventListener('click', function () { state.unread = !state.unread; unread.setAttribute('aria-pressed', String(state.unread)); refresh(); });
+    input.addEventListener('input', function () { state.query = input.value; refresh(); });
+    refresh();
+  });
+})();
+</script>
+
+</body>
+</html>
