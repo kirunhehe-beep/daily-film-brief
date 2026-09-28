@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-28T08:38:13Z",
-  "edition_date": "2026-09-28",
+  "generated_at": "2026-09-28T17:51:24Z",
+  "edition_date": "2026-09-29",
   "edition_mode": "today",
   "policy": {
     "mode": "zero_human_gate",
@@ -35,730 +35,149 @@
       "industry_commentary": "行业观察"
     }
   },
-  "items": [
-    {
-      "id": "cd207bdd1df280fe",
-      "title": "第十五届中国电影史年会在山西太原召开",
-      "summary": "中新网9月28日电 9月26日至27日，第十五届中国电影史年会在山西太原召开。本届年会由中国电影资料馆(中国电影艺术研究中心)与山西师范大学联合主办，主题为“社会史中的电影史：中国经验·地方立场·田野方法”，近200位专家学者参会交流。",
-      "url": "https://www.chinanews.com.cn/cul/2026/09-28/10704692.shtml",
-      "published": "Mon, 28 Sep 2026 11:42:16 +0800",
-      "published_at": "2026-09-28T03:42:16Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://i2.chinanews.com.cn/simg/cmshd/2026/09/27/23528b2e7c5f487fbf191a2c40fda0c5.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "chinanews-culture",
-          "publisher_id": "chinanews",
-          "name": "中国新闻网 · 文娱",
-          "url": "https://www.chinanews.com.cn/cul/2026/09-28/10704692.shtml",
-          "class": "established_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "5d5a5a4c3a44066f",
-      "title": "梁家輝《老江湖》中國大陸市場不佳",
-      "summary": "近年不少香港演員在中國大陸參展電影，當中梁家輝就是例子之一。正當他主演由韓延執導的《空槍》在香港上時，他主演的 […]",
-      "url": "https://www.hkfilmblog.com/archives/113675",
-      "published": "Mon, 28 Sep 2026 03:30:00 +0000",
-      "published_at": "2026-09-28T03:30:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-cn",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113675",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "d8c417aecc365b9f",
-      "title": "《我向國旗敬禮》中國大陸仆直",
-      "summary": "中國大陸不是有著一些意識形態濃厚的主旋電影出現，惟近年隨著中國大陸觀眾口味的轉變，這類型電影即使在中國大陸也不 […]",
-      "url": "https://www.hkfilmblog.com/archives/113698",
-      "published": "Mon, 28 Sep 2026 02:24:18 +0000",
-      "published_at": "2026-09-28T02:24:18Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-cn",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113698",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "a48f55dffb729c56",
-      "title": "“2026横店影视节暨横店新大众文艺周”10月举办",
-      "summary": "新京报讯（记者刘玮）日前，“2026横店影视节暨横店新大众文艺周”新闻发布会在北京召开，该活动将于10月23日至28日在浙江横店举办，并推出“文荣奖颁奖典礼”“微短剧之夜”“横店入戏之夜”三大核心主题单元。",
-      "url": "https://www.bjnews.com.cn/detail/1790565717168653.html",
-      "published": "2026-09-28T11:21:00+08:00",
-      "published_at": "2026-09-28T03:21:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "other",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://media.bjnews.com.cn/fz/html/AttachPubDev/2026/9/hejw20269281121563218746.jpg?x-oss-process=image/resize,m_lfit,w_365/quality,q_80",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "bjnews-entertainment",
-          "publisher_id": "bjnews",
-          "name": "新京报 · 娱乐",
-          "url": "https://www.bjnews.com.cn/detail/1790565717168653.html",
-          "class": "established_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "feda7c261902b362",
-      "title": "淺談「10.1半價睇好戲」各院線售票系統表現",
-      "summary": "香港戲院商會主辦的「10.1半價睇好戲院」活動的戲票，於今天中午十二時起陸續在全港戲院的票房、網站及機應用程式 […]",
-      "url": "https://www.hkfilmblog.com/archives/113709",
-      "published": "Mon, 28 Sep 2026 06:27:22 +0000",
-      "published_at": "2026-09-28T06:27:22Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "cinema",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/MovieFiesta2026.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113709",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "19ab9c45df680c31",
-      "title": "《我阿爹想旅行》：節奏明快，輕鬆活潑，不忘感動",
-      "summary": "以近年的新晉導演來說，黃綺琳與黃鐦執導的電影，在選材上有著一定的趣味。而兩人合作的新作《我阿爹想旅行》，則以一 […]",
-      "url": "https://www.hkfilmblog.com/archives/113712",
-      "published": "Mon, 28 Sep 2026 08:30:00 +0000",
-      "published_at": "2026-09-28T08:30:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/20-GoodTrip-Final.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113712",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "1c0cb02f0a0d1b89",
-      "title": "重返大銀幕：蒙嘉慧",
-      "summary": "高先發行、黃綺琳與黃鐦合導的《我阿爹想旅行》將於十月十五日在港上映，當中令人意想不到的，就是女演員蒙嘉慧在相隔 […]",
-      "url": "https://www.hkfilmblog.com/archives/113376",
-      "published": "Mon, 28 Sep 2026 08:00:00 +0000",
-      "published_at": "2026-09-28T08:00:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/image-12.png",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113376",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "1136ea803221183e",
-      "title": "全港戲院國慶日推半價戲票 有內地留學生購票連看兩場",
-      "summary": "全港52間戲院在十一國慶當日推出半價戲票優惠，戲票今日中午12時起公開發售。在旺角一間戲院，開售後陸續有市民到場購票。 有持有「樂悠咭」的長者表示，趁半價優惠購買兩場電影的戲票，其中一場早場戲票只需13元，另一張25元，感到十分划算。 亦有在港讀書的內地學生花費85元購買兩張戲票，打算國慶日連看兩場，認為半價優惠具吸引力，很多在香港上映的電影未有在內地公映，相信能吸引內地旅客來港看電影，她又計劃於國慶當晚觀賞煙花。 國慶當日任何放映場次及格式的電影一律半價；戲院常設的長者首場優惠、小童、學生及長者票價，亦再享有半價優惠。 編輯：譚佩貞",
-      "url": "https://news.rthk.hk/rthk/ch/component/k2/1871856-20260928.htm",
-      "published": "Mon, 28 Sep 2026 15:30:21 +0800",
-      "published_at": "2026-09-28T07:30:21Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "rthk-hongkong",
-          "publisher_id": "rthk",
-          "name": "香港電台 · 影視相關報道",
-          "url": "https://news.rthk.hk/rthk/ch/component/k2/1871856-20260928.htm",
-          "class": "established_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "67a87df11d7e90a7",
-      "title": "孔令政動畫《無涯之約》擬下月上映",
-      "summary": "要談到近期當紅的導演，可信孔令政該是榜上有名。正當他執導、古天樂與此沙主演的電影《偵戰》將於下月在中國大陸與香 […]",
-      "url": "https://www.hkfilmblog.com/archives/113681",
-      "published": "Mon, 28 Sep 2026 06:30:00 +0000",
-      "published_at": "2026-09-28T06:30:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/B04-OdiumZero.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113681",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "2f5c02eabb06759a",
-      "title": "不用等旅發局的「電影＋旅遊」活動",
-      "summary": "在本月月中行政長官的施政報名裡，當中第342段就提出旅遊發展局將串連經典港產片、地區特色和本地文化。然而其實不 […]",
-      "url": "https://www.hkfilmblog.com/archives/113396",
-      "published": "Mon, 28 Sep 2026 05:00:00 +0000",
-      "published_at": "2026-09-28T05:00:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/WalkInHK-DatingMenu.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113396",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "37661f7538e190a2",
-      "title": "「10.1半價睇好戲」之舊片獻世？",
-      "summary": "十月一日為香港戲院商會舉辦的「10.1半價睇好戲」的活動，全港戲院票價均為平時正價戲票的一半，而不少院線也提早 […]",
-      "url": "https://www.hkfilmblog.com/archives/113706",
-      "published": "Mon, 28 Sep 2026 04:28:55 +0000",
-      "published_at": "2026-09-28T04:28:55Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "https://www.hkfilmblog.com/wp-content/uploads/2026/09/CinemaCity-20261001.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113706",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "fd9ad9d846137aa2",
-      "title": "掩耳盜鈴的售票系統？",
-      "summary": "近年來不時戲院也會出現霎時間有大量觀眾購票的情況，惟不同院線的處理法不同。當中有院線售票系統經歷多次網絡大塞車 […]",
-      "url": "https://www.hkfilmblog.com/archives/113700",
-      "published": "Mon, 28 Sep 2026 02:40:32 +0000",
-      "published_at": "2026-09-28T02:40:32Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113700",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "55719e6eb647238e",
-      "title": "三級評級的賣點",
-      "summary": "美國的電檢標準則香港不同，故此有時有些美國的電影評級就會在香港處於邊緣位置，當中最明顥就是美國的R (Rest […]",
-      "url": "https://www.hkfilmblog.com/archives/113536",
-      "published": "Mon, 28 Sep 2026 02:00:00 +0000",
-      "published_at": "2026-09-28T02:00:00Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-hmt",
-      "entry_type": "电影行业观察",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "industry_commentary",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "hkfilmblog",
-          "publisher_id": "hkfilmblog",
-          "name": "講。鏟。片 · 香港電影博客",
-          "url": "https://www.hkfilmblog.com/archives/113536",
-          "class": "industry_blog"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "1f94cb2eb848839d",
-      "title": "「來自北國」編劇倉本聰享壽91歲 帶動北海道富良野觀光",
-      "summary": "（中央社東京28日綜合外電報導）以創作電視劇「來自北國」（台灣譯為從北國來）、「前略，母親大人」、「溫柔時光」等作品聞名的日本劇作家倉本聰，18日因多重器官衰竭去世，享壽91歲。",
-      "url": "https://www.cna.com.tw/news/amov/202609280062.aspx",
-      "published": "Mon, 28 Sep 2026 11:43:15 +0800",
-      "published_at": "2026-09-28T03:43:15Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-intl",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "series",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "cna-entertainment",
-          "publisher_id": "cna",
-          "name": "中央通訊社 · 娛樂",
-          "url": "https://www.cna.com.tw/news/amov/202609280062.aspx",
-          "class": "established_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "e72774dc20ffe55f",
-      "title": "《复仇者联盟4：终局之战》（加码臻享版）中秋档夺冠 创下多项票房纪录 《复仇者联盟5》正式确认引进",
-      "summary": "时光网讯北京时间9月28日消息，由中国电影集团公司进口，中国电影产业集团股份有限公司、华夏电影发行有限责任公司联合发行，中国电影产业集团股份有限公司译制，迪士尼影业出品、漫威影业倾力打造的超级英雄传奇",
-      "url": "https://content.mtime.com/article/229526117",
-      "published": "2026-09-28T10:06:09+08:00",
-      "published_at": "2026-09-28T02:06:09Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "cinema",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/100522.50579040.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526117",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "cbe28a30776916e5",
-      "title": "创新四屏结构惊艳大银幕！黄渤监制蔡成杰导演《四分之四》平遥展映引关注",
-      "summary": "时光网讯 近日，电影《四分之四》官方宣布入围第十届平遥国际电影展“藏龙”单元。9月25日，该片在第十届平遥国际电影展成功举行全球首次展映，监制兼主演黄渤、导演蔡成杰、主演王佳怡及摄影指导大江等主创阵容",
-      "url": "https://content.mtime.com/article/229526133",
-      "published": "2026-09-28T13:18:24+08:00",
-      "published_at": "2026-09-28T05:18:24Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/131813.32150713.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526133",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "09a9e46514641014",
-      "title": "电影《什么意思夫妇》发布“乐呵到底”版预告 小沈阳沈春阳陪你笑闹十一",
-      "summary": "时光网讯电影《什么意思夫妇》昨日发布“乐呵到底”版预告，为期四日的东北路演也于昨日正式收官。作为一部合家欢喜剧，影片主打欢乐解压的观影体验，路演现场反响热烈，密集的笑点与轻松自然接地气的风格收获了首波",
-      "url": "https://content.mtime.com/article/229526132",
-      "published": "2026-09-28T13:15:44+08:00",
-      "published_at": "2026-09-28T05:15:44Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/131540.16589379.jpg",
-      "video_url": "https://vfx.mtime.cn/Video/2026/09/28/mp4/260928130941349179.mp4",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526132",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "695899d44798c6cf",
-      "title": "布拉德·皮特新片《野兽之心》举行超前观影活动 人犬羁绊感动观众",
-      "summary": "时光网讯由美国派拉蒙影片公司出品、布拉德·皮特主演的电影《野兽之心》于9月27日在北京、上海、广州、成都、杭州五城举办“见证人犬羁绊”超前观影活动，映后收获超高观众口碑，电影中皮特与狗狗的人犬羁绊让首",
-      "url": "https://content.mtime.com/article/229526131",
-      "published": "2026-09-28T12:59:49+08:00",
-      "published_at": "2026-09-28T04:59:49Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/125853.15691529.jpg",
-      "video_url": "https://vfx.mtime.cn/Video/2026/09/28/mp4/260928125254221141.mp4",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526131",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "f4dcf4336a06d21a",
-      "title": "电影《神探之痕迹》发布“勋章”版预告 张译马丽陈明昊联袂演绎真实大案",
-      "summary": "时光网讯今日，电影《神探之痕迹》发布“勋章”版预告，回望刑侦人的起点，展现了他们将“为人民服务”的坚定信仰贯穿半个世纪的刑侦岁月。影片根据“七一勋章”获得者、公安部首批特邀刑侦专家、著名痕迹检验专家崔",
-      "url": "https://content.mtime.com/article/229526130",
-      "published": "2026-09-28T12:47:25+08:00",
-      "published_at": "2026-09-28T04:47:25Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/124651.21166144.jpg",
-      "video_url": "https://vfx.mtime.cn/Video/2026/09/28/mp4/260928124615138112.mp4",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526130",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    },
-    {
-      "id": "1d33df692130aded",
-      "title": "电影《神探之痕迹》发布“并肩同行”特辑 张译马丽陈明昊共叙刑侦战友情",
-      "summary": "时光网讯今日，电影《神探之痕迹》发布“并肩同行”特辑，编剧、导演陈思诚在特辑中分享对“神探三人组”的创作理解，三位主创也围绕自身角色，畅谈三人组之间独特又厚重的战友情谊。影片根据“七一勋章”获得者、公",
-      "url": "https://content.mtime.com/article/229526120",
-      "published": "2026-09-28T10:49:14+08:00",
-      "published_at": "2026-09-28T02:49:14Z",
-      "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://img5.mtime.cn/mg/2026/09/28/104908.25444325.jpg",
-      "video_url": "https://vfx.mtime.cn/Video/2026/09/28/mp4/260928105639050150.mp4",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "mtime-news",
-          "publisher_id": "mtime",
-          "name": "时光网 · 影视资讯",
-          "url": "https://content.mtime.com/article/229526120",
-          "class": "trade_media"
-        }
-      ],
-      "is_carried_forward": false
-    }
-  ],
+  "items": [],
   "xhs_items": [
     {
+      "id": "95ca129b02edb047",
+      "title": "“造展人”马可·穆勒平遥谈影展：为电影留下文献",
+      "summary": "中新社山西平遥9月28日电 (记者 胡健)第十届平遥国际电影展“电影使者东游记”大师·对话活动28日在山西平遥举行，意大利电影制片人、策展人马可·穆勒与英国圣安德鲁斯大学全球电影研究荣休教授迪娜·尤尔丹诺娃展开对谈。",
+      "url": "https://www.chinanews.com.cn/cul/2026/09-28/10705122.shtml",
+      "published": "Mon, 28 Sep 2026 21:36:44 +0800",
+      "published_at": "2026-09-28T13:36:44Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-cn",
+      "entry_type": "影视动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "film_unspecified",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "chinanews-culture",
+          "publisher_id": "chinanews",
+          "name": "中国新闻网 · 文娱",
+          "url": "https://www.chinanews.com.cn/cul/2026/09-28/10705122.shtml",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "54b4dcadaed10702",
+      "title": "人犬羁绊荒野治愈 布拉德·皮特新片《野兽之心》将映",
+      "summary": "中新网北京9月28日电 (记者 高凯)28日，由美国派拉蒙影片公司出品、布拉德·皮特主演的电影《野兽之心》发布“见证羁绊”预告，影片将于9月30日登陆中国内地大银幕。",
+      "url": "https://www.chinanews.com.cn/cul/2026/09-28/10705029.shtml",
+      "published": "Mon, 28 Sep 2026 19:27:22 +0800",
+      "published_at": "2026-09-28T11:27:22Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-cn",
+      "entry_type": "影视动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "film_unspecified",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "chinanews-culture",
+          "publisher_id": "chinanews",
+          "name": "中国新闻网 · 文娱",
+          "url": "https://www.chinanews.com.cn/cul/2026/09-28/10705029.shtml",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "9ec8ba49ce7cbe92",
+      "title": "电影《凝脂手》观摩研讨会在京举行",
+      "summary": "人民网北京9月28日电（记者刘颖颖）由中国电影家协会指导、湖北客居影业有限公司主办的电影《凝脂手》观摩研讨会近日在北京中国电影家协会举行。研讨会现场。主办方供图该片导演胡玫表示，《凝脂手》源于乡情、扎",
+      "url": "http://ent.people.com.cn/n1/2026/0928/c1012-40806923.html",
+      "published": "2026-09-28T18:33:00+08:00",
+      "published_at": "2026-09-28T10:33:00Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-obs",
+      "entry_type": "行业动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "film_unspecified",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "people-culture-film",
+          "publisher_id": "people",
+          "name": "人民网 · 影视产业报道",
+          "url": "http://ent.people.com.cn/n1/2026/0928/c1012-40806923.html",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "8bb010c2dfd40447",
+      "title": "沙田健身中心發現針孔攝錄機警拘一名男子 稱未發現影片網上流傳",
+      "summary": "連鎖健身中心24/7 FITNESS沙田瀝源分店，有3間更衣室上周五被發現共3個針孔攝錄鏡頭。警方昨日在沙田區拘捕一名34歲本地男子，他已被暫控一項窺淫罪，案件明天在沙田裁判法院提堂。 警方沙田警區刑事調查組總督察吳玉浿表示，警方在現場發現3部針孔攝錄機，並檢獲3張記憶卡，其後透過數碼法理鑑證，在記憶卡中檢獲到一定數量的影片，從中鎖定疑犯。她表示，需時仔細檢視相關影片，會調查影片用途，暫時未見網上有相關影片，暫時沒有任何證據顯示是用於販售用途。 警方表示，該健身中心共設有兩間女廁、一間男廁、以及共4間獨立的男女均可使用更衣室，更衣室內有獨立淋浴空間及更衣位置，警方是在其中3間獨立更衣室發現共3個針孔攝錄機。警方又說，根據調查，該些針孔攝錄機是透過內地網上購物平台購買。 據了解，被捕男子為地盤工頭。相關影片在上周四至周五期間拍攝。 編輯：任順熙",
+      "url": "https://news.rthk.hk/rthk/ch/component/k2/1871882-20260928.htm",
+      "published": "Mon, 28 Sep 2026 18:07:38 +0800",
+      "published_at": "2026-09-28T10:07:38Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-hmt",
+      "entry_type": "影视动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "film_unspecified",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "rthk-hongkong",
+          "publisher_id": "rthk",
+          "name": "香港電台 · 影視相關報道",
+          "url": "https://news.rthk.hk/rthk/ch/component/k2/1871882-20260928.htm",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
       "id": "19ab9c45df680c31",
       "title": "《我阿爹想旅行》：節奏明快，輕鬆活潑，不忘感動",
       "summary": "以近年的新晉導演來說，黃綺琳與黃鐦執導的電影，在選材上有著一定的趣味。而兩人合作的新作《我阿爹想旅行》，則以一 […]",
@@ -766,7 +185,7 @@
       "published": "Mon, 28 Sep 2026 08:30:00 +0000",
       "published_at": "2026-09-28T08:30:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -791,8 +210,7 @@
           "url": "https://www.hkfilmblog.com/archives/113712",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "1c0cb02f0a0d1b89",
@@ -802,7 +220,7 @@
       "published": "Mon, 28 Sep 2026 08:00:00 +0000",
       "published_at": "2026-09-28T08:00:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -827,8 +245,7 @@
           "url": "https://www.hkfilmblog.com/archives/113376",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "1136ea803221183e",
@@ -863,8 +280,7 @@
           "url": "https://news.rthk.hk/rthk/ch/component/k2/1871856-20260928.htm",
           "class": "established_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "67a87df11d7e90a7",
@@ -874,7 +290,7 @@
       "published": "Mon, 28 Sep 2026 06:30:00 +0000",
       "published_at": "2026-09-28T06:30:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -899,8 +315,7 @@
           "url": "https://www.hkfilmblog.com/archives/113681",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "feda7c261902b362",
@@ -910,7 +325,7 @@
       "published": "Mon, 28 Sep 2026 06:27:22 +0000",
       "published_at": "2026-09-28T06:27:22Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -935,8 +350,77 @@
           "url": "https://www.hkfilmblog.com/archives/113709",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
+    },
+    {
+      "id": "0ccec5de8ad9859f",
+      "title": "終局之戰重出江湖打趴競爭對手 北美票房第一",
+      "summary": "（中央社洛杉磯27日綜合外電報導）2019年片「復仇者聯盟：終局之戰」（Avengers: Endgame）重出江湖，為這個系列片最新作品暖身，並成功打趴其他競爭對手，站上北美週末票房冠軍。",
+      "url": "https://www.cna.com.tw/news/amov/202609280109.aspx",
+      "published": "Mon, 28 Sep 2026 14:24:00 +0800",
+      "published_at": "2026-09-28T06:24:00Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-intl",
+      "entry_type": "影视动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "cinema",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "cna-entertainment",
+          "publisher_id": "cna",
+          "name": "中央通訊社 · 娛樂",
+          "url": "https://www.cna.com.tw/news/amov/202609280109.aspx",
+          "class": "established_media"
+        }
+      ]
+    },
+    {
+      "id": "3b88210e78ec410e",
+      "title": "孫可芳全英文上課挑戰自我 換新東家拓寬可能性",
+      "summary": "（中央社記者洪素津台北28日電）演員孫可芳出道多年，今年參加金馬海外工作坊赴好萊塢進修，全程以英文上課挑戰自我，近來宣告加盟新經紀公司，形容自己就像「搭上一台新的車」，想拓寬更不一樣的可能性。",
+      "url": "https://www.cna.com.tw/news/amov/202609280108.aspx",
+      "published": "Mon, 28 Sep 2026 14:20:58 +0800",
+      "published_at": "2026-09-28T06:20:58Z",
+      "first_seen_at": "2026-09-28T17:51:24Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
+      "market": "m-hmt",
+      "entry_type": "影视动态",
+      "language": "zh",
+      "content_priority": 3,
+      "distribution": "other",
+      "carry_forward_days": 0,
+      "confidence": "single_source",
+      "image_url": "",
+      "video_url": "",
+      "video_page_url": "",
+      "author": "",
+      "author_id": "",
+      "is_repost": false,
+      "original_post_url": "",
+      "text_complete": true,
+      "filings": [],
+      "sources": [
+        {
+          "id": "cna-entertainment",
+          "publisher_id": "cna",
+          "name": "中央通訊社 · 娛樂",
+          "url": "https://www.cna.com.tw/news/amov/202609280108.aspx",
+          "class": "established_media"
+        }
+      ]
     },
     {
       "id": "cbe28a30776916e5",
@@ -946,7 +430,7 @@
       "published": "2026-09-28T13:18:24+08:00",
       "published_at": "2026-09-28T05:18:24Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -971,8 +455,7 @@
           "url": "https://content.mtime.com/article/229526133",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "09a9e46514641014",
@@ -982,7 +465,7 @@
       "published": "2026-09-28T13:15:44+08:00",
       "published_at": "2026-09-28T05:15:44Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1007,8 +490,7 @@
           "url": "https://content.mtime.com/article/229526132",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "2f5c02eabb06759a",
@@ -1018,7 +500,7 @@
       "published": "Mon, 28 Sep 2026 05:00:00 +0000",
       "published_at": "2026-09-28T05:00:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1043,8 +525,7 @@
           "url": "https://www.hkfilmblog.com/archives/113396",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "695899d44798c6cf",
@@ -1054,7 +535,7 @@
       "published": "2026-09-28T12:59:49+08:00",
       "published_at": "2026-09-28T04:59:49Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1079,8 +560,7 @@
           "url": "https://content.mtime.com/article/229526131",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "f4dcf4336a06d21a",
@@ -1090,7 +570,7 @@
       "published": "2026-09-28T12:47:25+08:00",
       "published_at": "2026-09-28T04:47:25Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1115,8 +595,7 @@
           "url": "https://content.mtime.com/article/229526130",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "37661f7538e190a2",
@@ -1126,7 +605,7 @@
       "published": "Mon, 28 Sep 2026 04:28:55 +0000",
       "published_at": "2026-09-28T04:28:55Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1151,8 +630,7 @@
           "url": "https://www.hkfilmblog.com/archives/113706",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "1f94cb2eb848839d",
@@ -1162,7 +640,7 @@
       "published": "Mon, 28 Sep 2026 11:43:15 +0800",
       "published_at": "2026-09-28T03:43:15Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-intl",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1187,8 +665,7 @@
           "url": "https://www.cna.com.tw/news/amov/202609280062.aspx",
           "class": "established_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "cd207bdd1df280fe",
@@ -1198,7 +675,7 @@
       "published": "Mon, 28 Sep 2026 11:42:16 +0800",
       "published_at": "2026-09-28T03:42:16Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1223,8 +700,7 @@
           "url": "https://www.chinanews.com.cn/cul/2026/09-28/10704692.shtml",
           "class": "established_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "5d5a5a4c3a44066f",
@@ -1234,7 +710,7 @@
       "published": "Mon, 28 Sep 2026 03:30:00 +0000",
       "published_at": "2026-09-28T03:30:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1259,8 +735,7 @@
           "url": "https://www.hkfilmblog.com/archives/113675",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "a48f55dffb729c56",
@@ -1295,8 +770,7 @@
           "url": "https://www.bjnews.com.cn/detail/1790565717168653.html",
           "class": "established_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "1d33df692130aded",
@@ -1306,7 +780,7 @@
       "published": "2026-09-28T10:49:14+08:00",
       "published_at": "2026-09-28T02:49:14Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1331,8 +805,7 @@
           "url": "https://content.mtime.com/article/229526120",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "fd9ad9d846137aa2",
@@ -1342,7 +815,7 @@
       "published": "Mon, 28 Sep 2026 02:40:32 +0000",
       "published_at": "2026-09-28T02:40:32Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1367,8 +840,7 @@
           "url": "https://www.hkfilmblog.com/archives/113700",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "d8c417aecc365b9f",
@@ -1378,7 +850,7 @@
       "published": "Mon, 28 Sep 2026 02:24:18 +0000",
       "published_at": "2026-09-28T02:24:18Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1403,8 +875,7 @@
           "url": "https://www.hkfilmblog.com/archives/113698",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "e72774dc20ffe55f",
@@ -1414,7 +885,7 @@
       "published": "2026-09-28T10:06:09+08:00",
       "published_at": "2026-09-28T02:06:09Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1439,8 +910,7 @@
           "url": "https://content.mtime.com/article/229526117",
           "class": "trade_media"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "55719e6eb647238e",
@@ -1450,7 +920,7 @@
       "published": "Mon, 28 Sep 2026 02:00:00 +0000",
       "published_at": "2026-09-28T02:00:00Z",
       "first_seen_at": "2026-09-28T08:38:13Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "电影行业观察",
       "language": "zh",
@@ -1475,8 +945,7 @@
           "url": "https://www.hkfilmblog.com/archives/113536",
           "class": "industry_blog"
         }
-      ],
-      "is_carried_forward": false
+      ]
     },
     {
       "id": "df092f693c0adcfa",
@@ -1521,7 +990,7 @@
       "published": "Sun, 27 Sep 2026 21:26:12 +0800",
       "published_at": "2026-09-27T13:26:12Z",
       "first_seen_at": "2026-09-27T14:53:25Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1556,7 +1025,7 @@
       "published": "Sun, 27 Sep 2026 20:25:00 +0800",
       "published_at": "2026-09-27T12:25:00Z",
       "first_seen_at": "2026-09-27T14:53:25Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1661,7 +1130,7 @@
       "published": "Sun, 27 Sep 2026 15:11:23 +0800",
       "published_at": "2026-09-27T07:11:23Z",
       "first_seen_at": "2026-09-27T14:53:25Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1696,7 +1165,7 @@
       "published": "Sun, 27 Sep 2026 15:06:19 +0800",
       "published_at": "2026-09-27T07:06:19Z",
       "first_seen_at": "2026-09-27T14:53:25Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1766,7 +1235,7 @@
       "published": "2026-09-27T13:12:00+08:00",
       "published_at": "2026-09-27T05:12:00Z",
       "first_seen_at": "2026-09-27T08:03:10Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -1906,7 +1375,7 @@
       "published": "Sun, 27 Sep 2026 10:47:33 +0800",
       "published_at": "2026-09-27T02:47:33Z",
       "first_seen_at": "2026-09-27T08:03:10Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -2081,7 +1550,7 @@
       "published": "Sat, 26 Sep 2026 20:55:09 +0800",
       "published_at": "2026-09-26T12:55:09Z",
       "first_seen_at": "2026-09-27T08:03:10Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-intl",
       "entry_type": "影视动态",
       "language": "zh",
@@ -2116,7 +1585,7 @@
       "published": "Sat, 26 Sep 2026 18:16:46 +0800",
       "published_at": "2026-09-26T10:16:46Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -2151,7 +1620,7 @@
       "published": "Sat, 26 Sep 2026 18:16:45 +0800",
       "published_at": "2026-09-26T10:16:45Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -2186,7 +1655,7 @@
       "published": "Sat, 26 Sep 2026 18:16:44 +0800",
       "published_at": "2026-09-26T10:16:44Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -2221,7 +1690,7 @@
       "published": "Sat, 26 Sep 2026 18:16:43 +0800",
       "published_at": "2026-09-26T10:16:43Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -2256,7 +1725,7 @@
       "published": "Sat, 26 Sep 2026 18:16:42 +0800",
       "published_at": "2026-09-26T10:16:42Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -2291,7 +1760,7 @@
       "published": "Sat, 26 Sep 2026 18:16:41 +0800",
       "published_at": "2026-09-26T10:16:41Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "电影动态",
       "language": "zh",
@@ -2326,7 +1795,7 @@
       "published": "Sat, 26 Sep 2026 18:16:40 +0800",
       "published_at": "2026-09-26T10:16:40Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "影视人物动态",
       "language": "zh",
@@ -2466,7 +1935,7 @@
       "published": "Sat, 26 Sep 2026 16:14:37 +0800",
       "published_at": "2026-09-26T08:14:37Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -2536,7 +2005,7 @@
       "published": "Sat, 26 Sep 2026 15:28:05 +0800",
       "published_at": "2026-09-26T07:28:05Z",
       "first_seen_at": "2026-09-26T13:56:17Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-hmt",
       "entry_type": "影视动态",
       "language": "zh",
@@ -2991,7 +2460,7 @@
       "published": "2026-09-25T19:15:00+08:00",
       "published_at": "2026-09-25T11:15:00Z",
       "first_seen_at": "2026-09-25T14:50:09Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3026,7 +2495,7 @@
       "published": "2026-09-25T19:13:00+08:00",
       "published_at": "2026-09-25T11:13:00Z",
       "first_seen_at": "2026-09-25T14:50:09Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3061,7 +2530,7 @@
       "published": "2026-09-25T19:05:00+08:00",
       "published_at": "2026-09-25T11:05:00Z",
       "first_seen_at": "2026-09-25T14:50:09Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3271,7 +2740,7 @@
       "published": "2026-09-25T10:45:00+08:00",
       "published_at": "2026-09-25T02:45:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3306,7 +2775,7 @@
       "published": "2026-09-25T10:22:00+08:00",
       "published_at": "2026-09-25T02:22:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3551,7 +3020,7 @@
       "published": "2026-09-24T20:39:00+08:00",
       "published_at": "2026-09-24T12:39:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3726,7 +3195,7 @@
       "published": "2026-09-24T14:23:00+08:00",
       "published_at": "2026-09-24T06:23:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3761,7 +3230,7 @@
       "published": "2026-09-24T14:14:00+08:00",
       "published_at": "2026-09-24T06:14:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3796,7 +3265,7 @@
       "published": "2026-09-24T14:10:00+08:00",
       "published_at": "2026-09-24T06:10:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -3831,7 +3300,7 @@
       "published": "2026-09-24T14:00:00+08:00",
       "published_at": "2026-09-24T06:00:00Z",
       "first_seen_at": "2026-09-25T07:42:21Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-obs",
       "entry_type": "影视动态",
       "language": "zh",
@@ -4041,7 +3510,7 @@
       "published": "Thu, 24 Sep 2026 09:38:11 +0800",
       "published_at": "2026-09-24T01:38:11Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "影视人物动态",
       "language": "zh",
@@ -4076,7 +3545,7 @@
       "published": "Thu, 24 Sep 2026 09:38:02 +0800",
       "published_at": "2026-09-24T01:38:02Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "电影动态",
       "language": "zh",
@@ -4111,7 +3580,7 @@
       "published": "Thu, 24 Sep 2026 09:38:01 +0800",
       "published_at": "2026-09-24T01:38:01Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "电影动态",
       "language": "zh",
@@ -4146,7 +3615,7 @@
       "published": "Thu, 24 Sep 2026 09:38:00 +0800",
       "published_at": "2026-09-24T01:38:00Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -4181,7 +3650,7 @@
       "published": "Thu, 24 Sep 2026 09:37:59 +0800",
       "published_at": "2026-09-24T01:37:59Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -4223,7 +3692,7 @@
       "published": "Thu, 24 Sep 2026 09:37:58 +0800",
       "published_at": "2026-09-24T01:37:58Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -4258,7 +3727,7 @@
       "published": "Thu, 24 Sep 2026 09:37:56 +0800",
       "published_at": "2026-09-24T01:37:56Z",
       "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "剧集动态",
       "language": "zh",
@@ -4461,251 +3930,6 @@
       ]
     },
     {
-      "id": "4b7151ac934f2dd3",
-      "title": "第十三届丝绸之路国际电影节闭幕 导演谢飞获终身成就奖",
-      "summary": "中新社西安9月23日电 (记者 张一辰 杨英琦 党田野)23日晚，第十三届丝绸之路国际电影节闭幕式暨颁奖典礼在西安举行。颁奖典礼上，“金丝路奖”评委会大奖、最佳影片奖、最佳导演奖等十大奖项揭晓，导演谢飞获本届电影节终身成就奖。",
-      "url": "https://www.chinanews.com.cn/cul/2026/09-24/10702674.shtml",
-      "published": "Thu, 24 Sep 2026 01:35:59 +0800",
-      "published_at": "2026-09-23T17:35:59Z",
-      "first_seen_at": "2026-09-24T07:33:24Z",
-      "last_seen_at": "2026-09-24T07:33:24Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://i2.chinanews.com.cn/simg/ypt/2026/260924/fa153f9d-202b-4eca-a93d-6f1f5e0b32fc_zsite.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "chinanews-culture",
-          "publisher_id": "chinanews",
-          "name": "中国新闻网 · 文娱",
-          "url": "https://www.chinanews.com.cn/cul/2026/09-24/10702674.shtml",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "a5866f5748fb7326",
-      "title": "以AI技术探索科幻影像新边界 科幻电影《檐下未来》概念片首发",
-      "summary": "中新网杭州9月23日电 由中国科普作家协会科幻作家、青年导演及编剧刘汉霖原创的科幻电影《檐下未来》，日前在2026云栖大会首次公开亮相并发布概念片。《檐下未来》概念片以未来城市、人机共生与生命选择为核心意象，呈现了对未来科技与人类精神世界的想象。",
-      "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702559.shtml",
-      "published": "Wed, 23 Sep 2026 21:36:04 +0800",
-      "published_at": "2026-09-23T13:36:04Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-24T07:33:24Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://i2.chinanews.com.cn/simg/ypt/2026/260923/8a12e3f8-8c7e-4a55-94d8-c4cda02483af_zsite.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "chinanews-culture",
-          "publisher_id": "chinanews",
-          "name": "中国新闻网 · 文娱",
-          "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702559.shtml",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "508e14de2502ae52",
-      "title": "《早春晴朗》总制片人：“同追一部剧”已是两岸日常",
-      "summary": "中新社北京9月23日电 (记者 张晓曦)都市情感剧《早春晴朗》总制片人兼编剧高小娴23日在北京表示，该剧由两岸影视人共同打磨、受到两岸观众共同喜爱，“同追一部剧”已成为两岸生活日常。",
-      "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702535.shtml",
-      "published": "Wed, 23 Sep 2026 21:00:34 +0800",
-      "published_at": "2026-09-23T13:00:34Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-24T07:33:24Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "other",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://i2.chinanews.com.cn/simg/ypt/2026/260923/97d8d2d4-2372-4ded-a287-f41a6ee61b20_zsite.jpeg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "chinanews-culture",
-          "publisher_id": "chinanews",
-          "name": "中国新闻网 · 文娱",
-          "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702535.shtml",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "54c5875cb6a3bebd",
-      "title": "嘉宾共话文化遗产在文艺创作中焕发新彩｜北京文化论坛",
-      "summary": "9月23日，由中共中央宣传部文化艺术局、文化和旅游部艺术司、非物质文化遗产司、国家广播电视总局宣传司、中国文学艺术界联合会理论研究室、中国作家协会创作联络部共同主办，北京市广电局、北京市文旅局、北京市文联联合承办的2026北京文化论坛“文化遗产与文艺创作”平行论坛在京举行。论坛活动上发布了北京文化遗产“双百计划”，多位嘉宾从文学、舞台艺术、人工智能、电影教育、国际传播及非遗技艺等维度，分享利用科技赋能、跨界融合及生活化叙事激活文化遗产生命力的实践经验与理论思考，共同探讨如何让文艺创作从传统文化土壤中汲取更深厚的滋养，让文化遗产在文艺创作中焕发新彩，讲好北京故事。",
-      "url": "https://www.bjnews.com.cn/detail/1790167001169208.html",
-      "published": "2026-09-23T20:36:00+08:00",
-      "published_at": "2026-09-23T12:36:00Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://media.bjnews.com.cn/fz/html/AttachPubDev/2026/9/hejw20269232036393212519.jpg?x-oss-process=image/resize,m_lfit,w_365/quality,q_80",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "bjnews-entertainment",
-          "publisher_id": "bjnews",
-          "name": "新京报 · 娱乐",
-          "url": "https://www.bjnews.com.cn/detail/1790167001169208.html",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "27661f7fe9c947db",
-      "title": "相遇与焕新 田沁鑫、阿来等纵论“文化遗产与艺术创作”",
-      "summary": "中新网北京9月23日电 (高凯 李嘉茵)“文化遗产与艺术创作的相遇，是过去与未来的握手。”23日，在2026北京文化论坛平行论坛“文化遗产与文艺创作”上，中国国家话剧院院长、一级导演田沁鑫如此形容舞台艺术对文化遗产的转化与创新路径。",
-      "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702509.shtml",
-      "published": "Wed, 23 Sep 2026 20:33:08 +0800",
-      "published_at": "2026-09-23T12:33:08Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-24T07:33:24Z",
-      "market": "m-cn",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "other",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://i2.chinanews.com.cn/simg/ypt/2026/260923/83377a5f-f4ac-4585-be28-f0218474053b_zsite.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "chinanews-culture",
-          "publisher_id": "chinanews",
-          "name": "中国新闻网 · 文娱",
-          "url": "https://www.chinanews.com.cn/cul/2026/09-23/10702509.shtml",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "28631008ff3de80a",
-      "title": "亞洲唯一 阿湯哥「挖掘者」12公尺巨鏟現身美麗華",
-      "summary": "（中央社記者王心妤台北23日電）「阿湯哥」湯姆克魯斯主演的「挖掘者」（Digger）將於10月初在台上映，片商特別為台灣影迷準備一份大禮，選在美麗華影城外水舞廣場設置12公尺高的巨鏟，也是亞洲唯一一支。",
-      "url": "https://www.cna.com.tw/news/amov/202609230322.aspx",
-      "published": "Wed, 23 Sep 2026 19:31:15 +0800",
-      "published_at": "2026-09-23T11:31:15Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-27T08:03:10Z",
-      "market": "m-hmt",
-      "entry_type": "影视动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "other",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://imgcdn.cna.com.tw/www/WebPhotos/1024/20260923/1152x768_wmkn_0_C20260923000225.jpg",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "cna-entertainment",
-          "publisher_id": "cna",
-          "name": "中央通訊社 · 娛樂",
-          "url": "https://www.cna.com.tw/news/amov/202609230322.aspx",
-          "class": "established_media"
-        }
-      ]
-    },
-    {
-      "id": "dc76e3432acf84dc",
-      "title": "诺兰《奥德赛》故事来源与文学评析：荷马史诗到底讲了什么，诺兰又改了什么？",
-      "summary": "想了解诺兰《奥德赛》的故事来源，最直接的方式是先上抖音精选App搜“奥德赛”。陈斯一和3号厅检票员工的改编对谈、李道新教授的“不可靠叙述”解读，能帮你把电影和荷马史诗之间的关系理清楚。其他平台的补充内容，更适合在这个框架搭好之后再去查证和延伸。 诺兰的《奥德赛》上映后，很多人急着讨论结局、细节和改编得失，却忽略了一个...",
-      "url": "https://www.dianyingjie.com.cn/2026/0923/406151.shtml",
-      "published": "Wed, 23 Sep 2026 17:28:00 +0800",
-      "published_at": "2026-09-23T09:28:00Z",
-      "first_seen_at": "2026-09-23T14:30:02Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
-      "market": "m-obs",
-      "entry_type": "行业动态",
-      "language": "zh",
-      "content_priority": 3,
-      "distribution": "film_unspecified",
-      "carry_forward_days": 0,
-      "confidence": "single_source",
-      "image_url": "https://upload.dianyingjie.com.cn/2026/0923/1790155736370.png",
-      "video_url": "",
-      "video_page_url": "",
-      "author": "",
-      "author_id": "",
-      "is_repost": false,
-      "original_post_url": "",
-      "text_complete": true,
-      "filings": [],
-      "sources": [
-        {
-          "id": "film-world-industry-desk",
-          "publisher_id": "dianyingjie",
-          "name": "电影界 · 影视行业线索",
-          "url": "https://www.dianyingjie.com.cn/2026/0923/406151.shtml",
-          "class": "trade_media"
-        }
-      ]
-    },
-    {
       "id": "c2c2b10087b498c8",
       "title": "2026年8月上电影备案立项公示：48部项目",
       "summary": "国家电影局公布2026年8月上电影剧本（梗概）备案、立项结果，共48部：故事影片39部、虚拟现实影片7部、合拍影片2部。涉及《怒海苍穹、心动还请告诉我、我们一起走、交谈、马尔代夫去旅行、心中无敌、晚风过境、功夫生肖之泼猴逆天等48部》。备案立项仅代表项目获准拍摄，不代表已经定档或取得公映许可。",
@@ -4713,7 +3937,7 @@
       "published": "2026-09-14T00:00:00+08:00",
       "published_at": "2026-09-13T16:00:00Z",
       "first_seen_at": "2026-09-23T08:31:31Z",
-      "last_seen_at": "2026-09-28T08:38:13Z",
+      "last_seen_at": "2026-09-28T17:51:24Z",
       "market": "m-cn",
       "entry_type": "项目备案",
       "language": "zh",
@@ -5174,7 +4398,12 @@
       ]
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "source_id": "bjnews-entertainment",
+      "message": "采集失败（URLError），请检查来源连接或格式"
+    }
+  ],
   "source_statuses": [
     {
       "source_id": "chinanews-culture",
@@ -5183,8 +4412,8 @@
       "fetched": 30,
       "status": "ok",
       "checks": [],
-      "latest_published_at": "2026-09-28T08:26:18+00:00",
-      "today_fetched": 12,
+      "latest_published_at": "2026-09-28T14:47:48+00:00",
+      "today_fetched": 0,
       "undated_items": 0
     },
     {
@@ -5194,8 +4423,8 @@
       "fetched": 20,
       "status": "ok",
       "checks": [],
-      "latest_published_at": "2026-09-28T03:43:15+00:00",
-      "today_fetched": 1,
+      "latest_published_at": "2026-09-28T09:02:00+00:00",
+      "today_fetched": 0,
       "undated_items": 0
     },
     {
@@ -5206,7 +4435,7 @@
       "status": "ok",
       "checks": [],
       "latest_published_at": "2026-09-28T08:30:00+00:00",
-      "today_fetched": 10,
+      "today_fetched": 0,
       "undated_items": 0
     },
     {
@@ -5216,8 +4445,8 @@
       "fetched": 20,
       "status": "ok",
       "checks": [],
-      "latest_published_at": "2026-09-28T08:25:04+00:00",
-      "today_fetched": 20,
+      "latest_published_at": "2026-09-28T13:24:04+00:00",
+      "today_fetched": 0,
       "undated_items": 0
     },
     {
@@ -5228,28 +4457,25 @@
       "status": "ok",
       "checks": [],
       "latest_published_at": "2026-09-28T05:18:24+00:00",
-      "today_fetched": 6,
+      "today_fetched": 0,
       "undated_items": 0
     },
     {
       "source_id": "bjnews-entertainment",
       "name": "新京报 · 娱乐",
       "market": "m-cn",
-      "fetched": 20,
-      "status": "ok",
-      "checks": [],
-      "latest_published_at": "2026-09-28T08:38:00+00:00",
-      "today_fetched": 3,
-      "undated_items": 0
+      "fetched": 0,
+      "status": "error",
+      "message": "采集失败（URLError），请检查来源连接或格式"
     },
     {
       "source_id": "people-culture-film",
       "name": "人民网 · 影视产业报道",
       "market": "m-obs",
-      "fetched": 1,
+      "fetched": 2,
       "status": "ok",
       "checks": [],
-      "latest_published_at": "2026-09-06T00:13:00+00:00",
+      "latest_published_at": "2026-09-28T10:33:00+00:00",
       "today_fetched": 0,
       "undated_items": 0
     },
@@ -5271,8 +4497,8 @@
       "fetched": 10,
       "status": "ok",
       "checks": [],
-      "latest_published_at": "2026-09-28T05:43:15+00:00",
-      "today_fetched": 6,
+      "latest_published_at": "2026-09-28T17:50:10+00:00",
+      "today_fetched": 2,
       "undated_items": 0
     },
     {
@@ -5332,52 +4558,52 @@
     }
   ],
   "stats": {
-    "items": 20,
-    "stored_records": 1188,
-    "media_enrichment_requests": 8,
-    "fetched_items": 672,
-    "new_records": 62,
-    "xhs_items": 113,
-    "failed_sources": 0,
+    "items": 0,
+    "stored_records": 1239,
+    "media_enrichment_requests": 0,
+    "fetched_items": 653,
+    "new_records": 51,
+    "xhs_items": 112,
+    "failed_sources": 1,
     "configured_sources": 14,
-    "dropped_stale": 465,
+    "dropped_stale": 486,
     "dropped_undated": 0,
-    "dropped_language": 79,
-    "dropped_not_today": 93,
+    "dropped_language": 75,
+    "dropped_not_today": 112,
     "dropped_excluded": 16,
-    "dropped_source_filter": 514,
+    "dropped_source_filter": 549,
     "dropped_capacity": 0,
-    "successful_sources": 14,
+    "successful_sources": 13,
     "carried_forward": 0,
     "distribution_counts": {
-      "cinema": 2,
+      "cinema": 0,
       "cinema_filing": 0,
-      "film_unspecified": 16,
+      "film_unspecified": 0,
       "network": 0,
-      "series": 1,
-      "other": 1
+      "series": 0,
+      "other": 0
     },
     "market_coverage": {
       "m-cn": {
-        "items": 4,
-        "successful_sources": 6,
+        "items": 0,
+        "successful_sources": 5,
         "configured_sources": 6,
-        "unavailable_sources": 0
+        "unavailable_sources": 1
       },
       "m-hmt": {
-        "items": 9,
+        "items": 0,
         "successful_sources": 3,
         "configured_sources": 3,
         "unavailable_sources": 0
       },
       "m-intl": {
-        "items": 1,
+        "items": 0,
         "successful_sources": 2,
         "configured_sources": 2,
         "unavailable_sources": 0
       },
       "m-obs": {
-        "items": 6,
+        "items": 0,
         "successful_sources": 3,
         "configured_sources": 3,
         "unavailable_sources": 0
