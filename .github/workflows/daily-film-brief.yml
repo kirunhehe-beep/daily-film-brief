@@ -26,6 +26,12 @@ jobs:
         run: python -m unittest discover -s automation -p 'test_*.py' -v
       - name: Collect traceable source items
         run: python automation/brief_pipeline.py --sources automation/sources.json --output generated/latest.json --store generated/collected_items.json
+      - name: Translate English headlines and summaries without hiding originals
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python automation/translate_brief.py --input generated/latest.json --cache generated/translation_cache.json
       - name: Render daily page and archive yesterday
         run: python automation/render_daily.py --input generated/latest.json --site app
       - name: Persist the generated briefing and archive

@@ -6,7 +6,7 @@
     "web_item_window": "beijing_calendar_day",
     "max_items_per_market": {},
     "allow_carry_forward": false,
-    "render_languages": ["zh"],
+    "render_languages": ["zh", "en"],
     "excluded_entry_types": ["短剧动态"],
     "excluded_keywords": ["短剧", "微短剧"],
     "required_markets": ["m-cn", "m-hmt", "m-intl", "m-obs"],
@@ -145,11 +145,47 @@
       "publisher_id": "variety",
       "source_class": "established_media",
       "market": "m-intl",
-      "entry_type": "影视动态",
+      "entry_type": "电影动态",
       "content_priority": 0,
       "language": "en",
       "max_items": 5,
+      "enrich_media": true,
       "enabled": true
+    },
+    {
+      "id": "variety-tv", "name": "Variety · TV",
+      "type": "rss", "url": "https://variety.com/v/tv/feed/",
+      "publisher_id": "variety", "source_class": "established_media",
+      "market": "m-intl", "entry_type": "剧集动态", "content_priority": 1,
+      "language": "en", "enrich_media": true, "enabled": true
+    },
+    {
+      "id": "deadline-film", "name": "Deadline · Film",
+      "type": "rss", "url": "https://deadline.com/v/film/feed/",
+      "publisher_id": "deadline", "source_class": "trade_media",
+      "market": "m-intl", "entry_type": "电影动态", "content_priority": 0,
+      "language": "en", "enrich_media": true, "enabled": true
+    },
+    {
+      "id": "deadline-tv", "name": "Deadline · TV",
+      "type": "rss", "url": "https://deadline.com/v/tv/feed/",
+      "publisher_id": "deadline", "source_class": "trade_media",
+      "market": "m-intl", "entry_type": "剧集动态", "content_priority": 1,
+      "language": "en", "enrich_media": true, "enabled": true
+    },
+    {
+      "id": "thr-film", "name": "The Hollywood Reporter · Movies",
+      "type": "rss", "url": "https://www.hollywoodreporter.com/c/movies/movie-news/feed/",
+      "publisher_id": "hollywood-reporter", "source_class": "trade_media",
+      "market": "m-intl", "entry_type": "电影动态", "content_priority": 0,
+      "language": "en", "enrich_media": true, "enabled": true
+    },
+    {
+      "id": "thr-tv", "name": "The Hollywood Reporter · TV",
+      "type": "rss", "url": "https://www.hollywoodreporter.com/c/tv/tv-news/feed/",
+      "publisher_id": "hollywood-reporter", "source_class": "trade_media",
+      "market": "m-intl", "entry_type": "剧集动态", "content_priority": 1,
+      "language": "en", "enrich_media": true, "enabled": true
     },
     {
       "id": "film-world-news",

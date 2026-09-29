@@ -161,6 +161,17 @@ def render_item(item: dict, labels: dict) -> str:
     material_label = "含图片 / 视频 / 信源" if video_url else ("含来源图片 / 信源" if image_url else "查看物料与信源")
     distribution_label = DISTRIBUTION_LABELS.get(item.get("distribution", "other"), "影视动态")
     kind_label = distribution_label + " · " + item.get("entry_type", "影视动态")
+    translation_status = item.get("translation_status")
+    translation_note = ""
+    if translation_status == "machine_translated":
+        kind_label += " · 机器翻译"
+        translation_note = (
+            '<div class="vp-note">机器翻译仅供快速阅读；原文标题：{title}。'
+            '片名、人名及具体事实请以原始报道为准。</div>'
+        ).format(title=esc(item.get("original_title", "")))
+    elif translation_status == "original_english":
+        kind_label += " · 英文原文"
+        translation_note = '<div class="vp-note">自动翻译暂不可用，保留英文原文和来源链接，不遗漏这条消息。</div>'
     if item.get("is_carried_forward"):
         kind_label += " · 最新一期"
     filing_rows = []
@@ -192,7 +203,7 @@ def render_item(item: dict, labels: dict) -> str:
         '<div class="r-media-body">{thumbnail}<div class="r-media-txt"><div class="r-title">{title}</div>'
         '<div class="r-lead">{excerpt}</div><div class="r-src"><span class="dot"></span>来源 · {source_names}</div>'
         '</div></div><div class="r-mat">{material_label}</div></summary>'
-        '<div class="r-det"><p class="d-desc">{summary}</p>{filing_table}{media_parts}'
+        '<div class="r-det"><p class="d-desc">{summary}</p>{translation_note}{filing_table}{media_parts}'
         '<div class="vpanel {cred_class}"><div class="vp-h">来源说明</div>'
         '<div class="vp-row {cred_class}"><span class="vpdot">{verify_mark}</span>{verify_text}</div>'
         '<div class="vp-note">来源标注：{cred_label}。收录不等于事实确认。</div></div>'
@@ -206,6 +217,7 @@ def render_item(item: dict, labels: dict) -> str:
         kind=esc(kind_label),
         title=esc(item.get("title", "未命名资讯")),
         summary=esc(summary),
+        translation_note=translation_note,
         excerpt=esc(excerpt(summary)),
         thumbnail=thumbnail,
         media_parts="".join(media_parts),

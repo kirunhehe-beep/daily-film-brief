@@ -141,6 +141,11 @@ class CollectionTests(unittest.TestCase):
         current = json.loads((Path(__file__).parent / "sources.json").read_text())
         self.assertEqual(current["policy"]["max_items_per_market"], {})
         self.assertFalse(current["policy"]["allow_carry_forward"])
+        self.assertIn("en", current["policy"]["render_languages"])
+        overseas = {s["id"] for s in current["sources"] if s["enabled"] and s["market"] == "m-intl"}
+        self.assertTrue({"variety-film", "variety-tv", "deadline-film", "deadline-tv",
+                         "thr-film", "thr-tv"}.issubset(overseas))
+        self.assertEqual(next(s for s in current["sources"] if s["id"] == "variety-film")["entry_type"], "电影动态")
         self.assertFalse(any("xiaohongshu" in s["type"] for s in current["sources"]))
         self.assertFalse(any(s["type"].startswith("weibo_") and s["enabled"] for s in current["sources"]))
 
