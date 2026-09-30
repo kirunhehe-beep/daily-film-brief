@@ -606,12 +606,20 @@ def run(config: dict, *, store_path: Path | None = None, now: dt.datetime | None
             })
 
     # Merge duplicate discoveries, but neither reposts nor matching headlines
-    # establish truth. Social posts are grouped by permalink, not truncated title.
+    # establish truth. Ticketing accounts may publish the same complete caption;
+    # group only exact normalized copies and retain every original permalink.
     by_title: dict[str, list[dict]] = {}
     for candidate in candidates:
         publication_day = dt.datetime.fromisoformat(candidate["published_at"].replace("Z", "+00:00")).astimezone(BEIJING).date().isoformat()
-        key = candidate["url"] if candidate["confidence"] == "social_lead" else (
-            title_key(candidate["title"]) + publication_day)
+        source_id = candidate["sources"][0]["id"]
+        if candidate["confidence"] == "social_lead":
+            caption = re.sub(r"[\s\u200b\u200c\u200d]+", "", candidate["summary"])
+            if source_id in {"taopiaopiao-official-posts", "dengta-official-posts"} and caption:
+                key = "ticketing:" + hashlib.sha256(caption.encode("utf-8")).hexdigest() + publication_day
+            else:
+                key = candidate["url"]
+        else:
+            key = title_key(candidate["title"]) + publication_day
         by_title.setdefault(key, []).append(candidate)
     merged: list[dict] = []
     for group in by_title.values():

@@ -131,7 +131,10 @@ def parse_listing(source, body):
             published = local_date(first(article, "div", "time").text())
             if not excerpt or not published:
                 continue
-            rows[url] = {"title": excerpt[:100].rstrip("，。；、 "), "url": url,
+            hashtag = re.search(r"#([^#\n]{3,60})#", excerpt)
+            headline = (hashtag.group(1).strip() if hashtag else
+                        re.split(r"[。！？!?；;\n]", excerpt, maxsplit=1)[0][:70].rstrip("，。；、 "))
+            rows[url] = {"title": headline, "url": url,
                          "summary": excerpt[:500], "published": published,
                          "image_url": "", "video_url": "", "text_complete": False}
             if len(rows) >= int(source.get("max_items", 60)):
