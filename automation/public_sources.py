@@ -1,7 +1,7 @@
 """Public publisher pages: no login, private API, generated facts or invented dates.
 
 Only store headline, a short publisher excerpt, original date/link and declared
-media. Selectors were checked against publisher pages on 2026-09-23.
+media. Selectors were checked against publisher pages on 2026-09-23 and 2026-09-30.
 """
 from __future__ import annotations
 
@@ -88,6 +88,24 @@ def local_date(value):
         return ""
 
 
+def maoyan_app_data(document):
+    """Read the publisher's server-rendered state, not an undocumented API."""
+    marker = re.search(r"\bvar AppData\s*=\s*", document)
+    if not marker:
+        raise ValueError("猫眼公开页面缺少文章数据")
+    value, _ = json.JSONDecoder().raw_decode(document[marker.end():])
+    if not isinstance(value, dict):
+        raise ValueError("猫眼公开页面文章数据格式异常")
+    return value
+
+
+def maoyan_time(value):
+    try:
+        return dt.datetime.fromtimestamp(int(value) / 1000, tz=dt.timezone.utc).isoformat()
+    except (TypeError, ValueError, OverflowError, OSError):
+        return ""
+
+
 class PublicItems(list):
     def __init__(self, rows, errors):
         super().__init__(rows)
@@ -96,10 +114,42 @@ class PublicItems(list):
 
 
 def parse_listing(source, body):
-    root = Tree(body.decode("utf-8", errors="replace")).root
+    document = body.decode("utf-8", errors="replace")
+    root = Tree(document).root
     kind, base = source["type"], source["url"]
     rows = {}
-    if kind == "mtime_news":
+    if kind == "sina_official_posts":
+        expected_author = source.get("expected_author", "")
+        for anchor in root.all("a", "post-link"):
+            url = safe_url(anchor.attrs.get("href"), base)
+            if urlsplit(url).hostname not in {"sina.cn", "www.sina.cn"} or not re.search(r"/news/detail/\d+\.html$", urlsplit(url).path):
+                continue
+            article = first(anchor, "article", "post")
+            if expected_author and text(first(article, "div", "uname").text()) != expected_author:
+                continue
+            excerpt = text(first(article, "div", "post-text").text())
+            published = local_date(first(article, "div", "time").text())
+            if not excerpt or not published:
+                continue
+            rows[url] = {"title": excerpt[:100].rstrip("，。；、 "), "url": url,
+                         "summary": excerpt[:500], "published": published,
+                         "image_url": "", "video_url": "", "text_complete": False}
+            if len(rows) >= int(source.get("max_items", 60)):
+                break
+    elif kind == "maoyan_news":
+        news_list = maoyan_app_data(document).get("newsList")
+        if not isinstance(news_list, list):
+            raise ValueError("猫眼公开页面缺少新闻列表")
+        for article in news_list[:int(source.get("max_items", 20))]:
+            if not isinstance(article, dict) or not str(article.get("contentId", "")).isdigit():
+                continue
+            url = safe_url(f"/asgard/information/{article['contentId']}?_v_=yes", base)
+            pictures = article.get("images") or []
+            picture = pictures[0].get("url") if pictures and isinstance(pictures[0], dict) else ""
+            rows[url] = {"title": text(article.get("title", "")), "url": url,
+                         "summary": "", "published": maoyan_time(article.get("onlineTime")),
+                         "image_url": safe_url(picture), "video_url": ""}
+    elif kind == "mtime_news":
         for card in root.all("li"):
             clock = first(card, "span", "news-time")
             if not clock.children:
@@ -144,7 +194,22 @@ def enrich_detail(source, item, body):
     document = body.decode("utf-8", errors="replace")
     root = Tree(document).root
     updated = dict(item)
-    if source["type"] == "mtime_news":
+    if source["type"] == "maoyan_news":
+        news = maoyan_app_data(document).get("news")
+        if not isinstance(news, dict) or str(news.get("id")) != urlsplit(item["url"]).path.rsplit("/", 1)[-1]:
+            raise ValueError("猫眼新闻原文与列表不匹配")
+        updated["published"] = maoyan_time(news.get("created")) or item["published"]
+        excerpt = news.get("text") or ""
+        # The page embeds article HTML as a JSON-encoded string inside AppData.
+        if isinstance(excerpt, str) and excerpt.startswith('"'):
+            try:
+                excerpt = json.loads(excerpt)
+            except json.JSONDecodeError:
+                pass
+        updated["summary"] = text(excerpt)[:500]
+        pictures = news.get("imageUrls") or []
+        updated["image_url"] = item["image_url"] or safe_url(pictures[0] if pictures else "")
+    elif source["type"] == "mtime_news":
         marker = re.search(r"window\.__INITIAL_STATE__\s*=\s*", document)
         if not marker:
             raise ValueError("时光网原文缺少结构化时间")

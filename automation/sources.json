@@ -61,6 +61,34 @@
       "enabled": true
     },
     {
+      "id": "maoyan-film-news", "name": "猫眼电影 · 影视快讯",
+      "type": "maoyan_news", "url": "https://i.maoyan.com/asgard/news",
+      "publisher_id": "maoyan", "source_class": "trade_media",
+      "market": "m-cn", "infer_market": true, "entry_type": "电影动态",
+      "content_priority": 0, "language": "zh", "max_items": 10,
+      "read_details": true, "enabled": true
+    },
+    {
+      "id": "taopiaopiao-official-posts", "name": "淘票票 · 官方账号公开发布",
+      "type": "sina_official_posts", "url": "https://www.sina.cn/media/2095820504",
+      "expected_author": "淘票票", "publisher_id": "taopiaopiao",
+      "source_class": "social", "market": "m-cn", "infer_market": true,
+      "entry_type": "影视动态", "content_priority": 1, "language": "zh",
+      "max_items": 100,
+      "include_keywords": ["电影", "影片", "影视", "院线", "票房", "预售", "定档", "剧集", "电视剧", "网剧", "电影节", "飞天奖"],
+      "enabled": true
+    },
+    {
+      "id": "dengta-official-posts", "name": "灯塔专业版 · 官方账号公开发布",
+      "type": "sina_official_posts", "url": "https://www.sina.cn/media/6858267513",
+      "expected_author": "灯塔专业版", "publisher_id": "dengta",
+      "source_class": "social", "market": "m-cn", "infer_market": true,
+      "entry_type": "影视动态", "content_priority": 1, "language": "zh",
+      "max_items": 100,
+      "include_keywords": ["电影", "影片", "影视", "院线", "票房", "预售", "定档", "剧集", "电视剧", "网剧", "电影节"],
+      "enabled": true
+    },
+    {
       "id": "bjnews-entertainment", "name": "新京报 · 娱乐",
       "type": "bjnews_ent", "url": "https://www.bjnews.com.cn/entertainment",
       "publisher_id": "bjnews", "source_class": "established_media",

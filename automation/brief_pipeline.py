@@ -358,7 +358,7 @@ def fetch_chinafilm_filings(source: dict) -> list[dict]:
 
 def fetch_source(source: dict) -> list[dict[str, str]]:
     source_type = source.get("type")
-    if source_type in {"mtime_news", "bjnews_ent", "people_culture"}:
+    if source_type in {"mtime_news", "bjnews_ent", "people_culture", "maoyan_news", "sina_official_posts"}:
         return fetch_public_source(source, fetch_bytes)
     if source_type in {"weibo_search", "weibo_timeline"}:
         return fetch_weibo(source)
