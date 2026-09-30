@@ -91,6 +91,17 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(len(result["items"]), 21)
         self.assertEqual(result["items"][0]["distribution"], "film_unspecified")
 
+    def test_explicit_film_headline_overrides_tv_feed_category(self):
+        tv_feed = source(entry_type="剧集动态", language="en", market="m-intl")
+        self.assertEqual(
+            pipeline.classify_distribution(tv_feed, "The Little Prince Live-Action Movie Set", "Production begins soon"),
+            "film_unspecified",
+        )
+        self.assertEqual(
+            pipeline.classify_distribution(tv_feed, "New South Park Episode Arrives", "A series episode premieres"),
+            "series",
+        )
+
     def test_same_headline_different_days_is_not_merged(self):
         rows = [item("old", title="电影预售开启", published=(NOW - dt.timedelta(days=1)).isoformat()), item("new", title="电影预售开启")]
         with patch.object(pipeline, "fetch_source", return_value=rows):

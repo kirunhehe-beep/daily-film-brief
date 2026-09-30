@@ -440,6 +440,14 @@ def classify_distribution(source: dict, title: str, summary: str) -> str:
     text = search_text(title + " " + summary)
     if re.search(r"网络(?:公益)?电影|网络故事片", text) or any(keyword in text for keyword in ("网大", "云影院")):
         return "network"
+    # Category feeds are editorial buckets, not proof of an individual item's
+    # medium: a TV feed can report a film. Prefer an explicit title signal.
+    if "电影" in title or "影片" in title or re.search(
+        r"\b(?:film|movie|feature film|box office|theatrical release)\b", title, flags=re.I
+    ):
+        if any(keyword in text for keyword in ("院线电影", "全国公映", "影院上映", "院线上映", "正式上映", "定档", "预售", "点映", "票房")):
+            return "cinema"
+        return "film_unspecified"
     if source.get("entry_type") in {"剧集动态", "电视剧动态", "网络剧动态"} or re.search(r"电视剧|剧集|网剧", text):
         return "series"
     if any(keyword in text for keyword in ("线上首映", "全网首播")) and any(keyword in text for keyword in ("电影", "影片")):
