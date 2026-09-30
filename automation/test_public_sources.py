@@ -1,5 +1,6 @@
 """Small synthetic fixtures matching public publisher structures; no network."""
 import json
+import datetime as dt
 import unittest
 import ssl
 import urllib.error
@@ -28,6 +29,38 @@ class PublicSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["published"], "2026-09-30T16:38:00+08:00")
         self.assertFalse(rows[0]["text_complete"])
         self.assertEqual(pipeline.confidence_for(source), "social_lead")
+
+    def test_official_post_headline_uses_hashtag_not_full_caption(self):
+        source = {"type": "sina_official_posts", "url": "https://www.sina.cn/media/2095820504",
+                  "expected_author": "淘票票", "source_class": "social"}
+        listing = '''<a class="post-link" href="/news/detail/123.html"><article class="post">
+          <div class="uname">淘票票</div><div class="time">2026-09-30 16:38</div>
+          <div class="post-text">#电影新片今日发布预告# 片方公开了首支预告片。</div>
+        </article></a>'''
+        row = public.parse_listing(source, listing.encode())[0]
+        self.assertEqual(row["title"], "电影新片今日发布预告")
+        self.assertIn("片方公开", row["summary"])
+
+    def test_identical_ticketing_captions_keep_both_permalinks(self):
+        sources = [{"id": source_id, "enabled": True, "name": name,
+                    "type": "sina_official_posts", "source_class": "social",
+                    "market": "m-cn", "language": "zh"}
+                   for source_id, name in (("taopiaopiao-official-posts", "淘票票"),
+                                           ("dengta-official-posts", "灯塔专业版"))]
+        records = [{"source_id": source["id"], "title": "新片预告发布",
+                    "summary": "#新片预告发布# 片方公开了首支预告片。",
+                    "url": f"https://www.sina.cn/news/detail/{number}.html",
+                    "published": "2026-09-30T17:00:00+08:00"}
+                   for number, source in enumerate(sources, start=1)]
+        reports = [{"market": "m-cn", "status": "ok", "fetched": 1} for _ in sources]
+        config = {"policy": {"max_age_hours": 48, "required_markets": ["m-cn"],
+                             "render_languages": ["zh"], "allow_carry_forward": False},
+                  "sources": sources}
+        with patch.object(pipeline, "collect_records", return_value=(records, set(s["id"] for s in sources), [], reports)):
+            result = pipeline.run(config, now=dt.datetime(2026, 9, 30, 10, tzinfo=dt.timezone.utc))
+        self.assertEqual(result["stats"]["items"], 1)
+        self.assertEqual(result["items"][0]["confidence"], "social_lead")
+        self.assertEqual(len(result["items"][0]["sources"]), 2)
 
     def test_maoyan_news_uses_original_online_time_and_detail_excerpt(self):
         source = {"type": "maoyan_news", "url": "https://i.maoyan.com/asgard/news", "read_details": True}
