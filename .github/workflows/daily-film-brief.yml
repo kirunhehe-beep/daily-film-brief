@@ -32,6 +32,8 @@ jobs:
           CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python automation/translate_brief.py --input generated/latest.json --cache generated/translation_cache.json
+      - name: Combine same-event coverage into a concise brief
+        run: python automation/editorial_brief.py --input generated/latest.json
       - name: Render daily page and archive yesterday
         run: python automation/render_daily.py --input generated/latest.json --site app
       - name: Persist the generated briefing and archive

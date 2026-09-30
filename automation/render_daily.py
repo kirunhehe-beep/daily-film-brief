@@ -101,14 +101,20 @@ def render_item(item: dict, labels: dict) -> str:
     cred_class, cred_label = evidence(item, labels)
     source_rows = []
     for source in item.get("sources", []):
+        source_detail = source.get("headline", "")
+        source_detail = (" · " + source_detail) if source_detail and source_detail != item.get("title") else ""
         source_rows.append(
             '<a class="sb-i sb-main" href="{url}" target="_blank" rel="noopener">'
-            '<span class="sb-b">{name}</span><span class="sb-name">{name}</span><span class="sb-a">&#8599;</span></a>'.format(
-                url=esc(source.get("url", "")), name=esc(source.get("name", "来源"))
+            '<span class="sb-b">{name}</span><span class="sb-name">{name}{detail}</span><span class="sb-a">&#8599;</span></a>'.format(
+                url=esc(source.get("url", "")), name=esc(source.get("name", "来源")),
+                detail=esc(source_detail)
             )
         )
-    source_names = " / ".join(source.get("name", "来源") for source in item.get("sources", [])) or "来源待补充"
-    summary = item.get("summary") or "原始来源未提供摘要，请展开查看信源。"
+    source_names = " / ".join(dict.fromkeys(source.get("name", "来源")
+                                         for source in item.get("sources", []))) or "来源待补充"
+    summary = item.get("summary") or ("" if item.get("editorial") else "原始来源未提供摘要，请展开查看信源。")
+    lead_html = '<div class="r-lead">{excerpt}</div>'.format(excerpt=esc(excerpt(summary))) if summary else ""
+    summary_html = '<p class="d-desc">{summary}</p>'.format(summary=esc(summary)) if summary else ""
     image_url = item.get("image_url", "")
     video_url = item.get("video_url", "")
     video_page_url = item.get("video_page_url", "")
@@ -158,7 +164,7 @@ def render_item(item: dict, labels: dict) -> str:
             verify_text += " 本条为转发动态，不计作独立信源确认。"
         if not item.get("text_complete", True):
             verify_text += " 当前正文可能被平台截断，请查看原帖全文。"
-    material_label = "含图片 / 视频 / 信源" if video_url else ("含来源图片 / 信源" if image_url else "查看物料与信源")
+    material_label = "含图片 / 视频 / 信源" if video_url else ("含来源图片 / 信源" if image_url else "查看原始信源")
     distribution_label = DISTRIBUTION_LABELS.get(item.get("distribution", "other"), "影视动态")
     kind_label = distribution_label + " · " + item.get("entry_type", "影视动态")
     translation_status = item.get("translation_status")
@@ -198,12 +204,12 @@ def render_item(item: dict, labels: dict) -> str:
     return (
         '<details class="row row-media" data-cred="{cred_class}"><summary>'
         '<div class="r-line"><span class="r-time">{source_time}</span><span class="r-kind">{kind}</span>'
-        '<span class="r-cred {cred_class}">{cred_label} · {source_count} 来源</span>'
+        '<span class="r-cred {cred_class}">{cred_label} · {source_count} {source_unit}</span>'
         '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
         '<div class="r-media-body">{thumbnail}<div class="r-media-txt"><div class="r-title">{title}</div>'
-        '<div class="r-lead">{excerpt}</div><div class="r-src"><span class="dot"></span>来源 · {source_names}</div>'
+        '{lead_html}<div class="r-src"><span class="dot"></span>来源 · {source_names}</div>'
         '</div></div><div class="r-mat">{material_label}</div></summary>'
-        '<div class="r-det"><p class="d-desc">{summary}</p>{translation_note}{filing_table}{media_parts}'
+        '<div class="r-det">{summary_html}{translation_note}{filing_table}{media_parts}'
         '<div class="vpanel {cred_class}"><div class="vp-h">来源说明</div>'
         '<div class="vp-row {cred_class}"><span class="vpdot">{verify_mark}</span>{verify_text}</div>'
         '<div class="vp-note">来源标注：{cred_label}。收录不等于事实确认。</div></div>'
@@ -213,12 +219,13 @@ def render_item(item: dict, labels: dict) -> str:
         cred_class=cred_class,
         cred_label=esc(cred_label),
         source_count=len(item.get("sources", [])),
+        source_unit="条原文" if item.get("editorial") else "来源",
         source_time=esc(item_time(item)),
         kind=esc(kind_label),
         title=esc(item.get("title", "未命名资讯")),
-        summary=esc(summary),
+        summary_html=summary_html,
         translation_note=translation_note,
-        excerpt=esc(excerpt(summary)),
+        lead_html=lead_html,
         thumbnail=thumbnail,
         media_parts="".join(media_parts),
         filing_table=filing_table,
@@ -228,6 +235,37 @@ def render_item(item: dict, labels: dict) -> str:
         source_names=esc(source_names),
         source_rows="".join(source_rows),
     )
+
+
+def render_source_pool(payload: dict) -> str:
+    more = payload.get("more_items", [])
+    filtered = payload.get("filtered_items", [])
+    if not more and not filtered:
+        return ""
+    reason_labels = {"anniversary": "纪念日回顾", "advance_teaser": "消息尚未公布",
+                     "promotion": "促销互动", "background_roundup": "背景整理",
+                     "outside_film_tv": "非影视业务动态"}
+    rows = []
+    for item in more:
+        links = "".join(
+            '<a href="{url}" target="_blank" rel="noopener">{name} ↗</a>'.format(
+                url=esc(source.get("url", "")), name=esc(source.get("name", "原文")))
+            for source in item.get("sources", []) if source.get("url")
+        )
+        rows.append('<li><strong>{title}</strong><span>简报之外的同日动态</span><div>{links}</div></li>'.format(
+            title=esc(item.get("title", "影视动态")), links=links))
+    for item in filtered:
+        rows.append('<li><strong>{title}</strong><span>{reason}</span><div><a href="{url}" '
+                    'target="_blank" rel="noopener">查看原帖 ↗</a></div></li>'.format(
+                        title=esc(item.get("title", "影视动态")),
+                        reason=esc(reason_labels.get(item.get("reason"), "低信息量线索")),
+                        url=esc(item.get("url", ""))))
+    return (
+        '<details class="source-pool"><summary><span>更多原始线索</span><b>{count} 组</b></summary>'
+        '<p>首页按事件提炼，并非全部抓取结果。这里保留同日其他动态与被筛掉的低信息量发布；'
+        '合并事件的每条原文可在对应卡片中查看。来源收录不等于事实核实。</p>'
+        '<ul>{rows}</ul></details>'
+    ).format(count=len(rows), rows="".join(rows))
 
 
 def replace_feed(document: str, market: str, body: str) -> str:
@@ -340,7 +378,10 @@ def main() -> int:
     result = replace_group(result, r'(<div class="tb-date">).*?(</div>)', date_iso + " · " + weekday)
     result = replace_group(result, r'(<span class="st-date">).*?(</span>)', date_cn)
     result = replace_group(result, r'(<span class="st-upd">).*?(</span>)', "最近采集 " + collected_at.strftime("%m/%d %H:%M"))
-    result = replace_group(result, r'(<span class="st-new">).*?(</span>)', "今日收录 <em>" + str(total) + "</em> 条")
+    raw_total = payload.get("stats", {}).get("source_items", total)
+    result = replace_group(result, r'(<span class="st-new">).*?(</span>)',
+                           "今日提要 <em>" + str(total) + "</em> 组 · 原始线索 " + str(raw_total) + " 条")
+    result = replace_group(result, r'(<section id="source-pool-slot">).*?(</section>)', render_source_pool(payload))
     source_copy = "本轮接通 " + str(payload["stats"]["successful_sources"]) + "/" + str(payload["stats"]["configured_sources"]) + " 个采集入口"
     awaiting_weibo = any(report["source_id"].startswith("weibo-") and report["status"] == "authorization_required" for report in payload.get("source_statuses", []))
     if awaiting_weibo:
