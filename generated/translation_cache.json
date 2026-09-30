@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "entries": {}
+}
