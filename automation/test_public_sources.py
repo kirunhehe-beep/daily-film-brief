@@ -10,6 +10,60 @@ import public_sources as public
 
 
 class PublicSourceTests(unittest.TestCase):
+    def test_official_account_public_posts_keep_date_permalink_and_social_status(self):
+        source = {"type": "sina_official_posts", "url": "https://www.sina.cn/media/2095820504",
+                  "expected_author": "淘票票", "source_class": "social"}
+        listing = '''<div class="feed">
+        <a class="post-link" href="/news/detail/5348886970633241.html"><article class="post">
+          <div class="uname">淘票票</div><div class="time">2026-09-30 16:38<span class="src">来自微博网页版</span></div>
+          <div class="post-text">电影《新片》今日发布预告。</div>
+        </article></a>
+        <a class="post-link" href="/news/detail/2.html"><article class="post">
+          <div class="uname">其他账号</div><div class="time">2026-09-30 16:38</div>
+          <div class="post-text">电影消息</div>
+        </article></a></div>'''
+        rows = public.parse_listing(source, listing.encode())
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["url"], "https://www.sina.cn/news/detail/5348886970633241.html")
+        self.assertEqual(rows[0]["published"], "2026-09-30T16:38:00+08:00")
+        self.assertFalse(rows[0]["text_complete"])
+        self.assertEqual(pipeline.confidence_for(source), "social_lead")
+
+    def test_maoyan_news_uses_original_online_time_and_detail_excerpt(self):
+        source = {"type": "maoyan_news", "url": "https://i.maoyan.com/asgard/news", "read_details": True}
+        stamp = 1790753746000
+        listing = ('<script>var AppData = ' + json.dumps({"newsList": [{
+            "contentId": 20243040, "title": "电影发布预告", "onlineTime": stamp,
+            "images": [{"url": "https://p0.pipi.cn/poster.jpg"}]
+        }]}, ensure_ascii=False) + ';</script>').encode()
+        detail = ('<script>var AppData = ' + json.dumps({"news": {
+            "id": 20243040, "created": stamp, "text": json.dumps("<p>片方今日发布新预告。</p>")
+        }}, ensure_ascii=False) + ';</script>').encode()
+        def fetch(url, accept):
+            return listing if url == source["url"] else detail
+        items = public.fetch_public_source(source, fetch)
+        self.assertEqual(items.status, "ok")
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["published"], "2026-09-30T07:35:46+00:00")
+        self.assertEqual(items[0]["summary"], "片方今日发布新预告。")
+        self.assertEqual(items[0]["image_url"], "https://p0.pipi.cn/poster.jpg")
+        self.assertEqual(items[0]["url"], "https://i.maoyan.com/asgard/information/20243040?_v_=yes")
+
+    def test_maoyan_detail_failure_preserves_dated_listing(self):
+        source = {"type": "maoyan_news", "url": "https://i.maoyan.com/asgard/news", "read_details": True}
+        listing = ('<script>var AppData = ' + json.dumps({"newsList": [{
+            "contentId": 1, "title": "电影消息", "onlineTime": 1790753746000
+        }]}, ensure_ascii=False) + ';</script>').encode()
+        def fetch(url, accept):
+            if url == source["url"]:
+                return listing
+            raise TimeoutError()
+        items = public.fetch_public_source(source, fetch)
+        self.assertEqual(items.status, "partial")
+        self.assertEqual(len(items), 1)
+        self.assertTrue(items[0]["published"])
+        self.assertEqual(items.checks[0]["status"], "detail_unavailable")
+
     def test_mtime_relative_clock_requires_original_date(self):
         source = {"type": "mtime_news", "url": "https://news.mtime.com/"}
         body = '<li><div><h4><a href="https://content.mtime.com/article/1">电影预告</a></h4><img src="https://img.mtime.cn/poster.jpg"><p>片方发布预告。</p><span class="news-time">2小时前</span></div></li>'
