@@ -480,11 +480,10 @@ window.__vFail = function (v) {
 
 <style data-brief-shell>
 /* 正式版信息密度：完整保留、默认扫读、按需展开。 */
-.brief-overview{margin:0 18px 4px;padding:12px 0 14px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.brief-overview{margin:0 18px 20px;padding:12px 0 14px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
 .brief-overview__top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
 .brief-overview__title{font:900 12px/1 var(--mono);letter-spacing:.08em;color:var(--ink)}
 .brief-overview__total{font:900 11px/1 var(--mono);color:var(--red);white-space:nowrap}
-.brief-overview__copy{margin-top:7px;color:var(--ink-3);font-size:12px;line-height:1.55}
 .brief-overview__chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .brief-overview__chip{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--ink);padding:5px 7px 4px;background:rgba(255,255,255,.42);font:750 10px/1 var(--mono);letter-spacing:.03em;color:var(--ink)}
 .brief-overview__chip b{font-weight:900;color:var(--blue)}
@@ -536,8 +535,6 @@ window.__vFail = function (v) {
     if (!status || document.querySelector('.brief-overview')) return;
     var markets = Array.prototype.slice.call(document.querySelectorAll('.market'));
     var total = document.querySelectorAll('.market details.row').length;
-    var verified = document.querySelectorAll('.market details[data-cred="ok"]').length;
-    var pending = document.querySelectorAll('.market details[data-cred="pending"]').length;
     var box = document.createElement('section');
     box.className = 'brief-overview'; box.setAttribute('aria-label', '本期总览');
     var chips = markets.map(function (market) {
@@ -545,9 +542,8 @@ window.__vFail = function (v) {
       var n = market.querySelectorAll('details.row').length;
       return '<a class="brief-overview__chip" href="#' + (market.id || '') + '">' + name + ' <b>' + n + '</b></a>';
     }).join('');
-    box.innerHTML = '<div class="brief-overview__top"><span class="brief-overview__title">EDITED BRIEF / 今日提要</span><span class="brief-overview__total">' + total + ' 组</span></div>' +
-      '<p class="brief-overview__copy">同一事件合并为一张卡，先看核心变化，再展开核对全部原文。未进入提要的线索保留在页尾；来源标签不代表事实核实。</p>' +
-      '<div class="brief-overview__chips">' + chips + '</div>';
+    box.innerHTML = '<div class="brief-overview__top"><span class="brief-overview__title">今日提要</span><span class="brief-overview__total">' + total + ' 组</span></div>' +
+      '<nav class="brief-overview__chips" aria-label="按地区定位">' + chips + '</nav>';
     status.insertAdjacentElement('afterend', box);
     document.querySelectorAll('.r-thumb').forEach(function (img) {
       function fallback() {
@@ -559,102 +555,6 @@ window.__vFail = function (v) {
       if (img.complete && !img.naturalWidth) fallback();
       img.addEventListener('error', fallback, {once:true});
     });
-  });
-})();
-</script>
-
-<style data-reader-tools>
-/* 阅读工具：只辅助定位和进度，不替用户做「必看」判断。 */
-.reader-tools{margin:0 18px 20px;border:1px solid var(--ink);background:rgba(255,255,255,.46);padding:11px 10px 10px}
-.reader-tools__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.reader-tools__label{font:900 10px/1 var(--mono);letter-spacing:.08em;color:var(--ink)}
-.reader-tools__stat{font:800 10px/1.35 var(--mono);color:var(--ink-3);text-align:right}
-.reader-tools__search{display:flex;align-items:center;gap:7px;margin-top:9px;border:1px solid var(--ink);background:var(--paper);padding:0 9px}
-.reader-tools__search svg{width:14px;height:14px;flex:none}
-.reader-tools__search input{width:100%;min-height:37px;border:0;outline:0;background:transparent;color:var(--ink);font:650 13px/1.2 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
-.reader-tools__search input::placeholder{color:var(--ink-4)}
-.reader-tools__filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
-.reader-tools__filter{appearance:none;border:1px solid var(--ink);border-radius:0;background:transparent;padding:6px 8px 5px;color:var(--ink);font:800 10px/1 var(--mono);letter-spacing:.03em;cursor:pointer}
-.reader-tools__filter[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.reader-tools__filter.reader-tools__unread[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
-.reader-tools__empty{display:none;margin:0 18px 20px;padding:18px;border:1px dashed var(--ink-3);color:var(--ink-3);font:650 12px/1.65 var(--mono);text-align:center}
-.reader-tools__empty.is-visible{display:block}
-.market.is-filter-empty{display:none}
-details.row[hidden]{display:none}
-@media(min-width:700px){.reader-tools{margin-left:18px;margin-right:18px}.reader-tools__filters{flex-wrap:nowrap}.reader-tools__filter{flex:1;text-align:center;white-space:nowrap}}
-</style>
-<script data-reader-tools>
-/* 本机进度只保存在当前设备，不上传阅读行为。 */
-(function () {
-  function ready(fn) { document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
-  ready(function () {
-    if (document.querySelector('.reader-tools')) return;
-    var markets = Array.prototype.slice.call(document.querySelectorAll('.market'));
-    var rows = Array.prototype.slice.call(document.querySelectorAll('.market details.row'));
-    if (!rows.length) return;
-    var date = (document.querySelector('.st-date') || {}).textContent || document.title || 'current';
-    var key = 'daily-film-brief:read:' + date.replace(/\s+/g, ' ').trim();
-    var read = {};
-    try { read = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) {}
-    rows.forEach(function (row, index) {
-      row.dataset.readerIndex = String(index);
-      if (read[index]) row.dataset.readerRead = '1';
-      row.addEventListener('toggle', function () {
-        if (!row.open) return;
-        read[index] = 1; row.dataset.readerRead = '1';
-        try { localStorage.setItem(key, JSON.stringify(read)); } catch (e) {}
-        refresh();
-      });
-    });
-    var state = { market: 'all', unread: false, query: '' };
-    var tools = document.createElement('section');
-    tools.className = 'reader-tools'; tools.setAttribute('aria-label', '简报定位工具');
-    tools.innerHTML = '<div class="reader-tools__top"><span class="reader-tools__label">LOCATE / 快速定位</span><span class="reader-tools__stat" aria-live="polite"></span></div>' +
-      '<label class="reader-tools__search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10 10 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input type="search" inputmode="search" autocomplete="off" placeholder="搜片名、人物、公司或事件" aria-label="搜索本期简报"></label>' +
-      '<div class="reader-tools__filters" role="group" aria-label="按板块筛选">' +
-        '<button class="reader-tools__filter" type="button" data-market="all" aria-pressed="true">全部</button>' +
-        '<button class="reader-tools__filter" type="button" data-market="m-cn" aria-pressed="false">内地</button>' +
-        '<button class="reader-tools__filter" type="button" data-market="m-hmt" aria-pressed="false">港澳台</button>' +
-        '<button class="reader-tools__filter" type="button" data-market="m-intl" aria-pressed="false">海外</button>' +
-        '<button class="reader-tools__filter" type="button" data-market="m-obs" aria-pressed="false">行业</button>' +
-        '<button class="reader-tools__filter reader-tools__unread" type="button" data-unread aria-pressed="false">未读</button>' +
-      '</div>';
-    var target = document.querySelector('.brief-overview') || document.querySelector('.status');
-    target.insertAdjacentElement('afterend', tools);
-    var empty = document.createElement('p');
-    empty.className = 'reader-tools__empty'; empty.textContent = '没有匹配的条目。换个关键词或取消筛选试试。';
-    tools.insertAdjacentElement('afterend', empty);
-    var input = tools.querySelector('input');
-    var stat = tools.querySelector('.reader-tools__stat');
-    function norm(s) { return (s || '').toLowerCase().replace(/\s+/g, ''); }
-    function refresh() {
-      var q = norm(state.query), shown = 0, readCount = 0;
-      rows.forEach(function (row) {
-        var inMarket = state.market === 'all' || row.closest('.market').id === state.market;
-        var matches = !q || norm(row.textContent).indexOf(q) > -1;
-        var isRead = row.dataset.readerRead === '1';
-        if (isRead) readCount += 1;
-        var visible = inMarket && matches && (!state.unread || !isRead);
-        row.hidden = !visible;
-        if (visible) shown += 1;
-      });
-      markets.forEach(function (market) {
-        market.classList.toggle('is-filter-empty', !market.querySelector('details.row:not([hidden])'));
-      });
-      stat.textContent = '命中 ' + shown + ' / ' + rows.length + ' · 已读 ' + readCount;
-      empty.classList.toggle('is-visible', shown === 0);
-    }
-    tools.querySelectorAll('[data-market]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        state.market = button.dataset.market;
-        tools.querySelectorAll('[data-market]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
-        refresh();
-      });
-    });
-    var unread = tools.querySelector('[data-unread]');
-    unread.addEventListener('click', function () { state.unread = !state.unread; unread.setAttribute('aria-pressed', String(state.unread)); refresh(); });
-    input.addEventListener('input', function () { state.query = input.value; refresh(); });
-    refresh();
   });
 })();
 </script>
