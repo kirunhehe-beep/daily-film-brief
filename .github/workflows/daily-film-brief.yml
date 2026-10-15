@@ -2,9 +2,8 @@ name: Daily film brief
 
 on:
   schedule:
-    # Beijing time: 10:10 and 18:00 (GitHub Actions uses UTC).
+    # One daily run at 10:10 Beijing time (02:10 UTC); GitHub may delay scheduled starts.
     - cron: "10 2 * * *"
-    - cron: "0 10 * * *"
   workflow_dispatch:
 
 permissions:
