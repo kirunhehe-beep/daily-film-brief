@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="theme-color" content="#f1eee5">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../film-ticket-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../film-ticket-180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../film-ticket-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="影视简报">
+<title>每日影视简报 · 2026-11-17</title>
+<style>
+  :root{
+    --paper:#f1eee5;
+    --deep:#e6e0d4;
+    --ink:#11110f;
+    --ink-2:#3f3d37;
+    --ink-3:#6f6c65;
+    --ink-4:#9a978f;
+    --line:rgba(17,17,15,.2);
+    --red:#e13d2f;
+    --blue:#2548d8;
+    --ok:#17694b;
+    --warn:#b26a00;
+    --hair:rgba(17,17,15,.2);
+    --maxw:560px;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:var(--paper);
+    background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    background-attachment:fixed;
+    min-height:100vh;
+  }
+  a{color:var(--ink);text-decoration:none}
+  img{display:block}
+  .app{max-width:var(--maxw);margin:0 auto;min-height:100vh;padding-bottom:72px;
+    border-left:1px solid var(--line);border-right:1px solid var(--line);
+    position:relative;isolation:isolate;overflow:hidden}
+
+  /* ============ 顶部栏：墨黑硬边 + 米白字 + 等宽小字 ============ */
+  .topbar{position:sticky;top:0;z-index:80;
+    padding:calc(env(safe-area-inset-top) + 10px) 0 0;
+    background:rgba(17,17,15,.94);
+    -webkit-backdrop-filter:saturate(160%) blur(14px);backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid var(--ink);color:var(--paper)}
+  .tb-top{display:flex;align-items:flex-start;justify-content:space-between;
+    padding:0 16px 9px;border-bottom:1px solid rgba(241,238,229,.18)}
+  .tb-brand{font-size:38px;line-height:.85;font-weight:950;letter-spacing:-.06em;color:var(--paper)}
+  .tb-brand span{color:var(--red);font-weight:950}
+  .tb-date{text-align:right;font:700 10px/1.5 var(--mono);color:rgba(241,238,229,.72);letter-spacing:.08em;padding-top:6px;line-height:1.5}
+  .mnav{display:flex;gap:0;overflow-x:auto;padding:0;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mnav::-webkit-scrollbar{display:none}
+  .mnav a{flex:none;padding:12px 14px 11px;font:750 10.5px/1 var(--mono);letter-spacing:.04em;
+    color:rgba(241,238,229,.65);border-bottom:2px solid transparent;white-space:nowrap}
+  .mnav a.on{color:var(--paper);border-bottom-color:var(--red)}
+
+  /* ============ 系统状态（kicker 红标 + 等宽小字） ============ */
+  .status{padding:22px 18px 14px;position:relative}
+  .st-line{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:9px}
+  .st-kicker{display:inline-block;padding:5px 8px 4px;color:var(--paper);background:var(--red);
+    font:800 10.5px/1 var(--mono);letter-spacing:.08em;transform:rotate(-1.5deg);margin-bottom:5px}
+  .st-date{font-size:32px;font-size:clamp(30px,9vw,40px);line-height:1;letter-spacing:-.04em;font-weight:930;flex:1 0 100%}
+  .st-dot{color:var(--ink-4);font-weight:600}
+  .st-upd,.st-new{font:700 11px/1 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+  .st-new em{font-style:normal;color:var(--red);font-weight:800}
+  .st-sub2{margin-top:9px;font:650 10.5px/1.55 var(--mono);color:var(--ink-3);letter-spacing:.06em;
+    padding-top:8px;border-top:1px solid var(--line)}
+  .deck{max-width:92%;margin:11px 0 0;font-size:13.5px;line-height:1.72;font-weight:600;color:var(--ink-3)}
+  .deck b{color:var(--ink);font-weight:800}
+
+  /* ============ 市场区（墨黑 section 头，奇墨偶蓝） ============ */
+  .market{padding:0;margin-top:18px;scroll-margin-top:96px}
+  .market .mk-head{min-height:96px;padding:18px 18px 16px;display:grid;
+    grid-template-columns:54px 1fr auto;align-items:end;gap:9px;
+    background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink);
+    border-top:7px solid var(--ink)}
+  .market:nth-of-type(even) .mk-head{background:var(--blue)}
+  .mk-head .bar{display:none}
+  .mk-head h2{font-size:26px;line-height:1;font-weight:930;letter-spacing:-.04em;color:var(--paper)}
+  .mk-head .en{font:700 9.5px/1.55 var(--mono);color:rgba(241,238,229,.7);letter-spacing:.1em}
+  .mk-head .n{font:700 10px/1 var(--mono);color:rgba(241,238,229,.85);
+    border:1px solid rgba(241,238,229,.45);padding:4px 8px;align-self:end}
+  .feed{background:rgba(255,255,255,.5);border-bottom:1px solid var(--ink)}
+  .feed > .row-media{margin:0}
+  .mk-empty{padding:20px 16px;font:650 11px/1.7 var(--mono);color:var(--ink-3);text-align:center;letter-spacing:.04em;
+    background:rgba(255,255,255,.5);border-bottom:1px solid var(--ink)}
+  .mk-empty strong{display:block;font:800 12px/1.5 var(--sans);color:var(--ink-2);letter-spacing:.01em}
+  .mk-empty span{display:block;margin-top:3px;font:600 10px/1.5 var(--mono);color:var(--ink-3)}
+  .feed-keep-label{padding:8px 16px 7px;background:var(--deep);color:var(--paper);font:800 9.5px/1 var(--mono);letter-spacing:.08em}
+
+  /* ============ 普通条目：硬边方角 ============ */
+  .row{border-bottom:1px solid var(--ink)}
+  .row:last-child{border-bottom:1px solid var(--ink)}
+  .row > summary{list-style:none;cursor:pointer;padding:14px 16px 15px;position:relative;display:block}
+  .row > summary::-webkit-details-marker{display:none}
+  .r-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-right:24px}
+  .r-time{font:700 10.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+  .r-kind{font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--paper);background:var(--ink);
+    padding:4px 7px 3px}
+  .r-new{font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--red);
+    background:transparent;border:1px solid var(--red);padding:3px 6px 2px;
+    font-variant-numeric:tabular-nums}
+  .r-cred{margin-left:auto;flex:none;font:700 10px/1 var(--mono);letter-spacing:.04em;
+    padding:4px 7px 3px}
+  .r-cred.ok{color:var(--ok);border:1px solid var(--ok)}
+  .r-cred.pending{color:var(--red);border:1px solid var(--red)}
+  .chev{position:absolute;right:13px;top:15px;width:15px;height:15px;color:var(--ink);
+    transition:transform .22s ease}
+  details[open] > summary .chev{transform:rotate(180deg)}
+  .r-title{font-size:22px;line-height:1.18;letter-spacing:-.035em;font-weight:850;
+    margin-top:8px;color:var(--ink)}
+  .r-lead{font-size:13.2px;color:var(--ink-2);margin-top:5px;line-height:1.55}
+  .r-src{margin-top:8px;display:inline-flex;align-items:center;gap:6px;font:700 10.5px/1.55 var(--mono);
+    color:var(--ink-3);letter-spacing:.04em}
+  .r-src .dot{width:5px;height:5px;background:var(--ink);flex:none}
+  .r-src.pending .dot{background:var(--red)}
+
+  /* ============ 物料条目：硬边白卡（杂志海报） ============ */
+  .row-media{margin:0;border-bottom:1px solid var(--ink);background:rgba(255,255,255,.65)}
+  .row-media > summary{padding:14px 16px 14px}
+  .row-media .chev{right:13px}
+  .r-media-body{display:flex;gap:13px;margin-top:10px;align-items:flex-start}
+  .r-thumb{width:84px;height:126px;aspect-ratio:2/3;object-fit:cover;flex:0 0 auto;
+    border:1px solid var(--ink);background:var(--deep)}
+  .r-media-txt{min-width:0;flex:1}
+  .r-media-txt .r-title{margin-top:0}
+  .r-mat{margin-top:10px;display:inline-flex;align-items:center;gap:5px;
+    font:800 10px/1 var(--mono);letter-spacing:.06em;color:var(--paper);background:var(--ink);
+    padding:4px 7px 3px}
+
+  /* ============ 详情区 ============ */
+  .r-det{padding:0 16px 16px}
+  .row-media .r-det{padding:0 16px 14px}
+  .r-det .d-desc{font-size:13.4px;line-height:1.62;color:var(--ink);
+    padding:11px 0 0;border-top:1px solid var(--ink);margin-top:11px}
+  .r-det > *:first-child{border-top:none;margin-top:0;padding-top:0}
+
+  .filing-block{margin-top:12px;border:1px solid var(--ink);background:var(--paper);padding:11px 12px}
+  .filing-block .vp-h{font:800 9.5px/1 var(--mono);color:var(--ink);letter-spacing:.12em;margin-bottom:8px}
+  .filing-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .filing-table{width:100%;min-width:760px;border-collapse:collapse;font-size:11.5px;line-height:1.45}
+  .filing-table th,.filing-table td{padding:7px 8px;text-align:left;vertical-align:top;border:1px solid var(--ink)}
+  .filing-table th{background:var(--ink);color:var(--paper);font:800 9.5px/1.2 var(--mono);letter-spacing:.05em}
+  .filing-table td:first-child{font-weight:800;min-width:96px}
+  .filing-table td:nth-child(3){font-family:var(--mono);white-space:nowrap}
+  .filing-block .vp-note{font-size:10.8px;color:var(--ink-3);margin-top:8px;line-height:1.55;font-family:var(--mono)}
+
+  /* 播放器：B 站分端（默认安全态：隐藏 iframe / 显示跳转入口，墨黑硬边） */
+  .v-wrap{margin-top:11px;border:1px solid var(--ink);background:var(--ink);overflow:hidden}
+  .v-wrap video{width:100%;display:block;background:#000;max-height:54vw}
+  .v-wrap .bili-embed{display:none;width:100%;aspect-ratio:16/9;border:0;background:#000}
+  .bili-jump{display:flex;align-items:center;gap:11px;padding:14px;color:var(--paper);text-decoration:none;
+    background:rgba(241,238,229,.06);min-height:54px}
+  .bili-jump .bj-ico{width:30px;height:30px;background:var(--red);display:flex;align-items:center;
+    justify-content:center;font-size:11px;flex:none;color:var(--paper);font-weight:800;font-family:var(--mono)}
+  .bili-jump .bj-t{font:800 13px/1.2 var(--ink);color:var(--paper);display:block;letter-spacing:-.01em}
+  .bili-jump .bj-s{font:650 10.5px/1.4 var(--mono);color:rgba(241,238,229,.7);display:block;margin-top:3px;letter-spacing:.04em}
+  .v-src{margin-top:7px;font:650 10.8px/1.55 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+  .v-src a{color:var(--ink);text-decoration:underline}
+  .v-fallback{padding:14px;font:650 12.5px/1.55 var(--mono);color:var(--paper);text-align:center;background:var(--ink)}
+  .v-fallback a{color:var(--red);text-decoration:underline}
+  @media (min-width:821px){
+    .v-wrap .bili-embed{display:block}
+    .bili-jump{display:none}
+    .v-wrap video{max-height:none}
+  }
+
+  .synopsis{margin-top:12px;background:var(--paper);border:1px dashed var(--ink);padding:11px 12px}
+  .synopsis .syn-k{display:block;font:800 9.5px/1 var(--mono);color:var(--red);
+    letter-spacing:.12em;margin-bottom:5px}
+  .synopsis p{font-size:12.8px;line-height:1.62;color:var(--ink-2)}
+
+  .credits{margin-top:12px}
+  .credits .cr-row{display:flex;gap:11px;padding:6px 0;border-top:1px solid var(--ink);font-size:12.5px}
+  .credits .cr-row:first-child{border-top:1px solid var(--ink)}
+  .credits .cr-k{flex:none;width:54px;color:var(--ink-3);font:800 9.5px/1 var(--mono);
+    letter-spacing:.08em;padding-top:2px}
+  .credits .cr-v{color:var(--ink-2);line-height:1.55;min-width:0}
+  .credits .cr-v b{color:var(--ink);font-weight:700}
+
+  .vpanel{margin-top:12px;background:var(--paper);border:1px solid var(--ok);padding:11px 12px}
+  .vpanel.pending{border-color:var(--red);background:rgba(225,61,47,.04)}
+  .vpanel .vp-h{font:800 9.5px/1 var(--mono);color:var(--ok);letter-spacing:.12em;margin-bottom:6px}
+  .vpanel.pending .vp-h{color:var(--red)}
+  .vpanel .vp-row{font-size:12.4px;color:var(--ink-2);display:flex;gap:6px;align-items:baseline;
+    line-height:1.55}
+  .vpanel .vp-row .vpdot{color:var(--ok);font-weight:800;font-family:var(--mono)}
+  .vpanel.pending .vp-row .vpdot{color:var(--red)}
+  .vpanel .vp-note{font-size:11.6px;color:var(--ink-3);margin-top:6px;line-height:1.55;
+    font-family:var(--mono);letter-spacing:.02em}
+  .vpanel .src{display:inline-block;margin-top:9px;font:800 10.5px/1 var(--mono);
+    color:var(--paper);background:var(--ink);padding:5px 9px 4px;letter-spacing:.06em}
+
+  .srcbox{margin-top:12px;border-top:1px solid var(--ink);padding-top:10px}
+  .srcbox .sb-h{font:800 9.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.12em;margin-bottom:7px}
+  .srcbox .sb-list{display:flex;flex-direction:column;gap:5px}
+  .srcbox .sb-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--ink);padding:7px 10px;min-width:0}
+  .srcbox .sb-i.sb-main{background:var(--deep)}
+  .srcbox .sb-b{flex:none;font:800 9px/1 var(--mono);color:var(--paper);background:var(--ink);
+    padding:4px 6px 3px;letter-spacing:.06em}
+  .srcbox .sb-a{margin-left:auto;flex:none;color:var(--ink-3);font-size:12px}
+
+  .arch-link{margin:22px 0 0;padding:18px 18px;background:var(--ink);color:var(--paper);
+    border:1px solid var(--ink);display:flex;align-items:center;gap:12px;text-decoration:none}
+  .arch-link .al-t{font-size:18px;font-weight:850;letter-spacing:-.03em}
+  .arch-link .al-s{font:650 10.5px/1.5 var(--mono);color:rgba(241,238,229,.7);margin-top:3px;letter-spacing:.04em}
+  .arch-link .al-go{margin-left:auto;color:var(--red);font-size:22px;flex:none;font-weight:800}
+
+  .foot{padding:24px 18px 0;font:650 10.5px/1.7 var(--mono);color:var(--ink-3);letter-spacing:.04em;
+    text-align:center;border-top:1px solid var(--ink);margin-top:22px}
+
+  /* 延续标签（黑底白字 kicker 风格） */
+  .cont-lbl{display:inline-block;margin:8px 0 3px;font:800 9.5px/1 var(--mono);color:var(--paper);
+    background:var(--ink);padding:4px 7px 3px;letter-spacing:.08em}
+
+  /* 响应式：桌面端加杂志投影 + 米灰底 */
+  @media (min-width:700px){
+    body{padding:28px 0;background:#d8d4ca}
+    .app{box-shadow:0 22px 70px rgba(17,17,15,.2)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation:none!important;transition:none!important}
+  }
+
+
+/* 杂志 kicker（红标，沿用 contest SCREEN） */
+.kicker{display:inline-block;padding:5px 9px 4px;color:var(--paper);background:var(--red);font:800 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;transform:rotate(-2deg);margin:0 0 11px}
+/* 杂志 colophon（深色页脚，沿用 contest SCREEN） */
+.colophon{padding:40px 18px 36px;padding-bottom:calc(36px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));background:var(--ink);color:var(--paper)}
+.colophon .end{font-size:72px;line-height:.78;font-weight:950;letter-spacing:-.08em}
+.colophon h2{margin:22px 0 10px;font-size:28px;line-height:1.06;letter-spacing:-.05em;font-weight:900}
+.colophon p{margin:0;color:rgba(241,238,229,.72);font-size:12px;line-height:1.75}
+.colophon .cmeta{margin-top:26px;padding-top:12px;border-top:1px solid rgba(241,238,229,.35);font:650 10px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;color:rgba(241,238,229,.78)}
+
+  /* ============ 杂志封面 hero（同步 contest SCREEN 的 .cover） ============ */
+  .cover{position:relative;isolation:isolate;min-height:86svh;padding:18px 18px 26px;
+    padding-top:calc(18px + env(safe-area-inset-top,0px));
+    display:grid;grid-template-rows:auto 1fr auto;
+    border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .cover:before{content:"";position:absolute;z-index:-1;width:38%;height:50%;right:-13%;top:22%;
+    background:var(--blue);transform:rotate(7deg)}
+  .cover:after{content:"";position:absolute;z-index:-1;top:0;right:0;bottom:0;left:0;opacity:.15;
+    pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+  .cover .mast{display:flex;align-items:flex-start;justify-content:space-between;
+    border-top:7px solid var(--ink);padding-top:8px}
+  .cover .brand{font-size:clamp(48px,16vw,88px);line-height:.8;font-weight:950;letter-spacing:-.085em}
+  .cover .brand span{color:var(--red)}
+  .cover .edition{text-align:right;font:700 10px/1.45 var(--mono);letter-spacing:.08em;color:var(--ink-2)}
+  .cover .center{align-self:center;padding:28px 0}
+  .cover h1{max-width:80%;margin:16px 0 14px;font-size:clamp(34px,9.5vw,52px);line-height:.98;
+    letter-spacing:-.06em;font-weight:930}
+  .cover .deck{max-width:78%;margin:0;font-size:15px;line-height:1.65;font-weight:650;color:var(--ink-2)}
+  .cover .deck b{color:var(--ink);font-weight:800}
+  .cover-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end;margin-top:8px}
+  .cover-meta{border-top:1px solid var(--ink);padding-top:8px;font:650 11px/1.65 var(--mono);
+    color:var(--ink-2);letter-spacing:.04em}
+  .cover-meta b{color:var(--ink);font-weight:800}
+  .cover .actions{display:grid;gap:8px}
+  .cover .primary,.cover .secondary{display:flex;align-items:center;justify-content:center;
+    min-height:48px;border:1px solid var(--ink);padding:0 14px;font:800 12px/1 var(--mono);
+    letter-spacing:.04em;color:var(--ink);background:transparent}
+  .cover .primary{background:var(--ink);color:var(--paper)}
+  .cover .primary:active{transform:translateY(1px)}
+  @media(min-width:700px){.cover{min-height:760px}}
+
+  /* ============ 阅读进度条（同步 contest SCREEN 的 .bar/.fill） ============ */
+  .rprog{position:absolute;top:0;left:0;right:0;height:3px;background:var(--deep);z-index:90}
+  .rprog-fill{height:100%;width:0;background:var(--red);transition:width .12s linear}
+</style>
+<style>.cont-lbl{display:inline-block;margin:8px 0 3px;font:800 9.5px/1 var(--mono);color:var(--paper);background:var(--ink);padding:4px 7px 3px;letter-spacing:.08em}</style>
+<style>
+.source-pool{margin:28px 18px;border:1px solid var(--line);background:var(--paper)}
+.source-pool>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:18px;font-weight:850}
+.source-pool>summary::-webkit-details-marker{display:none}
+.source-pool>summary b{font:750 11px var(--mono);white-space:nowrap;color:var(--ink-2)}
+.source-pool>p{margin:0;padding:0 18px 16px;color:var(--ink-2);font-size:12px;line-height:1.6}
+.source-pool ul{list-style:none;margin:0;padding:0 18px 18px}
+.source-pool li{border-top:1px solid var(--line);padding:12px 0;display:grid;gap:5px;font-size:12px;line-height:1.5}
+.source-pool li strong{font-weight:750}.source-pool li span{color:var(--ink-2);font-size:11px}
+.source-pool li div{display:flex;gap:10px;flex-wrap:wrap}.source-pool li a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><a href="../archive.html" aria-label="返回历史归档" style="display:inline-flex;align-items:center;min-height:36px;margin:0 16px 2px;color:var(--paper);font:800 11px/1 var(--mono);letter-spacing:.05em">← 历史归档</a>
+  <div class="tb-top">
+    <div class="tb-brand">影视<span>简报</span></div>
+    <div class="tb-date">2026-11-17 · 周二</div>
+  </div>
+  <nav class="mnav" id="mnav">
+<a href="#m-cn">中国内地</a><a href="#m-hmt">中国港澳台</a><a href="#m-intl">海外</a><a href="#m-obs">行业观察</a>
+  </nav>
+</header>
+<section class="status" aria-label="系统状态">
+  <div class="st-line">
+    <span class="st-date">2026 年 11 月 17 日</span>
+    <span class="st-dot">·</span>
+    <span class="st-upd">最近采集 11/17 10:10</span>
+    <span class="st-dot">·</span>
+    <span class="st-new">今日提要 <em>29</em> 组 · 原始线索 66 条</span>
+  </div>
+  <div class="st-sub2">本轮接通 21/22 个采集入口 · 部分来源采集受限</div>
+</section>
+<section id="m-cn" class="market" aria-label="中国内地">
+<div class="mk-head"><span class="bar"></span><h2>中国内地</h2><span class="en">MAINLAND</span><span class="n">5</span></div>
+<div class="feed"><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:32</span><span class="r-kind">院线电影 · 电影动态</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">琴弓师11月17日全国上映 四十年制弓匠人故事揭开全球八成琴弓产业</div><div class="r-lead">国内首部讲述苏州琴弓匠人故事的院线电影琴弓师11月17日全国上映,取景相城渭塘,该镇产出全球近八成提琴琴弓,影片以四十年制弓生涯还原百道工序与匠心传承</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电影新闻</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">国内首部讲述苏州琴弓匠人故事的院线电影琴弓师11月17日全国上映,取景相城渭塘,该镇产出全球近八成提琴琴弓,影片以四十年制弓生涯还原百道工序与匠心传承</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/1117/413091.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电影新闻</span><span class="sb-name">电影界 · 电影新闻</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 10:05</span><span class="r-kind">电影·渠道待确认 · 电影动态</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://p0.pipi.cn/mediaplus/friday_image_fe/e429585ce329a193b6bd6d815fad8ecc2630f.jpg?imageMogr2/quality/80" alt="中国大陆大银幕首部虫恐惊悚片《蛛楼》确认引进蛛杀时刻一触即发" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">中国大陆大银幕首部虫恐惊悚片《蛛楼》确认引进蛛杀时刻一触即发</div><div class="r-lead">今日(11月17日),电影《蛛楼》发布“蛛杀倒计时”版预告和“蛛你平安”海报,正式确认引进中国内地</div><div class="r-src"><span class="dot"></span>来源 · 猫眼电影 · 影视快讯</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">今日(11月17日),电影《蛛楼》发布“蛛杀倒计时”版预告和“蛛你平安”海报,正式确认引进中国内地</p><figure class="source-media"><a href="https://i.maoyan.com/asgard/information/21020545?_v_=yes" target="_blank" rel="noopener"><img src="https://p0.pipi.cn/mediaplus/friday_image_fe/e429585ce329a193b6bd6d815fad8ecc2630f.jpg?imageMogr2/quality/80" alt="中国大陆大银幕首部虫恐惊悚片《蛛楼》确认引进蛛杀时刻一触即发" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://i.maoyan.com/asgard/information/21020545?_v_=yes" target="_blank" rel="noopener"><span class="sb-b">猫眼电影 · 影视快讯</span><span class="sb-name">猫眼电影 · 影视快讯</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:23</span><span class="r-kind">剧集 · 剧集动态</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://upload.dianyingjie.com.cn/2026/1117/1794878637516.jpeg" alt="爱,是生命的续集!吴克群“生命共创影集”《请记得我》官宣定档" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">爱,是生命的续集!吴克群“生命共创影集”《请记得我》官宣定档</div><div class="r-lead">当铭记遇上告别,生命会碰撞出怎样的火花? 当铭记遇上告别,生命会碰撞出怎样的火花? 今日,由吴克群、大千影业联合发起的“生命共创影集”《请记得我》正式官宣定档,将于11月19日全网上线</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 电视与剧集</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">当铭记遇上告别,生命会碰撞出怎样的火花? 当铭记遇上告别,生命会碰撞出怎样的火花? 今日,由吴克群、大千影业联合发起的“生命共创影集”《请记得我》正式官宣定档,将于11月19日全网上线</p><figure class="source-media"><a href="https://www.dianyingjie.com.cn/2026/1117/413085.shtml" target="_blank" rel="noopener"><img src="https://upload.dianyingjie.com.cn/2026/1117/1794878637516.jpeg" alt="爱,是生命的续集!吴克群“生命共创影集”《请记得我》官宣定档" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/1117/413085.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 电视与剧集</span><span class="sb-name">电影界 · 电视与剧集</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 00:00</span><span class="r-kind">剧集 · 影视动态</span><span class="r-cred pending">社媒线索 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">想见你开播7周年</div><div class="r-lead">七年前的今天,由 等主演的剧集《想见你》正式开播</div><div class="r-src"><span class="dot"></span>来源 · 淘票票 · 官方账号公开发布</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">七年前的今天,由 等主演的剧集《想见你》正式开播</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自微博原帖，保留账号与发布时间；账号认证或转发数量不代表内容已核实。 当前正文可能被平台截断，请查看原帖全文。</div><div class="vp-note">来源标注：社媒线索。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.sina.cn/news/detail/5366030374541984.html" target="_blank" rel="noopener"><span class="sb-b">淘票票 · 官方账号公开发布</span><span class="sb-name">淘票票 · 官方账号公开发布</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 00:00</span><span class="r-kind">剧集 · 影视动态</span><span class="r-cred pending">社媒线索 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">甄嬛传播出15周年</div><div class="r-lead">15年前的今天,电视剧《甄嬛传》正式播出</div><div class="r-src"><span class="dot"></span>来源 · 淘票票 · 官方账号公开发布</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">15年前的今天,电视剧《甄嬛传》正式播出</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自微博原帖，保留账号与发布时间；账号认证或转发数量不代表内容已核实。 当前正文可能被平台截断，请查看原帖全文。</div><div class="vp-note">来源标注：社媒线索。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.sina.cn/news/detail/5366030374798730.html" target="_blank" rel="noopener"><span class="sb-b">淘票票 · 官方账号公开发布</span><span class="sb-name">淘票票 · 官方账号公开发布</span><span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+<section id="m-hmt" class="market" aria-label="中国港澳台">
+<div class="mk-head"><span class="bar"></span><h2>中国港澳台</h2><span class="en">HK / MACAU / TAIWAN</span><span class="n">2</span></div>
+<div class="feed"><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:25</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/11/OdiumZero-Wk3.jpg" alt="孔令政《無涯之約》繼續限量特典場" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">孔令政《無涯之約》繼續限量特典場</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/114475" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/11/OdiumZero-Wk3.jpg" alt="孔令政《無涯之約》繼續限量特典場" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/114475" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:09</span><span class="r-kind">电影·渠道待确认 · 电影行业观察</span><span class="r-cred pending">行业观察 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hkfilmblog.com/wp-content/uploads/2026/11/ShavetoReborn20.jpg" alt="《大剃度2.0雪地上的重生》明年賀歲" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《大剃度2.0雪地上的重生》明年賀歲</div><div class="r-src"><span class="dot"></span>来源 · 講。鏟。片 · 香港電影博客</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><figure class="source-media"><a href="https://www.hkfilmblog.com/archives/114472" target="_blank" rel="noopener"><img src="https://www.hkfilmblog.com/wp-content/uploads/2026/11/ShavetoReborn20.jpg" alt="《大剃度2.0雪地上的重生》明年賀歲" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">i</span>来自行业博客，包含作者观察与观点；请结合原文判断，不代表官方结论。</div><div class="vp-note">来源标注：行业观察。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hkfilmblog.com/archives/114472" target="_blank" rel="noopener"><span class="sb-b">講。鏟。片 · 香港電影博客</span><span class="sb-name">講。鏟。片 · 香港電影博客</span><span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+<section id="m-intl" class="market" aria-label="海外">
+<div class="mk-head"><span class="bar"></span><h2>海外</h2><span class="en">INTERNATIONAL</span><span class="n">22</span></div>
+<div class="feed"><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:32</span><span class="r-kind">电影·渠道待确认 · 海外电影动态</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">新邦德官宣帕丁森接棒克雷格 维伦纽瓦执导邦德26计划2027开机</div><div class="r-lead">亚马逊米高梅11月16日晚官宣罗伯特帕丁森接任新任邦德,维伦纽瓦执导邦德26,帕斯卡尔与海曼制片、奈特编剧,计划2027年开机、2028年上映,片名与档期尚未公布</div><div class="r-src"><span class="dot"></span>来源 · 电影界 · 国际电影界</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">亚马逊米高梅11月16日晚官宣罗伯特帕丁森接任新任邦德,维伦纽瓦执导邦德26,帕斯卡尔与海曼制片、奈特编剧,计划2027年开机、2028年上映,片名与档期尚未公布</p><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.dianyingjie.com.cn/2026/1117/413089.shtml" target="_blank" rel="noopener"><span class="sb-b">电影界 · 国际电影界</span><span class="sb-name">电影界 · 国际电影界</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 09:27</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/GettyImages-111617327.jpg" alt="雷·廷托里,音乐视频导演和电影制作人,逝世,享年43岁" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">雷·廷托里,音乐视频导演和电影制作人,逝世,享年43岁</div><div class="r-lead">廷托里是[...]的创始人之一</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">廷托里是[...]的创始人之一</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Ray Tintori, Music Video Director and Filmmaker, Dies at 43。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/news/ray-tintori-dead-filmmaker-beasts-southern-wild-1236949816" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/GettyImages-111617327.jpg" alt="雷·廷托里,音乐视频导演和电影制作人,逝世,享年43岁" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/news/ray-tintori-dead-filmmaker-beasts-southern-wild-1236949816" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 08:32</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/GettyImages-2305445522.jpg" alt="詹妮弗·劳伦斯与《饥饿游戏》同台演员乔什·哈切尔森在《日出之时:收获》全球首映式上重逢" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">詹妮弗·劳伦斯与《饥饿游戏》同台演员乔什·哈切尔森在《日出之时:收获》全球首映式上重逢</div><div class="r-lead">詹妮弗·劳伦斯在纽约市《日出之时:收获》的全球首映式上与同台演员乔什·哈切尔森重逢,这是《饥饿游戏》系列的重逢</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">詹妮弗·劳伦斯在纽约市《日出之时:收获》的全球首映式上与同台演员乔什·哈切尔森重逢,这是《饥饿游戏》系列的重逢</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Jennifer Lawrence Reunites With ‘Hunger Games’ Co-Star Josh Hutcherson at ‘Sunrise on the Reaping’ World Premiere。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/news/jennifer-lawrence-hunger-games-sunrise-on-the-reaping-premiere-1236949116" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/GettyImages-2305445522.jpg" alt="詹妮弗·劳伦斯与《饥饿游戏》同台演员乔什·哈切尔森在《日出之时:收获》全球首映式上重逢" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/news/jennifer-lawrence-hunger-games-sunrise-on-the-reaping-premiere-1236949116" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 07:49</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Robert-Pattinson-getty-H-2026.png?w=1296&amp;h=730&amp;crop=1" alt="罗伯特·帕丁森14年前就预言了自己将扮演詹姆斯·邦德" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">罗伯特·帕丁森14年前就预言了自己将扮演詹姆斯·邦德</div><div class="r-lead">这位演员将成为下一任007,接替丹尼尔·克雷格,后者在2021年的《无暇赴死》中结束了自己的007生涯</div><div class="r-src"><span class="dot"></span>来源 · The Hollywood Reporter · Movies</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">这位演员将成为下一任007,接替丹尼尔·克雷格,后者在2021年的《无暇赴死》中结束了自己的007生涯</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Robert Pattinson Manifested His James Bond Casting 14 Years Ago。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://www.hollywoodreporter.com/movies/movie-news/robert-pattinson-manifested-james-bond-casting-2012-1236756679" target="_blank" rel="noopener"><img src="https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Robert-Pattinson-getty-H-2026.png?w=1296&amp;h=730&amp;crop=1" alt="罗伯特·帕丁森14年前就预言了自己将扮演詹姆斯·邦德" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hollywoodreporter.com/movies/movie-news/robert-pattinson-manifested-james-bond-casting-2012-1236756679" target="_blank" rel="noopener"><span class="sb-b">The Hollywood Reporter · Movies</span><span class="sb-name">The Hollywood Reporter · Movies</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 07:29</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/the-hunger-games-sunrise-on-the-reaping-red-carpet-photos-fashion.jpg" alt="《饥饿游戏:收获日的黎明》纽约首映红毯照片:詹妮弗·劳伦斯、麦肯娜·格雷斯、蕾切尔·泽格勒等" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《饥饿游戏:收获日的黎明》纽约首映红毯照片:詹妮弗·劳伦斯、麦肯娜·格雷斯、蕾切尔·泽格勒等</div><div class="r-lead">纽约市迎来了《饥饿游戏:收获日的黎明》的明星们参加该片的首映</div><div class="r-src"><span class="dot"></span>来源 · Deadline · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">纽约市迎来了《饥饿游戏:收获日的黎明》的明星们参加该片的首映</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘The Hunger Games: Sunrise On The Reaping’ NYC Premiere Red Carpet Photos: Jennifer Lawrence, Mckenna Grace, Rachel Zegler &amp; More。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/gallery/the-hunger-games-sunrise-on-the-reaping-nyc-premiere-red-carpet-photos-lionsgate" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/the-hunger-games-sunrise-on-the-reaping-red-carpet-photos-fashion.jpg" alt="《饥饿游戏:收获日的黎明》纽约首映红毯照片:詹妮弗·劳伦斯、麦肯娜·格雷斯、蕾切尔·泽格勒等" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/gallery/the-hunger-games-sunrise-on-the-reaping-nyc-premiere-red-carpet-photos-lionsgate" target="_blank" rel="noopener"><span class="sb-b">Deadline · Film</span><span class="sb-name">Deadline · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 07:00</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/MixCollage-16-Nov-2026-02-49-PM-8729.jpg" alt="《蜘蛛侠:全新日》加长版定档12月影院上映" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《蜘蛛侠:全新日》加长版定档12月影院上映</div><div class="r-lead">包含之前被剪辑掉的镜头的《蜘蛛侠:全新日》加长版将于12月4日在影院上映</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">包含之前被剪辑掉的镜头的《蜘蛛侠:全新日》加长版将于12月4日在影院上映</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘Spider-Man: Brand New Day’ Extended Cut Sets December Release Date in Theaters。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/news/spider-man-brand-new-day-extended-cut-release-date-1236949654" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/MixCollage-16-Nov-2026-02-49-PM-8729.jpg" alt="《蜘蛛侠:全新日》加长版定档12月影院上映" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/news/spider-man-brand-new-day-extended-cut-release-date-1236949654" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 06:32</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/VARIETY-SIZING-91.png" alt="‘NAZA’ 电影制作人感谢通过奖项对话为他们的电影“照亮”,但优先考虑影响力:这只是“抵抗机器中的一个小齿轮”" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">‘NAZA’ 电影制作人感谢通过奖项对话为他们的电影“照亮”,但优先考虑影响力:这只是“抵抗机器中的一个小齿轮”</div><div class="r-lead">过去几年中,领先的纪录片节IDFA已经成为奖季路线上的一个关键停靠点,主要流媒体平台和关键工作室在阿姆斯特丹17世纪的运河边豪宅和剧院中争取选民的支持</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">过去几年中,领先的纪录片节IDFA已经成为奖季路线上的一个关键停靠点,主要流媒体平台和关键工作室在阿姆斯特丹17世纪的运河边豪宅和剧院中争取选民的支持</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘NAZA’ Filmmakers Grateful for ‘Light Being Shone’ on Their Film Through Awards Conversation but Prioritize Impact: It’s a ‘Small Cog in a Machine of Resistance’。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/global/naza-yuval-abraham-james-wilson-awards-impact-idfa-1236949104" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/VARIETY-SIZING-91.png" alt="‘NAZA’ 电影制作人感谢通过奖项对话为他们的电影“照亮”,但优先考虑影响力:这只是“抵抗机器中的一个小齿轮”" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/global/naza-yuval-abraham-james-wilson-awards-impact-idfa-1236949104" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 05:23</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 英文原文</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2024/07/GettyImages-2158581935-e1733371910417.jpg" alt="Robert Pattinson As Bond Or Bond Villain: What Did The Actor Say Years A…" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">Robert Pattinson As Bond Or Bond Villain: What Did The Actor Say Years A…</div><div class="r-lead">Robert Pattinson today described being cast as James Bond as a “dream come true”. The actor enthused: “Ja…</div><div class="r-src"><span class="dot"></span>来源 · Deadline · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">Robert Pattinson today described being cast as James Bond as a “dream come true”. The actor enthused: “Ja…</p><div class="vp-note">自动翻译暂不可用，保留英文原文和来源链接，不遗漏这条消息。</div><figure class="source-media"><a href="https://deadline.com/2026/11/robert-pattinson-as-james-bond-or-villain-what-did-he-say-1237225683" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2024/07/GettyImages-2158581935-e1733371910417.jpg" alt="Robert Pattinson As Bond Or Bond Villain: What Did The Actor Say Years A…" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/robert-pattinson-as-james-bond-or-villain-what-did-he-say-1237225683" target="_blank" rel="noopener"><span class="sb-b">Deadline · Film</span><span class="sb-name">Deadline · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 04:23</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/Robert-Pattinson-Headshot-Photo-Credit_-Stefanie-Keenan.png" alt="罗伯特·帕丁森在2012年表示,他‘绝对’想在20年后成为詹姆斯·邦德,当时他不会这么‘面带青春’" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">罗伯特·帕丁森在2012年表示,他‘绝对’想在20年后成为詹姆斯·邦德,当时他不会这么‘面带青春’</div><div class="r-lead">在他正式被选为詹姆斯·邦德的十四年前,罗伯特·帕丁森表达了他对扮演电影中最著名的秘密特工的兴趣</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">在他正式被选为詹姆斯·邦德的十四年前,罗伯特·帕丁森表达了他对扮演电影中最著名的秘密特工的兴趣</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Robert Pattinson Said in 2012 That He’d ‘Definitely’ Want to Be James Bond in ‘Like 20 Years’ When He’s Not So ‘Fresh-Faced’。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/news/robert-pattinson-james-bond-interview-2012-1236949282" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/Robert-Pattinson-Headshot-Photo-Credit_-Stefanie-Keenan.png" alt="罗伯特·帕丁森在2012年表示,他‘绝对’想在20年后成为詹姆斯·邦德,当时他不会这么‘面带青春’" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/news/robert-pattinson-james-bond-interview-2012-1236949282" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 03:04</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/Robert-Pattinson-1.jpg" alt="“坏主意”还是“迫不及待”?行业和媒体对罗伯特·帕丁森饰演詹姆斯·邦德的反应" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">“坏主意”还是“迫不及待”?行业和媒体对罗伯特·帕丁森饰演詹姆斯·邦德的反应</div><div class="r-lead">刷新以获取更新... 当谈到谁应该扮演下一个詹姆斯·邦德时,每个人都有自己的意见</div><div class="r-src"><span class="dot"></span>来源 · Deadline · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">刷新以获取更新... 当谈到谁应该扮演下一个詹姆斯·邦德时,每个人都有自己的意见</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：A “Bad Call” Or “Can’t Wait”? Industry &amp; Media React To Robert Pattinson’s Casting As James Bond。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/2026/11/robert-pattinson-james-bond-casting-reactions-1237225350" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/Robert-Pattinson-1.jpg" alt="“坏主意”还是“迫不及待”?行业和媒体对罗伯特·帕丁森饰演詹姆斯·邦德的反应" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/robert-pattinson-james-bond-casting-reactions-1237225350" target="_blank" rel="noopener"><span class="sb-b">Deadline · Film</span><span class="sb-name">Deadline · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 02:15</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">Deadline启动其Contenders Film Los Angeles流媒体网站</div><div class="r-lead">本年度的片单包括从票房大片如Project Hail [...]等一切</div><div class="r-src"><span class="dot"></span>来源 · Deadline · Film</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">本年度的片单包括从票房大片如Project Hail [...]等一切</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Deadline Launches Its Contenders Film Los Angeles Streaming Site。片名、人名及具体事实请以原始报道为准。</div><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/deadline-ontenders-film-los-angeles-streaming-site-launch-1237225279" target="_blank" rel="noopener"><span class="sb-b">Deadline · Film</span><span class="sb-name">Deadline · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 02:00</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/GettyImages-2194345781.jpg" alt="百老汇明星Ryan McCartan主演犯罪剧《Only Good Feelings》(独家)" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">百老汇明星Ryan McCartan主演犯罪剧《Only Good Feelings》(独家)</div><div class="r-lead">SNR Films将于2027年2月在纽约进行限时放映</div><div class="r-src"><span class="dot"></span>来源 · Variety · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">SNR Films将于2027年2月在纽约进行限时放映</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Broadway Star Ryan McCartan to Star in Crime Drama ‘Only Good Feelings’ (EXCLUSIVE)。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/film/news/ryan-mccartan-only-good-feelings-great-gatsby-broadway-1236947307" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/GettyImages-2194345781.jpg" alt="百老汇明星Ryan McCartan主演犯罪剧《Only Good Feelings》(独家)" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/film/news/ryan-mccartan-only-good-feelings-great-gatsby-broadway-1236947307" target="_blank" rel="noopener"><span class="sb-b">Variety · Film</span><span class="sb-name">Variety · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 02:00</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/2023-Tribeca-Festival-Portraits-1000.jpg" alt="索尼的《Grandgear》完成选角,科里·霍金斯、艾丹·拉普雷特和盖尔·兰金加入" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">索尼的《Grandgear》完成选角,科里·霍金斯、艾丹·拉普雷特和盖尔·兰金加入</div><div class="r-lead">这一消息发布之际,保罗·吉亚玛蒂......</div><div class="r-src"><span class="dot"></span>来源 · Deadline · Film</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">这一消息发布之际,保罗·吉亚玛蒂......</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Sony’s ‘Grandgear’ Rounds Out Cast With Corey Hawkins, Aidan Laprete &amp; Gayle Rankin。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/2026/11/grandgear-movie-takashi-yamazaki-adds-three-cast-1237225295" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/2023-Tribeca-Festival-Portraits-1000.jpg" alt="索尼的《Grandgear》完成选角,科里·霍金斯、艾丹·拉普雷特和盖尔·兰金加入" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/grandgear-movie-takashi-yamazaki-adds-three-cast-1237225295" target="_blank" rel="noopener"><span class="sb-b">Deadline · Film</span><span class="sb-name">Deadline · Film</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 01:00</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">Netflix 下一部《未被讲述的故事》关于纽约巨人队对阵不败爱国者队的超级碗胜利,将在圣诞节前夕到来(独家)</div><div class="r-src"><span class="dot"></span>来源 · The Hollywood Reporter · Movies</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><div class="vp-note">机器翻译仅供快速阅读；原文标题：Netflix’s Next ‘Untold’ About NY Giants’ Super Bowl Win vs. Undefeated Patriots Arrives in Time for Xmas (Exclusive)。片名、人名及具体事实请以原始报道为准。</div><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hollywoodreporter.com/movies/movie-news/netflix-untold-news-giants-upset-patriots-super-bowl-netflix-1236751838" target="_blank" rel="noopener"><span class="sb-b">The Hollywood Reporter · Movies</span><span class="sb-name">The Hollywood Reporter · Movies</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 00:00</span><span class="r-kind">电影·渠道待确认 · 电影动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><span class="poster-placeholder" aria-label="暂无来源图片">FILM</span><div class="r-media-txt"><div class="r-title">鲍勃·奥登科克、亚历克·鲍德温、伊莎·菲舍尔将主持2026年葡萄牙特里贝卡电影节</div><div class="r-lead">佐伊亚·马梅特、爱德华·伯恩斯、扎克·伍兹和W·卡马·贝尔也将前往里斯本参加特里贝卡里斯本电影节,电影节的片单中包括《约瑟芬》、《新来者》和《海上女王》</div><div class="r-src"><span class="dot"></span>来源 · The Hollywood Reporter · Movies</div></div></div><div class="r-mat">查看原始信源</div></summary><div class="r-det"><p class="d-desc">佐伊亚·马梅特、爱德华·伯恩斯、扎克·伍兹和W·卡马·贝尔也将前往里斯本参加特里贝卡里斯本电影节,电影节的片单中包括《约瑟芬》、《新来者》和《海上女王》</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Bob Odenkirk, Alec Baldwin, Isla Fisher to Headline Tribeca Festival’s 2026 Portugal Edition。片名、人名及具体事实请以原始报道为准。</div><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hollywoodreporter.com/movies/movie-news/bob-odenkirk-alec-baldwin-tribeca-festival-portugal-edition-1236755048" target="_blank" rel="noopener"><span class="sb-b">The Hollywood Reporter · Movies</span><span class="sb-name">The Hollywood Reporter · Movies</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 07:33</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/Chris-Long-Fox.jpg" alt="克里斯·朗将执导福克斯法律剧《凯蒂·格雷夫斯》的第一集,艾迪·法尔科主演" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">克里斯·朗将执导福克斯法律剧《凯蒂·格雷夫斯》的第一集,艾迪·法尔科主演</div><div class="r-lead">独家:两次艾美奖提名者克里斯·朗(《美国谍梦》)被选中执导和担任福克斯即将上映的法律剧《凯蒂·格雷夫斯》(暂定名)的首集,并由艾迪·法尔科主演</div><div class="r-src"><span class="dot"></span>来源 · Deadline · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">独家:两次艾美奖提名者克里斯·朗(《美国谍梦》)被选中执导和担任福克斯即将上映的法律剧《凯蒂·格雷夫斯》(暂定名)的首集,并由艾迪·法尔科主演</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Chris Long To Direct First Episode Of Fox Legal Drama ‘Katie Greaves’ Starring Edie Falco。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/2026/11/chris-long-direct-first-episode-katie-greaves-edie-falco-1237225773" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/Chris-Long-Fox.jpg" alt="克里斯·朗将执导福克斯法律剧《凯蒂·格雷夫斯》的第一集,艾迪·法尔科主演" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/chris-long-direct-first-episode-katie-greaves-edie-falco-1237225773" target="_blank" rel="noopener"><span class="sb-b">Deadline · TV</span><span class="sb-name">Deadline · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 07:10</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/nicolas-cage-bj-novak-chris-pine.jpg" alt="尼古拉斯·凯奇和克里斯·派恩将出演拉斯维加斯戏剧系列《美国史诗》由B.J.诺瓦克和A24制作" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">尼古拉斯·凯奇和克里斯·派恩将出演拉斯维加斯戏剧系列《美国史诗》由B.J.诺瓦克和A24制作</div><div class="r-lead">《办公室》的演员B.J.诺瓦克正在撰写这个项目,该项目来自乔·希普斯的A24公司Cut To</div><div class="r-src"><span class="dot"></span>来源 · Deadline · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">《办公室》的演员B.J.诺瓦克正在撰写这个项目,该项目来自乔·希普斯的A24公司Cut To</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Nicolas Cage &amp; Chris Pine To Star In Vegas Drama Series ‘American Epic’ From B.J. Novak &amp; A24。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/2026/11/nicolas-cage-chris-pine-american-epic-series-bj-novak-a24-1237222431" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/nicolas-cage-bj-novak-chris-pine.jpg" alt="尼古拉斯·凯奇和克里斯·派恩将出演拉斯维加斯戏剧系列《美国史诗》由B.J.诺瓦克和A24制作" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/nicolas-cage-chris-pine-american-epic-series-bj-novak-a24-1237222431" target="_blank" rel="noopener"><span class="sb-b">Deadline · TV</span><span class="sb-name">Deadline · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 05:07</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 2 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/Reasonable-Doubt.jpg" alt="《合理怀疑》在第四季终结前续订第五季" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">《合理怀疑》在第四季终结前续订第五季</div><div class="r-lead">《合理怀疑》已经在Hulu和Onyx Collective续订了第五季</div><div class="r-src"><span class="dot"></span>来源 · Variety · TV / Deadline · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">《合理怀疑》已经在Hulu和Onyx Collective续订了第五季</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘Reasonable Doubt’ Renewed for Season 5 Ahead of Season 4 Finale。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/tv/news/reasonable-doubt-renewed-season-5-season-4-finale-1236949562" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/Reasonable-Doubt.jpg" alt="《合理怀疑》在第四季终结前续订第五季" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/tv/news/reasonable-doubt-renewed-season-5-season-4-finale-1236949562" target="_blank" rel="noopener"><span class="sb-b">Variety · TV</span><span class="sb-name">Variety · TV</span><span class="sb-a">&#8599;</span></a><a class="sb-i sb-main" href="https://deadline.com/2026/11/reasonable-doubt-renewed-season-5-season-4-ratings-hulu-1237225565" target="_blank" rel="noopener"><span class="sb-b">Deadline · TV</span><span class="sb-name">Deadline · TV · 《合理怀疑》获得提前第五季续订,第四季成为Hulu最受欢迎系列</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 04:30</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2026/11/TN_CMB_Gianmarco-Soresi_BB_111226_1.jpg" alt="吉安马尔科·索雷西谈Netflix首个特辑、全球喜剧爆发以及“胡说八道”在让喜剧演员保持诚实中的作用 – 喜剧即商业播客" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">吉安马尔科·索雷西谈Netflix首个特辑、全球喜剧爆发以及“胡说八道”在让喜剧演员保持诚实中的作用 – 喜剧即商业播客</div><div class="r-lead">最终,他没有坚持下去,虽然这可能是更好的选择:他的自制首个小时特辑《快乐小偷》,成为了最突出的......</div><div class="r-src"><span class="dot"></span>来源 · Deadline · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">最终,他没有坚持下去,虽然这可能是更好的选择:他的自制首个小时特辑《快乐小偷》,成为了最突出的......</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Gianmarco Soresi Talks Debut Netflix Special, Global Comedy Explosion, Role Of “Sh*t Talk” In Keeping Comics Honest – Comedy Means Business Podcast。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://deadline.com/2026/11/gianmarco-soresi-comedy-means-business-podcast-interview-1237225548" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2026/11/TN_CMB_Gianmarco-Soresi_BB_111226_1.jpg" alt="吉安马尔科·索雷西谈Netflix首个特辑、全球喜剧爆发以及“胡说八道”在让喜剧演员保持诚实中的作用 – 喜剧即商业播客" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://deadline.com/2026/11/gianmarco-soresi-comedy-means-business-podcast-interview-1237225548" target="_blank" rel="noopener"><span class="sb-b">Deadline · TV</span><span class="sb-name">Deadline · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 03:00</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 2 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://deadline.com/wp-content/uploads/2024/05/3-Body-Problem.jpg" alt="‘3 体问题’ 确定了在 Netflix 上的第二季发布日期" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">‘3 体问题’ 确定了在 Netflix 上的第二季发布日期</div><div class="r-lead">在获得艾美奖提名的《3 体问题》第一季播出两年多后,Netflix 将该剧第二季的回归日期定为 1 月 14 日星期四</div><div class="r-src"><span class="dot"></span>来源 · The Hollywood Reporter · TV / Deadline · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">在获得艾美奖提名的《3 体问题》第一季播出两年多后,Netflix 将该剧第二季的回归日期定为 1 月 14 日星期四</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘3 Body Problem’ Sets Season 2 Release Date At Netflix。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://www.hollywoodreporter.com/tv/tv-news/3-body-problem-season-2-date-when-netflix-1236755059" target="_blank" rel="noopener"><img src="https://deadline.com/wp-content/uploads/2024/05/3-Body-Problem.jpg" alt="‘3 体问题’ 确定了在 Netflix 上的第二季发布日期" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://www.hollywoodreporter.com/tv/tv-news/3-body-problem-season-2-date-when-netflix-1236755059" target="_blank" rel="noopener"><span class="sb-b">The Hollywood Reporter · TV</span><span class="sb-name">The Hollywood Reporter · TV · Netflix的《3体问题》获得第二季首播日期,预告片将于明天发布</span><span class="sb-a">&#8599;</span></a><a class="sb-i sb-main" href="https://deadline.com/2026/11/3-body-problem-season-2-release-date-netflix-1237225311" target="_blank" rel="noopener"><span class="sb-b">Deadline · TV</span><span class="sb-name">Deadline · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 02:00</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/JOKERS-WILD-Jack-Barry-1972-86-1000.jpg" alt="‘小丑的狂野’游戏节目确定由Howie Mandel主持的重启版" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">‘小丑的狂野’游戏节目确定由Howie Mandel主持的重启版</div><div class="r-lead">Howie Mandel将主持这档经典游戏节目的重启版,预计将于11月开始制作,并于2027年秋季在CBS拥有的广播联播网中播出</div><div class="r-src"><span class="dot"></span>来源 · Variety · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">Howie Mandel将主持这档经典游戏节目的重启版,预计将于11月开始制作,并于2027年秋季在CBS拥有的广播联播网中播出</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：‘The Joker’s Wild’ Game Show Sets Reboot Hosted by Howie Mandel。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/tv/news/the-jokers-wild-reboot-howie-mandel-1236949145" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/JOKERS-WILD-Jack-Barry-1972-86-1000.jpg" alt="‘小丑的狂野’游戏节目确定由Howie Mandel主持的重启版" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/tv/news/the-jokers-wild-reboot-howie-mandel-1236949145" target="_blank" rel="noopener"><span class="sb-b">Variety · TV</span><span class="sb-name">Variety · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details><details class="row row-media" data-cred="pending"><summary><div class="r-line"><span class="r-time">11/17 02:00</span><span class="r-kind">剧集 · 剧集动态 · 机器翻译</span><span class="r-cred pending">媒体报道 · 1 条原文</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-media-body"><img class="r-thumb" src="https://variety.com/wp-content/uploads/2026/11/Hulu-Victoria-Cast.jpg" alt="Hulu 情色惊悚系列‘维多利亚’剧集选定凯尔·麦克拉克兰、迈克尔·海耶特、马万·肯扎里、J·阿尔方斯·尼科尔森" loading="lazy" referrerpolicy="no-referrer"><div class="r-media-txt"><div class="r-title">Hulu 情色惊悚系列‘维多利亚’剧集选定凯尔·麦克拉克兰、迈克尔·海耶特、马万·肯扎里、J·阿尔方斯·尼科尔森</div><div class="r-lead">即将上映的Hulu-Onyx Collective限定系列“维多利亚”新增四位演员,Variety报道称</div><div class="r-src"><span class="dot"></span>来源 · Variety · TV</div></div></div><div class="r-mat">含来源图片 / 信源</div></summary><div class="r-det"><p class="d-desc">即将上映的Hulu-Onyx Collective限定系列“维多利亚”新增四位演员,Variety报道称</p><div class="vp-note">机器翻译仅供快速阅读；原文标题：Hulu Erotic Thriller Series ‘Victoria’ Casts Kyle MacLachlan, Michael Hyatt, Marwan Kenzari, J. Alphonse Nicholson。片名、人名及具体事实请以原始报道为准。</div><figure class="source-media"><a href="https://variety.com/2026/tv/news/hulu-victoria-kyle-maclachlan-michael-hyatt-marwan-kenzari-1236949120" target="_blank" rel="noopener"><img src="https://variety.com/wp-content/uploads/2026/11/Hulu-Victoria-Cast.jpg" alt="Hulu 情色惊悚系列‘维多利亚’剧集选定凯尔·麦克拉克兰、迈克尔·海耶特、马万·肯扎里、J·阿尔方斯·尼科尔森" loading="lazy" referrerpolicy="no-referrer"></a><figcaption>来源图片 · 点击查看原始报道</figcaption></figure><div class="media-empty"><strong>预告片暂未收录</strong><span>只有找到可追溯的官方或平台视频时才会加入播放器。</span></div><div class="vpanel pending"><div class="vp-h">来源说明</div><div class="vp-row pending"><span class="vpdot">?</span>当前为单一媒体线索，标题、摘要和发布时间均来自原始报道，尚未升级为已确认事实。</div><div class="vp-note">来源标注：媒体报道。收录不等于事实确认。</div></div><div class="srcbox"><div class="sb-h">原始信源</div><div class="sb-list"><a class="sb-i sb-main" href="https://variety.com/2026/tv/news/hulu-victoria-kyle-maclachlan-michael-hyatt-marwan-kenzari-1236949120" target="_blank" rel="noopener"><span class="sb-b">Variety · TV</span><span class="sb-name">Variety · TV</span><span class="sb-a">&#8599;</span></a></div></div></div></details></div></section>
+<section id="m-obs" class="market" aria-label="行业观察">
+<div class="mk-head"><span class="bar"></span><h2>行业观察</h2><span class="en">OBSERVATION</span><span class="n">0</span></div>
+<div class="feed"><div class="mk-empty"><strong>暂未收录今天的行业观察消息</strong><span>部分来源尚未接通或采集受限，已接通的来源仍会更新。</span></div></div></section>
+<section id="source-pool-slot"><details class="source-pool"><summary><span>更多原始线索</span><b>35 组</b></summary><p>首页按事件提炼，并非全部抓取结果。这里保留同日其他动态与被筛掉的低信息量发布；合并事件的每条原文可在对应卡片中查看。来源收录不等于事实核实。</p><ul><li><strong>《暮光之城》如何预测罗伯特·帕丁森扮演詹姆斯·邦德</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/twilight-predicted-robert-pattinson-james-bond-casting-1236756443" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>《珀西·杰克逊与奥林匹亚人》第三季发布时间表:新集什么时候播出?</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/percy-jackson-and-the-olympians-season-3-release-schedule-1237226036" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>至少罗伯特·帕丁森长得很像......伊恩·弗莱明是这么说的</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/robert-pattinson-looks-like-james-bond-ian-fleming-sketch-1236756573" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>《蜘蛛侠:全新日》定于十二月重新发布,包含新场景</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/spider-man-brand-new-day-rerelease-theaters-rosario-dawson-1236756620" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>詹姆斯·邦德粉丝已经开始抱怨罗伯特·帕丁森: “不够像阿尔法男”</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/james-bond-robert-pattinson-fan-reaction-1236756578" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>约翰·帕特里克·沙利谈他的新百老汇剧《山地女孩》、行业动荡以及为什么他“深刻反对”WGA罢工</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/john-patrick-shanley-off-broadway-mountain-girl-hollywood-wga-strike-1237221944" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>罗伯特·帕丁森扮演詹姆斯·邦德?巴兹·巴米格博有话要说</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/robert-pattinson-james-bond-reaction-baz-bamigboye-1237225666" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>下一任邦德女郎:从Zendaya到Florence Pugh,19位可能与罗伯特·帕丁森合作的女演员</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/lists/bond-girl-predictions-robert-pattinson-007" target="_blank" rel="noopener">Variety · Film ↗</a></div></li><li><strong>《Variety》10位值得关注的喜剧演员带来单口相声、短剧和歌曲,为纽约喜剧节展示带来欢笑</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/news/variety-10-comics-to-watch-new-york-comedy-festival-showcase-1236947445" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>詹姆斯·邦德的选角展示了在社交媒体时代每个人都是专家的背景下该过程的艰巨性</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/james-bond-search-robert-pattinson-social-media-1237225227" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>英国榜单:成长剧和康沃尔犯罪系列成为2026年最佳未制作剧本</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/film/global/the-brit-list-2026-lineup-best-unproduced-film-tv-scripts-1236949412" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>‘终点名单’前传系列‘呼喊浩劫’在亚马逊开发中</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/news/terminal-list-prequel-series-cry-havoc-amazon-1236949306" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>‘终点名单’前传‘呼啸’在亚马逊制作中</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/the-terminal-list-prequel-cry-havoc-amazon-1237225564" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>2026 年英国榜单:犯罪系列和成长题材电影领衔最佳未制作剧本名单</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/brit-list-2026-crime-series-coming-of-age-movie-top-scripts-1237225076" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>贾斯汀·朗和凯特·博斯沃斯将主演独立喜剧系列《装修》</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/justin-long-kate-bosworth-indie-comedy-the-renovation-1237225426" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>两届金棕榈奖得主克里斯蒂安·蒙吉乌谈论戛纳的爱、处理争议以及为什么《峡湾》可能是他奥斯卡的突破 - 镜头背后</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/video/cristian-mungiu-video-interview-fjord" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>Netflix 预订哈兰·科本限量剧集《无辜者》</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/news/netflix-harlan-coben-the-innocent-i-will-find-you-1236949157" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>哈兰·科本的《无辜者》在Netflix获得拍摄许可,平台与StoryMath签订整体协议</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/harlan-coben-the-innocent-greenlight-netflix-storymath-1237225375" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>选择罗伯特·帕丁森,詹姆斯·邦德的制片人选择了稳妥的选择——但这是否是正确的选择?(观点)</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/film/columns/new-james-bond-actor-robert-pattinson-right-choice-1236948987" target="_blank" rel="noopener">Variety · Film ↗</a></div></li><li><strong>《小丑的狂野》重启版由豪伊·曼德尔主持,将于2027年秋季在CBS电台首播</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/the-jokers-wild-reboot-howie-mandel-syndication-cbs-stations-1237225343" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>Higher Ground 的《加纳之眼》将在 IShowSpeed 的 YouTube 频道上全球发布</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/the-eyes-of-ghana-global-release-ishowspeed-youtube-channel-1237225326" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>BET媒体集团总裁路易斯·卡尔将在任职40年后离开公司,新结构将稍后宣布</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/news/bet-media-group-president-louis-carr-exit-after-40-years-1236949203" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>詹姆斯·邦德电影列表:影片列表、邦德女郎和标志性反派</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/gallery/james-bond-movies-in-order-bond-girls-villains-posters" target="_blank" rel="noopener">Deadline · Film ↗</a></div></li><li><strong>《雷吉·丁金斯的衰落与崛起》第二季感恩节剧集新增莱斯利·厄格姆斯、凯西娅·刘易斯、雪莉·凯撒和德里克·盖恩斯等四位客串明星(独家)</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/news/fall-rise-reggie-dinkins-thanksgiving-guest-stars-1236949059" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>BBC、Netflix 和 Live Nation 等多家大型娱乐公司被召集到英国政府会议,讨论行业内的不当行为丑闻</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/tv/global/entertainment-companies-government-meeting-abuse-scandals-1236949193" target="_blank" rel="noopener">Variety · TV ↗</a></div></li><li><strong>罗伯特·帕丁森的007宣布在社交媒体上证明亚马逊已经在改变詹姆斯·邦德特许经营</strong><span>简报之外的同日动态</span><div><a href="https://variety.com/2026/film/global/bond-announcement-amazon-tradition-robert-pattinson-1236949030" target="_blank" rel="noopener">Variety · Film ↗</a></div></li><li><strong>埃隆·马斯克认为杰里米·卡尔汉需要在他的“周六夜现场”模仿中“更加努力”</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/tv/tv-news/elon-musk-criticizes-jeremy-culhane-snl-impression-1236756733" target="_blank" rel="noopener">The Hollywood Reporter · TV ↗</a></div></li><li><strong>《邻里》演员卡皮尔·塔尔瓦尔加盟创新艺人娱乐公司</strong><span>简报之外的同日动态</span><div><a href="https://deadline.com/2026/11/kapil-talwalkar-innovative-artists-1237225741" target="_blank" rel="noopener">Deadline · TV ↗</a></div></li><li><strong>Lady Gaga 和 Doechii 的“Runway”是唯一的“恶魔穿普拉达2”的奥斯卡歌曲提交(独家)</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/lady-gaga-doechiis-runway-devil-wears-prada-2-oscars-1236754429" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>豪伊·曼德尔主持《小丑的狂野》游戏节目复兴</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/tv/tv-news/howie-mandel-jokers-wild-game-show-revival-1236756345" target="_blank" rel="noopener">The Hollywood Reporter · TV ↗</a></div></li><li><strong>罗伯特·帕丁森是扮演詹姆斯·邦德的聪明但安全的选择</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/robert-pattinson-james-bond-1236756211" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>‘办公室’,‘我们这一天’和必看电视明星重聚庆祝NBC 100周年纪念特辑</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/tv/tv-news/the-office-must-see-tv-stars-nbc-100th-anniversary-special-1236756268" target="_blank" rel="noopener">The Hollywood Reporter · TV ↗</a></div></li><li><strong>双奥斯卡获奖者克里斯托弗·汉普顿称格伦·克洛斯的荣誉奥斯卡“是他们能做的最起码的事”,并称人工智能只是“一个超级谷歌”</strong><span>简报之外的同日动态</span><div><a href="https://www.hollywoodreporter.com/movies/movie-news/christopher-hampton-glenn-close-oscar-ai-google-1236756060" target="_blank" rel="noopener">The Hollywood Reporter · Movies ↗</a></div></li><li><strong>第四部《终点名单》剧集在Prime Video上制作中</strong><span>低信息量线索</span><div><a href="https://www.hollywoodreporter.com/tv/tv-news/fourth-terminal-list-show-development-prime-video-1236756502" target="_blank" rel="noopener">查看原帖 ↗</a></div></li><li><strong>路易斯·卡尔不再担任BET总裁</strong><span>低信息量线索</span><div><a href="https://www.hollywoodreporter.com/tv/tv-news/bet-president-exits-louis-carr-1236756448" target="_blank" rel="noopener">查看原帖 ↗</a></div></li></ul></details></section>
+<a class="arch-link" href="../archive.html">
+  <div>
+    <div class="al-t">历史归档</div>
+    <div class="al-s">查看往期每日影视简报</div>
+  </div>
+</a>
+</div>
+<script data-player-ctl>
+/* 运行时降级：猫眼直链万一被封/失败，自动回退 B 站（页面生成时已备好 B 站 BV）。
+   无 B 站备选则提示「去 B 站看原片」。无需后端，纯前端兜底。 */
+window.__vFail = function (v) {
+  try {
+    var wrap = v.closest('.v-wrap');
+    if (!wrap) return;
+    var bv = v.getAttribute('data-bili-bvid');
+    var isMobile = window.matchMedia && window.matchMedia('(max-width:820px)').matches;
+    if (bv) {
+      if (isMobile) {
+        /* 手机端：B 站 iframe 内嵌必黑屏，降级为「在 B 站看预告」入口（与静态卡片一致） */
+        var a = document.createElement('a');
+        a.className = 'bili-jump';
+        a.href = 'https://www.bilibili.com/video/' + bv;
+        a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = '<span class="bj-ico">&#9654;</span><span class="bj-t">在 B 站看预告</span>' +
+                      '<span class="bj-s">点击新窗口播放</span>';
+        wrap.innerHTML = ''; wrap.appendChild(a);
+      } else {
+        var f = document.createElement('iframe');
+        f.className = 'bili-embed';
+        f.src = 'https://player.bilibili.com/player.html?bvid=' + bv +
+                '&p=1&danmaku=0&high_quality=1&autoplay=0';
+        f.scrolling = 'no'; f.frameBorder = '0'; f.allowFullscreen = true;
+        wrap.innerHTML = ''; wrap.appendChild(f);
+      }
+    } else {
+      var url = v.getAttribute('data-bili-url') || '';
+      wrap.innerHTML = '<div class="v-fallback">猫眼视频暂不可用' +
+        (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">去 B 站看原片</a>' : '') +
+        '</div>';
+    }
+    wrap.classList.add('v-degraded');
+  } catch (e) {}
+};
+
+/* 收起即停核心：交给原生 details —— 折叠即不可见，浏览器自动停止不可见的
+   iframe / video，无需卸载 src。这段脚本只额外做「展开新卡片时暂停其他视频」。 */
+(function () {
+  function vids(root) { return root.querySelectorAll('.v-wrap video'); }
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS') return;
+    if (d.open) {
+      /* 展开某卡片时，把其他卡片里正在响的原生视频按停，避免多路声音叠一起 */
+      document.querySelectorAll('details').forEach(function (o) {
+        if (o !== d) vids(o).forEach(function (v) { try { v.pause(); } catch (x) {} });
+      });
+    }
+  }, true);
+})();
+</script>
+<script data-autoupdate>
+/* 旧页面自愈：页面内嵌日期 vs 手机系统日期。页面比今天旧 → 强制重新拉。
+   节流规则：同一个"旧日期"下，每小时最多重试一次（key 里带小时）。
+   —— 这样早上 10:30 打开（那时今天这期还没出）刷一次没变化，11 点后会再刷一次拿到新的，
+      而不是像 v2 那样死等到 11 点才动。凌晨 0-6 点肯定没新内容，不白刷。 */
+(function () {
+  var m = document.title.match(/(\d{4}-\d{2}-\d{2})/);
+  if (!m) return;
+  var pageDate = m[1];
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function check() {
+    if (pageDate >= todayStr()) return;          /* 页面是今天或更新 → 正常，不动 */
+    var d = new Date();
+    if (d.getHours() < 6) return;                /* 凌晨没新内容，别白刷 */
+    var key = '__briefReloadedH_' + pageDate + '_' + d.getHours();  /* 每小时最多一次 */
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch (e) {}
+    var base = location.href.split('#')[0].split('?')[0];
+    location.replace(base + '?v=' + Date.now());
+  }
+  check();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') check();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) check(); });
+  setInterval(check, 5 * 60 * 1000);
+})();
+</script>
+<script>
+/* 市场导航高亮：纯增强，失效时 chip 仍可点击跳转 */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('#mnav a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) {
+        a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  links.forEach(function (a) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) obs.observe(t);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var fill = document.getElementById('rprogFill');
+  if(!fill) return;
+  function upd(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var y = d.scrollTop || document.body.scrollTop || 0;
+    var p = max > 0 ? y / max : 0;
+    if(p < 0) p = 0; if(p > 1) p = 1;
+    fill.style.width = (p * 100).toFixed(1) + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd);
+  upd();
+})();
+</script>
+
+<script data-sw-reg>
+/* 只在「本机确实有旧缓存或装过旧 SW」时，才注册自毁版 Service Worker 去清场。
+   清完之后 caches 为空、registration 为空，这里就再也不会重复注册，不会循环。 */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  var regP = navigator.serviceWorker.getRegistration
+    ? navigator.serviceWorker.getRegistration().catch(function () { return null; })
+    : Promise.resolve(null);
+  var keyP = (window.caches && caches.keys)
+    ? caches.keys().catch(function () { return []; })
+    : Promise.resolve([]);
+  Promise.all([regP, keyP]).then(function (r) {
+    var hasOld = !!r[0] || !!navigator.serviceWorker.controller || (r[1] && r[1].length > 0);
+    if (hasOld) { navigator.serviceWorker.register('sw.js').catch(function () {}); }
+  }).catch(function () {});
+})();
+</script>
+
+
+<style data-brief-shell>
+/* 正式版信息密度：完整保留、默认扫读、按需展开。 */
+.brief-overview{margin:0 18px 20px;padding:12px 0 14px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.brief-overview__top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.brief-overview__title{font:900 12px/1 var(--mono);letter-spacing:.08em;color:var(--ink)}
+.brief-overview__total{font:900 11px/1 var(--mono);color:var(--red);white-space:nowrap}
+.brief-overview__chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.brief-overview__chip{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--ink);padding:5px 7px 4px;background:rgba(255,255,255,.42);font:750 10px/1 var(--mono);letter-spacing:.03em;color:var(--ink)}
+.brief-overview__chip b{font-weight:900;color:var(--blue)}
+/* 默认只呈现判断所需的信息；长摘要留在展开层，完整信源从不删除。 */
+.row > summary{padding:12px 16px 13px}
+.r-line{min-height:18px;gap:5px;padding-right:20px}
+.r-new{display:none}
+.r-cred{margin-left:0;order:3}
+.r-title{margin-top:7px;font-size:19px;line-height:1.18}
+.r-lead{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:4px;font-size:12.8px;line-height:1.5}
+.r-src{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;margin-top:7px}
+.r-mat{display:inline-flex;margin-top:8px}
+.row-media > summary{padding:12px 16px 13px}
+.r-media-body{gap:10px;margin-top:8px}
+.r-thumb{width:58px;height:84px;border-color:var(--ink);background:var(--deep)}
+.r-thumb.is-missing{display:none}
+.poster-placeholder{width:58px;height:84px;flex:0 0 auto;display:grid;place-items:end start;padding:7px;background:var(--deep);border:1px solid var(--ink);color:var(--ink);font:900 20px/.8 var(--mono);letter-spacing:-.1em}
+.source-media{margin:11px 0 0;border:1px solid var(--ink);background:var(--deep)}
+.source-media a{display:block;background:var(--ink)}
+.source-media img{display:block;width:100%;max-height:440px;object-fit:contain;background:var(--ink)}
+.source-media figcaption{padding:7px 9px;font:750 10px/1.4 var(--mono);color:var(--ink-3);letter-spacing:.04em}
+.media-empty{margin-top:11px;border:1px dashed var(--ink);padding:10px 11px;display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,.38)}
+.media-empty strong{font:850 11px/1.2 var(--mono);color:var(--ink)}
+.media-empty span{font-size:11.5px;line-height:1.5;color:var(--ink-3)}
+.media-shelf{margin-top:10px;border-top:4px solid var(--ink)}
+.media-shelf > .row{border-right:0}
+.row-media .r-title{font-size:18px}
+.row-media .r-lead{-webkit-line-clamp:3}
+.row-media .r-src{margin-top:6px}
+.r-det{background:rgba(255,255,255,.30);padding-bottom:18px}
+@media (min-width:700px){
+  :root{--maxw:920px}
+  .market .mk-head{grid-template-columns:72px 1fr auto;min-height:84px}
+  .feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .feed > .row{height:100%;border-right:1px solid var(--ink)}
+  .feed > .row:nth-child(even){border-right:0}
+  .feed > .row:last-child:nth-child(odd){grid-column:span 2;border-right:0}
+  .feed > .media-shelf{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .media-shelf > .feed-keep-label{grid-column:1/-1}
+  .media-shelf > .row:nth-child(even){border-left:1px solid var(--ink)}
+}
+</style>
+<script data-brief-shell>
+/* 从页面真实 DOM 计算总览，不依赖 LLM 写死数字，因此每日内容变动也不会失真。 */
+(function () {
+  function ready(fn) { document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+  ready(function () {
+    var status = document.querySelector('.status');
+    if (!status || document.querySelector('.brief-overview')) return;
+    var markets = Array.prototype.slice.call(document.querySelectorAll('.market'));
+    var total = document.querySelectorAll('.market details.row').length;
+    var box = document.createElement('section');
+    box.className = 'brief-overview'; box.setAttribute('aria-label', '本期总览');
+    var chips = markets.map(function (market) {
+      var name = market.getAttribute('aria-label') || '其他';
+      var n = market.querySelectorAll('details.row').length;
+      return '<a class="brief-overview__chip" href="#' + (market.id || '') + '">' + name + ' <b>' + n + '</b></a>';
+    }).join('');
+    box.innerHTML = '<div class="brief-overview__top"><span class="brief-overview__title">今日提要</span><span class="brief-overview__total">' + total + ' 组</span></div>' +
+      '<nav class="brief-overview__chips" aria-label="按地区定位">' + chips + '</nav>';
+    status.insertAdjacentElement('afterend', box);
+    document.querySelectorAll('.r-thumb').forEach(function (img) {
+      function fallback() {
+        if (img.dataset.fallbackDone) return;
+        img.dataset.fallbackDone = '1'; img.classList.add('is-missing');
+        var ph = document.createElement('span'); ph.className = 'poster-placeholder'; ph.setAttribute('aria-label', '暂无海报'); ph.textContent = 'FILM';
+        img.insertAdjacentElement('afterend', ph);
+      }
+      if (img.complete && !img.naturalWidth) fallback();
+      img.addEventListener('error', fallback, {once:true});
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
